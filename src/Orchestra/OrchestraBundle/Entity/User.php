@@ -3,6 +3,9 @@
 namespace Orchestra\OrchestraBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FR3D\LdapBundle\Model\LdapUserInterface;
+use FOS\UserBundle\Entity\User as BaseUser;
+
 
 /**
  * Orchestra\OrchestraBundle\Entity\User
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User
+class User extends BaseUser implements LdapUserInterface
 {
     /**
      * @var integer $id
@@ -19,7 +22,7 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string $firstname
@@ -29,25 +32,17 @@ class User
     private $firstname;
 
     /**
+   * Ldap Object Distinguished Name
+   * @var string $dn
+   */
+    protected $dn;
+    
+    /**
      * @var string $lastname
      *
      * @ORM\Column(name="lastname", type="string", length=32, nullable=false)
      */
     private $lastname;
-
-    /**
-     * @var string $username
-     *
-     * @ORM\Column(name="username", type="string", length=256, nullable=true)
-     */
-    private $username;
-
-    /**
-     * @var string $password
-     *
-     * @ORM\Column(name="password", type="string", length=16, nullable=true)
-     */
-    private $password;
 
     /**
      * @var \DateTime $birthdate
@@ -62,13 +57,6 @@ class User
      * @ORM\Column(name="photo", type="integer", nullable=true)
      */
     private $photo;
-
-    /**
-     * @var string $email
-     *
-     * @ORM\Column(name="email", type="string", length=128, nullable=true)
-     */
-    private $email;
 
     /**
      * @var string $phone
@@ -480,6 +468,23 @@ class User
     {
         return $this->ldap;
     }
+    
+    
+  /**
+   * {@inheritDoc}
+   */
+  public function setDn($dn)
+  {
+    $this->dn = $dn;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function getDn()
+  {
+    return $this->dn;
+  }
 
     /**
      * Set connected
