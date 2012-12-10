@@ -1,0 +1,30 @@
+course:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Course:index" }
+
+course_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Course:show" }
+
+course_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Course:new" }
+
+course_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Course:create" }
+    requirements: { _method: post }
+
+course_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Course:edit" }
+
+course_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Course:update" }
+    requirements: { _method: post }
+
+course_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Course:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,30 @@
+sondage:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Sondage:index" }
+
+sondage_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Sondage:show" }
+
+sondage_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Sondage:new" }
+
+sondage_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Sondage:create" }
+    requirements: { _method: post }
+
+sondage_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Sondage:edit" }
+
+sondage_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Sondage:update" }
+    requirements: { _method: post }
+
+sondage_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Sondage:delete" }
+    requirements: { _method: post }

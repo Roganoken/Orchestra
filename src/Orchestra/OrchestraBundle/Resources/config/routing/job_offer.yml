@@ -1,0 +1,30 @@
+job_offer:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:JobOffer:index" }
+
+job_offer_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:JobOffer:show" }
+
+job_offer_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:JobOffer:new" }
+
+job_offer_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:JobOffer:create" }
+    requirements: { _method: post }
+
+job_offer_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:JobOffer:edit" }
+
+job_offer_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:JobOffer:update" }
+    requirements: { _method: post }
+
+job_offer_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:JobOffer:delete" }
+    requirements: { _method: post }

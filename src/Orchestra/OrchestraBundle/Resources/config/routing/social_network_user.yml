@@ -1,0 +1,30 @@
+social_network_user:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetworkUser:index" }
+
+social_network_user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetworkUser:show" }
+
+social_network_user_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetworkUser:new" }
+
+social_network_user_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetworkUser:create" }
+    requirements: { _method: post }
+
+social_network_user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetworkUser:edit" }
+
+social_network_user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetworkUser:update" }
+    requirements: { _method: post }
+
+social_network_user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetworkUser:delete" }
+    requirements: { _method: post }

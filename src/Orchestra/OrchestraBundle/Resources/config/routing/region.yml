@@ -1,0 +1,30 @@
+region:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Region:index" }
+
+region_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Region:show" }
+
+region_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Region:new" }
+
+region_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Region:create" }
+    requirements: { _method: post }
+
+region_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Region:edit" }
+
+region_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Region:update" }
+    requirements: { _method: post }
+
+region_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Region:delete" }
+    requirements: { _method: post }

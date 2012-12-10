@@ -1,0 +1,30 @@
+auteur:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Auteur:index" }
+
+auteur_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Auteur:show" }
+
+auteur_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Auteur:new" }
+
+auteur_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Auteur:create" }
+    requirements: { _method: post }
+
+auteur_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Auteur:edit" }
+
+auteur_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Auteur:update" }
+    requirements: { _method: post }
+
+auteur_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Auteur:delete" }
+    requirements: { _method: post }

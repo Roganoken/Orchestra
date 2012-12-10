@@ -1,0 +1,30 @@
+genre:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Genre:index" }
+
+genre_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Genre:show" }
+
+genre_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Genre:new" }
+
+genre_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Genre:create" }
+    requirements: { _method: post }
+
+genre_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Genre:edit" }
+
+genre_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Genre:update" }
+    requirements: { _method: post }
+
+genre_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Genre:delete" }
+    requirements: { _method: post }

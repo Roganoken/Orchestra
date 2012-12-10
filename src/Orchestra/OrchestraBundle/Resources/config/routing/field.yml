@@ -1,0 +1,30 @@
+field:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Field:index" }
+
+field_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Field:show" }
+
+field_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Field:new" }
+
+field_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Field:create" }
+    requirements: { _method: post }
+
+field_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Field:edit" }
+
+field_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Field:update" }
+    requirements: { _method: post }
+
+field_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Field:delete" }
+    requirements: { _method: post }

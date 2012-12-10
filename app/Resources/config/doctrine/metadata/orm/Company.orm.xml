@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Company" table="company">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="32" nullable="false"/>
+    <field name="website" type="string" column="website" length="256" nullable="true"/>
+    <field name="email" type="string" column="email" length="256" nullable="true"/>
+    <field name="logo" type="integer" column="logo" nullable="true"/>
+    <field name="issueDate" type="date" column="issue_date" nullable="true"/>
+    <field name="siret" type="string" column="siret" length="16" nullable="true"/>
+    <field name="siren" type="string" column="siren" length="16" nullable="true"/>
+    <field name="isActive" type="boolean" column="is_active" nullable="false"/>
+    <field name="created" type="datetime" column="created" nullable="false"/>
+    <field name="updated" type="datetime" column="updated" nullable="false"/>
+    <many-to-one field="legal" target-entity="Legal">
+      <join-columns>
+        <join-column name="legal_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="address" target-entity="Address">
+      <join-columns>
+        <join-column name="address_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="user" target-entity="User" inversed-by="company">
+      <join-table name="company_user">
+        <join-columns>
+          <join-column name="company_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="user_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="sector" target-entity="Sector" inversed-by="company">
+      <join-table name="company_sector">
+        <join-columns>
+          <join-column name="company_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="sector_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="field" target-entity="Field" inversed-by="company">
+      <join-table name="company_field">
+        <join-columns>
+          <join-column name="company_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="field_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

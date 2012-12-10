@@ -1,0 +1,30 @@
+reponse:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Reponse:index" }
+
+reponse_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Reponse:show" }
+
+reponse_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Reponse:new" }
+
+reponse_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Reponse:create" }
+    requirements: { _method: post }
+
+reponse_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Reponse:edit" }
+
+reponse_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Reponse:update" }
+    requirements: { _method: post }
+
+reponse_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Reponse:delete" }
+    requirements: { _method: post }

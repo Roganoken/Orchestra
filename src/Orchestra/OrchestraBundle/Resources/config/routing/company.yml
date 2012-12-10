@@ -1,0 +1,30 @@
+company:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Company:index" }
+
+company_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Company:show" }
+
+company_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Company:new" }
+
+company_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Company:create" }
+    requirements: { _method: post }
+
+company_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Company:edit" }
+
+company_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Company:update" }
+    requirements: { _method: post }
+
+company_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Company:delete" }
+    requirements: { _method: post }

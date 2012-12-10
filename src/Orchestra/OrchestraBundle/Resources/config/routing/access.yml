@@ -1,0 +1,30 @@
+access:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Access:index" }
+
+access_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Access:show" }
+
+access_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Access:new" }
+
+access_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Access:create" }
+    requirements: { _method: post }
+
+access_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Access:edit" }
+
+access_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Access:update" }
+    requirements: { _method: post }
+
+access_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Access:delete" }
+    requirements: { _method: post }

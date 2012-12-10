@@ -1,0 +1,30 @@
+module:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Module:index" }
+
+module_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Module:show" }
+
+module_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Module:new" }
+
+module_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Module:create" }
+    requirements: { _method: post }
+
+module_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Module:edit" }
+
+module_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Module:update" }
+    requirements: { _method: post }
+
+module_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Module:delete" }
+    requirements: { _method: post }

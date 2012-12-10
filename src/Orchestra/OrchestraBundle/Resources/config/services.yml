@@ -1,0 +1,7 @@
+parameters:
+#    orchestra_orchestra.example.class: Orchestra\OrchestraBundle\Example
+
+services:
+#    orchestra_orchestra.example:
+#        class: %orchestra_orchestra.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

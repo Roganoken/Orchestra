@@ -1,0 +1,30 @@
+social_network:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetwork:index" }
+
+social_network_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetwork:show" }
+
+social_network_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetwork:new" }
+
+social_network_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetwork:create" }
+    requirements: { _method: post }
+
+social_network_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetwork:edit" }
+
+social_network_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetwork:update" }
+    requirements: { _method: post }
+
+social_network_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:SocialNetwork:delete" }
+    requirements: { _method: post }

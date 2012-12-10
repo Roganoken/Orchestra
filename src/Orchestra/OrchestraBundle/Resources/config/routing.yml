@@ -1,0 +1,156 @@
+OrchestraOrchestraBundle_access:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/access.yml
+    prefix:   /access
+
+OrchestraOrchestraBundle_address:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/address.yml
+    prefix:   /address
+
+OrchestraOrchestraBundle_auteur:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/auteur.yml
+    prefix:   /auteur
+
+OrchestraOrchestraBundle_city:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/city.yml
+    prefix:   /city
+
+OrchestraOrchestraBundle_commentaire:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/commentaire.yml
+    prefix:   /commentaire
+
+OrchestraOrchestraBundle_company:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/company.yml
+    prefix:   /company
+
+OrchestraOrchestraBundle_contract:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/contract.yml
+    prefix:   /contract
+
+OrchestraOrchestraBundle_country:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/country.yml
+    prefix:   /country
+
+OrchestraOrchestraBundle_course:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/course.yml
+    prefix:   /course
+
+OrchestraOrchestraBundle_degree:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/degree.yml
+    prefix:   /degree
+
+OrchestraOrchestraBundle_department:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/department.yml
+    prefix:   /department
+
+OrchestraOrchestraBundle_diploma:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/diploma.yml
+    prefix:   /diploma
+
+OrchestraOrchestraBundle_diploma_user:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/diploma_user.yml
+    prefix:   /diploma_user
+
+OrchestraOrchestraBundle_field:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/field.yml
+    prefix:   /field
+
+OrchestraOrchestraBundle_galerie:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/galerie.yml
+    prefix:   /galerie
+
+OrchestraOrchestraBundle_genre:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/genre.yml
+    prefix:   /genre
+
+OrchestraOrchestraBundle_image:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/image.yml
+    prefix:   /image
+
+OrchestraOrchestraBundle_internship:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/internship.yml
+    prefix:   /internship
+
+OrchestraOrchestraBundle_job:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/job.yml
+    prefix:   /job
+
+OrchestraOrchestraBundle_job_offer:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/job_offer.yml
+    prefix:   /job_offer
+
+OrchestraOrchestraBundle_legal:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/legal.yml
+    prefix:   /legal
+
+OrchestraOrchestraBundle_livre:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/livre.yml
+    prefix:   /livre
+
+OrchestraOrchestraBundle_media:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/media.yml
+    prefix:   /media
+
+OrchestraOrchestraBundle_module:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/module.yml
+    prefix:   /module
+
+OrchestraOrchestraBundle_news:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/news.yml
+    prefix:   /news
+
+OrchestraOrchestraBundle_position:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/position.yml
+    prefix:   /position
+
+OrchestraOrchestraBundle_question:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/question.yml
+    prefix:   /question
+
+OrchestraOrchestraBundle_region:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/region.yml
+    prefix:   /region
+
+OrchestraOrchestraBundle_reponse:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/reponse.yml
+    prefix:   /reponse
+
+#OrchestraOrchestraBundle_reponse_question:
+#    resource: @OrchestraOrchestraBundle/Resources/config/routing/reponse_question.yml
+#    prefix:   /reponse_question
+
+OrchestraOrchestraBundle_salle:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/salle.yml
+    prefix:   /salle
+
+OrchestraOrchestraBundle_section:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/section.yml
+    prefix:   /section
+
+OrchestraOrchestraBundle_sector:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/sector.yml
+    prefix:   /sector
+
+OrchestraOrchestraBundle_sex:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/sex.yml
+    prefix:   /sex
+
+OrchestraOrchestraBundle_social_network:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/social_network.yml
+    prefix:   /social_network
+
+OrchestraOrchestraBundle_social_network_user:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/social_network_user.yml
+    prefix:   /social_network_user
+
+OrchestraOrchestraBundle_sondage:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/sondage.yml
+    prefix:   /sondage
+
+OrchestraOrchestraBundle_speciality:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/speciality.yml
+    prefix:   /speciality
+
+OrchestraOrchestraBundle_user:
+    resource: @OrchestraOrchestraBundle/Resources/config/routing/user.yml
+    prefix:   /user
+

@@ -1,0 +1,30 @@
+address:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Address:index" }
+
+address_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Address:show" }
+
+address_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Address:new" }
+
+address_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Address:create" }
+    requirements: { _method: post }
+
+address_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Address:edit" }
+
+address_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Address:update" }
+    requirements: { _method: post }
+
+address_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Address:delete" }
+    requirements: { _method: post }

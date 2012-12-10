@@ -1,0 +1,39 @@
+<h1>Internship list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Started</th>
+            <th>Duration</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('internship_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{% if entity.started %}{{ entity.started|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.duration }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('internship_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('internship_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('internship_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

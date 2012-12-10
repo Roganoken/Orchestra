@@ -1,0 +1,30 @@
+legal:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Legal:index" }
+
+legal_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Legal:show" }
+
+legal_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Legal:new" }
+
+legal_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Legal:create" }
+    requirements: { _method: post }
+
+legal_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Legal:edit" }
+
+legal_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Legal:update" }
+    requirements: { _method: post }
+
+legal_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Legal:delete" }
+    requirements: { _method: post }

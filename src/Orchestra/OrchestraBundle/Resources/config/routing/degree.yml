@@ -1,0 +1,30 @@
+degree:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Degree:index" }
+
+degree_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Degree:show" }
+
+degree_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Degree:new" }
+
+degree_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Degree:create" }
+    requirements: { _method: post }
+
+degree_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Degree:edit" }
+
+degree_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Degree:update" }
+    requirements: { _method: post }
+
+degree_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Degree:delete" }
+    requirements: { _method: post }

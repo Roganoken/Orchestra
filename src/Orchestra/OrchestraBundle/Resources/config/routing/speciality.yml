@@ -1,0 +1,30 @@
+speciality:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Speciality:index" }
+
+speciality_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Speciality:show" }
+
+speciality_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Speciality:new" }
+
+speciality_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Speciality:create" }
+    requirements: { _method: post }
+
+speciality_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Speciality:edit" }
+
+speciality_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Speciality:update" }
+    requirements: { _method: post }
+
+speciality_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Speciality:delete" }
+    requirements: { _method: post }

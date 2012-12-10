@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="User" table="user">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="firstname" type="string" column="firstname" length="32" nullable="false"/>
+    <field name="lastname" type="string" column="lastname" length="32" nullable="false"/>
+    <field name="username" type="string" column="username" length="256" nullable="true"/>
+    <field name="password" type="string" column="password" length="16" nullable="true"/>
+    <field name="birthdate" type="date" column="birthdate" nullable="true"/>
+    <field name="photo" type="integer" column="photo" nullable="true"/>
+    <field name="email" type="string" column="email" length="128" nullable="true"/>
+    <field name="phone" type="string" column="phone" length="16" nullable="true"/>
+    <field name="mobilePhone" type="string" column="mobile_phone" length="16" nullable="true"/>
+    <field name="ldap" type="string" column="ldap" length="256" nullable="true"/>
+    <field name="connected" type="datetime" column="connected" nullable="false"/>
+    <field name="created" type="datetime" column="created" nullable="false"/>
+    <field name="updated" type="datetime" column="updated" nullable="false"/>
+    <field name="isProfesseur" type="boolean" column="is_professeur" nullable="false"/>
+    <field name="isEleve" type="boolean" column="is_eleve" nullable="false"/>
+    <field name="isContact" type="boolean" column="is_contact" nullable="false"/>
+    <many-to-one field="address" target-entity="Address">
+      <join-columns>
+        <join-column name="address_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="sex" target-entity="Sex">
+      <join-columns>
+        <join-column name="sex_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="module" target-entity="Module" inversed-by="user">
+      <join-table name="user_module">
+        <join-columns>
+          <join-column name="user_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="module_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="livre" target-entity="Livre" inversed-by="user">
+      <join-table name="user_livre">
+        <join-columns>
+          <join-column name="user_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="livre_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="image" target-entity="Image" inversed-by="user">
+      <join-table name="user_has_image">
+        <join-columns>
+          <join-column name="user_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="image_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="company" target-entity="Company" mapped-by="user"/>
+    <many-to-many field="course" target-entity="Course" mapped-by="user"/>
+    <many-to-many field="position" target-entity="Position" mapped-by="user"/>
+    <many-to-many field="access" target-entity="Access" mapped-by="user"/>
+  </entity>
+</doctrine-mapping>

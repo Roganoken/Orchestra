@@ -1,0 +1,30 @@
+diploma:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Diploma:index" }
+
+diploma_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Diploma:show" }
+
+diploma_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Diploma:new" }
+
+diploma_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Diploma:create" }
+    requirements: { _method: post }
+
+diploma_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Diploma:edit" }
+
+diploma_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Diploma:update" }
+    requirements: { _method: post }
+
+diploma_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Diploma:delete" }
+    requirements: { _method: post }

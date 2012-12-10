@@ -1,0 +1,30 @@
+media:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Media:index" }
+
+media_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Media:show" }
+
+media_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Media:new" }
+
+media_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Media:create" }
+    requirements: { _method: post }
+
+media_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Media:edit" }
+
+media_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Media:update" }
+    requirements: { _method: post }
+
+media_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Media:delete" }
+    requirements: { _method: post }

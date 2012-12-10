@@ -1,0 +1,30 @@
+news:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:News:index" }
+
+news_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:News:show" }
+
+news_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:News:new" }
+
+news_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:News:create" }
+    requirements: { _method: post }
+
+news_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:News:edit" }
+
+news_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:News:update" }
+    requirements: { _method: post }
+
+news_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:News:delete" }
+    requirements: { _method: post }

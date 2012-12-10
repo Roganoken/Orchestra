@@ -1,0 +1,30 @@
+galerie:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Galerie:index" }
+
+galerie_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Galerie:show" }
+
+galerie_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Galerie:new" }
+
+galerie_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Galerie:create" }
+    requirements: { _method: post }
+
+galerie_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Galerie:edit" }
+
+galerie_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Galerie:update" }
+    requirements: { _method: post }
+
+galerie_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Galerie:delete" }
+    requirements: { _method: post }

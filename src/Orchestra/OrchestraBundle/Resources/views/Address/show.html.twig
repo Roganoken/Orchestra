@@ -1,0 +1,73 @@
+<h1>Address</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Address1</th>
+            <td>{{ entity.address1 }}</td>
+        </tr>
+        <tr>
+            <th>Address2</th>
+            <td>{{ entity.address2 }}</td>
+        </tr>
+        <tr>
+            <th>Address3</th>
+            <td>{{ entity.address3 }}</td>
+        </tr>
+        <tr>
+            <th>Other</th>
+            <td>{{ entity.other }}</td>
+        </tr>
+        <tr>
+            <th>Phone1</th>
+            <td>{{ entity.phone1 }}</td>
+        </tr>
+        <tr>
+            <th>Phone2</th>
+            <td>{{ entity.phone2 }}</td>
+        </tr>
+        <tr>
+            <th>Fax</th>
+            <td>{{ entity.fax }}</td>
+        </tr>
+        <tr>
+            <th>Isactive</th>
+            <td>{{ entity.isActive }}</td>
+        </tr>
+        <tr>
+            <th>Isdeleted</th>
+            <td>{{ entity.isDeleted }}</td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Updated</th>
+            <td>{{ entity.updated|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('address') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('address_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('address_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

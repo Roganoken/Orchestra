@@ -1,0 +1,77 @@
+<h1>Livre</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Isbn</th>
+            <td>{{ entity.isbn }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ entity.titre }}</td>
+        </tr>
+        <tr>
+            <th>Resume</th>
+            <td>{{ entity.resume }}</td>
+        </tr>
+        <tr>
+            <th>Annee</th>
+            <td>{{ entity.annee|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Illustration</th>
+            <td>{{ entity.illustration }}</td>
+        </tr>
+        <tr>
+            <th>Datereservation</th>
+            <td>{{ entity.dateReservation }}</td>
+        </tr>
+        <tr>
+            <th>Dateemprunt</th>
+            <td>{{ entity.dateEmprunt }}</td>
+        </tr>
+        <tr>
+            <th>Dateretour</th>
+            <td>{{ entity.dateRetour }}</td>
+        </tr>
+        <tr>
+            <th>Codebarre</th>
+            <td>{{ entity.codeBarre }}</td>
+        </tr>
+        <tr>
+            <th>Active</th>
+            <td>{{ entity.active }}</td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Updated</th>
+            <td>{{ entity.updated|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('livre') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('livre_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('livre_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

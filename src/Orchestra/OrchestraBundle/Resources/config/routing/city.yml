@@ -1,0 +1,30 @@
+city:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:City:index" }
+
+city_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:City:show" }
+
+city_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:City:new" }
+
+city_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:City:create" }
+    requirements: { _method: post }
+
+city_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:City:edit" }
+
+city_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:City:update" }
+    requirements: { _method: post }
+
+city_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:City:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,30 @@
+contract:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Contract:index" }
+
+contract_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Contract:show" }
+
+contract_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Contract:new" }
+
+contract_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Contract:create" }
+    requirements: { _method: post }
+
+contract_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Contract:edit" }
+
+contract_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Contract:update" }
+    requirements: { _method: post }
+
+contract_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Contract:delete" }
+    requirements: { _method: post }

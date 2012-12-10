@@ -1,0 +1,30 @@
+sex:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Sex:index" }
+
+sex_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Sex:show" }
+
+sex_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Sex:new" }
+
+sex_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Sex:create" }
+    requirements: { _method: post }
+
+sex_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Sex:edit" }
+
+sex_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Sex:update" }
+    requirements: { _method: post }
+
+sex_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Sex:delete" }
+    requirements: { _method: post }

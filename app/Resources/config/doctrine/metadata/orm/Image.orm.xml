@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Image" table="image">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titre" type="string" column="titre" length="45" nullable="true"/>
+    <field name="descriptif" type="text" column="descriptif" nullable="true"/>
+    <field name="dateCreation" type="date" column="date_creation" nullable="true"/>
+    <field name="url" type="string" column="url" length="45" nullable="true"/>
+    <field name="taille" type="string" column="taille" length="45" nullable="true"/>
+    <field name="poids" type="string" column="poids" length="45" nullable="true"/>
+    <field name="logiciel" type="string" column="logiciel" length="45" nullable="true"/>
+    <field name="motCle" type="string" column="mot_cle" length="45" nullable="true"/>
+    <field name="created" type="string" column="created" length="45" nullable="false"/>
+    <field name="updated" type="string" column="updated" length="45" nullable="false"/>
+    <field name="isPortfolio" type="boolean" column="is_portfolio" nullable="true"/>
+    <many-to-one field="media" target-entity="Media">
+      <join-columns>
+        <join-column name="media_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="user" target-entity="User" mapped-by="image"/>
+    <many-to-many field="commentaire" target-entity="Commentaire" inversed-by="image">
+      <join-table name="image_commentaire">
+        <join-columns>
+          <join-column name="image_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="commentaire_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

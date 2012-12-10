@@ -1,0 +1,30 @@
+livre:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:index" }
+
+livre_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:show" }
+
+livre_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:new" }
+
+livre_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:create" }
+    requirements: { _method: post }
+
+livre_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:edit" }
+
+livre_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:update" }
+    requirements: { _method: post }
+
+livre_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:delete" }
+    requirements: { _method: post }

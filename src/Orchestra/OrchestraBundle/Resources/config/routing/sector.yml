@@ -1,0 +1,30 @@
+sector:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Sector:index" }
+
+sector_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Sector:show" }
+
+sector_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Sector:new" }
+
+sector_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Sector:create" }
+    requirements: { _method: post }
+
+sector_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Sector:edit" }
+
+sector_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Sector:update" }
+    requirements: { _method: post }
+
+sector_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Sector:delete" }
+    requirements: { _method: post }

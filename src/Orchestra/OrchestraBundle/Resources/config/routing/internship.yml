@@ -1,0 +1,30 @@
+internship:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Internship:index" }
+
+internship_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Internship:show" }
+
+internship_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Internship:new" }
+
+internship_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Internship:create" }
+    requirements: { _method: post }
+
+internship_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Internship:edit" }
+
+internship_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Internship:update" }
+    requirements: { _method: post }
+
+internship_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Internship:delete" }
+    requirements: { _method: post }
