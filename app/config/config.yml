@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: fr_FR }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -57,3 +57,30 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Orchestra\OrchestraBundle\Entity\User
+
+fr3d_ldap:
+    driver:
+        host:         192.168.10.3
+        port:         389    # Optional
+        networkTimeout: 15
+#       version:        3    # Optional
+#       username:     foo    # Optional
+#       password:     bar    # Optional
+#       optReferrals: false  # Optional
+#       useSsl:       true   # Enable SSL negotiation. Optional
+#       useStartTls:  true   # Enable TLS negotiation. Optional
+    user:
+        baseDn: ou=People, dc=estei
+        filter: (&(ObjectClass=Person))
+        attributes:
+            - { ldap_attr: uid,  user_method: setUsername } # Default
+#           - { ldap_attr: cn,   user_method: setName }     # Optional
+#           - { ldap_attr: ...,  user_method: ... }         # Optional
+#   service:
+#       user_manager: fos_user.user_manager          # Overrides default user manager
+#       ldap_manager: fr3d_ldap.ldap_manager.default # Overrides default ldap manager
