@@ -45,7 +45,8 @@ local.properties
 .buildpath
 
 ## NetBeans
- 
+
+nbproject/
 nbproject/private/
 build/
 nbbuild/
