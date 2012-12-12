@@ -1,0 +1,105 @@
+@CHARSET "UTF-8";
+
+
+#logo{
+    float:left;
+    height:68px;  
+    width:1024px;
+    position:relative;
+    left:50%;
+    margin-left: -512px;
+}
+
+.image_left{
+    float:left;
+    margin: 11px 6px 0 25px;
+    
+}
+
+
+p{
+  color:#a8a9ab;
+}
+
+
+#txt_logo{
+    float:left;
+    font-size:12px;
+    font-family:Arial, sans-serif;
+     margin-top:28px;
+     margin-left:20px;
+}
+
+
+#contenu{
+    /*background-color:lightpink;*/
+    width:1024px;
+    height:768px;
+    position:relative;
+    left:50%;
+    margin-left: -512px;
+}
+
+
+#bloc_connexion{
+    float:left;
+    /*background-color:#2b3035;*/
+    background-image:url("../img/bg_bloc_connexion.png");
+    background-repeat:no-repeat;
+    width:330px;
+    height:272px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin-left:350px;
+    margin-top:240px;
+}
+
+#txt_connexion{
+    font-size:20px;
+    color:#ffffff;
+    font-family:Verdana, sans-serif; 
+    margin-left:25px;
+    margin-top:10px;
+}
+
+
+#picto_connex{
+    /*background-image:url("../img/picto_connex.png");*/
+    width:24px;
+    height:39px;
+    margin-left:306px;
+    margin-top:-34px;
+}
+
+
+#picto_inscrip{
+    background-image:url("../img/picto_inscrip.png");
+    background-position: -34px 0px;
+    background-repeat:no-repeat;
+    width:24px;
+    height:39px;
+    margin-left:306px;
+    margin-top:5px; 
+}
+
+#picto_inscrip:hover{
+    background-image:url("../img/picto_inscrip.png");
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+    width:24px;
+    height:39px;
+    margin-left:306px;
+    margin-top:5px; 
+}
+
+
+.formular label{
+    color:#ffffff;
+}
+
+
+
+
+
