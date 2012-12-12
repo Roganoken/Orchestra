@@ -3,11 +3,26 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+
+        <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style.css') }}" type="text/css" media="all" />
+        
+        {% block stylesheets %}       
+        {% endblock %}
+        
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+         <header id="header">
+            {% block header %}{% endblock %}
+         </header>
+         
+         <content class="content">
+             {% block contenu %}{% endblock %}
+         </content>         
+         
+         <footer id="footer"></footer>
+         
+        
     </body>
 </html>
+

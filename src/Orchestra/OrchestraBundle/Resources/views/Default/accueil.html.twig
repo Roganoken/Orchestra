@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+Bienvenue !
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_accueil.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block header %}
+<div id="logo" >
+    <img class="image_left" src="{{ asset ('bundles/orchestraorchestra/img/estei.png') }}" alt="" />
+    <p id="txt_logo">Ecole supérieure des technologies électronique, informatique et infographie</p>
+</div>
+         
+{% endblock %}
+
+{% block contenu %}
+
+<div id="contenu">
+
+    <div id="menu_gauche">
+    
+        <nav>
+            <ul>
+                <li class="titre_menu"></li>
+                <li class="titre_menu"></li>
+                <li class="titre_menu"></li>
+                <li class="titre_menu"></li>
+                <li class="titre_menu"></li>
+                <li class="titre_menu"></li>
+                <li class="titre_menu"></li>        
+            
+            </ul>
+        </nav>
+
+
+             
+    
+    
+    </div>
+    
+
+
+
+</div>
+
+{% endblock %}
