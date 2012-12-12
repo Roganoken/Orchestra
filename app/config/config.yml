@@ -13,7 +13,7 @@ framework:
     csrf_protection: true
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
-    default_locale:  %locale%
+    default_locale:  fr_FR
     trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
     session:         ~
 
@@ -79,8 +79,10 @@ fr3d_ldap:
         filter: (&(ObjectClass=Person))
         attributes:
             - { ldap_attr: uid,  user_method: setUsername } # Default
-#           - { ldap_attr: cn,   user_method: setName }     # Optional
-#           - { ldap_attr: ...,  user_method: ... }         # Optional
+            - { ldap_attr: mail,   user_method: setEmail }     # Optional
+            - { ldap_attr: givenname,  user_method: setFirstname }         # Optional
+            - { ldap_attr: sn,  user_method: setLastname }         # Optional
+            - { ldap_attr: gecos,  user_method: setLdap }         # Optional
 #   service:
 #       user_manager: fos_user.user_manager          # Overrides default user manager
 #       ldap_manager: fr3d_ldap.ldap_manager.default # Overrides default ldap manager

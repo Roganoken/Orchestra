@@ -27,7 +27,7 @@ class User extends BaseUser implements LdapUserInterface
     /**
      * @var string $firstname
      *
-     * @ORM\Column(name="firstname", type="string", length=32, nullable=false)
+     * @ORM\Column(name="firstname", type="string", length=32, nullable=true)
      */
     private $firstname;
 
@@ -40,7 +40,7 @@ class User extends BaseUser implements LdapUserInterface
     /**
      * @var string $lastname
      *
-     * @ORM\Column(name="lastname", type="string", length=32, nullable=false)
+     * @ORM\Column(name="lastname", type="string", length=32, nullable=true)
      */
     private $lastname;
 
@@ -82,42 +82,42 @@ class User extends BaseUser implements LdapUserInterface
     /**
      * @var \DateTime $connected
      *
-     * @ORM\Column(name="connected", type="datetime", nullable=false)
+     * @ORM\Column(name="connected", type="datetime", nullable=true)
      */
     private $connected;
 
     /**
      * @var \DateTime $created
      *
-     * @ORM\Column(name="created", type="datetime", nullable=false)
+     * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
 
     /**
      * @var \DateTime $updated
      *
-     * @ORM\Column(name="updated", type="datetime", nullable=false)
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
     /**
      * @var boolean $isProfesseur
      *
-     * @ORM\Column(name="is_professeur", type="boolean", nullable=false)
+     * @ORM\Column(name="is_professeur", type="boolean", nullable=true)
      */
     private $isProfesseur;
 
     /**
      * @var boolean $isEleve
      *
-     * @ORM\Column(name="is_eleve", type="boolean", nullable=false)
+     * @ORM\Column(name="is_eleve", type="boolean", nullable=true)
      */
     private $isEleve;
 
     /**
      * @var boolean $isContact
      *
-     * @ORM\Column(name="is_contact", type="boolean", nullable=false)
+     * @ORM\Column(name="is_contact", type="boolean", nullable=true)
      */
     private $isContact;
 
@@ -219,6 +219,8 @@ class User extends BaseUser implements LdapUserInterface
      */
     public function __construct()
     {
+        parent::__construct();
+        
         $this->access = new \Doctrine\Common\Collections\ArrayCollection();
         $this->company = new \Doctrine\Common\Collections\ArrayCollection();
         $this->course = new \Doctrine\Common\Collections\ArrayCollection();
