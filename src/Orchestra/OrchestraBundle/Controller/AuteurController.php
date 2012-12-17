@@ -73,8 +73,7 @@ class AuteurController extends Controller
     {
         $entity  = new Auteur();
         $form = $this->createForm(new AuteurType(), $entity);
-        $form->bind($request);
-
+        $form->bind($request);        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);

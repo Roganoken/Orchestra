@@ -13,8 +13,7 @@ class AuteurType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('dateNaissance')
-        ;
+            ->add('dateNaissance', 'birthday', array('widget' => 'choice', 'format' => 'yyyy-MM-dd'));       
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
