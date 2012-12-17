@@ -1,6 +1,14 @@
 @CHARSET "UTF-8";
 
 
+@font-face{
+    font-family:futura;
+    src:url("../fonts/futura_book.ttf");
+    font-weight: 200;
+}
+
+
+
 #logo{
     float:left;
     height:68px;  
@@ -10,26 +18,55 @@
     margin-left: -512px;
 }
 
-.image_left{
+#avatar img{
     float:left;
+    position:relative;
+    z-index:3;
     margin: 11px 6px 0 25px;
-    
+    width:78px;
+    height:78px;
+    border: 3px solid #ffffff;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
 
-p{
-  color:#a8a9ab;
-}
-
-
-#txt_logo{
+#txt_avatar_nom{
     float:left;
-    font-size:12px;
+    display:block;
+    font-size:16px;
     font-family:Arial, sans-serif;
-     margin-top:28px;
-     margin-left:20px;
+     margin-top:14px;
+     margin-left:10px;
+     color:#e65011;
 }
 
+#txt_avatar_classe{
+    float:left;
+    display:block;
+    font-size:14px;
+    font-family:Arial, sans-serif;
+    margin-top:3px;
+    color:#b8b9ba;
+}
+
+#picto_menu_hd_notif{
+    float:left;
+    background-image:url("../img/picto_notif.png");
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+    height:36px;
+    width:36px; 
+    margin-top:14px;
+}
+
+#picto_menu_hd_notif:hover{
+    float:left;
+    background-image:url("../img/picto_notif.png");
+    background-position: 0px -40px;
+}
 
 #contenu{
     /*background-color:lightpink;*/
@@ -52,6 +89,18 @@ p{
 }
 
 
+li{
+    list-style-type: none;
+}
+
+li:last-child{
+    margin-bottom:70px;
+}
+
+li:first-child{
+    margin-top:50px;
+}
+
 .titre_menu{
     float:left;
     background-image:url("../img/bg_titre_menu.png");
@@ -61,18 +110,35 @@ p{
     width:247px; 
     margin-top:5px;
     margin-bottom: 5px;
+    opacity:0.5;
 }
 
 .titre_menu:hover{
     float:left;
     background-image:url("../img/bg_titre_menu.png");
     background-position: 0px -53px;
-    background-repeat:no-repeat;
-    height:44px;
-    width:247px; 
-    margin-top:5px;
-    margin-bottom: 5px;
+    opacity:1;
+}
+
+.active{
+    float:left;
+    background-image:url("../img/bg_titre_menu.png");
+    background-position: 0px -53px;
+    opacity:1;
+}
+
+.picto_menu{
+    float:left;
+    margin: 9px 6px 0 25px;
 }
 
 
+.txt_picto_menu{
+    float:left;
+    font-size:1 em;
+    font-family:futura, Arial, sans-serif;
+    color:#ffffff;
+    margin-top:8px;
+    margin-left:20px;
+}
 

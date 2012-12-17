@@ -10,8 +10,34 @@ Bienvenue !
 
 {% block header %}
 <div id="logo" >
-    <img class="image_left" src="{{ asset ('bundles/orchestraorchestra/img/estei.png') }}" alt="" />
-    <p id="txt_logo">Ecole supérieure des technologies électronique, informatique et infographie</p>
+    <div id="avatar"/><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test.jpg') }}" alt="avatar" /></div>
+    <p id="txt_avatar_nom">Machin Machin <br /> <span id="txt_avatar_classe">Etudiant Master 2 Web - ESTEI</span></p>
+    
+    <nav>
+        <ul>
+            <li class="picto_menu_hd">
+               <img class="" src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />
+            </li>
+            <li class="picto_menu_hd">
+               <img src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />
+            </li>
+            <li class="picto_menu_hd">
+               <img src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />
+            </li>
+            <li class="picto_menu_hd">
+               <img src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />
+            </li>
+        
+        
+        </ul>
+    
+    
+    </nav>
+    
+    <div id="picto_menu_hd_msg"/><img src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" /></div>
+    <div id="picto_menu_hd_options"/><img src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" /></div>
+    <div id="picto_menu_hd_options"/><img src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" /></div>
+    
 </div>
          
 {% endblock %}
@@ -22,15 +48,36 @@ Bienvenue !
 
     <div id="menu_gauche">
     
-        <nav>
+        <nav id="nav_menu">
             <ul>
-                <li class="titre_menu"></li>
-                <li class="titre_menu"></li>
-                <li class="titre_menu"></li>
-                <li class="titre_menu"></li>
-                <li class="titre_menu"></li>
-                <li class="titre_menu"></li>
-                <li class="titre_menu"></li>        
+                <li class="titre_menu active">
+                    <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
+                    <p class="txt_picto_menu">Profil</p>
+                </li>
+                <li class="titre_menu">
+                    <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
+                    <p class="txt_picto_menu">Profil</p>
+                </li>
+                <li class="titre_menu">
+                    <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
+                    <p class="txt_picto_menu">Profil</p>
+                </li>
+                <li class="titre_menu">
+                    <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
+                    <p class="txt_picto_menu">Profil</p>
+                </li>
+                <li class="titre_menu">
+                    <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
+                    <p class="txt_picto_menu">Profil</p>
+                </li>
+                <li class="titre_menu">
+                    <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
+                    <p class="txt_picto_menu">Profil</p>
+                </li>
+                <li class="titre_menu">
+                    <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
+                    <p class="txt_picto_menu">Profil</p>
+                </li>        
             
             </ul>
         </nav>
