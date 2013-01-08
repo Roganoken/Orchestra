@@ -13,7 +13,7 @@ framework:
     csrf_protection: true
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
-    default_locale:  %locale%
+    default_locale:  fr_FR
     trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
     session:         ~
 
@@ -65,22 +65,25 @@ fos_user:
 
 fr3d_ldap:
     driver:
-        host:         192.168.10.3
+        host:         localhost
         port:         389    # Optional
         networkTimeout: 15
-#       version:        3    # Optional
-#       username:     foo    # Optional
-#       password:     bar    # Optional
+#        version:        3    # Optional
+#        username:     admin    # Optional
+#        password:     admin    # Optional
 #       optReferrals: false  # Optional
 #       useSsl:       true   # Enable SSL negotiation. Optional
 #       useStartTls:  true   # Enable TLS negotiation. Optional
     user:
-        baseDn: ou=People, dc=estei
+        baseDn: ou=people, dc=estei, dc=fr
         filter: (&(ObjectClass=Person))
         attributes:
             - { ldap_attr: uid,  user_method: setUsername } # Default
-#           - { ldap_attr: cn,   user_method: setName }     # Optional
-#           - { ldap_attr: ...,  user_method: ... }         # Optional
-#   service:
+            - { ldap_attr: mail,   user_method: setEmail }     # Optional
+            - { ldap_attr: givenname,  user_method: setFirstname }         # Optional
+            - { ldap_attr: sn,  user_method: setLastname }         # Optional
+            - { ldap_attr: gecos,  user_method: setLdap }         # Optional
+            - { ldap_attr: userPassword,  user_method: setPlainPassword }         # Optional
+    service:
 #       user_manager: fos_user.user_manager          # Overrides default user manager
-#       ldap_manager: fr3d_ldap.ldap_manager.default # Overrides default ldap manager
+#        ldap_manager: orchestra.ldap.ldap_manager 
