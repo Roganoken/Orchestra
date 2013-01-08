@@ -64,6 +64,176 @@ class UserController extends Controller
             'form'   => $form->createView(),
         ));
     }
+    
+    
+    /* TEST FORMULAIRE LDAP */
+    
+    public function ldapAction(Request $request)
+    {
+        
+        $user = new User();
+        
+        $formBuilder = $this->createFormBuilder($user);
+        
+        $formBuilder
+                ->add('username', 'text')
+                ->add('password', 'password');
+        
+        $form = $formBuilder->getForm();
+        
+        $request = $this->get('request');
+        
+        if ($request->getMethod()=='POST'){
+            
+           $form->bindRequest($request);
+            
+           if ($form->isValid()){
+                
+           $username = $form['username']->getData();
+           var_dump($username);
+           $password = $form['password']->getData();
+           var_dump($password);
+           
+           var_dump($user->getUsername());
+              
+           $repository = $this->getDoctrine()->getRepository('OrchestraOrchestraBundle:User');
+           $username_bdd = $repository->findBy(array('username' => $user->getUsername()));
+           
+           if ($username_bdd == true){
+               
+               echo "le compte existe deja";
+               
+           }else{
+               
+               echo "vérifions dans ldap";
+               
+               $server = "192.168.10.3";
+               $port = "389";
+               $dn = "uid=".$username.",ou=People,dc=estei";
+               $suffix="ou=People,dc=estei";
+               $ds=  ldap_connect($server);
+                   
+                   // ON SE CONNECTE AU SERVEUR LDAP
+if ($ds) {
+
+echo "ds ok ";
+
+ //Authentification
+    if (ldap_bind($ds)) {
+
+        // Préparation des données
+        $value = $username;
+        $attr = "uid";
+
+        // Comparaison des valeurs
+        $g=@ldap_compare($ds, $dn, $attr, $value);
+        var_dump($g);
+        
+         if ($g === -1) {
+            echo "LOGIN PAS OK = UTILISATEUR INEXISTANT, PROPOSER INSCRIPTION ? ";
+            
+        } elseif ($g === true) {
+        
+            echo "LOGIN OK ";
+            
+                    // ON TESTE L'AUTENTIFICATION AU SERVEUR LDAP
+                    if($r=@ldap_bind($ds,$dn,$password)) {
+                    
+                    echo "authent ok ";
+                    
+                    // ON FILTRE LES CHAMPS A RECUPERER
+                    $filtre = array("gecos","mail","sn","givenName","gidNumber", "uidnumber", "uid");
+                    
+                    $result = ldap_search($ds, $dn,"(uid=*)",$filtre) or die("Error in query");
+                    $data = ldap_get_entries($ds, $result);
+                    
+                    // LOGIN   
+                    $uid=$data[0]['uid'][0];
+                    var_dump($uid);
+                    
+                    // PRENOM
+                    $givenname=$data[0]['givenname'][0];
+                    var_dump($givenname);
+                    $user->setFirstname($givenname);
+                    
+                    // UID NUMBER
+                    $uidnbr=$data[0]['uidnumber'][0]; 
+                    var_dump($uidnbr); 
+                    
+                    // NOM
+                    $sn=$data[0]['sn'][0];
+                    var_dump($sn);
+                    $user->setLastname($sn);
+                    
+                    // NOM prenom
+                    $gecos=$data[0]['gecos'][0];
+                    var_dump($gecos);
+                    $user->setLdap($gecos);
+                    
+                     // EMAIL - SI EXISTENT, SINON LOGIN + @ESTE.FR
+                    //if (isset($data[0]['mail'][0])){
+                    $mail=$data[0]['mail'][0];
+                    var_dump($mail);
+                    $user->setEmail($mail);
+                    //}else{
+                    //$mail="$login@estei.fr";
+                    //var_dump($mail);
+                    //}
+                    
+                    // GID NUMBER
+                    $gidNumber=$data[0]['gidnumber'][0];
+                    var_dump($gidNumber);
+                    
+                    
+                    $resgroup=ldap_search($ds,"ou=Groups,dc=estei","(gidNumber=$gidNumber)",array("cn"));
+                    $group=ldap_get_entries($ds,$resgroup);
+                    
+                    // GROUPE = CLASSE
+                    $namedGroup=$group[0]['cn'][0];
+                    var_dump($namedGroup);
+                    
+                    $user->setPlainPassword($password);
+                    
+                    // INSCRIPTION EN BDD
+                    
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($user);
+                    $em->flush();
+                    
+                    echo "utilisateur ajoute";
+                   
+                   
+               }else{
+                   echo "authentification ldap echouee : mauvais mdp";
+               }
+        } elseif ($g === false) {
+            echo "LOGIN PAS OK = UTILISATEUR INEXISTANT, PROPOSER INSCRIPTION ? ";
+        }
+// ON FERME LA CONNEXION LDAP
+ldap_close($ds);
+        
+        }
+
+} else {
+
+// CONNEXION AU SERVEUR LDAP ECHOUEE
+echo "Impossible de se connecter au serveur LDAP";
+}  
+               
+               
+               
+           }
+           
+           }
+            
+        }
+        
+        return $this->render('OrchestraOrchestraBundle:User:ldap.html.twig', array('form' => $form->createView(),
+            ));
+        
+    }
+    
+    
 
     /**
      * Creates a new User entity.
