@@ -8,3 +8,17 @@
     	<input type="submit" />
     </form>
 </div>
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% if message == 'inscription' %}
+<p>Vous ne faites pas partie de notre réseau interne !</p>
+<p>Ancien étudiant, entreprise, vous pouvez vous inscrire ici : <a href="{{ path('fos_user_registration_register') }}">s'inscrire</a></p>
+{% elseif message == 'ajout_reussi' %}
+<p>Félicitations, vous êtes bien inscrit !</p>
+<p>Vous pouvez maintenant vous connecter ici : <a href="{{ path('fos_user_security_login') }}">se connecter</a></p>
+{% endif %}

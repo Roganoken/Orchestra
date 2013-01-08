@@ -3,7 +3,6 @@
 namespace Orchestra\OrchestraBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FR3D\LdapBundle\Model\LdapUserInterface;
 use FOS\UserBundle\Entity\User as BaseUser;
 
 
@@ -13,7 +12,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User extends BaseUser implements LdapUserInterface
+class User extends BaseUser 
 {
     /**
      * @var integer $id
@@ -78,6 +77,13 @@ class User extends BaseUser implements LdapUserInterface
      * @ORM\Column(name="ldap", type="string", length=256, nullable=true)
      */
     private $ldap;
+
+    /**
+     * @var string $classe
+     *
+     * @ORM\Column(name="classe", type="string", length=256, nullable=true)
+     */
+    private $classe;
 
     /**
      * @var \DateTime $connected
@@ -469,6 +475,29 @@ class User extends BaseUser implements LdapUserInterface
     public function getLdap()
     {
         return $this->ldap;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param string $classe
+     * @return User
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+    
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return string 
+     */
+    public function getClasse()
+    {
+        return $this->classe;
     }
     
     
