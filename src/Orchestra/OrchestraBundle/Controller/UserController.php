@@ -71,13 +71,17 @@ class UserController extends Controller
     public function ldapAction(Request $request)
     {
         
+        $message = '';
+        
+        # CONSTRUCTION DU FORMULAIRE #
+        
         $user = new User();
         
         $formBuilder = $this->createFormBuilder($user);
         
         $formBuilder
-                ->add('username', 'text')
-                ->add('password', 'password');
+                ->add('username', 'text', array('label' => 'Identifiant : '))
+                ->add('password', 'password', array('label' => 'Mot de passe : '));
         
         $form = $formBuilder->getForm();
         
@@ -87,148 +91,143 @@ class UserController extends Controller
             
            $form->bindRequest($request);
             
-           if ($form->isValid()){
-                
-           $username = $form['username']->getData();
-           var_dump($username);
-           $password = $form['password']->getData();
-           var_dump($password);
+           # ON VERIFIE SI LES DONNEES DU FORMULAIRE SONT BONNES #
            
-           var_dump($user->getUsername());
-              
+           if ($form->isValid()){    
+           
+           # ON RECUPERE LES CHAMPS USERNAME et PASSWORD DU FORMULAIRE  
+               
+           $username = $form['username']->getData();
+           $password = $form['password']->getData();
+           
+           # ON VERIFIE SI LE PSEUDONYME EXISTE DEJA
            $repository = $this->getDoctrine()->getRepository('OrchestraOrchestraBundle:User');
            $username_bdd = $repository->findBy(array('username' => $user->getUsername()));
            
            if ($username_bdd == true){
                
-               echo "le compte existe deja";
-               
+                $this->get('session')->getFlashBag()->add('notice', $username.' est déjà pris !');
+                
            }else{
                
-               echo "vérifions dans ldap";
+               # SINON ON VERIFIE SUR LDAP 
                
+               # ON DECLARE LES VARIABLES DE CONNECTION AU SERVEUR LDAP
                $server = "192.168.10.3";
                $port = "389";
                $dn = "uid=".$username.",ou=People,dc=estei";
                $suffix="ou=People,dc=estei";
                $ds=  ldap_connect($server);
                    
-                   // ON SE CONNECTE AU SERVEUR LDAP
-if ($ds) {
+               # ON SE CONNECTE AU SERVEUR LDAP
+               if ($ds) {
 
-echo "ds ok ";
+                 # ON TEST L'AUTHENTIFICATION
+                 
+                    if (ldap_bind($ds)) {
 
- //Authentification
-    if (ldap_bind($ds)) {
+                        # ON TEST SI LE LOGIN EXISTE SUR LDAP
+                        $value = $username;
+                        $attr = "uid";
+                        $g=@ldap_compare($ds, $dn, $attr, $value);
+                        
+                        if ($g === -1) {
+                            
+                            # IL N'EXISTE PAS, ON PEUT PROPOSER UNE INSCRIPTION
+                            $message = 'inscription';
 
-        // Préparation des données
-        $value = $username;
-        $attr = "uid";
+                        }elseif ($g === true) {
+                            
+                                    # SI IL EXISTE, ON TESTE L'AUTENTIFICATION AVEC MDP
 
-        // Comparaison des valeurs
-        $g=@ldap_compare($ds, $dn, $attr, $value);
-        var_dump($g);
-        
-         if ($g === -1) {
-            echo "LOGIN PAS OK = UTILISATEUR INEXISTANT, PROPOSER INSCRIPTION ? ";
-            
-        } elseif ($g === true) {
-        
-            echo "LOGIN OK ";
-            
-                    // ON TESTE L'AUTENTIFICATION AU SERVEUR LDAP
-                    if($r=@ldap_bind($ds,$dn,$password)) {
-                    
-                    echo "authent ok ";
-                    
-                    // ON FILTRE LES CHAMPS A RECUPERER
-                    $filtre = array("gecos","mail","sn","givenName","gidNumber", "uidnumber", "uid");
-                    
-                    $result = ldap_search($ds, $dn,"(uid=*)",$filtre) or die("Error in query");
-                    $data = ldap_get_entries($ds, $result);
-                    
-                    // LOGIN   
-                    $uid=$data[0]['uid'][0];
-                    var_dump($uid);
-                    
-                    // PRENOM
-                    $givenname=$data[0]['givenname'][0];
-                    var_dump($givenname);
-                    $user->setFirstname($givenname);
-                    
-                    // UID NUMBER
-                    $uidnbr=$data[0]['uidnumber'][0]; 
-                    var_dump($uidnbr); 
-                    
-                    // NOM
-                    $sn=$data[0]['sn'][0];
-                    var_dump($sn);
-                    $user->setLastname($sn);
-                    
-                    // NOM prenom
-                    $gecos=$data[0]['gecos'][0];
-                    var_dump($gecos);
-                    $user->setLdap($gecos);
-                    
-                     // EMAIL - SI EXISTENT, SINON LOGIN + @ESTE.FR
-                    //if (isset($data[0]['mail'][0])){
-                    $mail=$data[0]['mail'][0];
-                    var_dump($mail);
-                    $user->setEmail($mail);
-                    //}else{
-                    //$mail="$login@estei.fr";
-                    //var_dump($mail);
-                    //}
-                    
-                    // GID NUMBER
-                    $gidNumber=$data[0]['gidnumber'][0];
-                    var_dump($gidNumber);
-                    
-                    
-                    $resgroup=ldap_search($ds,"ou=Groups,dc=estei","(gidNumber=$gidNumber)",array("cn"));
-                    $group=ldap_get_entries($ds,$resgroup);
-                    
-                    // GROUPE = CLASSE
-                    $namedGroup=$group[0]['cn'][0];
-                    var_dump($namedGroup);
-                    
-                    $user->setPlainPassword($password);
-                    
-                    // INSCRIPTION EN BDD
-                    
-                    $em = $this->getDoctrine()->getManager();
-                    $em->persist($user);
-                    $em->flush();
-                    
-                    echo "utilisateur ajoute";
-                   
-                   
-               }else{
-                   echo "authentification ldap echouee : mauvais mdp";
-               }
-        } elseif ($g === false) {
-            echo "LOGIN PAS OK = UTILISATEUR INEXISTANT, PROPOSER INSCRIPTION ? ";
-        }
-// ON FERME LA CONNEXION LDAP
-ldap_close($ds);
-        
-        }
+                                    if($r=@ldap_bind($ds,$dn,$password)) {
 
-} else {
+                                    # ON FILTRE LES CHAMPS A RECUPERER
+                                    $filtre = array("gecos","mail","sn","givenName","gidNumber", "uidnumber", "uid");
 
-// CONNEXION AU SERVEUR LDAP ECHOUEE
-echo "Impossible de se connecter au serveur LDAP";
-}  
-               
-               
+                                    $result = ldap_search($ds, $dn,"(uid=*)",$filtre) or die("Error in query");
+                                    $data = ldap_get_entries($ds, $result);
+
+                                    // LOGIN   
+                                    $uid=$data[0]['uid'][0];
+
+                                    // PRENOM
+                                    $givenname=$data[0]['givenname'][0];
+
+                                    // UID NUMBER
+                                    $uidnbr=$data[0]['uidnumber'][0]; 
+
+                                    // NOM
+                                    $sn=$data[0]['sn'][0];
+
+                                    // NOM prenom
+                                    $gecos=$data[0]['gecos'][0];
+
+                                    // EMAIL
+                                    if (isset($data[0]['mail'][0])){
+                                    $mail=$data[0]['mail'][0];
+                                    }else{
+                                    $mail="$username@estei.fr";
+                                    }
+
+                                    // GID NUMBER
+                                    $gidNumber=$data[0]['gidnumber'][0];
+
+                                    // ON CHERCHE LE NOM DU GROUPE PAR RAPPORT AU GID
+                                    $resgroup=ldap_search($ds,"ou=Groups,dc=estei","(gidNumber=$gidNumber)",array("cn"));
+                                    $group=ldap_get_entries($ds,$resgroup);
+
+                                    // GROUPE = CLASSE
+                                    $namedGroup=$group[0]['cn'][0];
+
+                                    # ON DEFINIE LES ATTRIBUTS DE LA CLASSE USER
+                                    $user->setFirstname($givenname);
+                                    $user->setLastname($sn);
+                                    $user->setLdap($gecos);
+                                    $user->setClasse($namedGroup);
+                                    $user->setEmail($mail);
+                                    $user->setPlainPassword($password);
+                                    $user->setEnabled(true);
+                                    $user->setCreated(new \Datetime());
+
+                                    # ON PERSISTE L'UTILISATEUR EN BDD
+
+                                    $em = $this->getDoctrine()->getManager();
+                                    $em->persist($user);
+                                    $em->flush();
+                                    
+                                    $message = 'ajout_reussi';
+
+                                    }else{
+                                        # BON UTILISATEUR MAIS MAUVAIS MDP
+                                        echo "authentification ldap echouee : mauvais mdp";
+                                    }
+                        }elseif ($g === false) {
+                            # LE LOGIN N'EXISTE PAS, ON PEUT PROPOSER UNE INSCRIPTION
+                            $message = 'inscription';
+                        }
+                        
+                # ON FERME LA CONNEXION LDAP
+                ldap_close($ds);
+
+                     }
+
+                } else {
+
+                // CONNEXION AU SERVEUR LDAP ECHOUEE
+                    $this->get('session')->getFlashBag()->add('notice', 'Impossible de se connecter au serveur LDAP');
+                
+                }  
                
            }
-           
            }
             
         }
         
-        return $this->render('OrchestraOrchestraBundle:User:ldap.html.twig', array('form' => $form->createView(),
+        return $this->render('OrchestraOrchestraBundle:User:ldap.html.twig', 
+                array(
+                    'form' => $form->createView(),
+                    'message' => $message,
             ));
         
     }

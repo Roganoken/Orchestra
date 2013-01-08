@@ -62,27 +62,3 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Orchestra\OrchestraBundle\Entity\User
-
-fr3d_ldap:
-    driver:
-        host:         localhost
-        port:         389    # Optional
-        networkTimeout: 15
-#        version:        3    # Optional
-#        username:     admin    # Optional
-#        password:     admin    # Optional
-#       optReferrals: false  # Optional
-#       useSsl:       true   # Enable SSL negotiation. Optional
-#       useStartTls:  true   # Enable TLS negotiation. Optional
-    user:
-        baseDn: ou=people, dc=estei, dc=fr
-        filter: (&(ObjectClass=Person))
-        attributes:
-            - { ldap_attr: uid,  user_method: setUsername } # Default
-            - { ldap_attr: mail,   user_method: setEmail }     # Optional
-            - { ldap_attr: givenname,  user_method: setFirstname }         # Optional
-            - { ldap_attr: sn,  user_method: setLastname }         # Optional
-            - { ldap_attr: gecos,  user_method: setLdap }         # Optional
-#   service:
-#       user_manager: fos_user.user_manager          # Overrides default user manager
-#        ldap_manager: orchestra.ldap.ldap_manager 
