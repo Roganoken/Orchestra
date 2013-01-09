@@ -12,19 +12,29 @@ class LivreType extends AbstractType
     {
         $builder
             ->add('isbn')
-            ->add('titre')
+            ->add('titre') 
             ->add('resume')
-            ->add('annee')
+            ->add('annee','date')
             ->add('illustration')
-            ->add('dateReservation')
-            ->add('dateEmprunt')
-            ->add('dateRetour')
+            ->add('dateReservation','date')  
+            ->add('dateEmprunt','date')
+            ->add('dateRetour','date')
             ->add('codeBarre')
             ->add('active')
-            ->add('created')
-            ->add('updated')
-            ->add('commentaire')
-            ->add('user')
+            
+            ->add('created','date')
+            
+//        		->add('created', 'date', array('widget' => 'choice',
+//         		'input' => 'timestamp',
+//         		'format' => 'y-M-d',
+//         		'empty_value' => array('day' => 'Jour', 'month' => 'Mois','year' => 'Année' ),
+//         		'pattern' => "{{ year }}/{{ month }}/{{ day }}",
+//         		'data_timezone' => "Europe/Paris",
+//         		'user_timezone' => "Europe/Paris"))      
+        
+            //->add('updated','date')         
+            //->add('commentaire')      
+            //->add('user')
             ->add('auteur')
             ->add('genre')
         ;

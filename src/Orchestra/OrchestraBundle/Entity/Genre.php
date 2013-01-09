@@ -62,4 +62,11 @@ class Genre
     {
         return $this->libelle;
     }
+    
+    /**
+     * @return string
+     */
+    public function __toString() {
+    	return $this->libelle;
+    }
 }

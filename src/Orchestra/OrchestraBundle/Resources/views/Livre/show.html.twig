@@ -28,15 +28,15 @@
         </tr>
         <tr>
             <th>Datereservation</th>
-            <td>{{ entity.dateReservation }}</td>
+            <td>{{ entity.dateReservation|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
             <th>Dateemprunt</th>
-            <td>{{ entity.dateEmprunt }}</td>
+            <td>{{ entity.dateEmprunt|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
             <th>Dateretour</th>
-            <td>{{ entity.dateRetour }}</td>
+            <td>{{ entity.dateRetour|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
             <th>Codebarre</th>

@@ -26,15 +26,15 @@
             <td>{{ entity.isbn }}</td>
             <td>{{ entity.titre }}</td>
             <td>{{ entity.resume }}</td>
-            <td>{% if entity.annee %}{{ entity.annee|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.annee %}{{ entity.annee|date('Y-m-d ') }}{% endif %}</td>
             <td>{{ entity.illustration }}</td>
-            <td>{{ entity.dateReservation }}</td>
-            <td>{{ entity.dateEmprunt }}</td>
-            <td>{{ entity.dateRetour }}</td>
+            <td>{% if entity.dateReservation %}{{ entity.annee|date('Y-m-d ') }}{% endif %}</td>
+            <td>{% if entity.dateEmprunt %}{{ entity.annee|date('Y-m-d ') }}{% endif %}</td>
+            <td>{% if entity.dateRetour %}{{ entity.annee|date('Y-m-d ') }}{% endif %}</td>           
             <td>{{ entity.codeBarre }}</td>
             <td>{{ entity.active }}</td>
-            <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.created %}{{ entity.created|date('Y-m-d ') }}{% endif %}</td>
+            <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d ') }}{% endif %}</td>
             <td>
                 <ul>
                     <li>
