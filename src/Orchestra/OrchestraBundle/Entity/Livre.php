@@ -31,14 +31,14 @@ class Livre
     /**
      * @var string $titre
      *
-     * @ORM\Column(name="titre", type="string", length=45, nullable=true)
+     * @ORM\Column(name="titre", type="string", length=45, nullable=false)
      */
     private $titre;
 
     /**
      * @var string $resume
      *
-     * @ORM\Column(name="resume", type="string", length=45, nullable=true)
+     * @ORM\Column(name="resume", type="string", length=45, nullable=false)
      */
     private $resume;
 
@@ -59,49 +59,49 @@ class Livre
     /**
      * @var string $dateReservation
      *
-     * @ORM\Column(name="date_reservation", type="string", length=45, nullable=true)
+     * @ORM\Column(name="date_reservation", type="date", nullable=true)
      */
     private $dateReservation;
 
     /**
      * @var string $dateEmprunt
      *
-     * @ORM\Column(name="date_emprunt", type="string", length=45, nullable=true)
+     * @ORM\Column(name="date_emprunt", type="date", nullable=false)
      */
     private $dateEmprunt;
 
     /**
      * @var string $dateRetour
      *
-     * @ORM\Column(name="date_retour", type="string", length=45, nullable=true)
+     * @ORM\Column(name="date_retour", type="date", nullable=false)
      */
     private $dateRetour;
 
     /**
      * @var string $codeBarre
      *
-     * @ORM\Column(name="code_barre", type="string", length=45, nullable=true)
+     * @ORM\Column(name="code_barre", type="string", length=45, nullable=false)
      */
     private $codeBarre;
 
     /**
      * @var boolean $active
      *
-     * @ORM\Column(name="active", type="boolean", nullable=false)
+     * @ORM\Column(name="active", type="boolean", nullable=true)
      */
     private $active;
 
     /**
      * @var \DateTime $created
      *
-     * @ORM\Column(name="created", type="datetime", nullable=false)
+     * @ORM\Column(name="created", type="date", nullable=true)
      */
     private $created;
 
     /**
      * @var \DateTime $updated
      *
-     * @ORM\Column(name="updated", type="datetime", nullable=false)
+     * @ORM\Column(name="updated", type="date", nullable=true)
      */
     private $updated;
 
@@ -243,7 +243,7 @@ class Livre
      * @return Livre
      */
     public function setAnnee($annee)
-    {
+    {    	    	 
         $this->annee = $annee;
     
         return $this;
@@ -290,6 +290,7 @@ class Livre
      */
     public function setDateReservation($dateReservation)
     {
+    	
         $this->dateReservation = $dateReservation;
     
         return $this;
@@ -302,6 +303,7 @@ class Livre
      */
     public function getDateReservation()
     {
+    	
         return $this->dateReservation;
     }
 
@@ -405,8 +407,9 @@ class Livre
      */
     public function setCreated($created)
     {
-        $this->created = $created;
-    
+    	$this->created = $created;
+    	//$this->setCreated(new \Datetime()); 
+    	   
         return $this;
     }
 
@@ -429,7 +432,8 @@ class Livre
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-    
+    	//$this->setUpdated(new \Datetime());
+    	
         return $this;
     }
 
@@ -443,71 +447,71 @@ class Livre
         return $this->updated;
     }
 
-    /**
-     * Add commentaire
-     *
-     * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
-     * @return Livre
-     */
-    public function addCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
-    {
-        $this->commentaire[] = $commentaire;
+//     /**
+//      * Add commentaire
+//      *
+//      * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
+//      * @return Livre
+//      */
+//     public function addCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
+//     {
+//         $this->commentaire[] = $commentaire;
     
-        return $this;
-    }
+//         return $this;
+//     }
 
-    /**
-     * Remove commentaire
-     *
-     * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
-     */
-    public function removeCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
-    {
-        $this->commentaire->removeElement($commentaire);
-    }
+//     /**
+//      * Remove commentaire
+//      *
+//      * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
+//      */
+//     public function removeCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
+//     {
+//         $this->commentaire->removeElement($commentaire);
+//     }
 
-    /**
-     * Get commentaire
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getCommentaire()
-    {
-        return $this->commentaire;
-    }
+//     /**
+//      * Get commentaire
+//      *
+//      * @return Doctrine\Common\Collections\Collection 
+//      */
+//     public function getCommentaire()
+//     {
+//         return $this->commentaire;
+//     }
 
-    /**
-     * Add user
-     *
-     * @param Orchestra\OrchestraBundle\Entity\User $user
-     * @return Livre
-     */
-    public function addUser(\Orchestra\OrchestraBundle\Entity\User $user)
-    {
-        $this->user[] = $user;
+//     /**
+//      * Add user
+//      *
+//      * @param Orchestra\OrchestraBundle\Entity\User $user
+//      * @return Livre
+//      */
+//     public function addUser(\Orchestra\OrchestraBundle\Entity\User $user)
+//     {
+//         $this->user[] = $user;
     
-        return $this;
-    }
+//         return $this;
+//     }
 
-    /**
-     * Remove user
-     *
-     * @param Orchestra\OrchestraBundle\Entity\User $user
-     */
-    public function removeUser(\Orchestra\OrchestraBundle\Entity\User $user)
-    {
-        $this->user->removeElement($user);
-    }
+//     /**
+//      * Remove user
+//      *
+//      * @param Orchestra\OrchestraBundle\Entity\User $user
+//      */
+//     public function removeUser(\Orchestra\OrchestraBundle\Entity\User $user)
+//     {
+//         $this->user->removeElement($user);
+//     }
 
-    /**
-     * Get user
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+//     /**
+//      * Get user
+//      *
+//      * @return Doctrine\Common\Collections\Collection 
+//      */
+//     public function getUser()
+//     {
+//         return $this->user;
+//     }
 
     /**
      * Set auteur
@@ -554,4 +558,7 @@ class Livre
     {
         return $this->genre;
     }
+    
+    
+    
 }

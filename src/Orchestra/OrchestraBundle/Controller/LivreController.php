@@ -76,6 +76,8 @@ class LivreController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
+        	$entity->setCreated(new \Datetime());
+        	$entity->setUpdated(new \Datetime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -132,6 +134,7 @@ class LivreController extends Controller
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+        	$entity->setUpdated(new \Datetime());
             $em->persist($entity);
             $em->flush();
 
