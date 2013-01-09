@@ -1,7 +1,31 @@
+{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %}
+
 <h1>Modifier le profil de : {{ entity.username }}</h1>
 
-<form action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
+<form action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>  
+
+    {{ form_errors(edit_form) }}
+
+    {{ form_row(edit_form.firstname, {'label': 'Prénom', 'attr': { 'readonly': 'true' } }) }}
+    {{ form_row(edit_form.lastname, {'label': 'Nom'}) }}
+    {{ form_row(edit_form.username, {'label': 'Identifiant'}) }}
+    {{ form_row(edit_form.classe, {'label': 'Classe'}) }}
+    {{ form_row(edit_form.birthdate, {'label': 'Date de naissance'}) }}
+    {{ form_row(edit_form.photo, {'label': 'Photo'}) }}
+    {{ form_row(edit_form.email, {'label': 'Email'}) }}
+    {{ form_row(edit_form.phone, {'label': 'Téléphone'}) }}
+    {{ form_row(edit_form.mobilePhone, {'label': 'Mobile'}) }}
+        
+{% if is_granted("ROLE_ADMIN") %}
+    
+    {{ form_row(edit_form.isProfesseur, {'label': 'Professeur'}) }}
+    {{ form_row(edit_form.isEleve, {'label': 'Eleve'}) }}
+    {{ form_row(edit_form.isContact, {'label': 'Contact'}) }}
+    
+{% endif %}  
+    
+    {{ form_widget(edit_form._token) }}
+    
     <p>
         <button type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Modifier</button>
     </p>

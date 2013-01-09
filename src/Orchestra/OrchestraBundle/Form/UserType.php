@@ -21,8 +21,8 @@ class UserType extends AbstractType
             ->add('email')
             ->add('phone')
             ->add('mobilePhone')
-            ->add('ldap')
-            ->add('roles', 'choice', array('label' => 'Rôles : ', 'choices'=> array('ROLE_ADMIN' => 'Admin', 'ROLE_USER' => 'Utilisateur')))
+            //->add('ldap')
+            //->add('roles', 'choice', array('label' => 'Rôles : ', 'choices'=> array('ROLE_ADMIN' => 'Admin', 'ROLE_USER' => 'Utilisateur')))
             
             //->add('connected')
             

@@ -16,11 +16,11 @@ user_create:
     requirements: { _method: post }
 
 user_edit:
-    pattern:  /admin/{id}/edit
+    pattern:  /{id}/edit
     defaults: { _controller: "OrchestraOrchestraBundle:User:edit" }
 
 user_update:
-    pattern:  /admin/{id}/update
+    pattern:  /{id}/update
     defaults: { _controller: "OrchestraOrchestraBundle:User:update" }
     requirements: { _method: post }
 
