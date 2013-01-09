@@ -1,25 +1,18 @@
-<h1>User list</h1>
+<h1>Liste des utilisateurs</h1>
 
 <table class="records_list">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Birthdate</th>
-            <th>Photo</th>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Identifiant</th>
+            <th>Classe</th>
             <th>Email</th>
-            <th>Phone</th>
-            <th>Mobilephone</th>
-            <th>Ldap</th>
-            <th>Connected</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Isprofesseur</th>
-            <th>Iseleve</th>
-            <th>Iscontact</th>
+            <th>Dernière connexion</th>
+            <th>Professeur</th>
+            <th>Eleve</th>
+            <th>Contact</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -30,27 +23,22 @@
             <td>{{ entity.firstname }}</td>
             <td>{{ entity.lastname }}</td>
             <td>{{ entity.username }}</td>
-            <td>{{ entity.password }}</td>
-            <td>{% if entity.birthdate %}{{ entity.birthdate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{{ entity.photo }}</td>
+            <td>{{ entity.classe }}</td>
             <td>{{ entity.email }}</td>
-            <td>{{ entity.phone }}</td>
-            <td>{{ entity.mobilePhone }}</td>
-            <td>{{ entity.ldap }}</td>
-            <td>{% if entity.connected %}{{ entity.connected|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{{ entity.isProfesseur }}</td>
-            <td>{{ entity.isEleve }}</td>
-            <td>{{ entity.isContact }}</td>
+            <td>{% if entity.LastLogin %}{{ entity.LastLogin|date('Y-m-d') }}{% else %}Jamais{% endif %}</td>
+            <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+            <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+            <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('user_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
+                    {% if is_granted("ROLE_ADMIN") %}
                     <li>
-                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">Modifier</a>
                     </li>
+                    {% endif %}
                 </ul>
             </td>
         </tr>
@@ -61,7 +49,7 @@
 <ul>
     <li>
         <a href="{{ path('user_new') }}">
-            Create a new entry
+            Ajouter un nouvel utilisateur
         </a>
     </li>
 </ul>

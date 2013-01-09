@@ -243,9 +243,11 @@ class UserController extends Controller
         $entity  = new User();
         $form = $this->createForm(new UserType(), $entity);
         $form->bind($request);
+        $password = $form['password']->getData();
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setPlainPassword($password);
             $em->persist($entity);
             $em->flush();
 
@@ -299,6 +301,9 @@ class UserController extends Controller
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new UserType(), $entity);
         $editForm->bind($request);
+        $password = $editForm['password']->getData();
+        $entity->setPlainPassword($password);
+        $entity->setUpdated(new \Datetime());
 
         if ($editForm->isValid()) {
             $em->persist($entity);

@@ -1,35 +1,40 @@
-<h1>User</h1>
+<h1>Profil de : {{ entity.username }}</h1>
 
 <table class="record_properties">
     <tbody>
+        {% if is_granted("ROLE_ADMIN") %}
         <tr>
             <th>Id</th>
             <td>{{ entity.id }}</td>
         </tr>
+        {% endif %}
         <tr>
-            <th>Firstname</th>
+            <th>Prénom</th>
             <td>{{ entity.firstname }}</td>
         </tr>
         <tr>
-            <th>Lastname</th>
+            <th>Nom</th>
             <td>{{ entity.lastname }}</td>
         </tr>
         <tr>
-            <th>Username</th>
+            <th>Identifiant</th>
             <td>{{ entity.username }}</td>
         </tr>
         <tr>
-            <th>Password</th>
-            <td>{{ entity.password }}</td>
+            <th>Classe</th>
+            <td>{{ entity.classe }}</td>
         </tr>
+        {% if is_granted("ROLE_ADMIN") %}
         <tr>
-            <th>Birthdate</th>
-            <td>{{ entity.birthdate|date('Y-m-d H:i:s') }}</td>
+            <th>Date naiss.</th>
+            <td>{{ entity.birthdate|date('d-m-Y') }}</td>
         </tr>
+        {% endif %}
         <tr>
             <th>Photo</th>
             <td>{{ entity.photo }}</td>
         </tr>
+        {% if is_granted("ROLE_ADMIN") %}
         <tr>
             <th>Email</th>
             <td>{{ entity.email }}</td>
@@ -46,48 +51,61 @@
             <th>Ldap</th>
             <td>{{ entity.ldap }}</td>
         </tr>
+        {% endif %}
         <tr>
             <th>Connected</th>
-            <td>{{ entity.connected|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.connected|date('d/m/Y \\à H:m:s') }}</td>
         </tr>
+        {% if is_granted("ROLE_ADMIN") %}
         <tr>
             <th>Created</th>
-            <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.created|date('d/m/Y \\à H:m:s') }}</td>
         </tr>
         <tr>
             <th>Updated</th>
-            <td>{{ entity.updated|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.updated|date('d/m/Y \\à H:m:s') }}</td>
+        </tr>
+        <tr>
+            <th>Rôles</th>
+            <td>
+                {% for role in entity.roles %}
+                    <li>{% if role == 'ROLE_ADMIN' %}Admin{% elseif role == 'ROLE_USER'%}Utilisateur{% endif %}</li> 
+                {% endfor %}
+            </td>
         </tr>
         <tr>
             <th>Isprofesseur</th>
-            <td>{{ entity.isProfesseur }}</td>
+            <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
         </tr>
         <tr>
             <th>Iseleve</th>
-            <td>{{ entity.isEleve }}</td>
+            <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
         </tr>
         <tr>
             <th>Iscontact</th>
-            <td>{{ entity.isContact }}</td>
+            <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
         </tr>
+        {% endif %}
     </tbody>
 </table>
 
 <ul class="record_actions">
     <li>
         <a href="{{ path('user') }}">
-            Back to the list
+            Revenir à la liste des utilisateurs
         </a>
     </li>
+     {% if is_granted("ROLE_ADMIN") %}
     <li>
         <a href="{{ path('user_edit', { 'id': entity.id }) }}">
-            Edit
+            Modifier
         </a>
     </li>
     <li>
         <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit" onclick="return confirm('Etes-vous sûr de vouloir supprimer ?')">Supprimer</button>
         </form>
     </li>
+    {% endif %}
 </ul>
