@@ -273,7 +273,25 @@ class UserController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
-
+        
+        # RECUPERE LE USERNAME DE SESSION
+        $username_session = $this->get('security.context')->getToken()->getUsername();
+        
+        # RECUPERE LE USERNAME DE L'ENTITE
+        $username_entity = $entity->getUsername();
+        
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        # SI LES USERNAME SONT DIFFERENT, ON VERIFIE SI ROLE_ADMIN
+        if (($username_session != $username_entity)) {
+            # SI PAS ADMIN
+            if ($role_session == false){
+               # ON REDIRIGE VERS LA PAGE "USER"
+               return $this->redirect($this->generateUrl('user'), 301);
+            }
+        }
+        
         $editForm = $this->createForm(new UserType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
@@ -298,9 +316,28 @@ class UserController extends Controller
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
+        # RECUPERE LE USERNAME DE SESSION
+        $username_session = $this->get('security.context')->getToken()->getUsername();
+        
+        # RECUPERE LE USERNAME DE L'ENTITE
+        $username_entity = $entity->getUsername();
+        
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        # SI LES USERNAME SONT DIFFERENT, ON VERIFIE SI ROLE_ADMIN
+        if (($username_session != $username_entity)) {
+            # SI PAS ADMIN
+            if ($role_session == false){
+               # ON REDIRIGE VERS LA PAGE "USER"
+               return $this->redirect($this->generateUrl('user'), 301);
+            }
+        }
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new UserType(), $entity);
         $editForm->bind($request);
+        
         $password = $editForm['password']->getData();
         $entity->setPlainPassword($password);
         $entity->setUpdated(new \Datetime());

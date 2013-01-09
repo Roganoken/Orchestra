@@ -48,7 +48,9 @@ security:
         
         # PAGES ACCESSIBLES AUX ADMINISTRATEURS
         - { path: ^/admin/, role: ROLE_ADMIN,}
+        - { path: ^/user/admin/, role: ROLE_ADMIN,}
         
         # PAGES ACCESSIBLES AUX UTILISATEURS CONNECTES
         - { path: ^/change-password/, role: ROLE_USER,}
         - { path: ^/user/, role: ROLE_USER,}
+        - { path: ^/salle/, role: ROLE_USER,}

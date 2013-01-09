@@ -1,3 +1,5 @@
+{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %}
+
 <h1>Liste des utilisateurs</h1>
 
 <table class="records_list">
@@ -34,7 +36,7 @@
                     <li>
                         <a href="{{ path('user_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
-                    {% if is_granted("ROLE_ADMIN") %}
+                    {% if is_granted("ROLE_ADMIN") or entity.username == app.user.username %}
                     <li>
                         <a href="{{ path('user_edit', { 'id': entity.id }) }}">Modifier</a>
                     </li>
