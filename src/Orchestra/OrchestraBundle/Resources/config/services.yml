@@ -1,7 +1,6 @@
-parameters:
-#    orchestra_orchestra.example.class: Orchestra\OrchestraBundle\Example
-
 services:
-#    orchestra_orchestra.example:
-#        class: %orchestra_orchestra.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    orchestra.orchestra.admin.user:
+        class: Orchestra\OrchestraBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: orchestra, label: user }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\User, SonataAdminBundle:CRUD]
