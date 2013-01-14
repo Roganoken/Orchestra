@@ -1,0 +1,10 @@
+{% block generic_label %}
+    {% spaceless %}
+    {% if label is not sameas(false) %}
+        {% if required %}
+            {% set attr = attr|merge({'class': attr.class|default('') ~ 'required'}) %}
+        {% endif %}
+        <label for="">{{ label|trans }}</label>
+    {% endif %}
+    {% endspaceless %}
+{% endblock %}

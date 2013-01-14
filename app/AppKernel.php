@@ -31,7 +31,10 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle()
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new BCC\ExtraToolsBundle\BCCExtraToolsBundle(),
+            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

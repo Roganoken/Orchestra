@@ -1,57 +1,32 @@
 {% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %}
 
-<h1>Liste des utilisateurs</h1>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+<br />
+<form id="form_recherche" action="{{ path('user_search') }}" method="post">
+        {{ form_widget(form.motcle) }}
+        {{ form_errors(form.motcle) }} 
+	<input type="submit" value="Rechercher" />
+</form>
 
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Prenom</th>
-            <th>Nom</th>
-            <th>Identifiant</th>
-            <th>Classe</th>
-            <th>Email</th>
-            <th>Dernière connexion</th>
-            <th>Professeur</th>
-            <th>Eleve</th>
-            <th>Contact</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.firstname }}</td>
-            <td>{{ entity.lastname }}</td>
-            <td>{{ entity.username }}</td>
-            <td>{{ entity.classe }}</td>
-            <td>{{ entity.email }}</td>
-            <td>{% if entity.LastLogin %}{{ entity.LastLogin|date('Y-m-d') }}{% else %}Jamais{% endif %}</td>
-            <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-            <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-            <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('user_show', { 'id': entity.id }) }}">Voir</a>
-                    </li>
-                    {% if is_granted("ROLE_ADMIN") or entity.username == app.user.username %}
-                    <li>
-                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">Modifier</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<div id="resultats_recherche"> 
+    {% include 'OrchestraOrchestraBundle:User:liste.html.twig' with {'entities' : entities}  %}
+</div>
 
-<ul>
-    <li>
-        <a href="{{ path('user_new') }}">
-            Ajouter un nouvel utilisateur
-        </a>
-    </li>
-</ul>
+<script>
+$("#form_recherche").submit(function(){ 
+    
+    var motcle = $("#usersearch_motcle").val();
+    var DATA = 'motcle=' + motcle;
+    $.ajax({
+        type: "POST",
+        url: "{{ path('user_search')}}",
+        data: DATA,
+        cache: false,
+        success: function(data){
+           $('#resultats_recherche').html(data);
+        }
+    });    
+    return false;
+});
+</script>
+

@@ -1,0 +1,20 @@
+{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %}
+
+<h1>Charger une image de profil</h1>
+
+{% if entity.photo %}
+    <img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" />
+{% else %}
+    <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" />
+{% endif %}
+
+<form action="#" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button class="btn btn-primary" type="submit">Uploader</button>
+    </p>
+</form>
+    
+<a href="{{ path('user') }}">
+   Revenir à la liste des utilisateurs
+</a>    
