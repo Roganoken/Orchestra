@@ -1,10 +1,6 @@
-OrchestraOrchestraBundle_homepage:
-    pattern:  /orchestra/
-    defaults: { _controller: OrchestraOrchestraBundle:Default:index }
-    
-OrchestraOrchestraBundle_accueil:
-    pattern:  /orchestra/accueil
-    defaults: { _controller: OrchestraOrchestraBundle:Default:accueil }
+OrchestraOrchestraBundle_profil:
+    pattern:  /profil
+    defaults: { _controller: OrchestraOrchestraBundle:Default:profil }
 
 OrchestraOrchestraBundle_access:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/access.yml

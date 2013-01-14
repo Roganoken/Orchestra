@@ -2,83 +2,83 @@
 
 {% if entities %}
 
-{% if entities|length > 1 %} <p> {{ entities|length }} utilisateurs</p>
-{% else %}<p>{{ entities|length }} utilisateur</p>
-{% endif %}
-
-<table class="records_list">
-    <thead>
-        <tr>
-            {% if is_granted("ROLE_ADMIN") %}<th>Id</th>{% endif %}
-            <th>
-                {% if by == 'asc' %}
-                <a href="{{ path('user', { 'sort': 'firstname', 'by': 'desc' }) }}">
-                {% else %}
-                <a href="{{ path('user', { 'sort': 'firstname', 'by': 'asc' }) }}">
-                {% endif %}
-                Prenom</a>
-             </th>
-            <th>
-                {% if by == 'asc' %}
-                <a href="{{ path('user', { 'sort': 'lastname', 'by': 'desc' }) }}">
-                {% else %}
-                <a href="{{ path('user', { 'sort': 'lastname', 'by': 'asc' }) }}">
-                {% endif %}
-                Nom</a>
-             </th>
-            <th>
-                {% if by == 'asc' %}
-                <a href="{{ path('user', { 'sort': 'username', 'by': 'desc' }) }}">
-                {% else %}
-                <a href="{{ path('user', { 'sort': 'username', 'by': 'asc' }) }}">
-                {% endif %}
-                Identifiant</a>
-             </th>
-            <th>
-                {% if by == 'asc' %}
-                <a href="{{ path('user', { 'sort': 'classe', 'by': 'desc' }) }}">
-                {% else %}
-                <a href="{{ path('user', { 'sort': 'classe', 'by': 'asc' }) }}">
-                {% endif %}
-                Classe</a>
-             </th>
-            {% if is_granted("ROLE_ADMIN") %}<th>Email</th>{% endif %}
-            <th>Dernière connexion</th>
-            <th>Professeur</th>
-            <th>Eleve</th>
-            <th>Contact</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.id }}</td>{% endif %}
-            <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.firstname }}</a></td>
-            <td>{{ entity.lastname }}</td>
-            <td>{{ entity.username }}</td>
-            <td>{{ entity.classe }}</td>
-            {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.email }}</td>{% endif %}
-            <td>{% if entity.LastLogin %}{{ entity.LastLogin|date('Y-m-d', "Europe/Paris") }}{% else %}Jamais{% endif %}</td>
-            <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-            <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-            <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('user_show', { 'id': entity.id }) }}">Voir</a>
-                    </li>
-                    {% if is_granted("ROLE_ADMIN") or entity.username == app.user.username %}
-                    <li>
-                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">Modifier</a>
-                    </li>
+    {% if entities|length > 1 %} <p> {{ entities|length }} utilisateurs</p>
+    {% else %}<p>{{ entities|length }} utilisateur</p>
+    {% endif %}
+    
+    <table class="records_list">
+        <thead>
+            <tr>
+                {% if is_granted("ROLE_ADMIN") %}<th>Id</th>{% endif %}
+                <th>
+                    {% if by == 'asc' %}
+                    <a href="{{ path('user', { 'sort': 'firstname', 'by': 'desc' }) }}">
+                    {% else %}
+                    <a href="{{ path('user', { 'sort': 'firstname', 'by': 'asc' }) }}">
                     {% endif %}
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+                    Prenom</a>
+                 </th>
+                <th>
+                    {% if by == 'asc' %}
+                    <a href="{{ path('user', { 'sort': 'lastname', 'by': 'desc' }) }}">
+                    {% else %}
+                    <a href="{{ path('user', { 'sort': 'lastname', 'by': 'asc' }) }}">
+                    {% endif %}
+                    Nom</a>
+                 </th>
+                <th>
+                    {% if by == 'asc' %}
+                    <a href="{{ path('user', { 'sort': 'username', 'by': 'desc' }) }}">
+                    {% else %}
+                    <a href="{{ path('user', { 'sort': 'username', 'by': 'asc' }) }}">
+                    {% endif %}
+                    Identifiant</a>
+                 </th>
+                <th>
+                    {% if by == 'asc' %}
+                    <a href="{{ path('user', { 'sort': 'classe', 'by': 'desc' }) }}">
+                    {% else %}
+                    <a href="{{ path('user', { 'sort': 'classe', 'by': 'asc' }) }}">
+                    {% endif %}
+                    Classe</a>
+                 </th>
+                {% if is_granted("ROLE_ADMIN") %}<th>Email</th>{% endif %}
+                <th>Dernière connexion</th>
+                <th>Professeur</th>
+                <th>Eleve</th>
+                <th>Contact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.id }}</td>{% endif %}
+                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.firstname }}</a></td>
+                <td>{{ entity.lastname }}</td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.classe }}</td>
+                {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.email }}</td>{% endif %}
+                <td>{% if entity.LastLogin %}{{ entity.LastLogin|date('Y-m-d', "Europe/Paris") }}{% else %}Jamais{% endif %}</td>
+                <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+                <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+                <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_show', { 'id': entity.id }) }}">Voir</a>
+                        </li>
+                        {% if is_granted("ROLE_ADMIN") or entity.username == app.user.username %}
+                        <li>
+                            <a href="{{ path('user_edit', { 'id': entity.id }) }}">Modifier</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 {% else %}
 <p>Aucun résultats</p>

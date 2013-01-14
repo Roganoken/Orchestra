@@ -61,4 +61,8 @@ orchestra_ldap:
     
 _imagine:
     resource: .
-    type:     imagine    
+    type:     imagine  
+    
+_welcome:
+    pattern:    /
+    defaults:   { _controller: OrchestraOrchestraBundle:Default:index }  
