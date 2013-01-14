@@ -1,19 +1,13 @@
 user:
-    pattern:  /
-    defaults: { _controller: "OrchestraOrchestraBundle:User:index" }
+    pattern:  /{sort}/{by}
+    defaults: { _controller: "OrchestraOrchestraBundle:User:index", sort: firstname, by: asc }
+    requirements:
+        sort: firstname|lastname|classe|username
+        by: asc|desc
 
 user_show:
     pattern:  /{id}/show
     defaults: { _controller: "OrchestraOrchestraBundle:User:show" }
-
-user_new:
-    pattern:  /admin/new
-    defaults: { _controller: "OrchestraOrchestraBundle:User:new" }
-
-user_create:
-    pattern:  /admin/create
-    defaults: { _controller: "OrchestraOrchestraBundle:User:create" }
-    requirements: { _method: post }
 
 user_edit:
     pattern:  /{id}/edit
@@ -25,6 +19,16 @@ user_update:
     requirements: { _method: post }
 
 user_delete:
-    pattern:  /admin/{id}/delete
-    defaults: { _controller: "OrchestraOrchestraBundle:User:delete" }
+    pattern:  /{id}/delete
+    defaults: { _controller: "Bundle:User:delete" }
     requirements: { _method: post }
+    
+user_search:
+  pattern: /rechercher
+  defaults: { _controller: OrchestraOrchestraBundle:User:rechercher }
+  requirements:
+    _method: POST
+    
+user_avatar:
+  pattern: /{id}/avatar
+  defaults: { _controller: OrchestraOrchestraBundle:User:avatar }

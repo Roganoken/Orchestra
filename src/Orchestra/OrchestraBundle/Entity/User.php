@@ -2,6 +2,7 @@
 
 namespace Orchestra\OrchestraBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
 
@@ -51,9 +52,9 @@ class User extends BaseUser
     private $birthdate;
 
     /**
-     * @var integer $photo
+     * @var string $photo
      *
-     * @ORM\Column(name="photo", type="integer", nullable=true)
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
     private $photo;
 
@@ -219,6 +220,12 @@ class User extends BaseUser
      * })
      */
     private $sex;
+    
+    /**
+     * @Assert\File(maxSize="500k")
+     */
+    public $file;
+    
 
     /**
      * Constructor
@@ -931,4 +938,50 @@ class User extends BaseUser
     {
         return $this->sex;
     }
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->photo ? null : $this->getUploadRootDir().'/'.$this->photo;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->photo ? null : $this->getUploadDir().'/'.$this->photo;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'avatar';
+    }
+    
+    
+    public function uploadProfilePicture()
+    {
+
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->file) {
+            return;
+        }
+        
+        $photoname = $this->getUsername().sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        
+        // move copie le fichier présent chez le client dans le répertoire indiqué.
+        $this->file->move($this->getUploadRootDir(), $photoname);
+
+        // On sauvegarde le nom de fichier
+        $this->photo = $photoname;
+        
+        // La propriété file ne servira plus
+        $this->file = null;
+    }
+    
+    
 }

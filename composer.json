@@ -25,7 +25,10 @@
         "sonata-project/block-bundle": "dev-master",
         "sonata-project/admin-bundle": "dev-master",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
-        "sonata-project/media-bundle": "dev-master"
+        "sonata-project/media-bundle": "dev-master",
+        "sonata-project/intl-bundle": "dev-master",
+        "bcc/extra-tools-bundle": "dev-master",
+        "avalanche123/imagine-bundle": "dev-master"
         
     },
     "scripts": {

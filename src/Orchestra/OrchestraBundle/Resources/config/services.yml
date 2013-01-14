@@ -2,5 +2,35 @@ services:
     orchestra.orchestra.admin.user:
         class: Orchestra\OrchestraBundle\Admin\UserAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: orchestra, label: user }
-        arguments: [null, Orchestra\OrchestraBundle\Entity\User, SonataAdminBundle:CRUD]
+            - { name: sonata.admin, manager_type: orm, group: orchestra, label: Utilisateur }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\User, OrchestraOrchestraBundle:UserAdmin]
+    
+    orchestra.orchestra.admin.sex:
+        class: Orchestra\OrchestraBundle\Admin\SexAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: orchestra, label: Sexe }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Sex, SonataAdminBundle:CRUD]
+        
+    orchestra_orchestra.form.label_extension:
+        class: Orchestra\OrchestraBundle\Form\Extension\LabelFormTypeExtension
+        tags:
+            -  { name: form:type_extension, alias: field }
+        
+    bcc.twig.extension:
+        class: BCC\ExtraToolsBundle\Twig\TwigExtension
+        tags:
+            -  { name: twig.extension }
+            
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+           - { name: twig.extension }
+ 
+    twig.extension.intl:
+       class: Twig_Extensions_Extension_Intl
+       tags:
+           - { name: twig.extension }
+ 
+    debug.twig.extension:
+        class: Twig_Extensions_Extension_Debug
+        tags: [{ name: 'twig.extension' }] 

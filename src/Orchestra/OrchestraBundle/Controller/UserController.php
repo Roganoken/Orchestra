@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Orchestra\OrchestraBundle\Entity\User;
 use Orchestra\OrchestraBundle\Form\UserType;
+use Orchestra\OrchestraBundle\Form\UserSearchType;
+use Orchestra\OrchestraBundle\Form\AvatarType;
 
 /**
  * User controller.
@@ -18,15 +20,22 @@ class UserController extends Controller
      * Lists all User entities.
      *
      */
-    public function indexAction()
+    public function indexAction($sort, $by)
     {
+        
+        $form = $this->container->get('form.factory')->create(new UserSearchType());
+        
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('OrchestraOrchestraBundle:User')->findAll();
+        $entities = $em->getRepository('OrchestraOrchestraBundle:User')->findBy(array(), array($sort=>$by));
 
         return $this->render('OrchestraOrchestraBundle:User:index.html.twig', array(
             'entities' => $entities,
+            'form' => $form->createView(),
+            'sort' => $sort,
+            'by' => $by
         ));
+        
     }
 
     /**
@@ -42,29 +51,13 @@ class UserController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
-
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('OrchestraOrchestraBundle:User:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
-
-    /**
-     * Displays a form to create a new User entity.
-     *
-     */
-    public function newAction()
-    {
-        $entity = new User();
-        $form   = $this->createForm(new UserType(), $entity);
-
-        return $this->render('OrchestraOrchestraBundle:User:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
-    
     
     /* TEST FORMULAIRE LDAP */
     
@@ -231,34 +224,6 @@ class UserController extends Controller
             ));
         
     }
-    
-    
-
-    /**
-     * Creates a new User entity.
-     *
-     */
-    public function createAction(Request $request)
-    {
-        $entity  = new User();
-        $form = $this->createForm(new UserType(), $entity);
-        $form->bind($request);
-        $password = $form['password']->getData();
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity->setPlainPassword($password);
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
-        }
-
-        return $this->render('OrchestraOrchestraBundle:User:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
 
     /**
      * Displays a form to edit an existing User entity.
@@ -339,7 +304,10 @@ class UserController extends Controller
         $editForm->bind($request);
         
         $password = $editForm['password']->getData();
+        
+        if (isset($password)){
         $entity->setPlainPassword($password);
+        }
         $entity->setUpdated(new \Datetime());
 
         if ($editForm->isValid()) {
@@ -379,6 +347,110 @@ class UserController extends Controller
 
         return $this->redirect($this->generateUrl('user'));
     }
+    
+    public function rechercherAction()
+    {
+        
+        $request = $this->container->get('request');
+
+        if($request->isXmlHttpRequest())
+        {
+            $motcle = '';
+            $motcle = $request->request->get('motcle');
+
+            $em = $this->container->get('doctrine')->getEntityManager();
+
+            if($motcle != '')
+            {
+                   $qb = $em->createQueryBuilder();
+
+                   $qb->select('a')
+                      ->from('OrchestraOrchestraBundle:User', 'a')
+                      ->where("LOWER(a.username) LIKE :motcle OR LOWER(a.firstname) LIKE :motcle OR LOWER(a.lastname) LIKE :motcle")
+                      ->orderBy('a.firstname', 'ASC')
+                      ->setParameter('motcle', strtolower($motcle).'%');
+
+                   $query = $qb->getQuery();               
+                   $entities = $query->getResult();
+                   
+            }
+            else {
+                $entities = $em->getRepository('OrchestraOrchestraBundle:User')->findAll();
+            }
+
+            return $this->container->get('templating')->renderResponse('OrchestraOrchestraBundle:User:liste.html.twig', array(
+                'entities' => $entities,
+                'sort' => 'firstname',
+                'by' => 'asc'
+                ));
+            
+      }
+      else {
+            return $this->indexAction();
+      }
+        
+        
+    }
+    
+    
+    
+    /**
+     * Gestion des avatars.
+     *
+     */
+    public function avatarAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('OrchestraOrchestraBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+        
+        # RECUPERE LE USERNAME DE SESSION
+        $username_session = $this->get('security.context')->getToken()->getUsername();
+        
+        # RECUPERE LE USERNAME DE L'ENTITE
+        $username_entity = $entity->getUsername();
+        
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        # SI LES USERNAME SONT DIFFERENT, ON VERIFIE SI ROLE_ADMIN
+        if (($username_session != $username_entity)) {
+            # SI PAS ADMIN
+            if ($role_session == false){
+               # ON REDIRIGE VERS LA PAGE "USER"
+               return $this->redirect($this->generateUrl('user'), 301);
+            }
+        }
+        
+        $form = $this->createForm(new AvatarType(), $entity);
+
+        if ($this->getRequest()->getMethod() === 'POST') {
+            $form->bindRequest($this->getRequest());
+            if ($form->isValid()) {
+                
+                $em = $this->getDoctrine()->getEntityManager();
+                
+                $entity->uploadProfilePicture();
+                
+                $em->persist($entity);
+                $em->flush();
+
+                $this->redirect($this->generateUrl('user_show', array('id' => $id)));
+            }
+        }
+            
+        return $this->render('OrchestraOrchestraBundle:User:avatar.html.twig', 
+                array (
+                    'entity' => $entity, 
+                    'form' => $form->createView()
+                    )
+                );
+        
+    }
 
     private function createDeleteForm($id)
     {
@@ -387,4 +459,7 @@ class UserController extends Controller
             ->getForm()
         ;
     }
+    
+    
+    
 }

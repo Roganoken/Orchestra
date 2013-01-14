@@ -8,44 +8,34 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
  
-class UserAdmin extends Admin
+class SexAdmin extends Admin
 {
   
-  protected $baseRouteName = 'user_admin';  
-  protected $baseRoutePattern = 'user';
+  protected $baseRouteName = 'sex_admin';  
+  protected $baseRoutePattern = 'sex';
     
   protected function configureFormFields(FormMapper $formMapper)
   {
     $formMapper
-      ->add('firstname')
-      ->add('lastname')
-      ->add('username')
-      ->add('classe')
-      ->add('email')
-      ->add('phone')
-      ->add('mobilePhone')
-      ->add('plainPassword', 'text')
-      ->add('birthdate', 'birthday', array('widget' => 'choice', 'format' => 'yyyy-MM-dd','data_timezone' => "Europe/Paris",'user_timezone' => "Europe/Paris"))
-      ->add('isProfesseur', 'checkbox', array('required' => false,))
-      ->add('isEleve', 'checkbox', array('required' => false,))
-      ->add('isContact', 'checkbox', array('required' => false,))
+      ->add('gender')
+      ->add('title')
+      ->add('titleAbbrev')
     ;
   }
  
   protected function configureDatagridFilters(DatagridMapper $datagridMapper)
   {
     $datagridMapper
-      ->add('firstname')
-      ->add('lastname')
+      ->add('gender')
     ;
   }
  
   protected function configureListFields(ListMapper $listMapper)
   {
     $listMapper
-      ->add('firstname')
-      ->add('lastname')
-      ->add('username')
+      ->add('gender')
+      ->add('title')
+      ->add('titleAbbrev')
       ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array(),
@@ -60,7 +50,7 @@ class UserAdmin extends Admin
   public function validate(ErrorElement $errorElement, $object)
   {
     $errorElement
-      ->add('firstname')
+      ->add('gender')
       ->assertMaxLength(array('limit' => 32))
       ->end()
     ;

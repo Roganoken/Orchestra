@@ -11,7 +11,6 @@
     {{ form_row(edit_form.username, {'label': 'Identifiant'}) }}
     {{ form_row(edit_form.classe, {'label': 'Classe', 'attr': { 'readonly': 'true' } }) }}
     {{ form_row(edit_form.birthdate, {'label': 'Date de naissance'}) }}
-    {{ form_row(edit_form.photo, {'label': 'Photo'}) }}
     {{ form_row(edit_form.email, {'label': 'Email'}) }}
     {{ form_row(edit_form.phone, {'label': 'Téléphone'}) }}
     {{ form_row(edit_form.mobilePhone, {'label': 'Mobile'}) }}
@@ -32,6 +31,11 @@
 </form>
 
 <ul class="record_actions">
+    <li>
+        <a href="{{ path('user_avatar',{ 'id': entity.id }) }}">
+            Modifier son avatar
+        </a>
+    </li>
     <li>
         <a href="{{ path('user') }}">
             Revenir à la liste des utilisateurs

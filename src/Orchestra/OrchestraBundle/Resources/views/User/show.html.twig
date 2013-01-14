@@ -34,7 +34,11 @@
         {% endif %}
         <tr>
             <th>Photo</th>
-            <td>{{ entity.photo }}</td>
+                {% if entity.photo %}
+                    <td><img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" /></td>
+                {% else %}
+                    <td><img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" /></td>
+                {% endif %}
         </tr>
         {% if is_granted("ROLE_ADMIN") %}
         <tr>
@@ -55,17 +59,18 @@
         </tr>
         {% endif %}
         <tr>
-            <th>Connected</th>
-            <td>{{ entity.connected|date('d/m/Y \\à H:m:s') }}</td>
+            <th>Dernière connexion</th>
+            <td>{{ entity.LastLogin|format_datetime(null, 'fr', 'Europe/Paris',
+    constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
         </tr>
         {% if is_granted("ROLE_ADMIN") %}
         <tr>
             <th>Created</th>
-            <td>{{ entity.created|date('d/m/Y \\à H:m:s') }}</td>
+            <td>{{ entity.created|format_date }}</td>
         </tr>
         <tr>
             <th>Updated</th>
-            <td>{{ entity.updated|date('d/m/Y \\à H:m:s') }}</td>
+            <td>{{ entity.updated|format_date }}</td>
         </tr>
         <tr>
             <th>Rôles</th>

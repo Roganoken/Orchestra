@@ -19,7 +19,7 @@ fos_user_resetting:
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile 
+    prefix: /user 
     
 genemu_upload:
     resource: "@GenemuFormBundle/Resources/config/routing/upload.xml"
@@ -43,6 +43,10 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
     
+admin_dashboard:
+    pattern: /admin
+    defaults: { _controller: SonataAdminBundle:Core:dashboard }
+    
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
     prefix: /media/gallery
@@ -55,7 +59,6 @@ orchestra_ldap:
     pattern:    /ldap
     defaults:   { _controller: OrchestraOrchestraBundle:User:ldap }
     
-# Internal routing configuration to handle ESI
-#_internal:
-#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#    prefix:   /_internal
+_imagine:
+    resource: .
+    type:     imagine    
