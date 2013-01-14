@@ -53,7 +53,6 @@
 }
 
 
-
 #contenu{
     /*background-color:lightpink;*/
     width:1024px;
@@ -63,3 +62,30 @@
     margin-left: -512px;
     min-height: 100%;
 }
+
+#donnees_perso{
+    float: left;
+    background-color:lightpink;
+    width:273px;
+    height:180px;
+    margin-left:350px;
+    margin-top:-400px;
+}
+
+.txt_titre_bloc{
+    color:#ffffff;
+    font-size:12px;
+    font-family:Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#titre_donnees_perso{
+    float: left;
+    background-image:url("../img/fond_titre_bloc.png");
+    width:273px;
+    height:38px;
+    
+}
+
+

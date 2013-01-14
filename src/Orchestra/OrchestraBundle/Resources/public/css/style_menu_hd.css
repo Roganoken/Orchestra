@@ -1,0 +1,95 @@
+#menu_hd{
+    float:left;
+    height:36px;
+    width:205px; 
+    margin-left:480px;
+    margin-top:14px;
+   
+}
+
+.picto_menu_hd{
+    float:left;
+    height:36px;
+    width:36px;
+    margin-right:5px;
+}
+
+
+#picto_menu_hd_accueil{
+    float:left;
+    background-image:url("../img/picto_accueil.png");
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+    height:36px;
+    width:36px; 
+}
+
+#picto_menu_hd_accueil:hover{
+    float:left;
+    background-image:url("../img/picto_accueil.png");
+    background-position: 0px -40px;
+}
+
+
+#picto_menu_hd_notif{
+    float:left;
+    background-image:url("../img/picto_notif.png");
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+    height:36px;
+    width:36px; 
+}
+
+#picto_menu_hd_notif:hover{
+    float:left;
+    background-image:url("../img/picto_notif.png");
+    background-position: 0px -40px;
+}
+
+
+#picto_menu_hd_msg{
+    float:left;
+    background-image:url("../img/picto_msg.png");
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+    height:36px;
+    width:36px; 
+}
+
+#picto_menu_hd_msg:hover{
+    float:left;
+    background-image:url("../img/picto_msg.png");
+    background-position: 0px -40px;
+}
+
+
+#picto_menu_hd_option{
+    float:left;
+    background-image:url("../img/picto_option.png");
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+    height:36px;
+    width:36px; 
+}
+
+#picto_menu_hd_option:hover{
+    float:left;
+    background-image:url("../img/picto_option.png");
+    background-position: 0px -40px;
+}
+
+
+#picto_deconnexion{
+    float:left;
+    background-image:url("../img/picto_deconnexion.png");
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+    height:36px;
+    width:36px; 
+}
+
+#picto_deconnexion:hover{
+    float:left;
+    background-image:url("../img/picto_deconnexion.png");
+    background-position: 0px -40px;
+}
