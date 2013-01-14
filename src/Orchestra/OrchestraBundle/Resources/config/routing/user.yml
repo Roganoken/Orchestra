@@ -20,8 +20,8 @@ user_update:
 
 user_delete:
     pattern:  /{id}/delete
-    defaults: { _controller: "Bundle:User:delete" }
-    requirements: { _method: post }
+    defaults: { _controller: "OrchestraOrchestraBundle:User:delete" }
+    requirements: { _method: get }
     
 user_search:
   pattern: /rechercher

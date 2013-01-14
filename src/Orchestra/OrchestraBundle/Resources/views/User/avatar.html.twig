@@ -1,20 +1,55 @@
-{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %}
+{% extends '::base.html.twig' %}
 
-<h1>Charger une image de profil</h1>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_profil.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_edit_profil.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_menu_hd.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_menu_gauche.css') }}" type="text/css" media="all" />
+{% endblock %}
 
-{% if entity.photo %}
-    <img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" />
-{% else %}
-    <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" />
-{% endif %}
-
-<form action="#" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button class="btn btn-primary" type="submit">Uploader</button>
-    </p>
-</form>
+{% block header %}
+<div id="logo" >
+    <div id="avatar"><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test.jpg') }}" alt="avatar" /></div>
+    <p id="txt_avatar_nom">{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %} <br /> <span id="txt_avatar_classe">Etudiant Master 2 Web - ESTEI</span></p>
     
-<a href="{{ path('user') }}">
-   Revenir à la liste des utilisateurs
-</a>    
+    {% include "OrchestraOrchestraBundle:Default:menu_hd.html.twig" %}
+
+</div>
+         
+{% endblock %}
+
+{% block contenu %}
+
+<div id="contenu">
+    {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
+
+    {% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %}
+        
+       <div id="form_edit">
+       
+           <h1>Charger une image de profil</h1>
+            
+            {% if entity.photo %}
+                <img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" />
+            {% else %}
+                <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" />
+            {% endif %}
+            
+            <form action="#" method="post" {{ form_enctype(form) }}>
+                {{ form_widget(form) }}
+                <p>
+                    <button class="btn btn-primary" type="submit">Uploader</button>
+                </p>
+            </form>
+                
+            <a href="{{ path('user') }}">
+               Revenir à la liste des utilisateurs
+            </a>   
+        </div>
+</div>
+
+
+{% endblock %}        
+        
+        
+         

@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+
+
+@font-face{
+    font-family:futura;
+    src:url("../fonts/futura_book.ttf");
+    font-weight: 200;
+}
+
+
+#contenu{
+    /*background-color:lightpink;*/
+    width:1024px;
+    height:auto;
+    position:relative;
+    left:50%;
+    margin-left: -512px;
+    min-height: 100%;
+}
+
+#content_form_edit{
+    float:left;
+    margin-left:300px;
+    margin-top:-440px;
+    margin-bottom:50px;
+}
+
+
+#form_edit{
+    float:left;
+    width:350px;    
+}
+
+
+h1{
+    color:#2b3035;
+    font-size:20px;
+    font-family: "futura", Arial, sans-serif;
+    margin-left:10px;
+    margin-bottom:10px;
+    text-transform: uppercase;
+}
+
+
+label{
+    color:#2b3035;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+    margin-left:10px;
+    margin-top:8px;
+}
+
+input{
+    float:right;
+    
+}
+
+button{
+    float:left;
+    margin-left:130px;
+    margin-top:20px;
+}
+
+
+#orchestra_orchestrabundle_usertype_birthdate{
+    display:inline; 
+    margin-left:10px;
+    margin-bottom:10px;
+}
+
+
+#actions_droite{
+    float:left;
+    height:100px;
+    margin-top:40px;
+}
+
+
+.record_actions a{
+    color:#2b3035;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+    text-decoration: none;
+}
+
+.record_actions a:hover{
+    text-decoration: underline;
+}
+
+
