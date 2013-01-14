@@ -3,7 +3,7 @@ services:
         class: Orchestra\OrchestraBundle\Admin\UserAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: orchestra, label: Utilisateur }
-        arguments: [null, Orchestra\OrchestraBundle\Entity\User, OrchestraOrchestraBundle:UserAdmin]
+        arguments: [null, Orchestra\OrchestraBundle\Entity\User, SonataAdminBundle:CRUD]
     
     orchestra.orchestra.admin.sex:
         class: Orchestra\OrchestraBundle\Admin\SexAdmin

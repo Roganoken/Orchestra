@@ -60,8 +60,7 @@
         {% endif %}
         <tr>
             <th>Dernière connexion</th>
-            <td>{{ entity.LastLogin|format_datetime(null, 'fr', 'Europe/Paris',
-    constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
+            <td>{{ time_diff(entity.LastLogin) }}</td>
         </tr>
         {% if is_granted("ROLE_ADMIN") %}
         <tr>

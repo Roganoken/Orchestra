@@ -232,6 +232,8 @@ sonata_intl:
         locales:
             fr: Europe/Paris  
             
+knp_time: ~      # Enable the helper for use in templates            
+            
 avalanche_imagine:
     driver:       gd
     filters:

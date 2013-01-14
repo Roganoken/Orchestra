@@ -8,6 +8,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
  
+use Orchestra\OrchestraBundle\Entity\Sex;
+
 class SexAdmin extends Admin
 {
   
@@ -46,13 +48,5 @@ class SexAdmin extends Admin
         ;
     ;
   }
- 
-  public function validate(ErrorElement $errorElement, $object)
-  {
-    $errorElement
-      ->add('gender')
-      ->assertMaxLength(array('limit' => 32))
-      ->end()
-    ;
-  }
+  
 }
