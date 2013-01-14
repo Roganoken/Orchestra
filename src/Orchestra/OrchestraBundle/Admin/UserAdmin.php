@@ -8,6 +8,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
  
+use Orchestra\OrchestraBundle\Entity\User;
+
 class UserAdmin extends Admin
 {
   
@@ -24,7 +26,6 @@ class UserAdmin extends Admin
       ->add('email')
       ->add('phone')
       ->add('mobilePhone')
-      ->add('plainPassword', 'text')
       ->add('birthdate', 'birthday', array('widget' => 'choice', 'format' => 'yyyy-MM-dd','data_timezone' => "Europe/Paris",'user_timezone' => "Europe/Paris"))
       ->add('isProfesseur', 'checkbox', array('required' => false,))
       ->add('isEleve', 'checkbox', array('required' => false,))
@@ -54,15 +55,6 @@ class UserAdmin extends Admin
                 )
             ))
         ;
-    ;
-  }
- 
-  public function validate(ErrorElement $errorElement, $object)
-  {
-    $errorElement
-      ->add('firstname')
-      ->assertMaxLength(array('limit' => 32))
-      ->end()
     ;
   }
 }

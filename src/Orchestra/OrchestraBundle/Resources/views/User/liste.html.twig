@@ -1,122 +1,77 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
+    {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
+    
     <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_profil.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_edit_profil.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_menu_hd.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_menu_gauche.css') }}" type="text/css" media="all" />
 {% endblock %}
+
 
 {% block header %}
-<div id="logo" >
-    <div id="avatar"><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test.jpg') }}" alt="avatar" /></div>
-    <p id="txt_avatar_nom">{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %} <br /> <span id="txt_avatar_classe">Etudiant Master 2 Web - ESTEI</span></p>
-    
-    {% include "OrchestraOrchestraBundle:Default:menu_hd.html.twig" %}
-
-</div>
-         
+    {% include "OrchestraOrchestraBundle:Default:header.html.twig" %}      
 {% endblock %}
+
 
 {% block contenu %}
 
 <div id="contenu">
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
-
-    {% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %}
-        
-       <div id="form_edit">        
-
-            <h1><a href="{{ path('user') }}">Liste des utilisateurs</a></h1>
+   
+    
+    <div id="content_form_edit">
+    
+        <div id="form_edit">
+       
+            <h1>Modifier mon profil</h1>
             
-            {% if entities %}
+            <form action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>  
             
-                {% if entities|length > 1 %} <p> {{ entities|length }} utilisateurs</p>
-                {% else %}<p>{{ entities|length }} utilisateur</p>
-                {% endif %}
+                {{ form_errors(edit_form) }}
+            
+                {{ form_row(edit_form.firstname, {'label': 'Prénom', 'attr': { 'readonly': 'true' } }) }}
+                {{ form_row(edit_form.lastname, {'label': 'Nom', 'attr': { 'readonly': 'true' } }) }}
+                {{ form_row(edit_form.username, {'label': 'Identifiant'}) }}
+                {{ form_row(edit_form.classe, {'label': 'Classe', 'attr': { 'readonly': 'true' } }) }}
+                {{ form_row(edit_form.birthdate, {'label': 'Date de naissance'}) }}
+                {{ form_row(edit_form.email, {'label': 'Email'}) }}
+                {{ form_row(edit_form.phone, {'label': 'Téléphone'}) }}
+                {{ form_row(edit_form.mobilePhone, {'label': 'Mobile'}) }}
+                    
+            {% if is_granted("ROLE_ADMIN") %}
                 
-                <table class="records_list">
-                    <thead>
-                        <tr>
-                            {% if is_granted("ROLE_ADMIN") %}<th>Id</th>{% endif %}
-                            <th>
-                                {% if by == 'asc' %}
-                                <a href="{{ path('user', { 'sort': 'firstname', 'by': 'desc' }) }}">
-                                {% else %}
-                                <a href="{{ path('user', { 'sort': 'firstname', 'by': 'asc' }) }}">
-                                {% endif %}
-                                Prenom</a>
-                             </th>
-                            <th>
-                                {% if by == 'asc' %}
-                                <a href="{{ path('user', { 'sort': 'lastname', 'by': 'desc' }) }}">
-                                {% else %}
-                                <a href="{{ path('user', { 'sort': 'lastname', 'by': 'asc' }) }}">
-                                {% endif %}
-                                Nom</a>
-                             </th>
-                            <th>
-                                {% if by == 'asc' %}
-                                <a href="{{ path('user', { 'sort': 'username', 'by': 'desc' }) }}">
-                                {% else %}
-                                <a href="{{ path('user', { 'sort': 'username', 'by': 'asc' }) }}">
-                                {% endif %}
-                                Identifiant</a>
-                             </th>
-                            <th>
-                                {% if by == 'asc' %}
-                                <a href="{{ path('user', { 'sort': 'classe', 'by': 'desc' }) }}">
-                                {% else %}
-                                <a href="{{ path('user', { 'sort': 'classe', 'by': 'asc' }) }}">
-                                {% endif %}
-                                Classe</a>
-                             </th>
-                            {% if is_granted("ROLE_ADMIN") %}<th>Email</th>{% endif %}
-                            <th>Dernière connexion</th>
-                            <th>Professeur</th>
-                            <th>Eleve</th>
-                            <th>Contact</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for entity in entities %}
-                        <tr>
-                            {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.id }}</td>{% endif %}
-                            <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.firstname }}</a></td>
-                            <td>{{ entity.lastname }}</td>
-                            <td>{{ entity.username }}</td>
-                            <td>{{ entity.classe }}</td>
-                            {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.email }}</td>{% endif %}
-                            <td>{% if entity.LastLogin %}{{ entity.LastLogin|date('Y-m-d', "Europe/Paris") }}{% else %}Jamais{% endif %}</td>
-                            <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('user_show', { 'id': entity.id }) }}">Voir</a>
-                                    </li>
-                                    {% if is_granted("ROLE_ADMIN") or entity.username == app.user.username %}
-                                    <li>
-                                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">Modifier</a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            
-            {% else %}
-            <p>Aucun résultats</p>
-            {% endif %}
-
-      </div>
+                {{ form_row(edit_form.isProfesseur, {'label': 'Professeur'}) }}
+                {{ form_row(edit_form.isEleve, {'label': 'Eleve'}) }}
+                {{ form_row(edit_form.isContact, {'label': 'Contact'}) }}
+                
+            {% endif %}  
+                
+                {{ form_widget(edit_form._token) }}
+                
+                    <button type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Enregistrer</button>
+            </form>
+          </div>  
+                  
+        <div id="actions_droite">
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('user_avatar',{ 'id': entity.id }) }}">
+                        Modifier mon avatar
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('user') }}">
+                       Liste des utilisateurs
+                    </a>
+                </li>
+                <li>
+                   <br /><a href="{{ path('user_delete', { 'id': entity.id }) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer ?')">Supprimer mon compte</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
 </div>
 
-{% endblock %}    
-            
-            
-            
+
+{% endblock %}
