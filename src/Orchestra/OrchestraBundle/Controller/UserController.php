@@ -328,12 +328,16 @@ class UserController extends Controller
      * Deletes a User entity.
      *
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction($id)
     {
+    
+    /*
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
         if ($form->isValid()) {
+        
+        */
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('OrchestraOrchestraBundle:User')->find($id);
 
@@ -343,9 +347,8 @@ class UserController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('user'));
+            
+            return $this->redirect($this->generateUrl('_welcome'));
     }
     
     public function rechercherAction()

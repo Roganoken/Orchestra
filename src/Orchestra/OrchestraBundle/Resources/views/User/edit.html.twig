@@ -1,50 +1,77 @@
-{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %}
+{% extends '::base.html.twig' %}
 
-<h1>Modifier le profil de : {{ entity.username }}</h1>
-
-<form action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>  
-
-    {{ form_errors(edit_form) }}
-
-    {{ form_row(edit_form.firstname, {'label': 'Prénom', 'attr': { 'readonly': 'true' } }) }}
-    {{ form_row(edit_form.lastname, {'label': 'Nom', 'attr': { 'readonly': 'true' } }) }}
-    {{ form_row(edit_form.username, {'label': 'Identifiant'}) }}
-    {{ form_row(edit_form.classe, {'label': 'Classe', 'attr': { 'readonly': 'true' } }) }}
-    {{ form_row(edit_form.birthdate, {'label': 'Date de naissance'}) }}
-    {{ form_row(edit_form.email, {'label': 'Email'}) }}
-    {{ form_row(edit_form.phone, {'label': 'Téléphone'}) }}
-    {{ form_row(edit_form.mobilePhone, {'label': 'Mobile'}) }}
-        
-{% if is_granted("ROLE_ADMIN") %}
+{% block stylesheets %}
+    {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
     
-    {{ form_row(edit_form.isProfesseur, {'label': 'Professeur'}) }}
-    {{ form_row(edit_form.isEleve, {'label': 'Eleve'}) }}
-    {{ form_row(edit_form.isContact, {'label': 'Contact'}) }}
-    
-{% endif %}  
-    
-    {{ form_widget(edit_form._token) }}
-    
-    <p>
-        <button type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Modifier</button>
-    </p>
-</form>
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_profil.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_edit_profil.css') }}" type="text/css" media="all" />
+{% endblock %}
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('user_avatar',{ 'id': entity.id }) }}">
-            Modifier son avatar
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('user') }}">
-            Revenir à la liste des utilisateurs
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-                <button type="submit" onclick="return confirm('Etes-vous sûr de vouloir supprimer ?')">Supprimer</button>
-        </form>
-    </li>
-</ul>
+
+{% block header %}
+    {% include "OrchestraOrchestraBundle:Default:header.html.twig" %}      
+{% endblock %}
+
+
+{% block contenu %}
+
+<div id="contenu">
+    {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
+   
+    
+    <div id="content_form_edit">
+    
+        <div id="form_edit">
+       
+            <h1>Modifier mon profil</h1>
+            
+            <form action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>  
+            
+                {{ form_errors(edit_form) }}
+            
+                {{ form_row(edit_form.firstname, {'label': 'Prénom', 'attr': { 'readonly': 'true' } }) }}
+                {{ form_row(edit_form.lastname, {'label': 'Nom', 'attr': { 'readonly': 'true' } }) }}
+                {{ form_row(edit_form.username, {'label': 'Identifiant'}) }}
+                {{ form_row(edit_form.classe, {'label': 'Classe', 'attr': { 'readonly': 'true' } }) }}
+                {{ form_row(edit_form.birthdate, {'label': 'Date de naissance'}) }}
+                {{ form_row(edit_form.email, {'label': 'Email'}) }}
+                {{ form_row(edit_form.phone, {'label': 'Téléphone'}) }}
+                {{ form_row(edit_form.mobilePhone, {'label': 'Mobile'}) }}
+                    
+            {% if is_granted("ROLE_ADMIN") %}
+                
+                {{ form_row(edit_form.isProfesseur, {'label': 'Professeur'}) }}
+                {{ form_row(edit_form.isEleve, {'label': 'Eleve'}) }}
+                {{ form_row(edit_form.isContact, {'label': 'Contact'}) }}
+                
+            {% endif %}  
+                
+                {{ form_widget(edit_form._token) }}
+                
+                    <button type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Enregistrer</button>
+            </form>
+          </div>  
+                  
+        <div id="actions_droite">
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('user_avatar',{ 'id': entity.id }) }}">
+                        Modifier mon avatar
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('user') }}">
+                       Liste des utilisateurs
+                    </a>
+                </li>
+                <li>
+                   <br /><a href="{{ path('user_delete', { 'id': entity.id }) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer ?')">Supprimer mon compte</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}
