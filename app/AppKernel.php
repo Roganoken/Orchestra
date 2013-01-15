@@ -35,7 +35,8 @@ class AppKernel extends Kernel
             new Sonata\IntlBundle\SonataIntlBundle(),
             new BCC\ExtraToolsBundle\BCCExtraToolsBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
-            new Knp\Bundle\TimeBundle\KnpTimeBundle()
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

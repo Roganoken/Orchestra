@@ -5,7 +5,7 @@ namespace Orchestra\OrchestraBundle\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
-
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Orchestra\OrchestraBundle\Entity\User
@@ -221,8 +221,14 @@ class User extends BaseUser
      */
     private $sex;
     
+    
     /**
-     * @Assert\File(maxSize="500k")
+     * @Assert\File(
+     *     maxSize="1M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
+     *
+     * @var File $file
      */
     public $file;
     
@@ -938,6 +944,8 @@ class User extends BaseUser
     {
         return $this->sex;
     }
+    
+    
     
     public function getAbsolutePath()
     {

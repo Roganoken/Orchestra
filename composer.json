@@ -29,7 +29,8 @@
         "sonata-project/intl-bundle": "dev-master",
         "bcc/extra-tools-bundle": "dev-master",
         "avalanche123/imagine-bundle": "dev-master",
-        "knplabs/knp-time-bundle": "1.1.*@dev"
+        "knplabs/knp-time-bundle": "1.1.*@dev",
+        "whiteoctober/breadcrumbs-bundle": "dev-master"
         
     },
     "scripts": {
