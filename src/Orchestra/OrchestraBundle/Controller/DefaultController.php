@@ -12,9 +12,14 @@ class DefaultController extends Controller
     }
     
     
-    public function profilAction()
+    public function profilAction($id)
     {
-        return $this->render('OrchestraOrchestraBundle:Default:profil.html.twig');
+        
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('OrchestraOrchestraBundle:User')->find($id);
+        
+        return $this->render('OrchestraOrchestraBundle:Default:profil.html.twig', array(
+            'entity'      => $entity));
     }
     
     

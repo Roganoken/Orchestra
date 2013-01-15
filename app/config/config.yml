@@ -249,5 +249,5 @@ avalanche_imagine:
     filters:
         my_thumb:
             type:    thumbnail
-            options: { size: [120, 90], mode: outbound, cache_type: public, cache_expires: 2 weeks }  
+            options: { size: [161, 161], mode: outbound, cache_type: public}  
     

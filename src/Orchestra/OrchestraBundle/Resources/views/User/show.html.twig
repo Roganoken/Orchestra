@@ -26,6 +26,10 @@
             <th>Classe</th>
             <td>{{ entity.classe }}</td>
         </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>{%  if address.address1 is defined %}{% else %}non renseigné{% endif %}</td>
+        </tr>
         {% if is_granted("ROLE_ADMIN") %}
         <tr>
             <th>Date naiss.</th>

@@ -1,5 +1,5 @@
 OrchestraOrchestraBundle_profil:
-    pattern:  /profil
+    pattern:  /profil/{id}
     defaults: { _controller: OrchestraOrchestraBundle:Default:profil }
 
 OrchestraOrchestraBundle_access:
@@ -156,5 +156,5 @@ OrchestraOrchestraBundle_speciality:
 
 OrchestraOrchestraBundle_user:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/user.yml
-    prefix:   /user
+    prefix:   /profil
 

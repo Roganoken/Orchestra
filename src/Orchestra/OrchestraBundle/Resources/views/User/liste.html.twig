@@ -88,14 +88,14 @@
                             <td>{{ entity.username }}</td>
                             <td>{{ entity.classe }}</td>
                             {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.email }}</td>{% endif %}
-                            <td>{% if entity.LastLogin %}{{ entity.LastLogin|date('Y-m-d', "Europe/Paris") }}{% else %}Jamais{% endif %}</td>
+                            <td>{% if entity.LastLogin %}{{ time_diff(entity.LastLogin) }}{% else %}Jamais{% endif %}</td>
                             <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
                             <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
                             <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
                             <td>
                                 <ul>
                                     <li>
-                                        <a href="{{ path('user_show', { 'id': entity.id }) }}">Voir</a>
+                                        <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}">Voir</a>
                                     </li>
                                     {% if is_granted("ROLE_ADMIN") or entity.username == app.user.username %}
                                     <li>

@@ -52,10 +52,13 @@ class UserController extends Controller
             throw $this->createNotFoundException('Unable to find User entity.');
         }
         
+        $address = $entity->getAddress();
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('OrchestraOrchestraBundle:User:show.html.twig', array(
             'entity'      => $entity,
+            'address'     => $address,
             'delete_form' => $deleteForm->createView(),        ));
     }
     
@@ -253,7 +256,7 @@ class UserController extends Controller
             # SI PAS ADMIN
             if ($role_session == false){
                # ON REDIRIGE VERS LA PAGE "USER"
-               return $this->redirect($this->generateUrl('user'), 301);
+               return $this->redirect($this->generateUrl('OrchestraOrchestraBundle_profil', array('id' => $id)));
             }
         }
         
