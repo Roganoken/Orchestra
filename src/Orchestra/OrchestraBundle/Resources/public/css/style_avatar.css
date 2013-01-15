@@ -13,20 +13,26 @@
     margin-left:300px;
     margin-top:-440px;
     margin-bottom:50px;
-    /*background-color:lightpink;*/
+    background-color:lightpink;
 }
 
 
 #form_edit{
     float:left;
-    width:350px;  
-    /*background-color:lightblue;*/  
+    width:400px; 
+    background-color:lightblue; 
 }
 
-.form_row{
+#form_edit img{
     float:left;
-    width:350px;
-    margin-top:10px;
+    margin-left:130px;
+    margin-top: 20px;
+}
+
+form{
+    float:left;
+    margin-top:30px;
+    margin-left:25px;
 }
 
 
@@ -39,19 +45,7 @@ h1{
     text-transform: uppercase;
 }
 
-
 label{
-    color:#2b3035;
-    font-size:14px;
-    font-family: "futura", Arial, sans-serif;
-    margin-left:10px;
-    margin-top:8px;
-}
-
-input{
-    float:right;
-    height:22px;
-    width:250px;
     color:#2b3035;
     font-size:14px;
     font-family: "futura", Arial, sans-serif;
@@ -84,32 +78,24 @@ button:hover{
 }
 
 
-#orchestra_orchestrabundle_usertype_birthdate{
-    display:inline; 
-    margin-left:10px;
-    margin-bottom:10px;
-}
-
 
 #actions_droite{
     float:left;
     height:100px;
     margin-top:40px;
     margin-left:50px;
-    /*background-color:lightgreen;*/
+    background-color:lightgreen;
 }
 
 
-.record_actions a{
+#actions_droite a{
     color:#2b3035;
     font-size:14px;
     font-family: "futura", Arial, sans-serif;
     text-decoration: none;
 }
 
-.record_actions a:hover{
+#actions_droite a:hover{
     /*text-decoration: underline;*/
     color:#e65011;
 }
-
-

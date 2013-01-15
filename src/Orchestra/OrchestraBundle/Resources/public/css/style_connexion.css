@@ -31,15 +31,6 @@ p{
 }
 
 
-#contenu{
-    /*background-color:lightpink;*/
-    width:1024px;
-    height:768px;
-    position:relative;
-    left:50%;
-    margin-left: -512px;
-}
-
 
 #bloc_connexion{
     float:left;

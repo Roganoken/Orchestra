@@ -15,6 +15,8 @@ body{
 }
 
 
+
+
 #header{
     background-color:#2b3035;
     height:62px;
@@ -32,6 +34,16 @@ body{
     width:100%;
     border-top: 6px solid #e65011;
     margin-top:-36px;
+}
+
+#contenu{
+    /*background-color:lightpink;*/
+    width:1024px;
+    height:auto;
+    position:relative;
+    left:50%;
+    margin-left: -512px;
+    min-height: 100%;
 }
 
 

@@ -1,10 +1,2 @@
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ app.security.getToken().getUser().getFirstname() }} {{ app.security.getToken().getUser().getLastname() }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-        </div>
+
+{{ app.security.getToken().getUser().getFirstname() }} {{ app.security.getToken().getUser().getLastname() }}

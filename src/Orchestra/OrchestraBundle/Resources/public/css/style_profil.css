@@ -1,21 +1,9 @@
 @CHARSET "UTF-8";
 
-
 @font-face{
     font-family:futura;
     src:url("../fonts/futura_book.ttf");
     font-weight: 200;
-}
-
-
-#contenu{
-    /*background-color:lightpink;*/
-    width:1024px;
-    height:auto;
-    position:relative;
-    left:50%;
-    margin-left: -512px;
-    min-height: 100%;
 }
 
 #bloc_avatar{
