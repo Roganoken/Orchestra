@@ -15,14 +15,11 @@ class AddressType extends AbstractType
             ->add('address2')
             ->add('address3')
             ->add('other')
-            ->add('phone1')
-            ->add('phone2')
-            ->add('fax')
+            ->add('city', new CityType())
             ->add('isActive')
             ->add('isDeleted')
             ->add('created')
             ->add('updated')
-            ->add('city')
         ;
     }
 

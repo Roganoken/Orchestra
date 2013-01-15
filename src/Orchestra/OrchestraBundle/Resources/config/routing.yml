@@ -8,7 +8,7 @@ OrchestraOrchestraBundle_access:
 
 OrchestraOrchestraBundle_address:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/address.yml
-    prefix:   /address
+    prefix:   /user/address
 
 OrchestraOrchestraBundle_auteur:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/auteur.yml

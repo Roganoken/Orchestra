@@ -50,27 +50,6 @@ class Address
     private $other;
 
     /**
-     * @var string $phone1
-     *
-     * @ORM\Column(name="phone1", type="string", length=16, nullable=true)
-     */
-    private $phone1;
-
-    /**
-     * @var string $phone2
-     *
-     * @ORM\Column(name="phone2", type="string", length=16, nullable=true)
-     */
-    private $phone2;
-
-    /**
-     * @var string $fax
-     *
-     * @ORM\Column(name="fax", type="string", length=16, nullable=true)
-     */
-    private $fax;
-
-    /**
      * @var boolean $isActive
      *
      * @ORM\Column(name="is_active", type="boolean", nullable=false)
@@ -210,75 +189,6 @@ class Address
     public function getOther()
     {
         return $this->other;
-    }
-
-    /**
-     * Set phone1
-     *
-     * @param string $phone1
-     * @return Address
-     */
-    public function setPhone1($phone1)
-    {
-        $this->phone1 = $phone1;
-    
-        return $this;
-    }
-
-    /**
-     * Get phone1
-     *
-     * @return string 
-     */
-    public function getPhone1()
-    {
-        return $this->phone1;
-    }
-
-    /**
-     * Set phone2
-     *
-     * @param string $phone2
-     * @return Address
-     */
-    public function setPhone2($phone2)
-    {
-        $this->phone2 = $phone2;
-    
-        return $this;
-    }
-
-    /**
-     * Get phone2
-     *
-     * @return string 
-     */
-    public function getPhone2()
-    {
-        return $this->phone2;
-    }
-
-    /**
-     * Set fax
-     *
-     * @param string $fax
-     * @return Address
-     */
-    public function setFax($fax)
-    {
-        $this->fax = $fax;
-    
-        return $this;
-    }
-
-    /**
-     * Get fax
-     *
-     * @return string 
-     */
-    public function getFax()
-    {
-        return $this->fax;
     }
 
     /**

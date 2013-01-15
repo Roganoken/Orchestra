@@ -16,7 +16,7 @@ class UserType extends AbstractType
             ->add('username')
             ->add('password')
             ->add('classe')
-            ->add('birthdate', 'birthday', array('widget' => 'choice', 'format' => 'yyyy-MM-dd','data_timezone' => "Europe/Paris",'user_timezone' => "Europe/Paris"))
+            ->add('birthdate', 'birthday', array('widget' => 'choice', 'years' => range(date('Y') - 110, date('Y')), 'empty_value' => array('year' => 'Année', 'month' => 'Mois', 'day' => 'Jour'), 'required' => false,))
             ->add('photo')
             ->add('email')
             ->add('phone')
