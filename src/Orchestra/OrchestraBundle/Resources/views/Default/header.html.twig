@@ -1,6 +1,15 @@
 <div id="logo" >
-    <div id="avatar"><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test.jpg') }}" alt="avatar" /></div>
-    <p id="txt_avatar_nom">{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %} <br /> <span id="txt_avatar_classe">Etudiant Master 2 Web - ESTEI</span></p>
+    <div id="avatar">
+        
+        <a href="{{ path ('OrchestraOrchestraBundle_profil', { 'id': app.security.getToken().getUser().getId()}) }}">
+         {% if app.security.getToken().getUser().getPhoto() %}
+            <img src="{{ ('avatar/' ~ app.security.getToken().getUser().getPhoto()) | apply_filter('my_thumb') }}" alt="avatar" />
+        {% else %}
+            <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" alt="avatar" />
+        {% endif %}
+         </a>    
+    </div>
+    <p id="txt_avatar_nom">{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %} <br /> <span id="txt_avatar_classe">Etudiant {{ app.security.getToken().getUser().getClasse() }} - ESTEI</span></p>
     
     {% include "OrchestraOrchestraBundle:Default:menu_hd.html.twig" %}
 

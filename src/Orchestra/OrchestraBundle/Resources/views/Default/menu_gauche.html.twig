@@ -3,32 +3,46 @@
     <nav id="nav_menu">
         <ul>
             <li class="titre_menu active">
+                <a href="" alt="">
                 <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
-                <p class="txt_picto_menu">Profil</p>
+                <p class="txt_picto_menu">Accueil</p>
+                </a>
             </li>
             <li class="titre_menu">
+                <a href="{{ path ('OrchestraOrchestraBundle_profil', { 'id': app.security.getToken().getUser().getId()}) }}" alt="">
                 <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
                 <p class="txt_picto_menu">Profil</p>
+                </a>
             </li>
             <li class="titre_menu">
+                <a href="" alt="">
                 <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
-                <p class="txt_picto_menu">Profil</p>
+                <p class="txt_picto_menu">Actualités</p>
+                </a>
             </li>
             <li class="titre_menu">
+                <a href="" alt="">
                 <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
-                <p class="txt_picto_menu">Profil</p>
+                <p class="txt_picto_menu">Galeries</p>
+                </a>
             </li>
             <li class="titre_menu">
+                <a href="" alt="">
                 <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
-                <p class="txt_picto_menu">Profil</p>
+                <p class="txt_picto_menu">Tutorats</p>
+                </a>
             </li>
             <li class="titre_menu">
+                <a href="" alt="">
                 <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
-                <p class="txt_picto_menu">Profil</p>
+                <p class="txt_picto_menu">Mediathèque</p>
+                </a>
             </li>
             <li class="titre_menu">
+                <a href="{{ path('user') }}" alt="Consulter la liste des inscrits">
                 <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
-                <p class="txt_picto_menu">Profil</p>
+                <p class="txt_picto_menu">Annuaire</p>
+                </a>
             </li>        
         
         </ul>
