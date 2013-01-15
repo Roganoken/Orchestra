@@ -2,8 +2,6 @@
 
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
-    
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_profil.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_edit_profil.css') }}" type="text/css" media="all" />
 {% endblock %}
 
@@ -29,20 +27,20 @@
             
                 {{ form_errors(edit_form) }}
             
-                {{ form_row(edit_form.firstname, {'label': 'Prénom', 'attr': { 'readonly': 'true' } }) }}
-                {{ form_row(edit_form.lastname, {'label': 'Nom', 'attr': { 'readonly': 'true' } }) }}
-                {{ form_row(edit_form.username, {'label': 'Identifiant'}) }}
-                {{ form_row(edit_form.classe, {'label': 'Classe', 'attr': { 'readonly': 'true' } }) }}
-                {{ form_row(edit_form.birthdate, {'label': 'Date de naissance'}) }}
-                {{ form_row(edit_form.email, {'label': 'Email'}) }}
-                {{ form_row(edit_form.phone, {'label': 'Téléphone'}) }}
-                {{ form_row(edit_form.mobilePhone, {'label': 'Mobile'}) }}
+                <div class="form_row">{{ form_row(edit_form.firstname, {'label': 'Prénom', 'attr': { 'readonly': 'true' } }) }}</div>
+                <div class="form_row">{{ form_row(edit_form.lastname, {'label': 'Nom', 'attr': { 'readonly': 'true' } }) }}</div>
+                <div class="form_row">{{ form_row(edit_form.username, {'label': 'Identifiant'}) }}</div>
+                <div class="form_row">{{ form_row(edit_form.classe, {'label': 'Classe', 'attr': { 'readonly': 'true' } }) }}</div>
+                <div class="form_row">{{ form_row(edit_form.birthdate, {'label': 'Date de naissance'}) }}</div>
+                <div class="form_row">{{ form_row(edit_form.email, {'label': 'Email'}) }}</div>
+                <div class="form_row">{{ form_row(edit_form.phone, {'label': 'Téléphone'}) }}</div>
+                <div class="form_row">{{ form_row(edit_form.mobilePhone, {'label': 'Mobile'}) }}</div>
                     
             {% if is_granted("ROLE_ADMIN") %}
                 
-                {{ form_row(edit_form.isProfesseur, {'label': 'Professeur'}) }}
-                {{ form_row(edit_form.isEleve, {'label': 'Eleve'}) }}
-                {{ form_row(edit_form.isContact, {'label': 'Contact'}) }}
+                <div class="form_row">{{ form_row(edit_form.isProfesseur, {'label': 'Professeur'}) }}</div>
+                <div class="form_row">{{ form_row(edit_form.isEleve, {'label': 'Eleve'}) }}</div>
+                <div class="form_row">{{ form_row(edit_form.isContact, {'label': 'Contact'}) }}</div>
                 
             {% endif %}  
                 

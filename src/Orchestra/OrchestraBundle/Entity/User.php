@@ -973,6 +973,8 @@ class User extends BaseUser
         
         $photoname = $this->getUsername().sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
         
+        var_dump($this->getUploadRootDir());
+        
         // move copie le fichier présent chez le client dans le répertoire indiqué.
         $this->file->move($this->getUploadRootDir(), $photoname);
 
