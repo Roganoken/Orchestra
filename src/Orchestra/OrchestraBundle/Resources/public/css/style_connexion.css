@@ -32,7 +32,6 @@ p{
 
 
 #contenu{
-    /*background-color:lightpink;*/
     width:1024px;
     height:768px;
     position:relative;
@@ -43,7 +42,6 @@ p{
 
 #bloc_connexion{
     float:left;
-    /*background-color:#2b3035;*/
     background-image:url("../img/bg_bloc_connexion.png");
     background-repeat:no-repeat;
     width:330px;
@@ -59,44 +57,72 @@ p{
 #txt_connexion{
     font-size:20px;
     color:#ffffff;
-    font-family:Verdana, sans-serif; 
+    font-family:futura, Verdana, sans-serif; 
     margin-left:25px;
     margin-top:10px;
+    margin-bottom:15px;
 }
 
 
 #picto_connex{
-    /*background-image:url("../img/picto_connex.png");*/
+    float:left;
+    background-image:url("../img/picto_connex.png");
+    background-position: 0px 0px;
     width:24px;
     height:39px;
     margin-left:306px;
-    margin-top:-34px;
+    margin-top:-254px;
 }
 
 
 #picto_inscrip{
+    float:left;
     background-image:url("../img/picto_inscrip.png");
     background-position: -34px 0px;
     background-repeat:no-repeat;
     width:24px;
     height:39px;
     margin-left:306px;
-    margin-top:5px; 
+    margin-top:-210px; 
 }
 
 #picto_inscrip:hover{
-    background-image:url("../img/picto_inscrip.png");
     background-position: 0px 0px;
-    background-repeat:no-repeat;
-    width:24px;
-    height:39px;
-    margin-left:306px;
-    margin-top:5px; 
 }
 
 
-.formular label{
+label{
     color:#ffffff;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+    margin-left:27px;
+}
+
+input{
+    width:235px;
+    height:20px;
+    display:block;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+    color:#a8a9ab;
+    padding-left: 10px;
+    margin: 5px 5px 10px 27px;
+}
+
+#remember_me{
+    display:inline;
+    margin-left:27px;
+    margin-right:-25px;
+    margin-top:-5px;
+}
+
+#_submit{
+    float:left;
+    margin:15px 102px 10px 102px;
+    width:100px;
+    height:30px;
+    color:#2b3035;
+    padding:0px;
 }
 
 
