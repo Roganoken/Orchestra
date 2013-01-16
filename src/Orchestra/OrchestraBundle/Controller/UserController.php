@@ -298,7 +298,7 @@ class UserController extends Controller
             # SI PAS ADMIN
             if ($role_session == false){
                # ON REDIRIGE VERS LA PAGE "USER"
-               return $this->redirect($this->generateUrl('user'), 301);
+               return $this->redirect($this->generateUrl('annuaire'), 301);
             }
         }
 
@@ -306,11 +306,6 @@ class UserController extends Controller
         $editForm = $this->createForm(new UserType(), $entity);
         $editForm->bind($request);
         
-        $password = $editForm['password']->getData();
-        
-        if (isset($password)){
-        $entity->setPlainPassword($password);
-        }
         $entity->setUpdated(new \Datetime());
 
         if ($editForm->isValid()) {
@@ -365,7 +360,7 @@ class UserController extends Controller
             $motcle = $request->request->get('motcle');
 
             $em = $this->container->get('doctrine')->getEntityManager();
-
+            
             if($motcle != '')
             {
                    $qb = $em->createQueryBuilder();
@@ -428,7 +423,7 @@ class UserController extends Controller
             # SI PAS ADMIN
             if ($role_session == false){
                # ON REDIRIGE VERS LA PAGE "USER"
-               return $this->redirect($this->generateUrl('user'), 301);
+               return $this->redirect($this->generateUrl('annuaire'), 301);
             }
         }
         

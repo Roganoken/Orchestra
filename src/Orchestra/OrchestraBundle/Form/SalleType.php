@@ -12,8 +12,8 @@ class SalleType extends AbstractType
     {
         $builder
             ->add('numero')
+            ->add('nom')
             ->add('capacite')
-            ->add('course')
         ;
     }
 

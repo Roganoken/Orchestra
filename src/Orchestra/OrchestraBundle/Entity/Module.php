@@ -24,14 +24,21 @@ class Module
     /**
      * @var string $intitule
      *
-     * @ORM\Column(name="intitule", type="string", length=45, nullable=true)
+     * @ORM\Column(name="intitule", type="string", length=45, nullable=false)
      */
     private $intitule;
 
     /**
-     * @var \DateTime $date
+     * @var text $description
      *
-     * @ORM\Column(name="date", type="date", nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var \DateTime $datetime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
 
@@ -264,5 +271,28 @@ class Module
     public function getSalle()
     {
         return $this->salle;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Module
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

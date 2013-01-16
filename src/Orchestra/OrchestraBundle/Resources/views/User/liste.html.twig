@@ -1,33 +1,8 @@
-{% extends '::base.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_profil.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_edit_profil.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_menu_hd.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_menu_gauche.css') }}" type="text/css" media="all" />
-{% endblock %}
-
-{% block header %}
-<div id="logo" >
-    <div id="avatar"><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test.jpg') }}" alt="avatar" /></div>
-    <p id="txt_avatar_nom">{% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %} <br /> <span id="txt_avatar_classe">Etudiant Master 2 Web - ESTEI</span></p>
-    
-    {% include "OrchestraOrchestraBundle:Default:menu_hd.html.twig" %}
-
-</div>
-         
-{% endblock %}
-
-{% block contenu %}
-
-<div id="contenu">
-    {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
-
-    {% include "OrchestraOrchestraBundle:User:is_connected.html.twig" %}
         
        <div id="form_edit">        
 
-            <h1><a href="{{ path('user') }}">Liste des utilisateurs</a></h1>
+            <h1><a href="{{ path('annuaire') }}">Liste des utilisateurs</a></h1>
             
             {% if entities %}
             
@@ -41,33 +16,33 @@
                             {% if is_granted("ROLE_ADMIN") %}<th>Id</th>{% endif %}
                             <th>
                                 {% if by == 'asc' %}
-                                <a href="{{ path('user', { 'sort': 'firstname', 'by': 'desc' }) }}">
+                                <a href="{{ path('annuaire', { 'sort': 'firstname', 'by': 'desc' }) }}">
                                 {% else %}
-                                <a href="{{ path('user', { 'sort': 'firstname', 'by': 'asc' }) }}">
+                                <a href="{{ path('annuaire', { 'sort': 'firstname', 'by': 'asc' }) }}">
                                 {% endif %}
                                 Prenom</a>
                              </th>
                             <th>
                                 {% if by == 'asc' %}
-                                <a href="{{ path('user', { 'sort': 'lastname', 'by': 'desc' }) }}">
+                                <a href="{{ path('annuaire', { 'sort': 'lastname', 'by': 'desc' }) }}">
                                 {% else %}
-                                <a href="{{ path('user', { 'sort': 'lastname', 'by': 'asc' }) }}">
+                                <a href="{{ path('annuaire', { 'sort': 'lastname', 'by': 'asc' }) }}">
                                 {% endif %}
                                 Nom</a>
                              </th>
                             <th>
                                 {% if by == 'asc' %}
-                                <a href="{{ path('user', { 'sort': 'username', 'by': 'desc' }) }}">
+                                <a href="{{ path('annuaire', { 'sort': 'username', 'by': 'desc' }) }}">
                                 {% else %}
-                                <a href="{{ path('user', { 'sort': 'username', 'by': 'asc' }) }}">
+                                <a href="{{ path('annuaire', { 'sort': 'username', 'by': 'asc' }) }}">
                                 {% endif %}
                                 Identifiant</a>
                              </th>
                             <th>
                                 {% if by == 'asc' %}
-                                <a href="{{ path('user', { 'sort': 'classe', 'by': 'desc' }) }}">
+                                <a href="{{ path('annuaire', { 'sort': 'classe', 'by': 'desc' }) }}">
                                 {% else %}
-                                <a href="{{ path('user', { 'sort': 'classe', 'by': 'asc' }) }}">
+                                <a href="{{ path('annuaire', { 'sort': 'classe', 'by': 'asc' }) }}">
                                 {% endif %}
                                 Classe</a>
                              </th>
@@ -113,7 +88,4 @@
             <p>Aucun résultats</p>
             {% endif %}
 
-      </div>
-</div>
-
-{% endblock %}   
+      </div>  
