@@ -49,7 +49,7 @@
         <nav class="bloc_tab">
             <ul>
                 <li class="bloc_li bloc_li_donnees_width">Adresse : <span>44 Rue de la faiencerie</span></li>
-                <li class="bloc_li bloc_li_donnees_width">Tél : <span>{% if entity.mobilePhone %}{% else %}non renseigné{% endif %}</span></li>
+                <li class="bloc_li bloc_li_donnees_width">Tél : <span>{% if entity.mobilePhone %}{{ entity.mobilePhone }}{% else %}non renseigné{% endif %}</span></li>
                 <li class="bloc_li bloc_li_donnees_width">Mail : <span>{{ entity.email }}</span></li>
                 <li class="bloc_li bloc_li_donnees_width">Site Web : <span>www.estei.fr</span></li>
             </ul>

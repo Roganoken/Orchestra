@@ -77,6 +77,14 @@ class ModuleController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            // CREATEUR DU MODULE
+            $user_id = $this->get('security.context')->getToken()->getUser();
+            
+            $entity->setModuleUser($user_id);
+            $entity->setCreated(new \Datetime());
+            $entity->setUpdated(new \Datetime());
+            
             $em->persist($entity);
             $em->flush();
 
@@ -101,6 +109,24 @@ class ModuleController extends Controller
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Module entity.');
+        }
+
+        # RECUPERE LE USERNAME DE SESSION
+        $username_session = $this->get('security.context')->getToken()->getUser()->getId();
+        
+        # RECUPERE LE USERNAME DE L'ENTITE
+        $username_entity = $entity->getModuleUser()->getId();
+        
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        # SI LES USERNAME SONT DIFFERENT, ON VERIFIE SI ROLE_ADMIN
+        if (($username_session != $username_entity)) {
+            # SI PAS ADMIN
+            if ($role_session == false){
+               # ON REDIRIGE VERS LA PAGE "USER"
+               return $this->redirect($this->generateUrl('module'), 301);
+            }
         }
 
         $editForm = $this->createForm(new ModuleType(), $entity);
@@ -132,6 +158,9 @@ class ModuleController extends Controller
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+            
+            $entity->setUpdated(new \Datetime());
+            
             $em->persist($entity);
             $em->flush();
 

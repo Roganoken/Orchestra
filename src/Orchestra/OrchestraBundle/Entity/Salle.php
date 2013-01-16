@@ -29,33 +29,25 @@ class Salle
     private $numero;
 
     /**
-     * @var string $capacite
+     * @var string $nom
      *
-     * @ORM\Column(name="capacite", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      */
-    private $capacite;
+    private $nom;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var string $capacite
      *
-     * @ORM\ManyToMany(targetEntity="Orchestra\OrchestraBundle\Entity\Course", inversedBy="salle")
-     * @ORM\JoinTable(name="salle_course",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="salle_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="course_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\Column(name="capacite", type="integer", length=2, nullable=true)
      */
-    private $course;
+    private $capacite;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->course = new \Doctrine\Common\Collections\ArrayCollection();
+        
     }
     
 
@@ -95,7 +87,7 @@ class Salle
     /**
      * Set capacite
      *
-     * @param string $capacite
+     * @param integer $capacite
      * @return Salle
      */
     public function setCapacite($capacite)
@@ -108,7 +100,7 @@ class Salle
     /**
      * Get capacite
      *
-     * @return string 
+     * @return integer 
      */
     public function getCapacite()
     {
@@ -116,35 +108,25 @@ class Salle
     }
 
     /**
-     * Add course
+     * Set nom
      *
-     * @param Orchestra\OrchestraBundle\Entity\Course $course
+     * @param string $nom
      * @return Salle
      */
-    public function addCourse(\Orchestra\OrchestraBundle\Entity\Course $course)
+    public function setNom($nom)
     {
-        $this->course[] = $course;
+        $this->nom = $nom;
     
         return $this;
     }
 
     /**
-     * Remove course
+     * Get nom
      *
-     * @param Orchestra\OrchestraBundle\Entity\Course $course
+     * @return string 
      */
-    public function removeCourse(\Orchestra\OrchestraBundle\Entity\Course $course)
+    public function getNom()
     {
-        $this->course->removeElement($course);
-    }
-
-    /**
-     * Get course
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getCourse()
-    {
-        return $this->course;
+        return $this->nom;
     }
 }

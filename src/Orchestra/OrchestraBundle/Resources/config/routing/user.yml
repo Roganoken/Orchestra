@@ -1,10 +1,3 @@
-user:
-    pattern:  /{sort}/{by}
-    defaults: { _controller: "OrchestraOrchestraBundle:User:index", sort: firstname, by: asc }
-    requirements:
-        sort: firstname|lastname|classe|username
-        by: asc|desc
-
 user_show:
     pattern:  /{id}/show
     defaults: { _controller: "OrchestraOrchestraBundle:User:show" }
@@ -22,12 +15,6 @@ user_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "OrchestraOrchestraBundle:User:delete" }
     requirements: { _method: get }
-    
-user_search:
-  pattern: /rechercher
-  defaults: { _controller: OrchestraOrchestraBundle:User:rechercher }
-  requirements:
-    _method: POST
     
 user_avatar:
   pattern: /{id}/avatar

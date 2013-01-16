@@ -12,12 +12,19 @@ class ModuleType extends AbstractType
     {
         $builder
             ->add('intitule')
-            ->add('date')
-            ->add('created')
-            ->add('updated')
-            ->add('user')
-            ->add('moduleUser')
-            ->add('salle')
+            ->add('date', 'datetime', array('widget' => 'choice', 
+                'years' => range(date('Y'), date('Y')), 
+                'empty_value' => array('year' => 'Année', 
+                                       'month' => 'Mois', 
+                                       'day' => 'Jour',
+                                       'hour' => 'Heure', 
+                                       'minute' => 'Minute'
+                    ), 
+                ))
+            ->add('description')
+            ->add('salle', 'entity', array(
+    'class' => 'OrchestraOrchestraBundle:Salle',
+    'property' => 'numero',))
         ;
     }
 

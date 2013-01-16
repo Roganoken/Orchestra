@@ -10,6 +10,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: orchestra, label: Sexe }
         arguments: [null, Orchestra\OrchestraBundle\Entity\Sex, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.salle:
+        class: Orchestra\OrchestraBundle\Admin\SalleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: orchestra, label: Salle }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Salle, SonataAdminBundle:CRUD]
         
     orchestra_orchestra.form.label_extension:
         class: Orchestra\OrchestraBundle\Form\Extension\LabelFormTypeExtension

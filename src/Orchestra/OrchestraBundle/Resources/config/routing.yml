@@ -2,6 +2,19 @@ OrchestraOrchestraBundle_profil:
     pattern:  /profil/{id}
     defaults: { _controller: OrchestraOrchestraBundle:Default:profil }
 
+annuaire:
+    pattern:  /annuaire/{sort}/{by}
+    defaults: { _controller: "OrchestraOrchestraBundle:User:index", sort: firstname, by: asc }
+    requirements:
+        sort: firstname|lastname|classe|username
+        by: asc|desc
+        
+user_search:
+    pattern: /annuaire/rechercher
+    defaults: { _controller: OrchestraOrchestraBundle:User:rechercher }
+    requirements:
+        _method: POST        
+
 OrchestraOrchestraBundle_access:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/access.yml
     prefix:   /access
@@ -96,7 +109,7 @@ OrchestraOrchestraBundle_media:
 
 OrchestraOrchestraBundle_module:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/module.yml
-    prefix:   /module
+    prefix:   /tutorat
 
 OrchestraOrchestraBundle_news:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/news.yml

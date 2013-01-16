@@ -129,20 +129,12 @@ class Course
     private $user;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Orchestra\OrchestraBundle\Entity\Salle", mappedBy="course")
-     */
-    private $salle;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->diploma = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->salle = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
 
@@ -473,38 +465,5 @@ class Course
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Add salle
-     *
-     * @param Orchestra\OrchestraBundle\Entity\Salle $salle
-     * @return Course
-     */
-    public function addSalle(\Orchestra\OrchestraBundle\Entity\Salle $salle)
-    {
-        $this->salle[] = $salle;
-    
-        return $this;
-    }
-
-    /**
-     * Remove salle
-     *
-     * @param Orchestra\OrchestraBundle\Entity\Salle $salle
-     */
-    public function removeSalle(\Orchestra\OrchestraBundle\Entity\Salle $salle)
-    {
-        $this->salle->removeElement($salle);
-    }
-
-    /**
-     * Get salle
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getSalle()
-    {
-        return $this->salle;
     }
 }

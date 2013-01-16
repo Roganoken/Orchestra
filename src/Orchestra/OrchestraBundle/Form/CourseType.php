@@ -24,7 +24,6 @@ class CourseType extends AbstractType
             ->add('isFede')
             ->add('diploma')
             ->add('user')
-            ->add('salle')
         ;
     }
 

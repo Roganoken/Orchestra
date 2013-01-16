@@ -18,6 +18,10 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('OrchestraOrchestraBundle:User')->find($id);
         
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+        
         return $this->render('OrchestraOrchestraBundle:Default:profil.html.twig', array(
             'entity'      => $entity));
     }
