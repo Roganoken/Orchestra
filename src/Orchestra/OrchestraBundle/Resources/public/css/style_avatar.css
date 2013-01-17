@@ -13,14 +13,14 @@
     margin-left:300px;
     margin-top:-440px;
     margin-bottom:50px;
-    background-color:lightpink;
+    /*background-color:lightpink;*/
 }
 
 
 #form_edit{
     float:left;
     width:400px; 
-    background-color:lightblue; 
+    /*background-color:lightblue; */
 }
 
 #form_edit img{
@@ -84,7 +84,7 @@ button:hover{
     height:100px;
     margin-top:40px;
     margin-left:50px;
-    background-color:lightgreen;
+    /*background-color:lightgreen;*/
 }
 
 
