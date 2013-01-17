@@ -28,6 +28,25 @@ class ModuleController extends Controller
             'entities' => $entities,
         ));
     }
+    
+    
+    public function nextAction($max = 3)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Module', 'a')
+          ->orderBy('a.date', 'DESC')
+          ->setMaxResults($max);
+
+        $query = $qb->getQuery();
+        $tutorats = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:Module:next.html.twig', array(
+            'tutorats' => $tutorats,
+        ));
+    }
 
     /**
      * Finds and displays a Module entity.
@@ -37,7 +56,7 @@ class ModuleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('OrchestraOrchestraBundle:Module')->find($id);
+        $entity = $em->getRepository('Or,chestraOrchestraBundle:Module')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Module entity.');
