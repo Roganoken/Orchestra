@@ -1,91 +1,96 @@
 
-        
-       <div id="form_edit">        
 
-            <h1><a href="{{ path('annuaire') }}">Liste des utilisateurs</a></h1>
-            
-            {% if entities %}
-            
-                {% if entities|length > 1 %} <p> {{ entities|length }} utilisateurs</p>
-                {% else %}<p>{{ entities|length }} utilisateur</p>
-                {% endif %}
-                
-                <table class="records_list">
-                    <thead>
-                        <tr>
-                            {% if is_granted("ROLE_ADMIN") %}<th>Id</th>{% endif %}
-                            <th>
-                                {% if by == 'asc' %}
-                                <a href="{{ path('annuaire', { 'sort': 'firstname', 'by': 'desc' }) }}">
-                                {% else %}
-                                <a href="{{ path('annuaire', { 'sort': 'firstname', 'by': 'asc' }) }}">
-                                {% endif %}
-                                Prenom</a>
-                             </th>
-                            <th>
-                                {% if by == 'asc' %}
-                                <a href="{{ path('annuaire', { 'sort': 'lastname', 'by': 'desc' }) }}">
-                                {% else %}
-                                <a href="{{ path('annuaire', { 'sort': 'lastname', 'by': 'asc' }) }}">
-                                {% endif %}
-                                Nom</a>
-                             </th>
-                            <th>
-                                {% if by == 'asc' %}
-                                <a href="{{ path('annuaire', { 'sort': 'username', 'by': 'desc' }) }}">
-                                {% else %}
-                                <a href="{{ path('annuaire', { 'sort': 'username', 'by': 'asc' }) }}">
-                                {% endif %}
-                                Identifiant</a>
-                             </th>
-                            <th>
-                                {% if by == 'asc' %}
-                                <a href="{{ path('annuaire', { 'sort': 'classe', 'by': 'desc' }) }}">
-                                {% else %}
-                                <a href="{{ path('annuaire', { 'sort': 'classe', 'by': 'asc' }) }}">
-                                {% endif %}
-                                Classe</a>
-                             </th>
-                            {% if is_granted("ROLE_ADMIN") %}<th>Email</th>{% endif %}
-                            <th>Dernière connexion</th>
-                            <th>Professeur</th>
-                            <th>Eleve</th>
-                            <th>Contact</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for entity in entities %}
-                        <tr>
-                            {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.id }}</td>{% endif %}
-                            <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.firstname }}</a></td>
-                            <td>{{ entity.lastname }}</td>
-                            <td>{{ entity.username }}</td>
-                            <td>{{ entity.classe }}</td>
-                            {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.email }}</td>{% endif %}
-                            <td>{% if entity.LastLogin %}{{ time_diff(entity.LastLogin) }}{% else %}Jamais{% endif %}</td>
-                            <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}">Voir</a>
-                                    </li>
-                                    {% if is_granted("ROLE_ADMIN") or entity.username == app.user.username %}
-                                    <li>
-                                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">Modifier</a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            
-            {% else %}
-            <p>Aucun résultats</p>
-            {% endif %}
+<h1><a href="{{ path('annuaire') }}">Liste des utilisateurs</a></h1>
 
-      </div>  
+{% if entities %}
+
+    {% if entities|length > 1 %} <p> {{ entities|length }} utilisateurs</p>
+    {% else %}<p>{{ entities|length }} utilisateur</p>
+    {% endif %}
+    
+    <table class="records_list">
+        <thead>
+            <tr>
+                {% if is_granted("ROLE_ADMIN") %}<th>Id</th>{% endif %}
+                <th>
+                    {% if by == 'asc' %}
+                        <a href="{{ path('annuaire', { 'sort': 'firstname', 'by': 'desc' }) }}">
+                    {% else %}
+                        <a href="{{ path('annuaire', { 'sort': 'firstname', 'by': 'asc' }) }}">
+                    {% endif %}
+                    Prenom</a>
+                 </th>
+                <th>
+                    {% if by == 'asc' %}
+                        <a href="{{ path('annuaire', { 'sort': 'lastname', 'by': 'desc' }) }}">
+                    {% else %}
+                        <a href="{{ path('annuaire', { 'sort': 'lastname', 'by': 'asc' }) }}">
+                    {% endif %}
+                    Nom</a>
+                 </th>
+                <th>
+                    {% if by == 'asc' %}
+                        <a href="{{ path('annuaire', { 'sort': 'username', 'by': 'desc' }) }}">
+                    {% else %}
+                        <a href="{{ path('annuaire', { 'sort': 'username', 'by': 'asc' }) }}">
+                    {% endif %}
+                    Identifiant</a>
+                 </th>
+                <th>
+                    {% if by == 'asc' %}
+                        <a href="{{ path('annuaire', { 'sort': 'classe', 'by': 'desc' }) }}">
+                    {% else %}
+                        <a href="{{ path('annuaire', { 'sort': 'classe', 'by': 'asc' }) }}">
+                    {% endif %}
+                    Classe</a>
+                 </th>
+                {% if is_granted("ROLE_ADMIN") %}<th>Email</th>{% endif %}
+                <th>Dernière connexion</th>
+                <th>Professeur</th>
+                <th>Eleve</th>
+                <th>Contact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.id }}</td>{% endif %}
+                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.firstname }}</a></td>
+                <td>{{ entity.lastname }}</td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.classe }}</td>
+                {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.email }}</td>{% endif %}
+                <td>{% if entity.LastLogin %}{{ time_diff(entity.LastLogin) }}{% else %}Jamais{% endif %}</td>
+                <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+                <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+                <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}">Voir</a>
+                        </li>
+                        {% if is_granted("ROLE_ADMIN") or entity.username == app.user.username %}
+                        <li>
+                            <a href="{{ path('user_edit', { 'id': entity.id }) }}">Modifier</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% else %}
+<p>Aucun résultats</p>
+{% endif %}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+
+@font-face{
+    font-family:futura;
+    src:url("../fonts/futura_book.ttf");
+    font-weight: 200;
+}
+
+
+#content_form_edit{
+    float:left;
+    margin-left:300px;
+    margin-top:-440px;
+    margin-bottom:50px;
+    background-color:lightpink;
+}
+
+
+#form_edit{
+    float:left;
+    /*width:350px;*/  
+    background-color:lightblue;
+}
+
+
+h1 a{
+    color:#2b3035;
+    font-size:20px;
+    font-family: "futura", Arial, sans-serif;
+    margin-left:10px;
+    margin-bottom:10px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#form_recherche{
+    float:right;
+    position:relative;
+    z-index:1;
+    background-color:lightgreen;
+    margin-top:30px;
+}
+
+.records_list{
+    float:left;    
+    margin-top:30px;
+}

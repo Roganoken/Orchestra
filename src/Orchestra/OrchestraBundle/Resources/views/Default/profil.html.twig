@@ -18,11 +18,13 @@
     
     <div id="bloc_avatar">
         <div id="bloc_carre_avatar">
-         {% if entity.photo %}
-            <img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" alt="avatar" />
-        {% else %}
-            <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" alt="avatar" />
-        {% endif %}
+            
+                 {% if entity.photo %}
+                    <img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" alt="avatar" />
+                {% else %}
+                    <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" alt="avatar" />
+                {% endif %}
+            <a href="{{ path('user_avatar',{ 'id': entity.id }) }}"><div id="rollover_avatar"></div></a>
         </div>
         <div id="txt_bloc_avatar">
             <nav>
