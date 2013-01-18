@@ -20,20 +20,29 @@ class UserController extends Controller
      * Lists all User entities.
      *
      */
-    public function indexAction($sort, $by)
+    public function indexAction()
     {
         
         $form = $this->container->get('form.factory')->create(new UserSearchType());
         
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->get('doctrine.orm.entity_manager');
+        $dql = "SELECT a FROM OrchestraOrchestraBundle:User a";
+        $query = $em->createQuery($dql);
+        
+        $dql2 = "SELECT COUNT(a) FROM OrchestraOrchestraBundle:User a";
+        $query2 = $em->createQuery($dql2);
+        $count = $query2->getSingleScalarResult();
 
-        $entities = $em->getRepository('OrchestraOrchestraBundle:User')->findBy(array(), array($sort=>$by));
-
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            4/*limit per page*/
+                );
         return $this->render('OrchestraOrchestraBundle:User:index.html.twig', array(
-            'entities' => $entities,
-            'form' => $form->createView(),
-            'sort' => $sort,
-            'by' => $by
+            'entities' => $pagination,
+            'total' => $count,
+            'form' => $form->createView()
         ));
         
     }
@@ -351,7 +360,6 @@ class UserController extends Controller
     
     public function rechercherAction()
     {
-        
         $request = $this->container->get('request');
 
         if($request->isXmlHttpRequest())
@@ -367,22 +375,26 @@ class UserController extends Controller
 
                    $qb->select('a')
                       ->from('OrchestraOrchestraBundle:User', 'a')
-                      ->where("LOWER(a.username) LIKE :motcle OR LOWER(a.firstname) LIKE :motcle OR LOWER(a.lastname) LIKE :motcle")
+                      ->where("LOWER(a.firstname) LIKE :motcle OR LOWER(a.lastname) LIKE :motcle")
                       ->orderBy('a.firstname', 'ASC')
                       ->setParameter('motcle', strtolower($motcle).'%');
 
-                   $query = $qb->getQuery();               
-                   $entities = $query->getResult();
+                   $query = $qb->getQuery(); 
+                   
+                   $paginator = $this->get('knp_paginator');
+                   $pagination = $paginator->paginate(
+                        $query,
+                        $this->get('request')->query->get('page', 1)/*page number*/,
+                        10/*limit per page*/
+                    );
                    
             }
             else {
-                $entities = $em->getRepository('OrchestraOrchestraBundle:User')->findAll();
+                return $this->indexAction();
             }
 
             return $this->container->get('templating')->renderResponse('OrchestraOrchestraBundle:User:liste.html.twig', array(
-                'entities' => $entities,
-                'sort' => 'firstname',
-                'by' => 'asc'
+                'entities' => $pagination
                 ));
             
       }

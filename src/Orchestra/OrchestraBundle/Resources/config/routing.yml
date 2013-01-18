@@ -3,11 +3,8 @@ OrchestraOrchestraBundle_profil:
     defaults: { _controller: OrchestraOrchestraBundle:Default:profil }
 
 annuaire:
-    pattern:  /annuaire/{sort}/{by}
-    defaults: { _controller: "OrchestraOrchestraBundle:User:index", sort: firstname, by: asc }
-    requirements:
-        sort: firstname|lastname|classe|username
-        by: asc|desc
+    pattern:  /annuaire
+    defaults: { _controller: "OrchestraOrchestraBundle:User:index"}
         
 user_search:
     pattern: /annuaire/rechercher

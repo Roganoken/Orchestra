@@ -1,5 +1,33 @@
-{% for tutorat in tutorats %}
-  <a href="">
-      {{ tutorat.intitule }}
-  </a>
-{% endfor %}
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Intitule</th>
+            <th>Date</th>
+            <th>Ajouté le</th>
+            <th>Par</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>   
+        {% for tutorat in tutorats %}
+        <tr>
+            <td><a href="{{ path('module_show', { 'id': tutorat.id }) }}">{{ tutorat.intitule }}</a></td>
+            <td>{{ tutorat.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
+            <td>{{ tutorat.created|format_date }}</td>
+            <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': tutorat.moduleUser.id }) }}">{{ tutorat.moduleUser.firstname }} {{ tutorat.moduleUser.lastname }}</a></td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('module_show', { 'id': tutorat.id }) }}">Voir</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") or tutorat.moduleUser.id == app.security.getToken().getUser().getId() %}
+                    <li>
+                        <a href="{{ path('module_edit', { 'id': tutorat.id }) }}">Modifier</a>
+                    </li>
+                    {% endif %}
+                </ul>
+             </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
