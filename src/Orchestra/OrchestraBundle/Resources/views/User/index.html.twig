@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_annuaire_liste.css') }}" type="text/css" media="all" />
+<link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_annuaire_liste.css') }}" type="text/css" media="all" />
 {% endblock %}
 
 
@@ -16,38 +16,40 @@
 <div id="contenu">
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
 
-   <div id="content_form_edit">
+        <div id="content_form_edit">
 
-           <div id="form_edit">
-                <form id="form_recherche" action="{{ path('user_search') }}" method="post">
-                    {{ form_widget(form.motcle) }}
-                    {{ form_errors(form.motcle) }} 
-                    <input type="submit" value="Rechercher" />
-                </form>            
+            <div id="form_edit">
+                     <form id="form_recherche" action="{{ path('user_search') }}" method="post">
+                        {{ form_widget(form.motcle) }}
+                        {{ form_errors(form.motcle) }} 
+                        <input type="submit" value="Rechercher" />
+                    </form>  
+
+                    <div id="resultats_recherche"> 
+                    {% include 'OrchestraOrchestraBundle:User:liste.html.twig' with {'entities' : entities}  %}
+                    </div>
+
+            </div>
+
+                    <script>
+                    $("#form_recherche").submit(function(){ 
     
-                {% include 'OrchestraOrchestraBundle:User:liste.html.twig' with {'entities' : entities}  %}
-
-           </div>
-
-                <script>
-                $("#form_recherche").submit(function(){ 
-    
-                    var motcle = $("#usersearch_motcle").val();
-                    var DATA = 'motcle=' + motcle;
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ path('user_search')}}",
-                        data: DATA,
-                        cache: false,
-                        success: function(data){
-                           $('#resultats_recherche').html(data);
-                        }
-                    });    
-                    return false;
-                });
-                    </script>
+                        var motcle = $("#usersearch_motcle").val();
+                        var DATA = 'motcle=' + motcle;
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ path('user_search')}}",
+                            data: DATA,
+                            cache: false,
+                            success: function(data){
+                               $('#resultats_recherche').html(data);
+                            }
+                        });    
+                        return false;
+                    });
+                        </script>
 
 
-    </div>
+                    </div>
 
 {% endblock %} 

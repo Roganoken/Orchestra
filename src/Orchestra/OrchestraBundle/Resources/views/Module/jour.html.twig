@@ -1,0 +1,51 @@
+{% if tutorat_jours %}
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Intitule</th>
+                <th>Date</th>
+                <th>Ajouté le</th>
+                <th>Par</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tutorat_jour in tutorat_jours %}
+            <tr>
+                <td><a href="{{ path('module_show', { 'id': tutorat_jour.id }) }}">{{ tutorat_jour.intitule }}</a></td>
+                <td>{{ tutorat_jour.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
+                <td>{{ tutorat_jour.created|format_date }}</td>
+                <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': tutorat_jour.moduleUser.id }) }}">{{ tutorat_jour.moduleUser.firstname }} {{ tutorat_jour.moduleUser.lastname }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('module_show', { 'id': tutorat_jour.id }) }}">Voir</a>
+                        </li>
+                        {% if is_granted("ROLE_ADMIN") or tutorat_jour.moduleUser.id == app.security.getToken().getUser().getId() %}
+                        <li>
+                            <a href="{{ path('module_edit', { 'id': tutorat_jour.id }) }}">Modifier</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_granted("ROLE_ADMIN") %}
+    <ul>
+        <li>
+            <a href="{{ path('module_new') }}">
+                Ajouter un tutorat
+            </a>
+        </li>
+    </ul>
+    {% endif %}
+{% else %}
+
+<p>Pas de tutorats aujourd'hui</p>
+
+{% endif %}
+
+
+

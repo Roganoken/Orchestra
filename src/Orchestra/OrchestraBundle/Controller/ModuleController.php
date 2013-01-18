@@ -20,15 +20,55 @@ class ModuleController extends Controller
      */
     public function indexAction()
     {
+        return $this->render('OrchestraOrchestraBundle:Module:index.html.twig'
+        );
+    }
+
+    /**
+     * LISTE TOUS LES TUTORATS.
+     *
+     */
+    
+    public function historiqueAction()
+    {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('OrchestraOrchestraBundle:Module')->findAll();
+        $historiques = $em->getRepository('OrchestraOrchestraBundle:Module')->findAll();
 
-        return $this->render('OrchestraOrchestraBundle:Module:index.html.twig', array(
+        return $this->render('OrchestraOrchestraBundle:Module:historique.html.twig', array(
+            'historiques' => $historiques,
+        ));
+    }
+
+    /**
+     * LISTE TOUS LES TUTORATS A VENIR.
+     *
+     */
+    
+    public function listeAction()
+    {
+        
+        $em = $this->container->get('doctrine')->getEntityManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Module', 'a')
+          ->where('a.date >= :today')
+          ->setParameter('today', new \DateTime())
+          ->orderBy('a.date', 'DESC');
+
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:Module:liste.html.twig', array(
             'entities' => $entities,
         ));
     }
-    
+
+    /**
+     * AFFICHE LES 3 DERNIERS TUTORATS.
+     *
+     */
     
     public function nextAction($max = 3)
     {
@@ -37,7 +77,9 @@ class ModuleController extends Controller
         $qb = $em->createQueryBuilder();
         $qb->select('a')
           ->from('OrchestraOrchestraBundle:Module', 'a')
-          ->orderBy('a.date', 'DESC')
+          ->where('a.date >= :today')
+          ->setParameter('today', new \DateTime())
+          ->orderBy('a.date', 'ASC')
           ->setMaxResults($max);
 
         $query = $qb->getQuery();
@@ -49,6 +91,31 @@ class ModuleController extends Controller
     }
 
     /**
+     * TUTORAT DU JOUR.
+     *
+     */
+    
+    public function jourAction()
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Module', 'a')
+          ->where('a.date >= :today and a.date <= :now')
+          ->setParameter('today', new \DateTime('today'))
+          ->setParameter('now', new \DateTime('now'))
+          ->orderBy('a.date', 'ASC');
+
+        $query = $qb->getQuery();
+        $tutorat_jours = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:Module:jour.html.twig', array(
+            'tutorat_jours' => $tutorat_jours,
+        ));
+    }
+
+    /**
      * Finds and displays a Module entity.
      *
      */
@@ -56,7 +123,7 @@ class ModuleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('Or,chestraOrchestraBundle:Module')->find($id);
+        $entity = $em->getRepository('OrchestraOrchestraBundle:Module')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Module entity.');

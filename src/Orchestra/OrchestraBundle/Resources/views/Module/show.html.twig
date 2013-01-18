@@ -37,7 +37,7 @@
         </tr>
         <tr>
             <th>Par :</th>
-            <td>{{ entity.moduleUser.firstname }} {{ entity.moduleUser.lastname }}</td>
+            <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.moduleUser.id }) }}">{{ entity.moduleUser.firstname }} {{ entity.moduleUser.lastname }}</a></td>
         </tr>
         <tr>
             <th>Dernière modification</th>
