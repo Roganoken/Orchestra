@@ -30,7 +30,8 @@
         "bcc/extra-tools-bundle": "dev-master",
         "avalanche123/imagine-bundle": "dev-master",
         "knplabs/knp-time-bundle": "1.1.*@dev",
-        "whiteoctober/breadcrumbs-bundle": "dev-master"
+        "whiteoctober/breadcrumbs-bundle": "dev-master",
+        "friendsofsymfony/comment-bundle": "v2.0.3"
         
     },
     "scripts": {

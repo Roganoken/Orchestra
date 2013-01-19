@@ -250,4 +250,14 @@ avalanche_imagine:
         my_thumb:
             type:    thumbnail
             options: { size: [161, 161], mode: outbound, cache_type: public}  
+            
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: Orchestra\OrchestraBundle\Entity\Comment
+            thread: Orchestra\OrchestraBundle\Entity\Thread
+
+assetic:
+    bundles: [ "FOSCommentBundle" ]                 
     

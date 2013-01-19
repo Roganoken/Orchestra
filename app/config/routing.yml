@@ -20,6 +20,12 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /user 
+ 
+fos_comment_api:
+    type: rest
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+    prefix: /api
+    defaults: { _format: html }    
     
 genemu_upload:
     resource: "@GenemuFormBundle/Resources/config/routing/upload.xml"
