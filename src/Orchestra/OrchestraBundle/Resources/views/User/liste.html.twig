@@ -1,5 +1,4 @@
-
-       <div id="form_edit">        
+     
 
             <h1>
                 <a href="{{ path('annuaire') }}">
@@ -14,30 +13,39 @@
            
                 <table class="records_list">
                     <thead>
-                        <tr>
+                        <tr >
                             {% if is_granted("ROLE_ADMIN") %}<th>Id</th>{% endif %}
-                            <th>{{ knp_pagination_sortable(entities, 'Prénom', 'a.firstname') }}</th>
-                            <th>{{ knp_pagination_sortable(entities, 'Nom', 'a.lastname') }}</th>
-                            <th>{{ knp_pagination_sortable(entities, 'Classe', 'a.classe') }}</th>
+                            <th class="records_list_th_td prenom">{{ knp_pagination_sortable(entities, 'Prénom', 'a.firstname') }}</th>
+                            <th class="records_list_th_td nom">{{ knp_pagination_sortable(entities, 'Nom', 'a.lastname') }}</th>
+                            <th class="records_list_th_td classe">{{ knp_pagination_sortable(entities, 'Classe', 'a.classe') }}</th>
                             {% if is_granted("ROLE_ADMIN") %}<th>Email</th>{% endif %}
-                            <th>Dernière connexion</th>
-                            <th>Professeur</th>
-                            <th>Eleve</th>
+                            
+                            <th>Statut</th>
+                            <!--   <th>Eleve</th>-->
                             <th>Contact</th>
-                            <th>Actions</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for entity in entities %}
-                        <tr>
+                        <tr class="fond_contact">
+                            <td class="bloc_carre_avatar">
+                                <!-- {% if entity.photo %}
+                                    <img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" alt="avatar" />
+                                {% else %}
+                                    <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" alt="avatar" />
+                                {% endif %} -->
+                            </td>
+                            
+                            
                             {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.id }}</td>{% endif %}
-                            <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}">{{ entity.firstname }}</a></td>
-                            <td>{{ entity.lastname }}</td>
-                            <td>{{ entity.classe }}</td>
+                            <td class="records_list_th_td prenom"><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}">{{ entity.firstname }}</a></td>
+                            <td class="records_list_th_td nom">{{ entity.lastname }}</td>
+                            <td class="records_list_th_td classe">{{ entity.classe }}</td>
                             {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.email }}</td>{% endif %}
-                            <td>{% if entity.LastLogin %}{{ time_diff(entity.LastLogin) }}{% else %}Jamais{% endif %}</td>
+                            
                             <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+                            <td><!-- {% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %} --></td>
                             <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
                             <td>
                                 <ul>
@@ -65,5 +73,3 @@
 <div class="navigation">
     {{ knp_pagination_render(entities) }}
 </div>
-            
-      </div>  
