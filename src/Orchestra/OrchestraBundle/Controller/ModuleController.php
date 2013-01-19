@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Orchestra\OrchestraBundle\Entity\Module;
 use Orchestra\OrchestraBundle\Form\ModuleType;
+use Orchestra\OrchestraBundle\Form\InscriptionType;
 
 /**
  * Module controller.
@@ -102,9 +103,9 @@ class ModuleController extends Controller
         $qb = $em->createQueryBuilder();
         $qb->select('a')
           ->from('OrchestraOrchestraBundle:Module', 'a')
-          ->where('a.date >= :today and a.date <= :now')
+          ->where('a.date >= :today and a.date <= :tomorrow')
           ->setParameter('today', new \DateTime('today'))
-          ->setParameter('now', new \DateTime('now'))
+          ->setParameter('tomorrow', new \DateTime('tomorrow'))
           ->orderBy('a.date', 'ASC');
 
         $query = $qb->getQuery();
@@ -128,12 +129,13 @@ class ModuleController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Module entity.');
         }
-
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('OrchestraOrchestraBundle:Module:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),        
+            ));
     }
 
     /**
@@ -258,6 +260,63 @@ class ModuleController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * S'inscrire à un module.
+     *
+     */
+    public function inscriptionAction(Request $request, $id)
+    {
+            $em = $this->getDoctrine()->getManager();
+
+            $module = $em->getRepository('OrchestraOrchestraBundle:Module')->find($id);
+                
+            $user = $this->get('security.context')->getToken()->getUser();
+
+            if (!$module) {
+                throw $this->createNotFoundException('Unable to find Module entity.');
+            }
+                
+                $module->addUser($user);
+                $em->flush();
+                
+                $user->addModule($module);
+                $em->flush();
+                
+                return $this->redirect($this->generateUrl('module_show', array('id' => $id)));
+                
+    }
+
+    /**
+     * Se désinscrire à un module.
+     *
+     */
+    public function desinscriptionAction($id)
+    {
+            $em = $this->getDoctrine()->getManager();
+
+            $module = $em->getRepository('OrchestraOrchestraBundle:Module')->find($id);
+                
+            $user = $this->get('security.context')->getToken()->getUser();
+
+            if (!$module) {
+                throw $this->createNotFoundException('Unable to find Module entity.');
+            }
+            
+            if ($module->getUser($user) == true){
+                
+                $module->removeUser($user);
+                $em->persist($module);
+                $em->flush();
+                
+                $user->removeModule($module);
+                $em->persist($user);
+                $em->flush();
+               
+            }
+                return $this->redirect($this->generateUrl('module_show', array('id' => $id)));
+                
     }
 
     /**
