@@ -26,5 +26,10 @@ class DefaultController extends Controller
             'entity'      => $entity));
     }
     
+    public function signupAction()
+    {
+        return $this->render('OrchestraOrchestraBundle:Default:signup.html.twig.twig');
+    }
+    
     
 }

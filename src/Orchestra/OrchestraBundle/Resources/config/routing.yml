@@ -5,6 +5,10 @@ OrchestraOrchestraBundle_profil:
 annuaire:
     pattern:  /annuaire
     defaults: { _controller: "OrchestraOrchestraBundle:User:index"}
+
+signup:
+    pattern:  /signup
+    defaults: { _controller: "OrchestraOrchestraBundle:Default:signup"}
         
 user_search:
     pattern: /annuaire/rechercher
