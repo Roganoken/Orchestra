@@ -18,18 +18,54 @@
 
         <div id="content_form_edit">
 
-            <div id="form_edit">
-                     <form id="form_recherche" action="{{ path('user_search') }}" method="post">
+                <div class="titre_bloc">
+                    <div class="picto_adresse"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_adresses.png') }}" alt="" /></div>
+                    <div class="txt_titre_bloc"><p>Mon carnet d'adresses</p></div>
+                </div>
+                
+                <div id="bloc_annuaire">   
+                    <form id="form_recherche" action="{{ path('user_search') }}" method="post">
                         {{ form_widget(form.motcle) }}
                         {{ form_errors(form.motcle) }} 
                         <input type="submit" value="Rechercher" />
-                    </form>  
+                    </form>
+
+                <ul id="nav_adresse">
+                    <li>A</li>
+                    <li>B</li>
+                    <li>C</li>
+                    <li>D</li>
+                    <li>E</li>
+                    <li>F</li>
+                    <li>G</li>
+                    <li>H</li>
+                    <li>I</li>
+                    <li>J</li>
+                    <li>K</li>
+                    <li>L</li>
+                    <li>M</li>
+                    <li>N</li>
+                    <li>O</li>
+                    <li>P</li>
+                    <li>Q</li>
+                    <li>R</li>
+                    <li>S</li>
+                    <li>T</li>
+                    <li>U</li>
+                    <li>V</li>
+                    <li>W</li>
+                    <li>X</li>
+                    <li>Y</li>
+                    <li>Z</li>
+                </ul>
+
 
                     <div id="resultats_recherche"> 
-                    {% include 'OrchestraOrchestraBundle:User:liste.html.twig' with {'entities' : entities}  %}
+                        {% include 'OrchestraOrchestraBundle:User:liste.html.twig' with {'entities' : entities}  %}
                     </div>
-
-            </div>
+                    
+                </div>
+          
 
                     <script>
                     $("#form_recherche").submit(function(){ 

@@ -10,17 +10,58 @@
 
 #content_form_edit{
     float:left;
-    margin-left:300px;
+    width:700px;
+    margin-left:270px;
     margin-top:-440px;
     margin-bottom:50px;
     background-color:lightpink;
 }
 
 
-#form_edit{
+.titre_bloc{
+    float: left;
+    position:relative;
+    z-index:1;
+    background-image:url("../img/fond_titre_bloc.jpg");
+    background-repeat:repeat-x;
+    width:700px;
+    height:38px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.picto_adresse{
     float:left;
-    /*width:350px;*/  
-    background-color:lightblue;
+    margin:8px 5px 0px 10px;
+    width:23px;
+    height:23px;  
+}
+
+.txt_titre_bloc{
+    float:left;
+    color:#ffffff;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top:13px;
+}
+
+#bloc_annuaire{
+    float:left;
+    width:694px;
+    background-color:lightgrey;
+    margin-top:-5px;
+    margin-left: 2px;
+    border: 1px solid #b8b9ba;
+}
+
+#resultats_recherche{
+    float:left;
+    background-color:lightyellow;
+    width:694px;
 }
 
 
@@ -36,13 +77,68 @@ h1 a{
 
 #form_recherche{
     float:right;
-    position:relative;
-    z-index:1;
-    background-color:lightgreen;
-    margin-top:30px;
+    margin-top:15px;
 }
+
+#nav_adresse{
+    float:left;
+    width:690px;
+    /*margin-left:15px;*/
+    margin-top:15px;
+   text-align: center;
+}
+
+#nav_adresse li{
+    display: inline;
+    margin-left:6px;
+    margin-right:6px;
+}
+
 
 .records_list{
     float:left;    
     margin-top:30px;
+    margin-left:10px;
+    background-color:lightpink;
+}
+
+.records_list_th_td{
+    float:left;
+    /*background-color:lightpink;*/
+    margin-left:5px;
+    text-align: left;
+}
+
+.fond_contact{
+    width:325px;
+    height:100px;
+    background-color: lightgreen;
+    border:1px dashed #b8b9ba;
+}
+
+.bloc_carre_avatar{
+    float: left;
+    width:70px;
+    height:70px;
+    border:3px solid #2b3035;
+    margin-left:10px;
+    margin-top:10px;
+}
+
+.prenom{
+    width:70px;
+}
+
+.nom{
+    width:110px;
+}
+
+.classe{
+    width:80px;
+}
+
+.navigation{
+    float:left;
+    width:700px;
+    text-align: center;
 }
