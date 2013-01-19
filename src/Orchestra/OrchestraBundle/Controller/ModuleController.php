@@ -171,7 +171,6 @@ class ModuleController extends Controller
             
             $entity->setModuleUser($user_id);
             $entity->setCreated(new \Datetime());
-            $entity->setUpdated(new \Datetime());
             
             $em->persist($entity);
             $em->flush();

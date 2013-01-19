@@ -32,13 +32,3 @@
     </tbody>
 </table>
 
-{% if is_granted("ROLE_ADMIN") %}
-<ul>
-    <li>
-        <a href="{{ path('module_new') }}">
-            Ajouter un tutorat
-        </a>
-    </li>
-</ul>
-{% endif %}
-

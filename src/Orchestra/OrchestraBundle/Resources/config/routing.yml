@@ -110,7 +110,7 @@ OrchestraOrchestraBundle_module:
 
 OrchestraOrchestraBundle_news:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/news.yml
-    prefix:   /news
+    prefix:   /actualite
 
 OrchestraOrchestraBundle_position:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/position.yml

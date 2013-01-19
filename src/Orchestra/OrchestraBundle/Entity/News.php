@@ -29,9 +29,9 @@ class News
     private $title;
 
     /**
-     * @var string $content
+     * @var text $content
      *
-     * @ORM\Column(name="content", type="string", length=1024, nullable=false)
+     * @ORM\Column(name="content", type="text", nullable=false)
      */
     private $content;
 
@@ -52,7 +52,7 @@ class News
     /**
      * @var \DateTime $updated
      *
-     * @ORM\Column(name="updated", type="datetime", nullable=false)
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 

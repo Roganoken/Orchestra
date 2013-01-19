@@ -14,11 +14,9 @@ class NewsType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('active')
-            ->add('created')
-            ->add('updated')
-            ->add('commentaire')
-            ->add('section')
-            ->add('user')
+            ->add('section', 'entity', array(
+                             'class' => 'OrchestraOrchestraBundle:Section',
+                             'property' => 'name'))
         ;
     }
 

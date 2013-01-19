@@ -39,6 +39,7 @@ class UserController extends Controller
             $this->get('request')->query->get('page', 1)/*page number*/,
             4/*limit per page*/
                 );
+        
         return $this->render('OrchestraOrchestraBundle:User:index.html.twig', array(
             'entities' => $pagination,
             'total' => $count,
