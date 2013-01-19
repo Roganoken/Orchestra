@@ -1,45 +1,31 @@
-<h1>News list</h1>
+{% extends '::base.html.twig' %}
 
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Active</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('news_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.title }}</td>
-            <td>{{ entity.content }}</td>
-            <td>{{ entity.active }}</td>
-            <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('news_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('news_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+{% block stylesheets %}
+    {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_edit_profil.css') }}" type="text/css" media="all" />
+{% endblock %}
 
-<ul>
-    <li>
-        <a href="{{ path('news_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
+
+{% block header %}
+    {% include "OrchestraOrchestraBundle:Default:header.html.twig" %}      
+{% endblock %}
+
+
+{% block contenu %}
+
+<div id="contenu">
+    
+    {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
+
+   <h1>Liste des actualités</h1>
+
+        {% render 'OrchestraOrchestraBundle:news:liste' %}
+    
+   
+
+    <a href="{{ path('news_new') }}">Ajouter une actualité</a>
+    <a href="{{ path('news_historique') }}">Voir l'historique</a>
+   
+</div>
+
+{% endblock %} 

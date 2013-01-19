@@ -17,6 +17,8 @@
     
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
 
+    <a href="{{ path('module_new') }}">Ajouter un module</a>
+
     <h1>Tutorats à venir</h1>
 
         {% render 'OrchestraOrchestraBundle:Module:liste' %}
@@ -30,8 +32,6 @@
     <h1>Tutorats d'aujourd'hui</h1>
 
     {% render 'OrchestraOrchestraBundle:Module:jour' %}
-
-    <a href="{{ path('module_new') }}">Ajouter un module</a>
     
 </div>
 

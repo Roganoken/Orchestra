@@ -16,6 +16,24 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: orchestra, label: Salle }
         arguments: [null, Orchestra\OrchestraBundle\Entity\Salle, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.module:
+        class: Orchestra\OrchestraBundle\Admin\ModuleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: orchestra, label: Module }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Module, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.section:
+        class: Orchestra\OrchestraBundle\Admin\SectionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: orchestra, label: Section }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Section, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.news:
+        class: Orchestra\OrchestraBundle\Admin\NewsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: orchestra, label: News }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\News, SonataAdminBundle:CRUD]
         
     orchestra_orchestra.form.label_extension:
         class: Orchestra\OrchestraBundle\Form\Extension\LabelFormTypeExtension

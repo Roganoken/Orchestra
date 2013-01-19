@@ -5,6 +5,10 @@ news:
 news_show:
     pattern:  /{id}/show
     defaults: { _controller: "OrchestraOrchestraBundle:News:show" }
+    
+news_historique:
+    pattern:  /historique
+    defaults: { _controller: "OrchestraOrchestraBundle:News:historique" }
 
 news_new:
     pattern:  /new

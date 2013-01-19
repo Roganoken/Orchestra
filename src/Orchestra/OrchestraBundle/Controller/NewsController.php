@@ -20,12 +20,55 @@ class NewsController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        return $this->render('OrchestraOrchestraBundle:News:index.html.twig');
+    }
 
-        $entities = $em->getRepository('OrchestraOrchestraBundle:News')->findAll();
+    /**
+     * LISTE LES 10 DERNIERES ACTUALITES.
+     *
+     */
+    
+    public function listeAction($max = 10)
+    {
+        
+        $em = $this->container->get('doctrine')->getEntityManager();
 
-        return $this->render('OrchestraOrchestraBundle:News:index.html.twig', array(
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:News', 'a')
+          ->orderBy('a.created', 'DESC')
+          ->setMaxResults($max);
+
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:News:liste.html.twig', array(
             'entities' => $entities,
+        ));
+    }
+
+    /**
+     * LISTE TOUS LES TUTORATS.
+     *
+     */
+    
+    public function historiqueAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $em = $this->get('doctrine.orm.entity_manager');
+        $dql = "SELECT a FROM OrchestraOrchestraBundle:News a";
+        $query = $em->createQuery($dql);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            2/*limit per page*/
+                );
+
+        return $this->render('OrchestraOrchestraBundle:News:historique.html.twig', array(
+            'historiques' => $pagination,
         ));
     }
 
@@ -77,6 +120,13 @@ class NewsController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            // CREATEUR DU MODULE
+            $user_id = $this->get('security.context')->getToken()->getUser();
+            
+            $entity->setCreated(new \Datetime());
+            $entity->setUser($user_id);
+            
             $em->persist($entity);
             $em->flush();
 
@@ -102,6 +152,25 @@ class NewsController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find News entity.');
         }
+
+        # RECUPERE LE USERNAME DE SESSION
+        $username_session = $this->get('security.context')->getToken()->getUser()->getId();
+        
+        # RECUPERE LE USERNAME DE L'ENTITE
+        $username_entity = $entity->getUser()->getId();
+        
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        # SI LES USERNAME SONT DIFFERENT, ON VERIFIE SI ROLE_ADMIN
+        if (($username_session != $username_entity)) {
+            # SI PAS ADMIN
+            if ($role_session == false){
+               # ON REDIRIGE VERS LA PAGE "USER"
+               return $this->redirect($this->generateUrl('news'), 301);
+            }
+        }
+
 
         $editForm = $this->createForm(new NewsType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -132,6 +201,8 @@ class NewsController extends Controller
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+            
+            $entity->setUpdated(new \Datetime());
             $em->persist($entity);
             $em->flush();
 

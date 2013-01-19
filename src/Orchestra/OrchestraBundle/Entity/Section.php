@@ -34,7 +34,12 @@ class Section
      * @ORM\Column(name="description", type="string", length=1024, nullable=true)
      */
     private $description;
-
+    
+    
+    public function __toString()
+    {
+        return ($this->name);
+    } 
 
 
     /**

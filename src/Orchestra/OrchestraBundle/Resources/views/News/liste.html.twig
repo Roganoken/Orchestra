@@ -1,0 +1,40 @@
+{% if entities|length != 0 %}
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Contenu</th>
+            <th>Auteur</th>
+            <th>Ajouté</th>
+            <th>Modifié</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('news_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
+            <td>{{ entity.content|slice(1, 50) }}[...]</td>
+            <td>{{ entity.user.firstname }} {{ entity.user.lastname }}</td>
+            <td>{% if entity.created %}{{ time_diff(entity.created) }}{% endif %}</td>
+            <td>{% if entity.updated %}{{ time_diff(entity.updated) }}{% else %}jamais{% endif %}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('news_show', { 'id': entity.id }) }}">voir</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() %}
+                    <li>
+                        <a href="{{ path('news_edit', { 'id': entity.id }) }}">modifier</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+Pas encore d'actualités
+{% endif %}
+

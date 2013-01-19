@@ -1,0 +1,71 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_edit_profil.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+
+{% block header %}
+    {% include "OrchestraOrchestraBundle:Default:header.html.twig" %}      
+{% endblock %}
+
+
+{% block contenu %}
+
+<div id="contenu">
+    
+    {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
+   
+{% if historiques|length != 0 %}
+    
+    <h1><a href="{{ path('news') }}">Historique</a></h1>
+    
+    <table class="records_list">
+    <thead>
+        <tr>
+            <th>{{ knp_pagination_sortable(historiques, 'Intitule', 'a.title') }}</th>
+            <th>Contenu</th>
+            <th>Auteur</th>
+            <th>{{ knp_pagination_sortable(historiques, 'Ajouté', 'a.created') }}</th>
+            <th>Modifié</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for historique in historiques %}
+        <tr>
+            <td><a href="{{ path('news_show', { 'id': historique.id }) }}">{{ historique.title }}</a></td>
+            <td>{{ historique.content|slice(1, 50) }}[...]</td>
+            <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': historique.User.id }) }}">{{ historique.User.firstname }} {{ historique.User.lastname }}</a></td>
+            <td>{{ historique.created| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
+            <td>{{ time_diff(historique.updated) }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('news_show', { 'id': historique.id }) }}">Voir</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") or historique.User.id == app.security.getToken().getUser().getId() %}
+                    <li>
+                        <a href="{{ path('news_edit', { 'id': historique.id }) }}">Modifier</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    
+<div class="navigation">
+    {{ knp_pagination_render(historiques) }}
+</div>    
+ 
+{% else %}
+Pas encore d'actualités
+{% endif %}    
+    
+</div>
+
+{% endblock %}
+

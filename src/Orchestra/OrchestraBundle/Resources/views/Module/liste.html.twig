@@ -12,7 +12,7 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('module_show', { 'id': entity.id }) }}">{{ entity.intitule }}</a></td>
-            <td>{{ entity.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
+            <td>{{ entity.date|format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
             <td>{{ entity.created|format_date }}</td>
             <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.moduleUser.id }) }}">{{ entity.moduleUser.firstname }} {{ entity.moduleUser.lastname }}</a></td>
             <td>
