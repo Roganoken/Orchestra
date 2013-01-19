@@ -21,12 +21,9 @@ Bienvenue !
 <div id="contenu">
 
     <div id="bloc_connexion">
-        <p id="txt_connexion">Se connecter</p>
-
-        <div>
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
-        </div>
+        <p id="txt_connexion">S'enregistrer</p>
+        <button id="esteiens" type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Vous êtes un(e) Esteien(ne)</button>
+        <button id="pros" type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Vous êtes un Professionnel(le)</button>
         
     </div>
     <div id="pictos">    
