@@ -32,6 +32,10 @@
             <td>{{ entity.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
         </tr>
         <tr>
+            <th>Salle</th>
+            <td>{{ entity.salle.numero }} - {{ entity.salle.nom }} [{{entity.salle.capacite }} places]</td>
+        </tr>
+        <tr>
             <th>Ajouté le</th>
             <td>{{ entity.created| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
         </tr>
@@ -46,7 +50,32 @@
     </tbody>
 </table>
 
+<p><b>Participants :</b></p>
+{% if entity.User|length > 0 %}
+    {% for participant in entity.User %}
+
+                {% if participant.photo %}
+                <img width="18" height="18" src="{{ ('avatar/' ~ participant.photo) | apply_filter('my_thumb') }}" />
+                {% else %}
+                    <img width="18" height="18" src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" />
+                {% endif %}
+
+        <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': participant.id }) }}">{{ participant.firstname }} {{ participant.lastname }}</a> 
+         {% if participant.classe %}[{{ participant.classe }}]{% endif %}<br />
+    {% endfor %}
+{% else %}
+   aucun participants    
+{% endif %}
+   
 <ul class="record_actions">
+    <li>
+        
+        {% if app.security.getToken().getUser() in entity.User %}
+            <a href="{{ path('module_desinscription', { 'id': entity.id }) }}">Se désinscrire</a>
+        {% else %}
+            <a href="{{ path('module_inscription', { 'id': entity.id }) }}">S'inscrire</a>
+        {% endif %}
+    </li>
     <li>
         <a href="{{ path('module') }}">
             Revenir à la liste des tutorats

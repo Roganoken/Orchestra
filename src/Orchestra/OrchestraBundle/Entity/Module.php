@@ -43,13 +43,6 @@ class Module
     private $date;
 
     /**
-     * @var \DateTime $date_fin
-     *
-     * @ORM\Column(name="date_fin", type="datetime", nullable=false)
-     */
-    private $date_fin;
-
-    /**
      * @var \DateTime $created
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
@@ -235,6 +228,19 @@ class Module
     }
 
     /**
+     * Set User
+     *
+     * @param Orchestra\OrchestraBundle\Entity\User $user
+     * @return Module
+     */
+    public function setUser(\Orchestra\OrchestraBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
      * Set moduleUser
      *
      * @param Orchestra\OrchestraBundle\Entity\User $moduleUser
@@ -301,28 +307,5 @@ class Module
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set date_fin
-     *
-     * @param \DateTime $dateFin
-     * @return Module
-     */
-    public function setDateFin($dateFin)
-    {
-        $this->date_fin = $dateFin;
-    
-        return $this;
-    }
-
-    /**
-     * Get date_fin
-     *
-     * @return \DateTime 
-     */
-    public function getDateFin()
-    {
-        return $this->date_fin;
     }
 }

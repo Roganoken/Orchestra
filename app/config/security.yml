@@ -31,7 +31,7 @@ security:
                 login_path: /login
                 check_path : /login_check
                 always_use_default_target_path: true
-                default_target_path: /
+                default_target_path: /annuaire
                 csrf_provider: form.csrf_provider
             logout:       true
             anonymous:    true
@@ -67,7 +67,10 @@ security:
         - { path: ^/user/new, role: ROLE_ADMIN }
         - { path: ^/user/create, role: ROLE_ADMIN }
         - { path: ^/user/, role: ROLE_USER }
-        - { path: ^/profile/, role: ROLE_USER }
+        - { path: ^/profil/, role: ROLE_USER }
+        - { path: ^/tutorat/, role: ROLE_USER }
+        - { path: ^/, role: ROLE_USER }
+        
 
 
     role_hierarchy:

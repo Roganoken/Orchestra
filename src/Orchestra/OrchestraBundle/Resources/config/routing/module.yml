@@ -5,7 +5,15 @@ module:
 module_show:
     pattern:  /{id}/show
     defaults: { _controller: "OrchestraOrchestraBundle:Module:show" }
+    
+module_inscription:
+    pattern:  /{id}/inscription
+    defaults: { _controller: "OrchestraOrchestraBundle:Module:inscription" }
 
+module_desinscription:
+    pattern:  /{id}/desinscription
+    defaults: { _controller: "OrchestraOrchestraBundle:Module:desinscription" }
+    
 module_new:
     pattern:  /new
     defaults: { _controller: "OrchestraOrchestraBundle:Module:new" }
