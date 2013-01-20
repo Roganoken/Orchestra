@@ -1,6 +1,6 @@
      
 
-            <h1>
+           <!--   <h1>
                 <a href="{{ path('annuaire') }}">
                 {% if entities|length != 0 %}
                     {% if total is defined %}
@@ -9,60 +9,41 @@
                        {% endif %}
                      {% endif %} 
                 </a>
-           </h1>
+           </h1>-->
            
-                <table class="records_list">
-                    <thead>
-                        <tr >
-                            {% if is_granted("ROLE_ADMIN") %}<th>Id</th>{% endif %}
-                            <th class="records_list_th_td prenom">{{ knp_pagination_sortable(entities, 'Prénom', 'a.firstname') }}</th>
-                            <th class="records_list_th_td nom">{{ knp_pagination_sortable(entities, 'Nom', 'a.lastname') }}</th>
-                            <th class="records_list_th_td classe">{{ knp_pagination_sortable(entities, 'Classe', 'a.classe') }}</th>
-                            {% if is_granted("ROLE_ADMIN") %}<th>Email</th>{% endif %}
-                            
-                            <th>Statut</th>
-                            <!--   <th>Eleve</th>-->
-                            <th>Contact</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="records_list">
+                    
                     {% for entity in entities %}
-                        <tr class="fond_contact">
-                            <td class="bloc_carre_avatar">
+                        <div class="fond_contact">
+                            <div class="bloc_carre_avatar">
                                 <!-- {% if entity.photo %}
                                     <img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" alt="avatar" />
                                 {% else %}
                                     <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" alt="avatar" />
                                 {% endif %} -->
-                            </td>
+                            </div>
                             
                             
-                            {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.id }}</td>{% endif %}
-                            <td class="records_list_th_td prenom"><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}">{{ entity.firstname }}</a></td>
-                            <td class="records_list_th_td nom">{{ entity.lastname }}</td>
-                            <td class="records_list_th_td classe">{{ entity.classe }}</td>
-                            {% if is_granted("ROLE_ADMIN") %}<td>{{ entity.email }}</td>{% endif %}
+                            <!-- {% if is_granted("ROLE_ADMIN") %}<div>{{ entity.id }}</div>{% endif %} -->
+                            <div class="prenom_nom">{{ entity.firstname }} {{ entity.lastname }} <span>- {{ entity.classe }}</span></div>
+                            <div class="email">{{ entity.email }}</div>
                             
-                            <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td><!-- {% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %} --></td>
-                            <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}">Voir</a>
-                                    </li>
-                                    {% if is_granted("ROLE_ADMIN") or entity.username == app.user.username %}
-                                    <li>
-                                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">Modifier</a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                            </td>
-                        </tr>
+                            <!--   <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
+                            <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %} </td>
+                            <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>-->
+
+                            <div class="picto_envoi_mail">
+                                <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_mail_vide.png') }}" alt="" /></a>
+                            </div>
+                            
+                            <div class="picto_voir_profil">
+                                <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a>
+                            </div>
+
+                        </div>
                     {% endfor %}
-                    </tbody>
-                </table>
+                    
+                </div>
             
             {% else %}
             <p>Aucun résultats</p>
