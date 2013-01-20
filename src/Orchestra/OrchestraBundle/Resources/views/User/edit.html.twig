@@ -58,14 +58,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path('fos_user_change_password') }}">
-                        Changer de mot de passe
-                    </a>
+                    <a href="{{ path('fos_user_change_password') }}">Modifier mon mot de passe</a>
                 </li>
                 <li>
-                    <a href="{{ path('annuaire') }}">
-                       Liste des utilisateurs
-                    </a>
+                    <br /><a href="{{ path('annuaire') }}">Carnet d'adresses</a>
                 </li>
                 <li>
                    <br /><a href="{{ path('user_delete', { 'id': entity.id }) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer ?')">Supprimer mon compte</a>
