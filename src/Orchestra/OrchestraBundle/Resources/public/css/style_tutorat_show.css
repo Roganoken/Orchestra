@@ -1,0 +1,139 @@
+@CHARSET "UTF-8";
+
+@font-face{
+    font-family:futura;
+    src:url("../fonts/futura_book.ttf");
+    font-weight: 200;
+}
+
+
+#content_form_edit{
+    float:left;
+    width:700px;
+    margin-left:290px;
+    margin-top:-440px;
+    margin-bottom:50px;
+    /*background-color:lightpink;*/
+}
+
+
+#form_edit{
+    float:left;
+    width:440px; 
+    background-color:lightblue;
+}
+
+
+.bloc_tuto{
+    float:left;
+    margin-bottom:50px;
+}
+
+
+.titre_bloc{
+    float: left;
+    position:relative;
+    z-index:1;
+    width:100%;
+    background-image:url("../img/fond_titre_bloc.jpg");
+    background-repeat:repeat-x;
+    height:38px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.width_tuto{
+    width:440px;
+}
+
+.width_contenu_tuto{
+    width:412px;
+}
+
+
+
+.picto_tutorat_titre{
+    float:left;
+    margin:7px 5px 0px 7px;
+    width:23px;
+    height:23px;  
+}
+
+.txt_titre_bloc{
+    float:left;
+    color:#ffffff;
+    margin-left:5px;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top:13px;
+}
+
+
+.bloc_contenu_tuto{
+    float:left;
+    /*background-color:lightgrey;*/
+    margin-top:-5px;
+    margin-left: 3px;
+    padding:10px;
+    border: 1px solid #b8b9ba;
+    background-color:#ffffff;
+}
+
+.bloc_contenu_tuto a{
+    color:#e65011;
+    text-decoration: none;
+}
+
+.bloc_contenu_tuto span{
+    color:#b8b9ba;
+    font-size: 12px;
+}
+
+#actions_droite{
+    float:left;
+    width:250px;
+    background-color:lightgreen;
+}
+
+
+.sinscrire{
+    float:right;
+    width:238px;
+    margin-top:30px;
+}
+
+.retour_tuto{
+    float:right;
+    width:238px;
+}
+
+.txt_titre_bloc a{
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.txt_titre_bloc a:hover{
+    color:#e65011;
+    text-decoration: none;
+}
+
+.width_participants{
+    float:right;
+    margin-top:15px;
+    width:238px;
+}
+
+.width_contenu_part{
+    width:210px;
+    
+}
+
+.width_contenu_part a{
+    font-size: 13px;
+    margin-left:5px;
+}
+
