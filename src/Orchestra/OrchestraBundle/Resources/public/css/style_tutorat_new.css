@@ -1,0 +1,105 @@
+@CHARSET "UTF-8";
+
+@font-face{
+    font-family:futura;
+    src:url("../fonts/futura_book.ttf");
+    font-weight: 200;
+}
+
+
+#content_form_edit{
+    float:left;
+    width:700px;
+    margin-left:290px;
+    margin-top:-440px;
+    margin-bottom:50px;
+    /*background-color:lightpink;*/
+}
+
+
+#form_edit{
+    float:left;
+    width:400px; 
+    background-color:lightblue; 
+}
+
+h1{
+    color:#2b3035;
+    font-size:20px;
+    font-family: "futura", Arial, sans-serif;
+    margin-left:10px;
+    margin-bottom:10px;
+    text-transform: uppercase;
+}
+
+input{
+    float:right;
+    height:22px;
+    width:250px;
+    color:#2b3035;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+}
+
+
+#orchestra_orchestrabundle_moduletype_date{
+     float:right;
+     width:335px;
+     background-color: lightgreen;
+}
+
+#orchestra_orchestrabundle_moduletype_date_date{
+   float:left;   
+}
+
+#orchestra_orchestrabundle_moduletype_date_datetime{
+   float:left;
+   /* margin-right:20px;*/    
+}
+
+
+button{
+    float:left;
+    height:30px;
+    margin-left:130px;
+    margin-top:20px;
+    background-image:url("../img/bg_btn_form.png");
+    background-repeat: repeat-x;
+    background-position: 0px 0px;
+    border:0;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding-left:5px;
+    padding-right:5px;
+    color:#ffffff;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+    box-shadow: 0px;
+}
+
+button:hover{
+    background-position: 0px -33px;
+}
+
+#actions_droite{
+    float:left;
+    height:25px;
+    margin-top:40px;
+    margin-left:50px;
+    background-color:lightgreen;
+}
+
+
+#actions_droite a{
+    color:#2b3035;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+    text-decoration: none;
+}
+
+#actions_droite a:hover{
+    /*text-decoration: underline;*/
+    color:#e65011;
+}

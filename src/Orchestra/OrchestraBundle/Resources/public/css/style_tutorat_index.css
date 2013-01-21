@@ -54,11 +54,18 @@
     height:23px;  
 }
 
-.picto_modif{
-    float:left;
-    margin:10px 0px 0px 12px;   
-    width:20px;
-    height:20px;
+
+.picto_voir_plus{
+    float:right;
+    margin:12px 21px 0px 0px;   
+    width:24px;
+    height:14px;
+    background-image:url("../img/picto_oeil_blanc.png");
+    background-position: 0px 0px;
+}
+
+.picto_voir_plus:hover{
+    background-position: 0px 14px;
 }
 
 .txt_titre_bloc{
@@ -95,5 +102,64 @@
     -khtml-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
+}
+
+
+.records_list{
+    float:left;  
+    width:96%;  
+    margin-top:10px;
+    padding-bottom:5px;
+    /*background-color:lightpink;*/
+    border-bottom: 1px dashed #b8b9ba;
+}
+
+.intitule, .date, .ajout_par{
+    float:left;
+    width:90%;
+    height:20px;
+    margin-bottom:3px;
+    font-family:Arial, sans-serif;
+    /*background-color: lightblue;*/
+}
+
+.intitule{
+    color:#2b3035;
+    font-size:14px;
+}
+
+.date{
+    color:#a8a9ab;
+    font-size:14px;
+}
+
+.ajout_par{
+    color:#a8a9ab;
+   font-size:12px;
+}
+
+.ajout_par a{
+    color:#e65011;
+    text-decoration: none;
+}
+
+.picto_detail{
+    float:right;
+    width:24px;
+    height:14px;
+    margin-top:25px;
+    background-image:url("../img/picto_voir_profil.png");
+    background-position: 0px 0px;
+}
+
+.picto_detail:hover{
+    background-position: 0px 14px;
+}
+
+.picto_modif{
+    float:left;
+    margin:10px 0px 0px 12px;
+    width:20px;
+    height:20px;
 }
 
