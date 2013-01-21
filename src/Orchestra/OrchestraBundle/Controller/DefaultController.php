@@ -28,7 +28,7 @@ class DefaultController extends Controller
     
     public function signupAction()
     {
-        return $this->render('OrchestraOrchestraBundle:Default:signup.html.twig.twig');
+        return $this->render('OrchestraOrchestraBundle:Default:signup.html.twig');
     }
     
     
