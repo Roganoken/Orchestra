@@ -14,10 +14,10 @@ class CommentaireType extends AbstractType
             ->add('contenu')
             ->add('created')
             ->add('updated')
-            ->add('image')
-            ->add('livre')
-            ->add('news')
-            ->add('user')
+            //->add('image')
+            //->add('livre')
+            //->add('news')
+            //->add('user')
         ;
     }
 
