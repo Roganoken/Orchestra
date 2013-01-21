@@ -9,8 +9,8 @@
 #bloc_avatar{
     float: left;
     width:415px;
-    margin-left:280px;
-    margin-top:-400px;
+    margin-left:35px;
+    margin-top:35px;
 }
 
 #bloc_carre_avatar{
@@ -55,8 +55,8 @@
 #bloc_donnees_perso{
     float: left;
     width:273px;
-    margin-left:750px;
-    margin-top:-400px;
+    margin-left:50px;
+    margin-top:35px;
 }
 
 .titre_bloc{
@@ -124,8 +124,55 @@
     color:#a8a9ab;
     font-size:14px;
     font-family:"futura", Arial, sans-serif;
-    
 }
 
+#bloc_notes{
+    float: left;
+    width:227px;
+    margin-left:35px;
+    margin-top:35px;
+}
+
+.titre_bloc_3{
+    float: left;
+    position:relative;
+    background-image:url("../img/fond_titre_bloc.jpg");
+    background-repeat:repeat-x;
+    width:227px;
+    height:38px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    z-index:2;
+}
+
+.bloc_tab_3{
+    float:left;
+    position:relative;
+    width:216px;
+    margin-top:-3px;
+    margin-left:2px;
+}
+
+.bloc_li_3{
+    width:216px;
+}
+
+.all{
+    background-color: #a7a8aa;
+    color: #ffffff;
+    text-align: center;
+}
+
+.all:hover{
+    background-color: #e65011;   
+}
+
+.all a{
+    color: #ffffff;
+    text-decoration:none;
+    
+}
 
 
