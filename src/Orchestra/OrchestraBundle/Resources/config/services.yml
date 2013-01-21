@@ -72,6 +72,11 @@ services:
        class: Twig_Extensions_Extension_Intl
        tags:
            - { name: twig.extension }
+           
+    twig.extension.mytwigextension:  
+        class: Orchestra\OrchestraBundle\Extension\MyTwigExtension  
+        tags:  
+            -  { name: twig.extension } 
  
     debug.twig.extension:
         class: Twig_Extensions_Extension_Debug

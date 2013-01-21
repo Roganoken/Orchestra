@@ -32,3 +32,12 @@ news_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "OrchestraOrchestraBundle:News:delete" }
     requirements: { _method: post }
+
+news_commentaire_create:
+    pattern:  /{id}/create/commentaire
+    defaults: { _controller: "OrchestraOrchestraBundle:News:createCommentaire" }
+    requirements: { _method: post }
+
+news_commentaire_delete:
+    pattern:  /{actualite}/{id}/delete/commentaire
+    defaults: { _controller: "OrchestraOrchestraBundle:News:deleteCommentaire" }

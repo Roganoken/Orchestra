@@ -12,8 +12,6 @@ class CommentaireType extends AbstractType
     {
         $builder
             ->add('contenu')
-            ->add('created')
-            ->add('updated')
             //->add('image')
             //->add('livre')
             //->add('news')

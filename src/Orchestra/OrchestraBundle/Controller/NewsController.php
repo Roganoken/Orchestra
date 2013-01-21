@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Orchestra\OrchestraBundle\Entity\News;
 use Orchestra\OrchestraBundle\Form\NewsType;
+use Orchestra\OrchestraBundle\Form\CommentaireType;
+use Orchestra\OrchestraBundle\Entity\Commentaire;
 
 /**
  * News controller.
@@ -81,6 +83,9 @@ class NewsController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('OrchestraOrchestraBundle:News')->find($id);
+        
+        $commentaire = new Commentaire();
+        $form = $this->createForm(new CommentaireType(), $commentaire);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find News entity.');
@@ -90,7 +95,10 @@ class NewsController extends Controller
 
         return $this->render('OrchestraOrchestraBundle:News:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'form'        => $form->createView(),
+            'delete_form' => $deleteForm->createView(),          
+            
+            ));
     }
 
     /**
@@ -246,5 +254,96 @@ class NewsController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+
+    /**
+     * Displays a form to create a new Commentaire entity.
+     *
+     */
+    public function addCommentaireAction()
+    {
+        $entity = new Commentaire();
+        $form   = $this->createForm(new CommentaireType(), $entity);
+
+        return $this->render('OrchestraOrchestraBundle:News:addCommentaire.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Creates a new Commentaire entity.
+     *
+     */
+    public function createCommentaireAction(Request $request, $id)
+    {
+        $commentaire  = new Commentaire();
+        
+        $form = $this->createForm(new CommentaireType(), $commentaire);
+        $form->bind($request);
+
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        $em = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('OrchestraOrchestraBundle:News')->find($id);
+
+        if (!$news) {
+                throw $this->createNotFoundException('Unable to find News entity.');
+        }
+        
+        if ($form->isValid()) {
+            
+            $commentaire->setUser($user);
+            $commentaire->setCreated(new \Datetime());
+            $commentaire->setUpdated(new \Datetime());
+            
+            $em->persist($commentaire);
+            $em->flush();
+                
+            $news->addCommentaire($commentaire);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('news_show', array('id' => $id)));
+        }
+
+        return $this->render('OrchestraOrchestraBundle:News:addCommentaire.html.twig', array(
+            'entity' => $commentaire,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a News entity.
+     *
+     */
+    public function deleteCommentaireAction($actualite, $id)
+    {
+            $em = $this->getDoctrine()->getManager();
+            
+            $commentaire = $em->getRepository('OrchestraOrchestraBundle:Commentaire')->find($id);
+            $news = $em->getRepository('OrchestraOrchestraBundle:News')->find($actualite);
+            $user_session = $this->get('security.context')->getToken()->getUser();
+
+            if (!$commentaire) {
+                throw $this->createNotFoundException('Unable to find Commentaire entity.');
+            }
+
+            if (!$news) {
+                throw $this->createNotFoundException('Unable to find News entity.');
+            }
+            
+            $user = $commentaire->getUser();
+            
+            if($user == $user_session){
+                
+            $news->removeCommentaire($commentaire);
+            $em->flush();
+
+            $em->remove($commentaire);
+            $em->flush();
+            
+            }
+            
+        return $this->redirect($this->generateUrl('news_show', array('id' => $actualite)));
     }
 }
