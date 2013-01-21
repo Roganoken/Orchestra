@@ -1,55 +1,33 @@
-     
-
-           <!--   <h1>
-                <a href="{{ path('annuaire') }}">
-                    {% if total is defined %}
-                       {% if total > 1 %} {{ total }} utilisateurs
-                       {% else %}{{ total }} utilisateur
-                       {% endif %}
-                     {% endif %} 
-                {% if entities|length != 0 %}
-                </a>
-           </h1>-->
-
-                <div class="records_list">
-                    
-                    {% for entity in entities %}
-                    
-                    <div class="fond_contact">
-                            <div class="bloc_carre_avatar">
-                                
-                                {% if entity.photo %}
-                                    <img width="70" height="70" src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" alt="avatar" />
-                                {% else %}
-                                    <img width="70" height="70" src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" alt="avatar" />
-                                {% endif %} 
-                            </div>
-                            
-                            <!-- {% if is_granted("ROLE_ADMIN") %}<div>{{ entity.id }}</div>{% endif %} -->
-                            <div class="prenom_nom">{{ entity.firstname }} {{ entity.lastname }} <span>- {{ entity.classe }}</span></div>
-                            <div class="email">{{ entity.email }}</div>
-                            
-                            <!--   <td>{% if entity.isProfesseur == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>
-                            <td>{% if entity.isEleve == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %} </td>
-                            <td>{% if entity.isContact == 1 %}<input type="radio" checked />{% else %}<input type="radio" disabled="disabled" />{% endif %}</td>-->
-
-                            <div class="picto_envoi_mail">
-                                <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_mail_vide.png') }}" alt="" /></a>
-                            </div>
-                            
-                            <div class="picto_voir_profil">
-                                <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a>
-                            </div>
-
-                        </div>
-                    {% endfor %}
-                    
-                </div>
+<div class="records_list">
+    
+    {% for entity in entities %}
+    
+    <div class="fond_contact">
+            <div class="bloc_carre_avatar">
+                
+                {% if entity.photo %}
+                    <img width="70" height="70" src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" alt="avatar" />
+                {% else %}
+                    <img width="70" height="70" src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" alt="avatar" />
+                {% endif %} 
+            </div>
             
-            {% else %}
-            <p>Aucun résultats</p>
-            <a href="{{ path('annuaire') }}">Revenir à l'annuaire</a>
-            {% endif %}
+            <!-- {% if is_granted("ROLE_ADMIN") %}<div>{{ entity.id }}</div>{% endif %} -->
+            <div class="prenom_nom">{{ entity.firstname }} {{ entity.lastname }} <span>- {{ entity.classe }}</span></div>
+            <div class="email">{{ entity.email }}</div>
+            
+            <div class="picto_envoi_mail">
+                <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_mail_vide.png') }}" alt="" /></a>
+            </div>
+            
+            <div class="picto_voir_profil">
+                <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a>
+            </div>
+
+        </div>
+    {% endfor %}
+    
+</div>
 
             
 <div class="navigation">

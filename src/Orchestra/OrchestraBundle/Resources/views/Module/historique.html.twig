@@ -1,34 +1,17 @@
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Intitule</th>
-            <th>Date</th>
-            <th>Ajouté le</th>
-            <th>Par</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for historique in historiques %}
-        <tr>
-            <td><a href="{{ path('module_show', { 'id': historique.id }) }}">{{ historique.intitule }}</a></td>
-            <td>{{ historique.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
-            <td>{{ historique.created|format_date }}</td>
-            <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': historique.moduleUser.id }) }}">{{ historique.moduleUser.firstname }} {{ historique.moduleUser.lastname }}</a></td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('module_show', { 'id': historique.id }) }}">Voir</a>
-                    </li>
-                    {% if is_granted("ROLE_ADMIN") or historique.moduleUser.id == app.security.getToken().getUser().getId() %}
-                    <li>
-                        <a href="{{ path('module_edit', { 'id': historique.id }) }}">Modifier</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<div class="records_list">
 
+        <div class="intitule">Intitule</div>
+        <div class="picto_detail"><a href=""><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
+       
+        
+       
+        <div class="date">Date</div>
+        
+       <!--   <div class="picto_modif"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div> -->
+        
+        <div class="ajout_par">Ajouté par <a href=""> Prénom Nom</a></div>
+
+
+
+
+</div>

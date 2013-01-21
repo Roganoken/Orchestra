@@ -1,42 +1,24 @@
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Intitule</th>
-            <th>Date</th>
-            <th>Ajouté le</th>
-            <th>Par</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="records_list">
+
+        <div class="intitule">Intitule</div>
+        <div class="picto_detail"><a href=""><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
+       
+        
+       
+        <div class="date">Date</div>
+        
+       <!--   <div class="picto_modif"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div> -->
+        
+        <div class="ajout_par">Ajouté par <a href=""> Prénom Nom</a></div>
+
+
     {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('module_show', { 'id': entity.id }) }}">{{ entity.intitule }}</a></td>
-            <td>{{ entity.date|format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
-            <td>{{ entity.created|format_date }}</td>
-            <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.moduleUser.id }) }}">{{ entity.moduleUser.firstname }} {{ entity.moduleUser.lastname }}</a></td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('module_show', { 'id': entity.id }) }}">Voir</a>
-                    </li>
+
                     {% if is_granted("ROLE_ADMIN") or entity.moduleUser.id == app.security.getToken().getUser().getId() %}
-                    <li>
-                        <a href="{{ path('module_edit', { 'id': entity.id }) }}">Modifier</a>
-                    </li>
+
                     {% endif %}
-                </ul>
-            </td>
-        </tr>
+
     {% endfor %}
-    </tbody>
-</table>
-{% if is_granted("ROLE_ADMIN") %}
-<ul>
-    <li>
-        <a href="{{ path('module_new') }}">
-            Ajouter un tutorat
-        </a>
-    </li>
-</ul>
-{% endif %}
+
+</div>
+
