@@ -20,21 +20,13 @@ Bienvenue !
 
 <div id="contenu">
 
-    <div id="bloc_connexion">
-        <p id="txt_connexion">Se connecter</p>
-
         <div>
             {% block fos_user_content %}
             {% endblock fos_user_content %}
         </div>
-        
-    </div>
-    <div id="pictos">    
-        <div id="picto_connex"><a href="{{ path('fos_user_security_login') }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_vide.png') }}" alt="picto inscription" /></a></div>
-        <div id="picto_inscrip"><a href="{{ path('signup') }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_vide.png') }}" alt="picto inscription" /></a></div>
-    </div>
 
 
+<a href="{{ path('signup') }}">revenir</a>
 
 </div>
 

@@ -22,13 +22,13 @@ Bienvenue !
 
     <div id="bloc_connexion">
         <p id="txt_connexion">S'enregistrer</p>
-        <button id="esteiens" type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Vous êtes un(e) Esteien(ne)</button>
-        <button id="pros" type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Vous êtes un Professionnel(le)</button>
+        <a href="{{ path('orchestra_ldap') }}"><button id="esteiens" type="submit">Vous êtes un(e) Esteien(ne)</button></a>
+        <a href="{{ path('fos_user_registration_register') }}"><button id="pros" type="submit">Vous êtes un Professionnel</button></a>
         
     </div>
     <div id="pictos">    
-        <div id="picto_connex"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_vide.png') }}" alt="picto inscription" /></a></div>
-        <div id="picto_inscrip"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_vide.png') }}" alt="picto inscription" /></a></div>
+        <div id="picto_connex"><a href="{{ path('fos_user_security_login') }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_vide.png') }}" alt="picto inscription" /></a></div>
+        <div id="picto_inscrip"><a href="{{ path('signup') }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_vide.png') }}" alt="picto inscription" /></a></div>
     </div>
 
 

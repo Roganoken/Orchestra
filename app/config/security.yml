@@ -59,6 +59,9 @@ security:
         - { path: ^/user/send-resetting-email$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/check-resetting-email$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/reset-password/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/signup, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/ldap, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
         # Secured part of the site
         # This config requires being logged for the whole site and having the admin role for the admin part.
