@@ -169,6 +169,8 @@ sonata_admin:
         groups:
             orchestra:
                 label: users  
+            mediatheque:
+                label: mediatheque  
                 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration

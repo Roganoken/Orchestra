@@ -36,9 +36,9 @@ class Livre
     private $titre;
 
     /**
-     * @var string $resume
+     * @var text $resume
      *
-     * @ORM\Column(name="resume", type="string", length=45, nullable=false)
+     * @ORM\Column(name="resume", type="text", nullable=false)
      */
     private $resume;
 
@@ -66,21 +66,21 @@ class Livre
     /**
      * @var string $dateEmprunt
      *
-     * @ORM\Column(name="date_emprunt", type="date", nullable=false)
+     * @ORM\Column(name="date_emprunt", type="date", nullable=true)
      */
     private $dateEmprunt;
 
     /**
      * @var string $dateRetour
      *
-     * @ORM\Column(name="date_retour", type="date", nullable=false)
+     * @ORM\Column(name="date_retour", type="date", nullable=true)
      */
     private $dateRetour;
 
     /**
      * @var string $codeBarre
      *
-     * @ORM\Column(name="code_barre", type="string", length=45, nullable=false)
+     * @ORM\Column(name="code_barre", type="string", length=45, nullable=true)
      */
     private $codeBarre;
 

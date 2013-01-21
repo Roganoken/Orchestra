@@ -34,6 +34,24 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: orchestra, label: News }
         arguments: [null, Orchestra\OrchestraBundle\Entity\News, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.livre:
+        class: Orchestra\OrchestraBundle\Admin\LivreAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: mediatheque, label: Livre }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Livre, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.genre:
+        class: Orchestra\OrchestraBundle\Admin\GenreAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: mediatheque, label: Genre }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Genre, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.auteur:
+        class: Orchestra\OrchestraBundle\Admin\AuteurAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: mediatheque, label: Auteur }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Auteur, SonataAdminBundle:CRUD]
         
     orchestra_orchestra.form.label_extension:
         class: Orchestra\OrchestraBundle\Form\Extension\LabelFormTypeExtension
