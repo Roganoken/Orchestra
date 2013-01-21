@@ -20,14 +20,22 @@ class UserController extends Controller
      * Lists all User entities.
      *
      */
-    public function indexAction()
+    public function indexAction($lettre)
     {
         
         $form = $this->container->get('form.factory')->create(new UserSearchType());
         
         $em = $this->get('doctrine.orm.entity_manager');
-        $dql = "SELECT a FROM OrchestraOrchestraBundle:User a";
-        $query = $em->createQuery($dql);
+        
+        $qb = $em->createQueryBuilder();
+
+        $qb->select('a')
+           ->from('OrchestraOrchestraBundle:User', 'a')
+           ->where("LOWER(a.lastname) LIKE :nom")
+           ->orderBy('a.firstname', 'ASC')
+           ->setParameter('nom', strtolower($lettre).'%');
+
+        $query = $qb->getQuery(); 
         
         $dql2 = "SELECT COUNT(a) FROM OrchestraOrchestraBundle:User a";
         $query2 = $em->createQuery($dql2);

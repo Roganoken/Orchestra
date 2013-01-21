@@ -2,12 +2,12 @@
 
             <h1>
                 <a href="{{ path('annuaire') }}">
-                {% if entities|length != 0 %}
                     {% if total is defined %}
                        {% if total > 1 %} {{ total }} utilisateurs
-                       {% else %}{ total }} utilisateur
+                       {% else %}{{ total }} utilisateur
                        {% endif %}
                      {% endif %} 
+                {% if entities|length != 0 %}
                 </a>
            </h1>
            
@@ -15,6 +15,7 @@
                     <thead>
                         <tr >
                             {% if is_granted("ROLE_ADMIN") %}<th>Id</th>{% endif %}
+                            <th class="records_list_th_td prenom">Avatar</th>
                             <th class="records_list_th_td prenom">{{ knp_pagination_sortable(entities, 'Prénom', 'a.firstname') }}</th>
                             <th class="records_list_th_td nom">{{ knp_pagination_sortable(entities, 'Nom', 'a.lastname') }}</th>
                             <th class="records_list_th_td classe">{{ knp_pagination_sortable(entities, 'Classe', 'a.classe') }}</th>
@@ -30,11 +31,11 @@
                     {% for entity in entities %}
                         <tr class="fond_contact">
                             <td class="bloc_carre_avatar">
-                                <!-- {% if entity.photo %}
-                                    <img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" alt="avatar" />
+                                {% if entity.photo %}
+                                    <img width="70" height="70" src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" alt="avatar" />
                                 {% else %}
-                                    <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" alt="avatar" />
-                                {% endif %} -->
+                                    <img width="70" height="70" src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" alt="avatar" />
+                                {% endif %} 
                             </td>
                             
                             

@@ -3,8 +3,10 @@ OrchestraOrchestraBundle_profil:
     defaults: { _controller: OrchestraOrchestraBundle:Default:profil }
 
 annuaire:
-    pattern:  /annuaire
-    defaults: { _controller: "OrchestraOrchestraBundle:User:index"}
+    pattern:  /annuaire/{lettre}
+    defaults: { _controller: "OrchestraOrchestraBundle:User:index", lettre: a}
+    requirements:
+        lettre: a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z
 
 signup:
     pattern:  /signup
