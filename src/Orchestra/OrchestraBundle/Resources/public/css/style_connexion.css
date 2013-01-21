@@ -139,7 +139,7 @@ button{
     padding-left:10px;
     padding-right:10px;
     color:#ffffff;
-    font-size:14px;
+    font-size:16px;
     font-family: "futura", Arial, sans-serif;
     box-shadow: 0px;
 }
@@ -157,24 +157,36 @@ button:hover{
 
 #picto_connex{
     float:left;
-    background-image:url("../img/picto_connex.png");
+    background-image:url("../img/picto_login.png");
     background-position: 0px 0px;
     background-repeat:no-repeat;
     height:39px;
     margin-bottom:5px;   
 }
 
+#picto_connex:hover{
+    background-position: -25px 0px;
+}
+
+#picto_connex.active{
+    background-position: -50px 0px;
+}
+
 
 #picto_inscrip{
     float:left;
-    background-image:url("../img/picto_inscrip.png");
-    background-position: -34px 0px;
+    background-image:url("../img/picto_signup.png");
+    background-position: 0px 0px;
     background-repeat:no-repeat;
     height:39px;
 }
 
 #picto_inscrip:hover{
-    background-position: 0px 0px;
+    background-position: -25px 0px;
+}
+
+#picto_inscrip.active{
+    background-position: -50px 0px;
 }
 
 #error{

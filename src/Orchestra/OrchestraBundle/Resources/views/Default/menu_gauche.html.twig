@@ -2,13 +2,13 @@
 
     <nav id="nav_menu">
         <ul>
-            <li class="titre_menu active">
+            <li class="titre_menu ">
                 <a href="" alt="">
                 <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_accueil_gauche.png') }}" alt="" />
                 <p class="txt_picto_menu">Accueil</p>
                 </a>
             </li>
-            <li class="titre_menu">
+            <li class="titre_menu active">
                 <a href="{{ path ('OrchestraOrchestraBundle_profil', { 'id': app.security.getToken().getUser().getId()}) }}" alt="">
                 <img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" />
                 <p class="txt_picto_menu">Profil</p>
