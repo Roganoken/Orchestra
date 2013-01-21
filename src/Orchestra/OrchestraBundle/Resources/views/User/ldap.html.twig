@@ -5,7 +5,7 @@ Bienvenue !
 {% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_connexion.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_connexion.css') }}" type="text/css" media="all" />
 {% endblock %}
 
 {% block header %}
@@ -13,38 +13,45 @@ Bienvenue !
     <img class="image_left" src="{{ asset ('bundles/orchestraorchestra/img/estei.png') }}" alt="" />
     <p id="txt_logo">Ecole supérieure des technologies électronique, informatique et infographie</p>
 </div>
-
+         
 {% endblock %}
 
 {% block contenu %}
 
 <div id="contenu">
 
-<h3>Valider votre compte intranet avec vos Login ESTEI </h3>
-
-<div>
-    <form method="post" {{ form_enctype(form) }}>
-    	{{ form_widget(form) }}
-            <input type="submit" />
-        </form>
-    </div>
-
-{% for flashMessage in app.session.flashbag.get('notice') %}
-    <div class="flash-notice">
-        {{ flashMessage }}
+    <div id="bloc_connexion">
+        <p id="txt_connexion">S'enregistrer</p>
+        <h3>Entrer vos Login ESTEI</h3>
+        
+        <div>
+            <form method="post" {{ form_enctype(form) }}>
+    	        {{ form_widget(form) }}
+                <input id="submit" type="submit" value="S'enregistrer" />
+            </form>
         </div>
-{% endfor %}
-
-{% if message == 'inscription' %}
-        <p>Vous ne faites pas partie de notre réseau interne !</p>
-        <p>Ancien étudiant, entreprise, vous pouvez vous inscrire ici : <a href="{{ path('fos_user_registration_register') }}">s'inscrire</a></p>
-{% elseif message == 'ajout_reussi' %}
-        <p>Félicitations, vous êtes bien inscrit !</p>
-        <p>Vous pouvez maintenant vous connecter ici : <a href="{{ path('fos_user_security_login') }}">se connecter</a></p>
-{% endif %}
-
-<a href="{{ path('signup') }}">revenir</a>
-
+        
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+            {% endfor %}
+            
+            {% if message == 'inscription' %}
+                    <p>Vous ne faites pas partie de notre réseau interne !</p>
+                    <p>Ancien étudiant, entreprise, vous pouvez vous inscrire ici : <a href="{{ path('fos_user_registration_register') }}">s'inscrire</a></p>
+            {% elseif message == 'ajout_reussi' %}
+                    <p>Félicitations, vous êtes bien inscrit !</p>
+                    <p>Vous pouvez maintenant vous connecter ici : <a href="{{ path('fos_user_security_login') }}">se connecter</a></p>
+            {% endif %}
+    
+        <p id="retour"><a href="{{ path('signup') }}">retour</a></p>
+    
+    </div>
+    
+    <div id="pictos">
+        <div id="picto_connex"><a href="{{ path('fos_user_security_login') }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_vide.png') }}" alt="picto inscription" /></a></div>
+        <div id="picto_inscrip" class="active"><a href="{{ path('signup') }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_vide.png') }}" alt="picto inscription" /></a></div>
     </div>
 
 {% endblock %}
