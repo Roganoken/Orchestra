@@ -18,11 +18,9 @@
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
 
    <h1>Liste des actualités</h1>
-
-        {% render 'OrchestraOrchestraBundle:news:liste' %}
-    
    
-
+    {% render 'OrchestraOrchestraBundle:news:liste' %}
+   
     <a href="{{ path('news_new') }}">Ajouter une actualité</a>
     <a href="{{ path('news_historique') }}">Voir l'historique</a>
    
