@@ -28,7 +28,7 @@ OrchestraOrchestraBundle_address:
 
 OrchestraOrchestraBundle_auteur:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/auteur.yml
-    prefix:   /auteur
+    prefix:   bibliotheque/auteur
 
 OrchestraOrchestraBundle_city:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/city.yml
@@ -80,7 +80,7 @@ OrchestraOrchestraBundle_galerie:
 
 OrchestraOrchestraBundle_genre:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/genre.yml
-    prefix:   /genre
+    prefix:   bibliotheque/livre/genre
 
 OrchestraOrchestraBundle_image:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/image.yml
@@ -104,7 +104,7 @@ OrchestraOrchestraBundle_legal:
 
 OrchestraOrchestraBundle_livre:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/livre.yml
-    prefix:   /livre
+    prefix:   bibliotheque/livre
 
 OrchestraOrchestraBundle_media:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/media.yml
@@ -173,4 +173,3 @@ OrchestraOrchestraBundle_speciality:
 OrchestraOrchestraBundle_user:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/user.yml
     prefix:   /profil
-
