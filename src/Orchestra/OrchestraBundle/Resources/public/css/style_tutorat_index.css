@@ -79,6 +79,16 @@
     margin-top:13px;
 }
 
+.txt_titre_bloc a{
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.txt_titre_bloc a:hover{
+    color:#e65011;
+    text-decoration: none;
+}
+
 
 .bloc_contenu_tuto{
     float:left;
@@ -102,6 +112,7 @@
     -khtml-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
+    margin-bottom:20px;
 }
 
 
@@ -172,6 +183,12 @@
 .picto_modif{
     float:left;
     margin:10px 0px 0px 12px;
+    width:20px;
+    height:20px;
+}
+
+.picto_modif_tuto{
+    float:right;
     width:20px;
     height:20px;
 }

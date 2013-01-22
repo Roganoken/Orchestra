@@ -3,7 +3,7 @@
 @font-face{
     font-family:futura;
     src:url("../fonts/futura_book.ttf");
-    font-weight: 200;
+    /*font-weight: 200;*/
 }
 
 
@@ -20,7 +20,7 @@
 #form_edit{
     float:left;
     width:440px; 
-    background-color:lightblue;
+    /*background-color:lightblue;*/
 }
 
 
@@ -93,22 +93,57 @@
     font-size: 12px;
 }
 
+
+td{
+    text-align: justify;
+    padding-bottom:10px;
+
+    color:#a8a9ab;
+    font-family:Arial, sans-serif;
+
+}
+
+.intitule, .description{
+        padding-top:5px;
+    font-size:14px;
+    color:#2b3035;
+}
+
+.ajout_par{
+   font-size:12px;
+}
+
+
 #actions_droite{
     float:left;
     width:250px;
-    background-color:lightgreen;
+    /*background-color:lightgreen;*/
 }
 
 
 .sinscrire{
     float:right;
     width:238px;
-    margin-top:30px;
+    margin-top:20px;
 }
 
 .retour_tuto{
     float:right;
     width:238px;
+    margin-bottom: 10px;
+}
+
+button{
+    float:left;
+    color:#ffffff;
+    background-color: #2b3035;
+    border:1px solid #2b3035;
+    margin-top:-5px;
+    margin-left:-5px;
+}
+
+button:hover{
+    color:#e65011;
 }
 
 .txt_titre_bloc a{

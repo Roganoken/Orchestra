@@ -26,16 +26,21 @@
                 <form action="{{ path('module_create') }}" method="post" {{ form_enctype(form) }}>
                     {{ form_widget(form) }}
 
-                        <button type="submit">Ajouter</button>
+                        <button class="btn_ajout" type="submit">Ajouter</button>
 
                 </form>
 
             </div>
             
             <ul id="actions_droite">
-                <li>
-                    <a href="{{ path('module') }}">Revenir à la liste des tutorats</a>
-                </li>
+                <div class="titre_bloc retour_tuto">
+                    <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
+                    <div class="txt_titre_bloc">
+                        <a href="{{ path('module') }}">Revenir aux tutorats</a>
+                    </div>
+                </div>
+            
+                
             </ul>
 
       </div>
