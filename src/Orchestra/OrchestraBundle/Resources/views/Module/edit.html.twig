@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_edit_profil.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_tutorat_new.css') }}" type="text/css" media="all" />
 {% endblock %}
 
 
@@ -16,29 +16,48 @@
 <div id="contenu">
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
         
-        <h1>Modification du tutorat</h1>
+    <div id="content_form_edit">
+           
+           <div id="form_edit">          
+               
+                <h1>Modification du tutorat</h1>
+        
+                    <form action="{{ path('module_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+                        {{ form_widget(edit_form) }}
+                        <p>
+                            <button class="btn_modif" type="submit">Modifier</button>
+                        </p>
+                    </form>
 
-<form action="{{ path('module_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Modifier</button>
-    </p>
-</form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('module_show', { 'id': entity.id }) }}">
-            Revenir au tutorat
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('module_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Supprimer</button>
-        </form>
-    </li>
-</ul>
-
+           </div>   
+           
+            <ul id="actions_droite">
+            
+                <div class="titre_bloc retour_tuto">
+                    <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
+                    <div class="txt_titre_bloc">
+                        <a href="{{ path('module_show', { 'id': entity.id }) }}">Revenir au tutorat</a>
+                    </div>
                 </div>
+
+
+                        
+                <div class="titre_bloc retour_tuto">
+                    <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
+                    <div class="txt_titre_bloc">
+                        <form action="{{ path('module_delete', { 'id': entity.id }) }}" method="post">
+                            {{ form_widget(delete_form) }}
+                            <button class="btn_supp" type="submit">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+       
+            </ul>
+           
+           
+                 
+    </div>                
+                    
+</div>
 
 {% endblock %} 

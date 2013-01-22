@@ -9,14 +9,15 @@
     
    
     <div class="date">{{ historique.date|format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
-    
-    
-    {% if is_granted("ROLE_ADMIN") or historique.moduleUser.id == app.security.getToken().getUser().getId() %}
-       <div class="picto_modif"><a href="{{ path('module_edit', { 'id': historique.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
-    {% endif %}
-    
+
     <div class="ajout_par">Ajouté par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': historique.moduleUser.id }) }}">{{ historique.moduleUser.firstname }} {{ historique.moduleUser.lastname }}</a></div>
 
+    {% if is_granted("ROLE_ADMIN") or historique.moduleUser.id == app.security.getToken().getUser().getId() %}
+      <div class="picto_modif_tuto"><a href="{{ path('module_edit', { 'id': historique.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
+    {% endif %}
+    
+    
+    
 </div>
 
 

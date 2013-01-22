@@ -20,7 +20,7 @@
 #form_edit{
     float:left;
     width:400px; 
-    /*background-color:lightblue; */
+    /*background-color:lightblue;*/
 }
 
 h1{
@@ -81,7 +81,7 @@ input{
 
 
 
-button{
+.btn_modif, .btn_ajout{
     float:left;
     height:30px;
     margin-left:150px;
@@ -102,27 +102,81 @@ button{
     box-shadow: 0px;
 }
 
-button:hover{
+.btn_modif:hover, .btn_ajout:hover{
     background-position: 0px -33px;
 }
 
+
+
 #actions_droite{
-    float:left;
-    height:25px;
-    margin-top:40px;
-    margin-left:50px;
+    float:right;
+    width:250px;
+    margin-left:20px;
     /*background-color:lightgreen;*/
 }
 
 
-#actions_droite a{
-    color:#2b3035;
-    font-size:14px;
-    font-family: "futura", Arial, sans-serif;
+
+.retour_tuto{
+    float:right;
+    width:240px;
+    margin-bottom: 10px;
+}
+
+.picto_tutorat_titre{
+    float:left;
+    margin:7px 5px 0px 7px;
+    width:23px;
+    height:23px;  
+}
+
+.titre_bloc{
+    float: left;
+    position:relative;
+    z-index:1;
+    width:100%;
+    background-image:url("../img/fond_titre_bloc.jpg");
+    background-repeat:repeat-x;
+    height:38px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.txt_titre_bloc{
+    float:left;
+    color:#ffffff;
+    margin-left:5px;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top:13px;
+}
+
+.txt_titre_bloc a{
+    color:#ffffff;
     text-decoration: none;
 }
 
-#actions_droite a:hover{
-    /*text-decoration: underline;*/
+.txt_titre_bloc a:hover{
+    color:#e65011;
+    text-decoration: none;
+}
+
+
+/* style tutorat edit */
+
+.btn_supp{
+    float:left;
+    color:#ffffff;
+    background-color: #2b3035;
+    border:1px solid #2b3035;
+    margin-top:-3px;
+    margin-left:-5px;
+}
+
+.btn_supp:hover{
     color:#e65011;
 }
