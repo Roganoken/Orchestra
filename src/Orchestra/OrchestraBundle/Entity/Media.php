@@ -27,6 +27,12 @@ class Media
      * @ORM\Column(name="intitule", type="string", length=45, nullable=true)
      */
     private $intitule;
+    
+    
+    public function __toString()
+    {
+        return ($this->intitule);
+    } 
 
 
 
