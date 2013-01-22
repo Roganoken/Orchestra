@@ -52,6 +52,24 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: mediatheque, label: Auteur }
         arguments: [null, Orchestra\OrchestraBundle\Entity\Auteur, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.galerie:
+        class: Orchestra\OrchestraBundle\Admin\GalerieAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: galerie, label: Galerie }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Galerie, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.media:
+        class: Orchestra\OrchestraBundle\Admin\MediaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: galerie, label: Media }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Media, SonataAdminBundle:CRUD]
+    
+    orchestra.orchestra.admin.image:
+        class: Orchestra\OrchestraBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: galerie, label: Image }
+        arguments: [null, Orchestra\OrchestraBundle\Entity\Image, SonataAdminBundle:CRUD]
         
     orchestra_orchestra.form.label_extension:
         class: Orchestra\OrchestraBundle\Form\Extension\LabelFormTypeExtension

@@ -172,6 +172,8 @@ sonata_admin:
                 label: users  
             mediatheque:
                 label: mediatheque  
+            galerie:
+                label: galerie  
                 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration
