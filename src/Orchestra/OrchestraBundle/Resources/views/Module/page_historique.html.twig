@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_tutorat_index.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+
+{% block header %}
+    {% include "OrchestraOrchestraBundle:Default:header.html.twig" %}      
+{% endblock %}
+
+
+{% block contenu %}
+
+<div id="contenu">
+    {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
+  <div class="content_form_edit">  
+  
+      <div id="actions_gauche">       
+            
+            <div class="bloc_tuto">
+        
+                <div class="titre_bloc">
+                    <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
+                    <div class="txt_titre_bloc"><p>Historique des tutorats</p></div>
+                </div>
+                
+                <div class="bloc_contenu_tuto">   
+                    {% for historique in historiques %}
+
+                        <div class="records_list">
+                            <div class="intitule">{{ historique.intitule }}</div>
+                            <div class="picto_detail"><a href="{{ path('module_show', { 'id': historique.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
+
+
+
+                            <div class="date">{{ historique.date|format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
+
+
+                            {% if is_granted("ROLE_ADMIN") or historique.moduleUser.id == app.security.getToken().getUser().getId() %}
+                               <div class="picto_modif"><a href="{{ path('module_edit', { 'id': historique.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
+                            {% endif %}
+
+                            <div class="ajout_par">Ajouté par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': historique.moduleUser.id }) }}">{{ historique.moduleUser.firstname }} {{ historique.moduleUser.lastname }}</a></div>
+
+                        </div>
+
+
+                        {% endfor %}
+
+                        <div class="liste_complete"><a href="{{ path('module') }}">Revenir</a></div>
+                </div>
+    
+                        <div class="navigation">
+                            {{ knp_pagination_render(historiques) }}
+                        </div>  
+            </div>  
+            
+                      
+    </div>
+
+
+
+      
+            <div class="titre_bloc_ajout">
+                <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
+                <div class="txt_titre_bloc"><p>Ajouter un tutorat</p></div>
+                <div class="picto_modif"><a href="{{ path('module_new') }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
+            </div>
+
+    
+</div>
+
+{% endblock %} 
