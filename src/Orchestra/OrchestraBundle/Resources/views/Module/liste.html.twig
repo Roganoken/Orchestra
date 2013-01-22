@@ -8,8 +8,10 @@
     
    
     <div class="date">{{ entity.date|format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
-    <div class="new">NEW</div>
     
+    {% if entity.created|date('Ymd') == "now"|date('Ymd') %}
+    <div class="new">NEW</div>
+    {% endif %}
     {% if is_granted("ROLE_ADMIN") or entity.moduleUser.id == app.security.getToken().getUser().getId() %}
        <div class="picto_modif"><a href="{{ path('module_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
     {% endif %}
@@ -18,9 +20,6 @@
 
 </div>
     {% endfor %}
-
-                    
-<div class="liste_complete"><a href="">Voir la liste complète</a></div>
                     
 
     

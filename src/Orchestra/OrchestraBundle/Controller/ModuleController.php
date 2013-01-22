@@ -30,13 +30,52 @@ class ModuleController extends Controller
      *
      */
     
-    public function historiqueAction()
+    public function historiqueAction($max = 2)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $historiques = $em->getRepository('OrchestraOrchestraBundle:Module')->findAll();
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Module', 'a')
+          ->where('a.date <= :today')
+          ->setParameter('today', new \DateTime())
+          ->orderBy('a.date', 'DESC')
+          ->setMaxResults($max);
+
+        $query = $qb->getQuery();
+        $historiques = $query->getResult();
 
         return $this->render('OrchestraOrchestraBundle:Module:historique.html.twig', array(
+            'historiques' => $historiques,
+        ));
+    }
+
+    /**
+     * LISTE TOUS LES TUTORATS.
+     *
+     */
+    
+    public function fullHistoriqueAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Module', 'a')
+          ->where('a.date <= :today')
+          ->setParameter('today', new \DateTime())
+          ->orderBy('a.date', 'DESC');
+
+        $query = $qb->getQuery();
+
+        $paginator = $this->get('knp_paginator');
+        $historiques = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            2/*limit per page*/
+                );
+
+        return $this->render('OrchestraOrchestraBundle:Module:page_historique.html.twig', array(
             'historiques' => $historiques,
         ));
     }

@@ -16,7 +16,7 @@ framework:
     default_locale:  fr_FR
     trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
     session:
-        lifetime:       900
+        #lifetime:       900
 
 # Twig Configuration
 twig:
