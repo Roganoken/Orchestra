@@ -72,7 +72,7 @@ class ModuleController extends Controller
         $historiques = $paginator->paginate(
             $query,
             $this->get('request')->query->get('page', 1)/*page number*/,
-            2/*limit per page*/
+            10/*limit per page*/
                 );
 
         return $this->render('OrchestraOrchestraBundle:Module:page_historique.html.twig', array(

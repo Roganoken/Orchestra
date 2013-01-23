@@ -1,0 +1,30 @@
+message:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Message:index" }
+
+message_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Message:show" }
+
+message_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Message:new" }
+
+message_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Message:create" }
+    requirements: { _method: post }
+
+message_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Message:edit" }
+
+message_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Message:update" }
+    requirements: { _method: post }
+
+message_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Message:delete" }
+    requirements: { _method: post }

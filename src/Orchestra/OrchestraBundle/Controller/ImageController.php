@@ -71,16 +71,27 @@ class ImageController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity  = new Image();
-        $form = $this->createForm(new ImageType(), $entity);
+        $image  = new Image();
+        $form = $this->createForm(new ImageType(), $image);
         $form->bind($request);
 
         if ($form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            
+            $user = $this->get('security.context')->getToken()->getUser();  
+            
+            $image->addUser($user);
+            $image->setCreated(new \DateTime());
+            $image->uploadProfilePicture($user);
+            //$image->setTaille(getimagesize($image->getUrl()));
+            $em->persist($image);
+            $em->flush();  
+            
+            $user->addImage($image);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('image_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('image_show', array('id' => $image->getId())));
         }
 
         return $this->render('OrchestraOrchestraBundle:Image:new.html.twig', array(

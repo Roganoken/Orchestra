@@ -64,6 +64,13 @@ class Commentaire
     private $news;
 
     /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Orchestra\OrchestraBundle\Entity\Evenement", mappedBy="commentaire")
+     */
+    private $evenement;
+
+    /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="Orchestra\OrchestraBundle\Entity\User")
@@ -81,6 +88,7 @@ class Commentaire
         $this->image = new \Doctrine\Common\Collections\ArrayCollection();
         $this->livre = new \Doctrine\Common\Collections\ArrayCollection();
         $this->news = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->evenement = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
 
@@ -283,5 +291,38 @@ class Commentaire
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add evenement
+     *
+     * @param \Orchestra\OrchestraBundle\Entity\Evenement $evenement
+     * @return Commentaire
+     */
+    public function addEvenement(\Orchestra\OrchestraBundle\Entity\Evenement $evenement)
+    {
+        $this->evenement[] = $evenement;
+    
+        return $this;
+    }
+
+    /**
+     * Remove evenement
+     *
+     * @param \Orchestra\OrchestraBundle\Entity\Evenement $evenement
+     */
+    public function removeEvenement(\Orchestra\OrchestraBundle\Entity\Evenement $evenement)
+    {
+        $this->evenement->removeElement($evenement);
+    }
+
+    /**
+     * Get evenement
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvenement()
+    {
+        return $this->evenement;
     }
 }

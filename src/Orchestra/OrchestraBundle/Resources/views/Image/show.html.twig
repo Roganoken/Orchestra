@@ -3,10 +3,6 @@
 <table class="record_properties">
     <tbody>
         <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
             <th>Titre</th>
             <td>{{ entity.titre }}</td>
         </tr>
@@ -16,7 +12,7 @@
         </tr>
         <tr>
             <th>Datecreation</th>
-            <td>{{ entity.dateCreation|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.dateCreation|format_date(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG')) }}</td>
         </tr>
         <tr>
             <th>Url</th>
@@ -35,16 +31,17 @@
             <td>{{ entity.logiciel }}</td>
         </tr>
         <tr>
-            <th>Motcle</th>
-            <td>{{ entity.motCle }}</td>
+            <th>Ajouté le</th>
+            <td>{{ time_diff(entity.created) }}</td>
         </tr>
         <tr>
-            <th>Created</th>
-            <td>{{ entity.created }}</td>
-        </tr>
-        <tr>
-            <th>Updated</th>
-            <td>{{ entity.updated }}</td>
+            <th>Modifié le</th>
+            <td> {% if entity.updated %}
+                    {{ time_diff(entity.updated) }}
+                 {% else %}
+                    jamais
+                 {% endif %}
+            </td>
         </tr>
         <tr>
             <th>Isportfolio</th>
