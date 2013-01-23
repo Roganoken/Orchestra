@@ -83,7 +83,6 @@ class ImageController extends Controller
             
             $image->addUser($user);
             $image->setCreated(new \DateTime());
-            $image->uploadProfilePicture($user);
             //$image->setTaille(getimagesize($image->getUrl()));
             $em->persist($image);
             $em->flush();  
