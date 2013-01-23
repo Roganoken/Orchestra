@@ -23,6 +23,19 @@
     /*background-color:lightblue;*/
 }
 
+.bloc_contenu_tuto{
+    float:left;
+    /*background-color:lightgrey;*/
+    width:96%;
+    margin-top:-5px;
+    margin-left: 3px;
+    padding-top:15px;
+    padding-left:10px;
+    padding-bottom:10px;
+    border: 1px solid #b8b9ba;
+    background-color:#ffffff;
+}
+
 h1{
     color:#2b3035;
     font-size:20px;
@@ -32,20 +45,20 @@ h1{
     text-transform: uppercase;
 }
 
+
 label{
     /*background-color: lightyellow;*/
     margin-bottom:20px;
+    margin-right:30px;
 }
 
-textarea{
-    margin-left:80px;
-
-    margin-bottom:20px;
-    
+#orchestra_orchestrabundle_moduletype_description{
+   margin-left:-15px;
+    /*margin-bottom:20px; */
 }
 
 input{
-    margin-left:30px;
+    margin-left:10px;
     margin-bottom:20px;
     color:#2b3035;
     font-size:14px;
@@ -54,12 +67,15 @@ input{
 
 
 #orchestra_orchestrabundle_moduletype_salle{
-    margin-left:50px;
+    margin-left:25px;
+    margin-top:20px;
 }
 
 #orchestra_orchestrabundle_moduletype_date{
-     float:right;
+     float:left;
      width:332px;
+     margin-left:40px;
+     margin-top:-25px;
      margin-bottom:20px;
      /*background-color: lightgreen;*/
 }
@@ -81,7 +97,7 @@ input{
 
 
 
-.btn_modif, .btn_ajout{
+.btn_modif, .btn_ajout, .btn_creer{
     float:left;
     height:30px;
     margin-left:150px;
@@ -102,7 +118,7 @@ input{
     box-shadow: 0px;
 }
 
-.btn_modif:hover, .btn_ajout:hover{
+.btn_modif:hover, .btn_ajout:hover, .btn_creer:hover{
     background-position: 0px -33px;
 }
 
@@ -180,3 +196,13 @@ input{
 .btn_supp:hover{
     color:#e65011;
 }
+
+
+
+/* style créer une actualité */
+
+#orchestra_orchestrabundle_newstype_active{
+    margin-top:20px;
+}
+
+
