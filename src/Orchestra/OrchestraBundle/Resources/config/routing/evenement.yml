@@ -1,0 +1,30 @@
+evenement:
+    pattern:  /
+    defaults: { _controller: "OrchestraOrchestraBundle:Evenement:index" }
+
+evenement_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Evenement:show" }
+
+evenement_new:
+    pattern:  /new
+    defaults: { _controller: "OrchestraOrchestraBundle:Evenement:new" }
+
+evenement_create:
+    pattern:  /create
+    defaults: { _controller: "OrchestraOrchestraBundle:Evenement:create" }
+    requirements: { _method: post }
+
+evenement_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrchestraOrchestraBundle:Evenement:edit" }
+
+evenement_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrchestraOrchestraBundle:Evenement:update" }
+    requirements: { _method: post }
+
+evenement_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrchestraOrchestraBundle:Evenement:delete" }
+    requirements: { _method: post }

@@ -69,7 +69,11 @@ OrchestraOrchestraBundle_diploma:
 OrchestraOrchestraBundle_diploma_user:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/diploma_user.yml
     prefix:   /diploma_user
-
+    
+OrchestraOrchestraBundle_evenement:
+    resource: "@OrchestraOrchestraBundle/Resources/config/routing/evenement.yml"
+    prefix:   /evenement
+    
 OrchestraOrchestraBundle_field:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/field.yml
     prefix:   /field
@@ -109,6 +113,10 @@ OrchestraOrchestraBundle_livre:
 OrchestraOrchestraBundle_media:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/media.yml
     prefix:   /media
+    
+OrchestraOrchestraBundle_message:
+    resource: "@OrchestraOrchestraBundle/Resources/config/routing/message.yml"
+    prefix:   /message
 
 OrchestraOrchestraBundle_module:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/module.yml

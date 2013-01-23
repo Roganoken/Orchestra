@@ -13,18 +13,30 @@ class ImageType extends AbstractType
         $builder
             ->add('titre')
             ->add('descriptif')
-            ->add('dateCreation')
-            ->add('url')
-            ->add('taille')
-            ->add('poids')
+            ->add('dateCreation', 'date', array(
+                'widget' => 'choice',
+                'years' => range(date('Y') - 30, date('Y')),
+                'label' => 'Date de création',
+                ))
             ->add('logiciel')
+            ->add('media', 'entity', array(
+                 'class' => 'OrchestraOrchestraBundle:Media',
+                 'property' => 'intitule',
+                 'empty_value' => 'Choisissez',
+                 'label' => 'Média',
+                ))
+            ->add('file', 'file', array('label' => 'Image'))
+           /* 
+            ->add('user')
+            ->add('url')
             ->add('motCle')
             ->add('created')
             ->add('updated')
             ->add('isPortfolio')
             ->add('commentaire')
-            ->add('user')
-            ->add('media')
+            ->add('taille')
+            ->add('poids')
+            */
         ;
     }
 
