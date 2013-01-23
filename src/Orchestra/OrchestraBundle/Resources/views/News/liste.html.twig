@@ -1,69 +1,27 @@
 {% if entities|length != 0 %}
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Contenu</th>
-            <th>Auteur</th>
-            <th>Ajouté</th>
-            <th>Modifié</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
     {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('news_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-            <td>{{ entity.content|slice(0, 50) }}[...]</td>
-            <td>{{ entity.user.firstname }} {{ entity.user.lastname }}</td>
-            <td>{% if entity.created %}{{ time_diff(entity.created) }}{% endif %}</td>
-            <td>{% if entity.updated %}{{ time_diff(entity.updated) }}{% else %}jamais{% endif %}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('news_show', { 'id': entity.id }) }}">voir</a>
-                    </li>
-                    {% if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() %}
-                    <li>
-                        <a href="{{ path('news_edit', { 'id': entity.id }) }}">modifier</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-{% else %}
-Pas encore d'actualités
-{% endif %}
-
-
-{% if entities|length != 0 %}
-    {% for entity in entities %}
-   <!--   <div class="records_list">
+  <div class="records_list">
         <div class="intitule">{{ entity.title }}</div>
         <div class="picto_detail"><a href="{{ path('news_show', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
        
         
        
-        <div class="date">{{ entity.content|slice(0, 50) }} [...]</div>
+        <div class="contenu_actu">{{ entity.content|slice(0, 50) }} [...]</div>
         
         {% if entity.created|date('Ymd') == "now"|date('Ymd') %}
         <div class="new">NEW</div>
         {% endif %}
     
-        <div class="ajout_par">Ajouté par <span>{{ entity.user.firstname }} {{ entity.user.lastname }}</span></div>
+        <div class="ajout_par">Ajouté par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.User.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a></div>
     
         
         {% if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() %}
            <div class="picto_modif_tuto"><a href="{{ path('news_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
         {% endif %}
-        
-        
+
         
     </div>
         {% endfor %}
 {% else %}
-Pas encore d'actualités -->
+Pas encore d'actualités
 {% endif %}
