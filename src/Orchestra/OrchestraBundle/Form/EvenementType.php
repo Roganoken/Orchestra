@@ -13,10 +13,10 @@ class EvenementType extends AbstractType
         $builder
             ->add('title')
             ->add('contenu')
-            ->add('created')
-            ->add('updated')
+            /*->add('created')
+            ->add('updated')*/
             ->add('image')
-            ->add('commentaire')
+/*            ->add('commentaire')*/
             ->add('user')
         ;
     }
