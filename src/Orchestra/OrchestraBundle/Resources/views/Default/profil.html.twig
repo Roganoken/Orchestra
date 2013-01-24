@@ -3,7 +3,6 @@
 
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
-    
     <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_profil.css') }}" type="text/css" media="all" />
 {% endblock %}
 
@@ -81,9 +80,75 @@
                 </ul>
             </nav>
         </div>
+        <div id="bloc_absences">
+            <div class="titre_bloc_3">
+                <div class="picto_profil"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_perso.png') }}" alt="" /></div>
+                <div class="txt_titre_bloc"><p>Mes absences</p></div>
+                {% if entity.id == app.security.getToken().getUser().getId() or is_granted("ROLE_ADMIN") %}
+                    <div class="picto_modif"><a href="{{ path ('user_edit', { 'id': entity.id })}}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
+                {% endif %}
+            </div>
+            
+            <nav class="bloc_tab_3">
+                <ul>
+                    <li class="bloc_li bloc_li_3">Retard(s) : <span>2</span></li>
+                    <li class="bloc_li bloc_li_3">Demi-journée(s) : <span>1</span></li>
+                    <li class="bloc_li bloc_li_3">Justifiée(s) : <span>1</span></li>
+                    <li class="bloc_li bloc_li_3">Injustifiée(s) : <span>0</span></li>
+                    <a href=""><li class="bloc_li bloc_li_3 all">voir toutes mes absences</li></a>
+                </ul>
+            </nav>
+        </div>
+        <div id="bloc_evt">
+            <div class="titre_bloc_3">
+                <div class="picto_evt"><img  height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_evt.png') }}" alt="" /></div>
+                <div class="txt_titre_bloc"><p>évènements à venir</p></div>
+                {% if entity.id == app.security.getToken().getUser().getId() or is_granted("ROLE_ADMIN") %}
+                    <div class="picto_modif"><a href="{{ path ('user_edit', { 'id': entity.id })}}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
+                {% endif %}
+            </div>
+            
+            <nav class="bloc_tab_3">
+                <ul>
+                    <li class="bloc_li bloc_li_3">18/02 : <span>Soutenance orale</span></li>
+                    <li class="bloc_li bloc_li_3">15/03 : <span>Soirée ESTEI</span></li>
+                    <li class="bloc_li bloc_li_3">25/03 : <span>Pas cours d'Anglais</span></li>
+                    <li class="bloc_li bloc_li_3">20/05 : <span>Portes Ouvertes</span></li>
+                    <a href=""><li class="bloc_li bloc_li_3 all">voir toutes les évènements</li></a>
+                </ul>
+            </nav>
+        </div>
         
+        <div id="bloc_portfolio">
+            <div class="titre_bloc_1">
+                <div class="picto_portfolio"><img  height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_galerie.png') }}" alt="" /></div>
+                <div class="txt_titre_bloc"><p>Mon portfolio</p></div>
+                {% if entity.id == app.security.getToken().getUser().getId() or is_granted("ROLE_ADMIN") %}
+                    <div class="picto_modif"><a href="{{ path ('user_edit', { 'id': entity.id })}}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
+                {% endif %}
+            </div>
+            <div id="portfolio">
+                <div id="content_portfolio">
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                    
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
+                </div>
+                
+                <div class="navigation">
+                       1 2 3
+                </div> 
+            </div>
     </div>
 
+</div>
 </div>
 
 {% endblock %}

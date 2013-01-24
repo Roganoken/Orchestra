@@ -8,6 +8,10 @@ annuaire:
     requirements:
         lettre: a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z
 
+OrchestraOrchestraBundle_accueil:
+    pattern:  /accueil/{id}
+    defaults: { _controller: "OrchestraOrchestraBundle:Default:accueil"}
+
 signup:
     pattern:  /signup
     defaults: { _controller: "OrchestraOrchestraBundle:Default:signup"}

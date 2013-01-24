@@ -1,25 +1,28 @@
 {% extends '::base.html.twig' %}
 
+
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
+    
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_profil.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_tutorat_index.css') }}" type="text/css" media="all" />
 {% endblock %}
-
 
 {% block header %}
     {% include "OrchestraOrchestraBundle:Default:header.html.twig" %}      
 {% endblock %}
 
-
 {% block contenu %}
 
 <div id="contenu">
-
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
+    
+    <div id="content">
+        <div id="breadcrumb" class="">
+            <a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/home_breadcrumb.png') }}" alt="Accueil" /></a>
+        </div>
         
-    <div class="content_form_edit">  
-  
-      <div id="actions_gauche">   
+         <div id="actions_gauche">   
       
               <div class="bloc_tuto">
         
@@ -29,24 +32,10 @@
                 </div>
                 
                 <div class="bloc_contenu_tuto">   
-                    {% render 'OrchestraOrchestraBundle:news:liste' %}
+                    {% render 'OrchestraOrchestraBundle:News:liste' %}
                 </div>
-            </div>   
-
-
-            <!--  <a href="{{ path('news_new') }}">Ajouter une actualité</a>
-            <a href="{{ path('news_historique') }}">Voir l'historique</a> -->
+            </div>
    
-       </div>
-       
-       <div class="titre_bloc_ajout">
-            <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
-            <div class="txt_titre_bloc"><a href="{{ path('news_new') }}"><p>Ajouter une actualité</p></a></div>
-        </div>
-
-       <div class="titre_bloc_ajout">
-            <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
-            <div class="txt_titre_bloc"><a href="{{ path('news_historique') }}"><p>Voir l'historique</p></a></div>
         </div>
         
         <div id="bloc_evt">
@@ -70,9 +59,9 @@
         </div>
         
         
-       
-   
-   </div>
+        
+    </div>
+
 </div>
 
-{% endblock %} 
+{% endblock %}

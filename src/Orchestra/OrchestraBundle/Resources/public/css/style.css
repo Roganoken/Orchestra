@@ -42,7 +42,8 @@ body{
 }
 
 #contenu{
-    /*background-color:lightpink;*/
+    background-image:url("../img/fond_menu.png");
+    background-repeat:repeat-y;
     width:1024px;
     position:relative;
     left:50%;

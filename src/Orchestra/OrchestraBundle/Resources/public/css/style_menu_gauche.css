@@ -3,8 +3,6 @@
     display:block;
     float:left;
     z-index:2;
-    background-image:url("../img/fond_menu.png");
-    background-repeat:repeat-y;
     width:248px;
     min-height: auto! Important;
     padding-bottom: 70px;

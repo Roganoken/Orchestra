@@ -11,6 +11,11 @@ class DefaultController extends Controller
         return $this->render('OrchestraOrchestraBundle:Default:index.html.twig');
     }
     
+    public function accueilAction()
+    {
+        return $this->render('OrchestraOrchestraBundle:Default:accueil.html.twig');
+    }
+    
     
     public function profilAction($id)
     {
