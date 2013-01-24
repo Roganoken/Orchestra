@@ -2,8 +2,7 @@
 
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_tutorat_index.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_news_index.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_evenement_index.css') }}" type="text/css" media="all" />
 {% endblock %}
 
 
@@ -29,21 +28,16 @@
                     </div>
                     
                     <div class="bloc_contenu_tuto">   
-                       {% if entities|length != 0 %}
+                        {% if entities|length != 0 %}
                             {% for entity in entities %}
                                   <div class="records_list">
                                         <div class="intitule">{{ entity.title }}</div>
-                                        <div class="picto_detail"><a href="{{ path('evenement_show', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
+
+                                       <div id="contenu_evenement">
+                                            <div class="img_evenement"><img  src="" alt="" />{{ entity.image }}</div>
                                        
-                                        
-                                       
-                                        <div class="contenu_actu">{{ entity.contenu }}</div>
-                                        
-                                        {% if entity.created|date('Ymd') == "now"|date('Ymd') %}
-                                        <div class="new">NEW</div>
-                                        {% endif %}
-                                    
-                                        <div class="img_evenement">{{ entity.image }}</div>
+                                            <div class="txt_evenement">{{ entity.contenu }}</div>
+                                       </div>
                                     
                                         
                                         {% if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() %}
@@ -52,6 +46,7 @@
                                 
                                         
                                     </div>
+
                                 {% endfor %}
                         {% else %}
                         Pas encore d'évènement
