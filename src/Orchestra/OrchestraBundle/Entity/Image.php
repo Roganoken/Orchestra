@@ -1,7 +1,9 @@
 <?php
 
 namespace Orchestra\OrchestraBundle\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="image")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Image
 {
@@ -24,28 +27,28 @@ class Image
     /**
      * @var string $titre
      *
-     * @ORM\Column(name="titre", type="string", length=45, nullable=true)
+     * @ORM\Column(name="titre", type="string", length=45, nullable=false)
      */
     private $titre;
 
     /**
      * @var string $descriptif
      *
-     * @ORM\Column(name="descriptif", type="text", nullable=true)
+     * @ORM\Column(name="descriptif", type="text", nullable=false)
      */
     private $descriptif;
 
     /**
      * @var \DateTime $dateCreation
      *
-     * @ORM\Column(name="date_creation", type="date", nullable=true)
+     * @ORM\Column(name="date_creation", type="date", nullable=false)
      */
     private $dateCreation;
 
     /**
      * @var string $url
      *
-     * @ORM\Column(name="url", type="string", length=45, nullable=true)
+     * @ORM\Column(name="url", type="string", length=45, nullable=false)
      */
     private $url;
 
@@ -78,16 +81,16 @@ class Image
     private $motCle;
 
     /**
-     * @var string $created
+     * @var datetime $created
      *
-     * @ORM\Column(name="created", type="string", length=45, nullable=false)
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
 
     /**
-     * @var string $updated
+     * @var datetime $updated
      *
-     * @ORM\Column(name="updated", type="string", length=45, nullable=false)
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -129,6 +132,16 @@ class Image
      * })
      */
     private $media;
+    
+    /**
+     * @Assert\File(
+     *     maxSize="3M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
+     *
+     * @var File $file
+     */
+    public $file;
 
     /**
      * Constructor
@@ -490,5 +503,93 @@ class Image
     public function getMedia()
     {
         return $this->media;
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        
+        if (null !== $this->file) {
+            // faites ce que vous voulez pour générer un nom unique
+            $imagename = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+           // On sauvegarde le nom de fichier
+            $this->url = $imagename;
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        // s'il y a une erreur lors du déplacement du fichier, une exception
+        // va automatiquement être lancée par la méthode move(). Cela va empêcher
+        // proprement l'entité d'être persistée dans la base de données si
+        // erreur il y a
+        $this->file->move($this->getUploadRootDir(), $this->url);
+
+        unset($this->file);
+    }
+    
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+    
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->url ? null : $this->getUploadRootDir().'/'.$this->url;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->url ? null : $this->getUploadDir().'/'.$this->url;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'image';
+    }
+    
+    public function uploadProfilePicture($user)
+    {
+
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->file) {
+            return;
+        }
+        
+        $imagename = $user.sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        
+        // move copie le fichier présent chez le client dans le répertoire indiqué.
+        $this->file->move($this->getUploadRootDir(), $imagename);
+
+        // On sauvegarde le nom de fichier
+        $this->url = $imagename;
+        
+        // La propriété file ne servira plus
+        $this->file = null;
     }
 }

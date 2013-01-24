@@ -30,8 +30,8 @@
             <td>{{ entity.poids }}</td>
             <td>{{ entity.logiciel }}</td>
             <td>{{ entity.motCle }}</td>
-            <td>{{ entity.created }}</td>
-            <td>{{ entity.updated }}</td>
+            <td>{{ entity.created|format_date(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG')) }}</td>
+            <td>{{ entity.updated|format_date(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG')) }}</td>
             <td>{{ entity.isPortfolio }}</td>
             <td>
                 <ul>

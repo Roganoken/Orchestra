@@ -127,45 +127,46 @@
 
 
 
-.intitule, .date, .ajout_par{
+.intitule{
     float:left;
-    width:90%;
+    width:415px;
     height:20px;
     margin-bottom:3px;
     font-family:Arial, sans-serif;
+    color:#2b3035;
+    font-size:14px;
     /*background-color: lightblue;*/
 }
 
-.intitule{
-    color:#2b3035;
-    font-size:14px;
-}
-
-.date{
-    color:#a8a9ab;
-    font-size:14px;
-    width:200px;
-}
-
-.new{
+#contenu_evenement{
     float:left;
-    color:#e65011;
-    font-size:14px;
-    font-weight:bold;
-    width:168px;
-    margin-left:5px;
-    text-align:center;
+    width:380px;
+    /*background-color: lightgreen;*/
+    margin-top:10px;
 }
 
-.ajout_par{
+
+.img_evenement{
+    /*background-color: lightpink;*/
+    float:left;
+    width:148px;
+    height:198px;
+    border:1px solid #2b3035;
+    margin-right:10px;
+}
+
+
+.txt_evenement{
+
+    /*width:220px;*/
+    margin-right:10px;
+    font-family:Arial, sans-serif;
     color:#a8a9ab;
-   font-size:12px;
+    font-size:14px;
+    text-align: justify;
+    /*background-color: lightblue;*/
 }
 
-.ajout_par a{
-    color:#e65011;
-    text-decoration: none;
-}
 
 .picto_detail{
     float:right;
@@ -180,79 +181,10 @@
     background-position: 0px 14px;
 }
 
-.picto_modif{
-    float:left;
-    margin:10px 0px 0px 12px;
-    width:20px;
-    height:20px;
-}
 
 .picto_modif_tuto{
     float:right;
     width:20px;
     height:20px;
-}
-
-.liste_complete{
-    float:left;  
-    width:96%;  
     margin-top:10px;
-    padding-bottom:5px;
-    padding-top:5px;
-    font-size:12px;
-    text-align: center;
-    /*background-color:lightpink;*/
 }
-
-.liste_complete a{
-    text-decoration: none;
-    color:#2b3035;
-}
-
-.liste_complete a:hover{
-    text-decoration: none;
-    color:#e65011;
-}
-
-
-/* PAGINATION */
-
-
-.navigation{
-    float:left;
-    width:96%;
-    margin-top:10px;
-    /*margin-bottom:20px;*/
-    text-align: center;
-}
-
-.navigation a{
-    color:#a8a9ab;
-    text-decoration: none;
-}
-
-.navigation a:visited{
-    color:#a8a9ab;
-    text-decoration: none;
-}
-
-.navigation a:hover{
-    color:#e65011;
-    text-decoration: none;
-}
-
-.navigation a:active{
-    color:#2b3035;
-    text-decoration: none;
-}
-
-
-/* STYLE EVENEMENTS */
-
-.img_evenement{
-    float:left;
-    background-color: lightgreen;
-    width:70px;
-    height:100px;
-}
-

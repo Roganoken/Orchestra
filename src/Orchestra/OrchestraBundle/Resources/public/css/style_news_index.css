@@ -1,1 +1,16 @@
 @CHARSET "UTF-8";
+
+
+.contenu_actu{
+    float:left;
+    width:90%;
+    margin-bottom:10px;
+    font-family:Arial, sans-serif;
+    /*background-color: lightblue;*/
+}
+
+.contenu_actu{
+    /*background-color:lightpink;*/
+    color:#a8a9ab;
+    font-size:14px;
+}
