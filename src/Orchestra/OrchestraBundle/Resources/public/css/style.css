@@ -42,8 +42,17 @@ body{
 }
 
 #contenu{
+    float:left;
     background-image:url("../img/fond_menu.png");
     background-repeat:repeat-y;
+    width:1024px;
+    position:relative;
+    left:50%;
+    margin-left:-512px;
+    min-height: 100%;
+}
+
+#contenu_index{
     width:1024px;
     position:relative;
     left:50%;
