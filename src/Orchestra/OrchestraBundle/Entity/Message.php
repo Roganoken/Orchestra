@@ -128,7 +128,7 @@ class Message
      */
     public function setFromPersonneId(\Orchestra\OrchestraBundle\Entity\User $fromPersonneId = null)
     {
-        $this->frompersonneid = $fromPersonneId;
+        $this->fromPersonneId = $fromPersonneId;
     
         return $this;
     }
@@ -140,7 +140,7 @@ class Message
      */
     public function getFromPersonneId()
     {
-        return $this->frompersonneid;
+        return $this->fromPersonneId;
     }
     
     /**
@@ -151,7 +151,7 @@ class Message
      */
     public function setToPersonneId(\Orchestra\OrchestraBundle\Entity\User $toPersonneId = null)
     {
-        $this->topersonneid = $toPersonneId;
+        $this->toPersonneId = $toPersonneId;
     
         return $this;
     }
@@ -163,7 +163,7 @@ class Message
      */
     public function getToPersonneId()
     {
-        return $this->topersonneid;
+        return $this->toPersonneId;
     }
 
     /**
