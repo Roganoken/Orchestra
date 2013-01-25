@@ -3,15 +3,14 @@
 {% for entity in entities %}
 <div class="records_list">
     <div class="intitule">{{ entity.intitule }}</div>
-    <div class="picto_detail"><a href="{{ path('module_show', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
-   
-    
-   
-    <div class="date">{{ entity.date|format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
     
     {% if entity.created|date('Ymd') == "now"|date('Ymd') %}
-    <div class="new">NEW</div>
+        <div class="new">NEW</div>
     {% endif %}
+
+    <div class="date">{{ entity.date|format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
+    
+     <div class="picto_detail"><a href="{{ path('module_show', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
 
     <div class="ajout_par">Ajouté par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.moduleUser.id }) }}">{{ entity.moduleUser.firstname }} {{ entity.moduleUser.lastname }}</a></div>
 

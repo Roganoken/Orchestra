@@ -2,13 +2,17 @@
     <nav id="menu_hd">
         <ul>
             <li class="picto_menu_hd">
-               <img id="picto_menu_hd_accueil" src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />
+               <a href="{{ path ('OrchestraOrchestraBundle_accueil', { 'id': app.security.getToken().getUser().getId()}) }}" alt="">
+                   <img id="picto_menu_hd_accueil" src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />
+               </a>
             </li>
             <li class="picto_menu_hd">
                <img id="picto_menu_hd_notif" src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />
             </li>
             <li class="picto_menu_hd">
-               <img id="picto_menu_hd_msg" src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />
+               <a href="{{ path('message') }}">
+                   <img id="picto_menu_hd_msg" src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />
+               </a>
             </li>
             <li class="picto_menu_hd">
                <img id="picto_menu_hd_option" src="{{ asset ('bundles/orchestraorchestra/img/picto_menu_hd_vide.png') }}" alt="" />

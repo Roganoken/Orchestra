@@ -4,12 +4,11 @@
 
 <div class="records_list">
     <div class="intitule">{{ historique.intitule }}</div>
-    <div class="picto_detail"><a href="{{ path('module_show', { 'id': historique.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
-   
-    
-   
+
     <div class="date">{{ historique.date|format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
 
+    <div class="picto_detail"><a href="{{ path('module_show', { 'id': historique.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
+    
     <div class="ajout_par">Ajouté par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': historique.moduleUser.id }) }}">{{ historique.moduleUser.firstname }} {{ historique.moduleUser.lastname }}</a></div>
 
     {% if is_granted("ROLE_ADMIN") or historique.moduleUser.id == app.security.getToken().getUser().getId() %}

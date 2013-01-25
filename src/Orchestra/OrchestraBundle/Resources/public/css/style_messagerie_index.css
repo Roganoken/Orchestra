@@ -11,8 +11,8 @@
 .content_form_edit{
     float:left;
     width:700px;
-    margin-left:35px;
-    margin-top:55px;
+    margin-left:290px;
+    margin-top:-440px;
     margin-bottom:50px;
     /*background-color:lightpink;*/
 }
@@ -127,48 +127,29 @@
 
 
 
-.intitule, .date, .ajout_par{
-    float:left;
+.date{
+    float:right;
+    width:180px;
     height:20px;
+    margin-top:-20px;
     margin-bottom:3px;
     font-family:Arial, sans-serif;
+    color:#2b3035;
+    font-size:14px;
+    text-align: right;
     /*background-color: lightblue;*/
 }
 
-.intitule{
-    width:84%;
-    color:#2b3035;
-    font-size:14px;
+
+.emetteur{
+   color:#2b3035;
+   font-size:14px;
+   width:230px;
+   height:20px;
+   /*background-color: lightblue;*/
 }
 
-.date{
-    width:90%;
-    color:#a8a9ab;
-    font-size:14px;
-    width:200px;
-}
-
-.ajout_par{
-    width:70%;
-}
-
-.new{
-    float:left;
-    color:#e65011;
-    font-size:14px;
-    font-weight:bold;
-    width:60px;
-    margin-left:6px;
-    text-align:right;
-    /*background-color: lightpink;*/
-}
-
-.ajout_par{
-    color:#a8a9ab;
-   font-size:12px;
-}
-
-.ajout_par a{
+.emetteur a{
     color:#e65011;
     text-decoration: none;
 }
@@ -177,7 +158,7 @@
     float:right;
     width:24px;
     height:14px;
-    /*margin-top:4px;*/
+    margin-top:10px;
     background-image:url("../img/picto_voir_profil.png");
     background-position: 0px 0px;
 }
@@ -186,80 +167,14 @@
     background-position: 0px 14px;
 }
 
-.picto_modif{
+
+.contenu_msg{
     float:left;
-    margin:10px 0px 0px 12px;
-    width:20px;
-    height:20px;
-}
-
-.picto_modif_tuto{
-    background-color: lightblue;
-    float:right;
-    width:20px;
-    height:20px;
-}
-
-.liste_complete{
-    float:left;  
-    width:96%;  
+    width:90%;
     margin-top:10px;
-    padding-bottom:5px;
-    padding-top:5px;
-    font-size:12px;
-    text-align: center;
-    /*background-color:lightpink;*/
-}
-
-.liste_complete a{
-    text-decoration: none;
-    color:#2b3035;
-}
-
-.liste_complete a:hover{
-    text-decoration: none;
-    color:#e65011;
-}
-
-
-/* PAGINATION */
-
-
-.navigation{
-    float:left;
-    width:96%;
-    margin-top:10px;
-    /*margin-bottom:20px;*/
-    text-align: center;
-}
-
-.navigation a{
+    margin-bottom:10px;
+    font-family:Arial, sans-serif;
     color:#a8a9ab;
-    text-decoration: none;
+    font-size:14px;
+    /*background-color: lightblue;*/
 }
-
-.navigation a:visited{
-    color:#a8a9ab;
-    text-decoration: none;
-}
-
-.navigation a:hover{
-    color:#e65011;
-    text-decoration: none;
-}
-
-.navigation a:active{
-    color:#2b3035;
-    text-decoration: none;
-}
-
-
-/* STYLE EVENEMENTS */
-
-.img_evenement{
-    float:left;
-    background-color: lightgreen;
-    width:70px;
-    height:100px;
-}
-
