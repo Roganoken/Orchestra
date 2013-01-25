@@ -17,7 +17,7 @@
 <div id="contenu">
     
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
-    
+ <div id="content">   
   <div id="content_form_edit">
        
       <div id="form_edit">      
@@ -36,7 +36,7 @@
 
                         <tr>
                             <!--  <th>Contenu</th> -->
-                            <td class="description">{{ entity.content }}</td>
+                            <td class="contenu">{{ entity.content }}</td>
                         </tr>
                         <tr>
                             <!--  <th>Ajouté :</th> -->
@@ -131,5 +131,7 @@
     </div>
 
  {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': entity.id} %}   
+ </div>
+ 
  </div>  
 {% endblock %}

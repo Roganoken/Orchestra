@@ -16,7 +16,7 @@
 <div id="contenu">
 
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
-        
+  <div id="content">      
     <div class="content_form_edit">  
   
       <div id="actions_gauche">   
@@ -40,9 +40,9 @@
                                        </div>
                                     
                                         
-                                        {% if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() %}
+                                        {# if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() #}
                                            <div class="picto_modif_tuto"><a href="{{ path('evenement_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
-                                        {% endif %}
+                                        {# endif #}
                                 
                                         
                                     </div>
@@ -62,6 +62,7 @@
        
    
    </div>
+ </div>
 </div>
 
 {% endblock %} 

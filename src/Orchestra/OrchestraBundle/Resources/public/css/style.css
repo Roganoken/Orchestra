@@ -42,6 +42,7 @@ body{
 }
 
 #contenu{
+    float:left;
     background-image:url("../img/fond_menu.png");
     background-repeat:repeat-y;
     width:1024px;

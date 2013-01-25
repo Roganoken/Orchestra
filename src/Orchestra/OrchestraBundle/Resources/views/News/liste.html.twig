@@ -2,18 +2,19 @@
     {% for entity in entities %}
   <div class="records_list">
         <div class="intitule">{{ entity.title }}</div>
-        <div class="picto_detail"><a href="{{ path('news_show', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
        
-        
-       
-        <div class="contenu_actu">{{ entity.content|slice(0, 50) }} [...]</div>
-        
         {% if entity.created|date('Ymd') == "now"|date('Ymd') %}
-        <div class="new">NEW</div>
+            <div class="new">NEW</div>
         {% endif %}
-    
+
+        
+        <div class="contenu_actu">{{ entity.content|slice(0, 50) }} [...]</div>
+
+        
+        <div class="picto_detail"><a href="{{ path('news_show', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="" /></a></div>
+        
         <div class="ajout_par">Ajouté par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.User.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a></div>
-    
+
         
         {% if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() %}
            <div class="picto_modif_tuto"><a href="{{ path('news_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
