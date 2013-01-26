@@ -6,18 +6,18 @@
     font-weight: 200;
 }
 
-#actions_gauche{
+#actus{
     float:left;
-    height:100px;
+    height:160px;
     width:450px;
-    background-color:lightgreen;
+    margin-left:30px;
+    margin-top:35px;
 }
 
-.bloc_tuto{
+.bloc_actus{
     float:left;
-    width:450px;
+    width:490px;
     margin-bottom:50px;
-    /*background-color:lightyellow;*/
 }
 
 
@@ -27,7 +27,7 @@
     z-index:1;
     background-image:url("../img/fond_titre_bloc.jpg");
     background-repeat:repeat-x;
-    width:500px;
+    width:490px;
     height:38px;
     -moz-border-radius: 10px;
     -khtml-border-radius: 10px;
@@ -35,9 +35,15 @@
     border-radius: 10px;
 }
 
-#actus{
-    margin-left:35px;
-    margin-top:55px;
+.bloc_contenu_actus{
+    float:left;
+    width:470px;
+    height:160px;
+    margin-top:-5px;
+    margin-left: 3px;
+    padding:10px 0px 10px 10px;
+    border: 1px solid #b8b9ba;
+    background-color:#ffffff;
 }
 
 .picto_tutorat_titre{
@@ -73,9 +79,8 @@
 }
 
 #bloc_evt {
-    float: left;
+    float: right;
     width:227px;
-    margin-left:30px;
     margin-top:35px;
 }
 
@@ -105,27 +110,20 @@
     width:216px;
 }
 
-
-.bloc_contenu_tuto{
-    float:left;
-    width:480px;
-    margin-top:-5px;
-    margin-left: 3px;
-    padding:10px 0px 10px 10px;
-    border: 1px solid #b8b9ba;
-    background-color:#ffffff;
-}
-
 .records_list{
     float:left;  
     width:96%;  
     margin-top:10px;
     padding-bottom:5px;
-    /*background-color:lightpink;*/
     border-bottom: 1px dashed #b8b9ba;
+    opacity:0.7;
 }
 
-.intitule, .date, .ajout_par{
+.records_list:hover{
+    opacity:1;
+}
+
+.intitule, .contenu_actu, .date, .ajout_par{
     float:left;
     width:90%;
     height:20px;
@@ -134,14 +132,20 @@
 }
 
 .intitule{
-    color:#2b3035;
+    color:#e65011;
     text-transform: uppercase;
+    font-weight: bold;
     font-size:14px;
+}
+
+.contenu_actu{
+    font-size:12px;
+    
 }
 
 .date{
     color:#a8a9ab;
-    font-size:14px;
+    font-size:12px;
     width:200px;
 }
 
@@ -158,14 +162,18 @@
 
 .ajout_par{
    color:#a8a9ab;
-   font-size:12px;
-   margin-top:5px;
+   font-size:11px;
+   margin-top:2px;
    margin-bottom:-3px;
 }
 
 .ajout_par a{
-    color:#e65011;
+    color:#a8a9ab;
     text-decoration: none;
+}
+
+.ajout_par a:hover{
+    color:#2b3035;
 }
 
 .picto_detail{
@@ -182,19 +190,29 @@
 }
 
 .picto_modif{
-    float:left;
-    margin:10px 0px 0px 12px;
+    float:right;
+    margin:10px 8px 0px 8px;
     width:20px;
     height:20px;
+    opacity:0.5
 }
 
-.picto_modif_tuto{
+.picto_modif:hover{
+    opacity:1
+}
+
+.picto_modif_actus{
     float:right;
     width:20px;
     height:20px;
+    opacity:0.5;
 }
 
-.picto_evt, .picto_portfolio{
+.picto_modif_actus:hover{
+    opacity:1;
+}
+
+.picto_evt, .picto_portfolio, .picto_profil{
     float:left;
     margin:10px 10px 0px 12px;   
     width:20px;
@@ -236,16 +254,8 @@
     font-family:"futura", Arial, sans-serif;
 }
 
-#bloc_evt {
+#bloc_portfolio, #bloc_inscrits{
     float: left;
-    width:227px;
-    margin-left:30px;
-    margin-top:35px;
-}
-
-#bloc_portfolio{
-    float: left;
-    width:227px;
     margin-left:30px;
     margin-top:35px;
 }
@@ -255,7 +265,7 @@
     position:relative;
     background-image:url("../img/fond_titre_bloc.jpg");
     background-repeat:repeat-x;
-    width:740px;
+    width:748px;
     height:38px;
     -moz-border-radius: 10px;
     -khtml-border-radius: 10px;
@@ -264,31 +274,53 @@
     z-index:2;
 }
 
-#portfolio{
+#portfolio, #inscrits{
     float:left;
     position:relative;
     background-color:#ffffff;
     border: 1px solid #b8b9ba;
-    width:654px;
-    margin-top:-3px;
-    margin-left:2px;
-    padding:25px 40px;
+    width:693px;
+    padding:30px 0px 20px 50px;
+    margin-top:-5px;
+}
+
+#inscrits{
     margin-bottom: 50px;
 }
 
-#content_portfolio img{
+#portfolio img, #inscrits img{
     float:left;
     position:relative;
     border: 3px solid #2b3035;
     height:100px;
     width:100px;
-    margin: 5px 12px 15px 12px;
+    margin-bottom:5px;
     opacity:0.9;
 }
 
-#content_portfolio img:hover{
+#portfolio img:hover, #inscrits img:hover{
     border: 3px solid #e65011;
     opacity:1;
+}
+
+.image{
+    float:left;
+    text-align: center;
+    width:100px;
+    margin-letf:35px;
+    margin-right:35px;
+    margin-bottom:20px;
+    color:#a8a9ab;
+    font-size:12px;
+}
+
+.image a{
+    color:#a8a9ab;
+    text-decoration: none;
+}
+
+.image a:hover{
+    color:#e65011;
 }
 
 .titre_bloc_3{

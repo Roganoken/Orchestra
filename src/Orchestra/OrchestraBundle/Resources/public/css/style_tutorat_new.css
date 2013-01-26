@@ -59,6 +59,7 @@ label{
 
 input{
     margin-left:10px;
+    margin-top:10px;
     margin-bottom:20px;
     color:#2b3035;
     font-size:14px;
@@ -203,6 +204,25 @@ input{
 
 #orchestra_orchestrabundle_newstype_active{
     margin-top:20px;
+}
+
+
+/* style importer une image */
+#orchestra_orchestrabundle_imagetype div{
+    margin-bottom:10px;
+    text-align:left;
+}
+
+#orchestra_orchestrabundle_imagetype_descriptif{
+    margin-bottom:10px;
+}
+
+#orchestra_orchestrabundle_imagetype_dateCreation, #orchestra_orchestrabundle_imagetype_logiciel{
+    float:right;
+    text-align:left;
+    margin-right:90px;
+    margin-top:-5px;
+    margin-bottom:5px;
 }
 
 

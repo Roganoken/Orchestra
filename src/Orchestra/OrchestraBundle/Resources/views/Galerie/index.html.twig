@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_tutorat_index.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_galerie_index.css') }}" type="text/css" media="all" />
 {% endblock %}
 
 
@@ -16,16 +16,27 @@
 <div id="contenu">
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
    <div id="content">  
-  <div class="content_form_edit">  
-  
-      <div id="actions_gauche">   
-            
-                      
+      <div id="breadcrumb">
+            <a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/home_breadcrumb.png') }}" alt="Accueil" /></a>> <a href="">Galeries</a>
         </div>
-
-       {% render 'OrchestraOrchestraBundle:Galerie:liste' %}
-
-       {% render 'OrchestraOrchestraBundle:Galerie:menuGalerie' %}
+        
+      <div id="bloc_portfolio">
+            <div class="titre_bloc_1">
+                <div class="picto_portfolio"><img  height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_galerie.png') }}" alt="" /></div>
+                <div class="txt_titre_bloc"><p>Les 10 dernières images</p></div>
+                    <div class="picto_modif"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
+            </div>
+            <div id="portfolio">
+               {% render 'OrchestraOrchestraBundle:Galerie:liste' %}
+        
+               {% render 'OrchestraOrchestraBundle:Galerie:menuGalerie' %}
+               
+            </div>
+    </div>
+    <div id="bloc_ajout">
+            <div class="picto_portfolio"><img height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_galerie.png') }}" alt="" /></div>
+            <div class="txt_titre_bloc"><a href="{{ path('image_new') }}"><p>Ajouter une image</p></a></div>
+    </div>        
     
     </div>
 </div>
