@@ -1,0 +1,16 @@
+
+
+<nav class="bloc_tab_3">
+
+{% if entities|length != 0 %}
+       
+    <ul>
+        {% for entity in entities %}  
+        <li class="bloc_li bloc_li_3">{{ entity.date|date("d/m")}} : <span>{{ entity.title }}</span></li>
+        {% endfor %}
+        <a href="{{ path('evenement_historique') }}"><li class="bloc_li bloc_li_3 all">voir toutes les évènements</li></a>
+    </ul>
+{% else %}
+Pas encore d'évènements.
+{% endif %}  
+</nav>

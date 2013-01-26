@@ -1,0 +1,13 @@
+
+    {% if entities|length != 0 %}
+        {% for entity in entities %}    
+               <div class="image">
+                   <p>
+                       <a href="{{ path('galerie_show', { 'id': entity.id }) }}"><img width="71" height="71" src="{{ ('image/' ~ entity.url) | apply_filter('image_small') }}" /></a>
+                       by <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.user.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a>
+                   </p>
+               </div>
+        {% endfor %}
+    {% else %}
+    Pas encore d'images
+    {% endif %}  

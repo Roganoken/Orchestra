@@ -107,16 +107,8 @@
                     <div class="picto_modif"><a href="{{ path ('user_edit', { 'id': entity.id })}}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
                 {% endif %}
             </div>
-            
-            <nav class="bloc_tab_3">
-                <ul>
-                    <li class="bloc_li bloc_li_3">18/02 : <span>Soutenance orale</span></li>
-                    <li class="bloc_li bloc_li_3">15/03 : <span>Soirée ESTEI</span></li>
-                    <li class="bloc_li bloc_li_3">25/03 : <span>Pas cours d'Anglais</span></li>
-                    <li class="bloc_li bloc_li_3">20/05 : <span>Portes Ouvertes</span></li>
-                    <a href=""><li class="bloc_li bloc_li_3 all">voir toutes les évènements</li></a>
-                </ul>
-            </nav>
+                
+                    {% render 'OrchestraOrchestraBundle:Evenement:miniListe' %}
         </div>
         
         <div id="bloc_portfolio">

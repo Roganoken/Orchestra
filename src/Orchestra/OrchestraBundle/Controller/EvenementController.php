@@ -21,11 +21,47 @@ class EvenementController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        
+        $qb = $em->createQueryBuilder();
 
-        $entities = $em->getRepository('OrchestraOrchestraBundle:Evenement')->findAll();
+        $qb->select('a')
+           ->from('OrchestraOrchestraBundle:Evenement', 'a')
+           ->orderBy('a.created', 'DESC')
+          ->setMaxResults(5);
+
+        $query = $qb->getQuery(); 
+        $entities = $query->getResult();
 
         return $this->render('OrchestraOrchestraBundle:Evenement:index.html.twig', array(
             'entities' => $entities,
+        ));
+    }
+
+    /**
+     * LISTE TOUS LES TUTORATS.
+     *
+     */
+    
+    public function historiqueAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Evenement', 'a')
+          ->orderBy('a.created', 'DESC');
+
+        $query = $qb->getQuery();
+
+        $paginator = $this->get('knp_paginator');
+        $historiques = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            3/*limit per page*/
+                );
+
+        return $this->render('OrchestraOrchestraBundle:Evenement:page_historique.html.twig', array(
+            'historiques' => $historiques,
         ));
     }
 
@@ -48,6 +84,31 @@ class EvenementController extends Controller
         return $this->render('OrchestraOrchestraBundle:Evenement:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
+    }
+
+    /**
+     * Finds and displays a Evenement entity.
+     *
+     */
+    public function miniListeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $em = $this->get('doctrine.orm.entity_manager');
+        
+        $qb = $em->createQueryBuilder();
+
+        $qb->select('a')
+           ->from('OrchestraOrchestraBundle:Evenement', 'a')
+           ->orderBy('a.created', 'DESC')
+          ->setMaxResults(4);
+
+        $query = $qb->getQuery(); 
+        $entities = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:Evenement:miniListe.html.twig', array(
+            'entities'      => $entities
+            ));
     }
 
     /**
