@@ -6,6 +6,10 @@ evenement_show:
     pattern:  /{id}/show
     defaults: { _controller: "OrchestraOrchestraBundle:Evenement:show" }
 
+evenement_historique:
+    pattern:  /historique
+    defaults: { _controller: "OrchestraOrchestraBundle:Evenement:historique" }
+
 evenement_new:
     pattern:  /new
     defaults: { _controller: "OrchestraOrchestraBundle:Evenement:new" }

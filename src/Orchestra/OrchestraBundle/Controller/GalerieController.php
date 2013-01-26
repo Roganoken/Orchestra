@@ -61,6 +61,29 @@ class GalerieController extends Controller
         ));
     }
     
+    /**
+     * Liste les 10 dernières images pour l'accueil.
+     *
+     */
+    
+    public function accueilListeAction($max = 10)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->orderBy('a.created', 'DESC')
+          ->setMaxResults($max);
+
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:Default:accueilListe.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    
 
     /**
      * LISTE TOUTES LES IMAGES PAR CATEGORIE.

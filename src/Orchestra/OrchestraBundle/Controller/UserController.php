@@ -57,6 +57,31 @@ class UserController extends Controller
     }
 
     /**
+     * Afficher les 10 derniers inscrits
+     *
+     */
+    public function dernierInscritAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $em = $this->get('doctrine.orm.entity_manager');
+        
+        $qb = $em->createQueryBuilder();
+
+        $qb->select('a')
+           ->from('OrchestraOrchestraBundle:User', 'a')
+           ->orderBy('a.created', 'DESC')
+          ->setMaxResults(10);
+
+        $query = $qb->getQuery(); 
+        $entities = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:User:dernierInscrit.html.twig', array(
+            'entities'      => $entities
+            ));
+    }
+
+    /**
      * Finds and displays a User entity.
      *
      */

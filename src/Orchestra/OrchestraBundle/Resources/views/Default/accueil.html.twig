@@ -28,7 +28,7 @@
                     </div>
                 
                     <div class="bloc_contenu_actus">   
-                        {% render 'OrchestraOrchestraBundle:News:liste' %}
+                        {% render 'OrchestraOrchestraBundle:News:liste'  with {'max' : '2'} %}
                     </div>
               </div>
    
@@ -40,16 +40,7 @@
                     <div class="txt_titre_bloc"><p>évènements à venir</p></div>
                     <div class="picto_modif"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
                 </div>
-                
-                <nav class="bloc_tab_3">
-                    <ul>
-                        <li class="bloc_li bloc_li_3">18/02 : <span>Soutenance orale</span></li>
-                        <li class="bloc_li bloc_li_3">15/03 : <span>Soirée ESTEI</span></li>
-                        <li class="bloc_li bloc_li_3">25/03 : <span>Pas cours d'Anglais</span></li>
-                        <li class="bloc_li bloc_li_3">20/05 : <span>Portes Ouvertes</span></li>
-                        <a href=""><li class="bloc_li bloc_li_3 all">voir toutes les évènements</li></a>
-                    </ul>
-                </nav>
+                        {% render 'OrchestraOrchestraBundle:Evenement:miniListe' %}
         </div>
         
         <div id="bloc_portfolio">
@@ -59,17 +50,7 @@
                     <div class="picto_modif"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
             </div>
             <div id="portfolio">
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
-                
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
-                <div class="image"><p><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />by <a href="">Nini</a></p></div>
+                        {% render 'OrchestraOrchestraBundle:Galerie:accueilListe' %}
             </div>
         </div>
         
@@ -79,17 +60,7 @@
                 <div class="txt_titre_bloc"><p>Dernièrs inscrits</p></div>
             </div>
             <div id="inscrits">
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
-                
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
-                <div class="image"><p><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}" alt="" />Nini</a></p></div>
+                        {% render 'OrchestraOrchestraBundle:User:dernierInscrit' %}
             </div>
         </div>
         

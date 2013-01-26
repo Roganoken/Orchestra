@@ -1,0 +1,18 @@
+{% if entities|length != 0 %}
+        {% for entity in entities %}  
+<div class="image">
+    <p>
+        <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.id }) }}">
+            {% if entity.photo %}
+                    <img src="{{ ('avatar/' ~ entity.photo) | apply_filter('my_thumb') }}" />
+                {% else %}
+                    <img src="{{ ('avatar/default.jpg') | apply_filter('my_thumb') }}" />
+                {% endif %}
+            {{ entity.firstname}} {{ entity.lastname}}
+        </a>
+    </p>
+</div>
+        {% endfor %}
+{% else %}
+Pas encore d'inscrits
+{% endif %}  
