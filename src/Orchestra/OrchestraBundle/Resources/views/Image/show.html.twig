@@ -1,10 +1,43 @@
-<h1>Image</h1>
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_tutorat_index.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+
+{% block header %}
+    {% include "OrchestraOrchestraBundle:Default:header.html.twig" %}      
+{% endblock %}
+
+
+{% block contenu %}
+
+<div id="contenu">
+    {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
+   <div id="content">  
+  <div class="content_form_edit">  
+  
+      <div id="actions_gauche">   
+            
+                      
+        </div>
+      
+      <h1>Image</h1>
 
 <table class="record_properties">
     <tbody>
         <tr>
+            <th>Image</th>
+            <td><img src="{{ ('image/' ~ entity.url) | apply_filter('image_medium') }}" /></td>
+        </tr>
+        <tr>
             <th>Titre</th>
             <td>{{ entity.titre }}</td>
+        </tr>
+        <tr>
+            <th>par</th>
+            <td>{{ entity.user.firstname }} {{ entity.user.lastname }}</td>
         </tr>
         <tr>
             <th>Descriptif</th>
@@ -15,16 +48,8 @@
             <td>{{ entity.dateCreation|format_date(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG')) }}</td>
         </tr>
         <tr>
-            <th>Url</th>
-            <td>{{ entity.url }}</td>
-        </tr>
-        <tr>
-            <th>Taille</th>
-            <td>{{ entity.taille }}</td>
-        </tr>
-        <tr>
-            <th>Poids</th>
-            <td>{{ entity.poids }}</td>
+            <th>media</th>
+            <td>{{ entity.media.intitule }}</td>
         </tr>
         <tr>
             <th>Logiciel</th>
@@ -43,28 +68,41 @@
                  {% endif %}
             </td>
         </tr>
-        <tr>
-            <th>Isportfolio</th>
-            <td>{{ entity.isPortfolio }}</td>
-        </tr>
     </tbody>
-</table>
-
+    </table>
+{% if previous is not null and categorie is null %}     
+      <a href="{{ path('galerie_show', {'id': previous.id}) }}">Précédente</a>
+{% elseif previous is not null and categorie is defined %}
+      <a href="{{ path('galerie_image', {'categorie': categorie, 'id': previous.id}) }}">Précédente</a>
+{% endif %}
+{% if next is not null and categorie is null %}     
+      <a href="{{ path('galerie_show', {'id': next.id}) }}">Suivante</a>
+{% elseif next is not null and categorie is defined %}
+      <a href="{{ path('galerie_image', {'categorie': categorie, 'id': next.id}) }}">Suivante</a>
+{% endif %}
 <ul class="record_actions">
     <li>
-        <a href="{{ path('image') }}">
-            Back to the list
+        <a href="javascript: history.go(-1)" title="revenir" alt="revenir">
+            Revenir
         </a>
     </li>
+    {% if entity.user == app.security.getToken().getUser() or is_granted("ROLE_ADMIN") %}
     <li>
         <a href="{{ path('image_edit', { 'id': entity.id }) }}">
-            Edit
+            Modifier
         </a>
     </li>
     <li>
         <form action="{{ path('image_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit">Supprimer</button>
         </form>
     </li>
+    {% endif %}
 </ul>
+    
+    </div>
+</div>
+</div>
+
+{% endblock %} 

@@ -255,6 +255,12 @@ avalanche_imagine:
         my_thumb:
             type:    thumbnail
             options: { size: [161, 161], mode: outbound, cache_type: public}  
+        image_small:
+            type:    thumbnail
+            options: { size: [161, 161], mode: outbound, cache_type: public}
+        image_medium:
+            type:    relative_resize
+            options: { widen: 500 }
             
 fos_comment:
     db_driver: orm

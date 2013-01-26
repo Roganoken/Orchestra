@@ -4,8 +4,16 @@ galerie:
 
 galerie_show:
     pattern:  /{id}/show
-    defaults: { _controller: "OrchestraOrchestraBundle:Galerie:show" }
+    defaults: { _controller: "OrchestraOrchestraBundle:Image:show" }
 
+galerie_categorie:
+    pattern:  /{id}/categorie
+    defaults: { _controller: "OrchestraOrchestraBundle:Galerie:categorie" }
+
+galerie_image:
+    pattern:  /{categorie}/{id}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Image:show" }
+    
 galerie_new:
     pattern:  /new
     defaults: { _controller: "OrchestraOrchestraBundle:Galerie:new" }

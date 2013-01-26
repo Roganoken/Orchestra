@@ -128,23 +128,10 @@
                 {% endif %}
             </div>
             <div id="portfolio">
-                <div id="content_portfolio">
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                    
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                    <img alt="" src="{{ asset ('bundles/orchestraorchestra/img/avatar_test3.jpg') }}">
-                </div>
                 
-                <div class="navigation">
-                       1 2 3
-                </div> 
+                
+       {% render 'OrchestraOrchestraBundle:Galerie:magalerie' with {id: entity.id} %}
+               
             </div>
     </div>
 

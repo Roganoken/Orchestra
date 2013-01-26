@@ -117,9 +117,12 @@ class Image
     private $commentaire;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var User
      *
-     * @ORM\ManyToMany(targetEntity="Orchestra\OrchestraBundle\Entity\User", mappedBy="image")
+     * @ORM\ManyToOne(targetEntity="Orchestra\OrchestraBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
      */
     private $user;
 
@@ -149,7 +152,6 @@ class Image
     public function __construct()
     {
         $this->commentaire = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
 
@@ -591,5 +593,18 @@ class Image
         
         // La propriété file ne servira plus
         $this->file = null;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Orchestra\OrchestraBundle\Entity\User $user
+     * @return Image
+     */
+    public function setUser(\Orchestra\OrchestraBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
     }
 }

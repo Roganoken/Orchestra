@@ -159,21 +159,6 @@ class User extends BaseUser
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Orchestra\OrchestraBundle\Entity\Image", inversedBy="user")
-     * @ORM\JoinTable(name="user_has_image",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="image_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $image;
-
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     *
      * @ORM\ManyToMany(targetEntity="Orchestra\OrchestraBundle\Entity\Livre", inversedBy="user")
      * @ORM\JoinTable(name="user_livre",
      *   joinColumns={
@@ -244,7 +229,6 @@ class User extends BaseUser
         $this->company = new \Doctrine\Common\Collections\ArrayCollection();
         $this->course = new \Doctrine\Common\Collections\ArrayCollection();
         $this->position = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->image = new \Doctrine\Common\Collections\ArrayCollection();
         $this->livre = new \Doctrine\Common\Collections\ArrayCollection();
         $this->module = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -798,39 +782,6 @@ class User extends BaseUser
     public function getPosition()
     {
         return $this->position;
-    }
-
-    /**
-     * Add image
-     *
-     * @param Orchestra\OrchestraBundle\Entity\Image $image
-     * @return User
-     */
-    public function addImage(\Orchestra\OrchestraBundle\Entity\Image $image)
-    {
-        $this->image[] = $image;
-    
-        return $this;
-    }
-
-    /**
-     * Remove image
-     *
-     * @param Orchestra\OrchestraBundle\Entity\Image $image
-     */
-    public function removeImage(\Orchestra\OrchestraBundle\Entity\Image $image)
-    {
-        $this->image->removeElement($image);
-    }
-
-    /**
-     * Get image
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**

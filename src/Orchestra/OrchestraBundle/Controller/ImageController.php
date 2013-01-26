@@ -33,7 +33,7 @@ class ImageController extends Controller
      * Finds and displays a Image entity.
      *
      */
-    public function showAction($id)
+    public function showAction($id, $categorie=null)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -42,11 +42,72 @@ class ImageController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Image entity.');
         }
+        
+        if ($categorie){
+            
+        /* image suivante */
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->where('a.id > :id and a.media = :media')
+          ->setParameters(array(
+              'id' => $id,
+              'media' => $categorie,
+              ))
+          ->setMaxResults(1);
+        
+        $query = $qb->getQuery();
+        $next = $query->getOneOrNullResult();
+        
+        /* image précédente */
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->where('a.id < :id and a.media = :media')
+          ->setParameters(array(
+              'id' => $id,
+              'media' => $categorie,
+              ))
+          ->setMaxResults(1);
 
+        $query = $qb->getQuery();
+        $previous = $query->getOneOrNullResult();
+            
+        }else{
+        /* image suivante */
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->where('a.id > :id')
+          ->orderBy('a.id', 'ASC')
+          ->setParameter('id', $id)
+          ->setMaxResults(1);
+        
+        $query = $qb->getQuery();
+        $next = $query->getOneOrNullResult();
+
+        /* image précédente */
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->where('a.id < :id')
+          ->orderBy('a.id', 'DESC')
+          ->setParameter('id', $id)
+          ->setMaxResults(1);
+
+        $query = $qb->getQuery();
+        $previous = $query->getOneOrNullResult();
+        
+        }
+        
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('OrchestraOrchestraBundle:Image:show.html.twig', array(
             'entity'      => $entity,
+            'next'        => $next,
+            'previous'    => $previous,
+            'categorie'   => $categorie,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
@@ -81,14 +142,11 @@ class ImageController extends Controller
             
             $user = $this->get('security.context')->getToken()->getUser();  
             
-            $image->addUser($user);
+            $image->setUser($user);
             $image->setCreated(new \DateTime());
             //$image->setTaille(getimagesize($image->getUrl()));
             $em->persist($image);
             $em->flush();  
-            
-            $user->addImage($image);
-            $em->flush();
 
             return $this->redirect($this->generateUrl('image_show', array('id' => $image->getId())));
         }
@@ -111,6 +169,24 @@ class ImageController extends Controller
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Image entity.');
+        }
+
+        # RECUPERE LE USERNAME DE SESSION
+        $username_session = $this->get('security.context')->getToken()->getUser()->getId();
+        
+        # RECUPERE LE USERNAME DE L'ENTITE
+        $username_entity = $entity->getUser()->getId();
+        
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        # SI LES USERNAME SONT DIFFERENT, ON VERIFIE SI ROLE_ADMIN
+        if (($username_session != $username_entity)) {
+            # SI PAS ADMIN
+            if ($role_session == false){
+               # ON REDIRIGE VERS LA PAGE "USER"
+               return $this->redirect($this->generateUrl('galerie'), 301);
+            }
         }
 
         $editForm = $this->createForm(new ImageType(), $entity);
@@ -142,6 +218,7 @@ class ImageController extends Controller
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+            $entity->setUpdated(new \DateTime());
             $em->persist($entity);
             $em->flush();
 
@@ -172,11 +249,29 @@ class ImageController extends Controller
                 throw $this->createNotFoundException('Unable to find Image entity.');
             }
 
+        # RECUPERE LE USERNAME DE SESSION
+        $username_session = $this->get('security.context')->getToken()->getUser()->getId();
+        
+        # RECUPERE LE USERNAME DE L'ENTITE
+        $username_entity = $entity->getUser()->getId();
+        
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        # SI LES USERNAME SONT DIFFERENT, ON VERIFIE SI ROLE_ADMIN
+        if (($username_session != $username_entity)) {
+            # SI PAS ADMIN
+            if ($role_session == false){
+               # ON REDIRIGE VERS LA PAGE "USER"
+               return $this->redirect($this->generateUrl('galerie'), 301);
+            }
+        }
+
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('image'));
+        return $this->redirect($this->generateUrl('galerie'));
     }
 
     private function createDeleteForm($id)

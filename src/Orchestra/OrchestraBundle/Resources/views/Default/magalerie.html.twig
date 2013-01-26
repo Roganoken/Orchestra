@@ -1,0 +1,13 @@
+<div id="content_portfolio">
+    {% if images|length != 0 %}
+        {% for entity in images %}    
+               <a href="{{ path('image_show', { 'id': entity.id }) }}"><img width="71" height="71" src="{{ ('image/' ~ entity.url) | apply_filter('image_small') }}" /></a>
+        {% endfor %}
+    {% else %}
+    Pas encore d'images
+    {% endif %}       
+ </div>
+ 
+<div class="navigation">
+    {{ knp_pagination_render(images) }}                   
+</div> 
