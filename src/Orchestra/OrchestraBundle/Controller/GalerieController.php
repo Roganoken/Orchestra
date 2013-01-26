@@ -20,15 +20,113 @@ class GalerieController extends Controller
      */
     public function indexAction()
     {
+        return $this->render('OrchestraOrchestraBundle:Galerie:index.html.twig');
+    }
+    
+    /**
+     * Liste les menus à partir des media entity.
+     *
+     */
+    public function menuGalerieAction()
+    {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('OrchestraOrchestraBundle:Galerie')->findAll();
+        $menus = $em->getRepository('OrchestraOrchestraBundle:Media')->findAll();
+        
+        return $this->render('OrchestraOrchestraBundle:Galerie:menu.html.twig', array(
+            'menus' => $menus,
+        ));
+    }
+    
+    /**
+     * Liste les 10 dernières images.
+     *
+     */
+    
+    public function listeAction($max = 10)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
 
-        return $this->render('OrchestraOrchestraBundle:Galerie:index.html.twig', array(
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->orderBy('a.created', 'DESC')
+          ->setMaxResults($max);
+
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:Galerie:liste.html.twig', array(
             'entities' => $entities,
         ));
     }
+    
 
+    /**
+     * LISTE TOUTES LES IMAGES PAR CATEGORIE.
+     *
+     */
+    
+    public function categorieAction($id)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+
+        $entity = $em->getRepository('OrchestraOrchestraBundle:Media')->find($id);
+        
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->where('a.media = :media')
+          ->setParameter('media', $id)
+          ->orderBy('a.created', 'DESC');
+
+        $query = $qb->getQuery();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+                );
+
+        return $this->render('OrchestraOrchestraBundle:Galerie:categorie.html.twig', array(
+            'images' => $pagination,
+            'entity' => $entity,
+        ));
+    }
+    
+
+    /**
+     * LISTE TOUTES LES IMAGES PAR CATEGORIE.
+     *
+     */
+    
+    public function maGalerieAction($id)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->where('a.user = :user')
+          ->setParameter('user', $id)
+          ->orderBy('a.created', 'DESC');
+
+        $query = $qb->getQuery();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+                );
+
+        return $this->render('OrchestraOrchestraBundle:Default:magalerie.html.twig', array(
+            'images' => $pagination,
+        ));
+    }
+    
+    
     /**
      * Finds and displays a Galerie entity.
      *
