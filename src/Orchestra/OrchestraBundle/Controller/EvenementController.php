@@ -77,10 +77,17 @@ class EvenementController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            // CREATEUR DU MODULE
+            $user_id = $this->get('security.context')->getToken()->getUser();
+            
+            $entity->setUser($user_id);
+            $entity->setCreated(new \Datetime());
+            
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('message_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('evenement_show', array('id' => $entity->getId())));
         }
 
         return $this->render('OrchestraOrchestraBundle:Evenement:new.html.twig', array(
@@ -101,6 +108,24 @@ class EvenementController extends Controller
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Evenement entity.');
+        }
+
+        # RECUPERE LE USERNAME DE SESSION
+        $username_session = $this->get('security.context')->getToken()->getUser();
+        
+        # RECUPERE LE USERNAME DE L'ENTITE
+        $username_entity = $entity->getUser();
+        
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        # SI LES USERNAME SONT DIFFERENT, ON VERIFIE SI ROLE_ADMIN
+        if (($username_session != $username_entity)) {
+            # SI PAS ADMIN
+            if ($role_session == false){
+               # ON REDIRIGE VERS LA PAGE "USER"
+               return $this->redirect($this->generateUrl('evenement'), 301);
+            }
         }
 
         $editForm = $this->createForm(new EvenementType(), $entity);
@@ -132,10 +157,11 @@ class EvenementController extends Controller
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+            $entity->setUpdated(new \Datetime());
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('message_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('evenement_show', array('id' => $id)));
         }
 
         return $this->render('OrchestraOrchestraBundle:Evenement:edit.html.twig', array(
@@ -166,7 +192,7 @@ class EvenementController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('message'));
+        return $this->redirect($this->generateUrl('evenement'));
     }
 
     private function createDeleteForm($id)

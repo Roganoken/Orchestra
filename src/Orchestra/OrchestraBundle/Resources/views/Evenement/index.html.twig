@@ -31,19 +31,21 @@
                         {% if entities|length != 0 %}
                             {% for entity in entities %}
                                   <div class="records_list">
-                                        <div class="intitule">{{ entity.title }}</div>
+                                        <div class="intitule">{{ entity.title }} // le {{ entity.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
 
                                        <div id="contenu_evenement">
-                                            <div class="img_evenement"><img  src="" alt="" />{{ entity.image }}</div>
+                                            <div class="img_evenement"><img src="{{ ('evenement/' ~ entity.image) | apply_filter('evenement_small') }}" /></div>
                                        
                                             <div class="txt_evenement">{{ entity.contenu }}</div>
+                                            par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.user.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a> 
                                        </div>
                                     
                                         
-                                        {# if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() #}
+                                        {# if is_granted("ROLE_ADMIN") or entity.User == app.security.getToken().getUser() #}
                                            <div class="picto_modif_tuto"><a href="{{ path('evenement_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
                                         {# endif #}
                                 
+                                          <a href="{{ path('evenement_show', { 'id': entity.id }) }}">Voir</a> 
                                         
                                     </div>
 
