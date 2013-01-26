@@ -15,9 +15,17 @@ class EvenementType extends AbstractType
             ->add('contenu')
             /*->add('created')
             ->add('updated')*/
-            ->add('image')
+            ->add('file', 'file', array('label' => 'Image'))
+            ->add('date', 'datetime', array('widget' => 'choice', 
+                'years' => range(date('Y'), date('Y')), 
+                'empty_value' => array('year' => 'Année', 
+                                       'month' => 'Mois', 
+                                       'day' => 'Jour',
+                                       'hour' => 'Heure', 
+                                       'minute' => 'Minute'
+                    ), 
+                ))
 /*            ->add('commentaire')*/
-            ->add('user')
         ;
     }
 

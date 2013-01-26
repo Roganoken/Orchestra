@@ -254,7 +254,13 @@ avalanche_imagine:
     filters:
         my_thumb:
             type:    thumbnail
-            options: { size: [161, 161], mode: outbound, cache_type: public}  
+            options: { size: [161, 161], mode: outbound, cache_type: public} 
+        evenement_small:
+            type:    thumbnail
+            options: { size: [161, 161], mode: outbound, cache_type: public} 
+        evenement_medium:
+            type:    thumbnail
+            options: { size: [300, 200], mode: outbound, cache_type: public} 
         image_small:
             type:    thumbnail
             options: { size: [161, 161], mode: outbound, cache_type: public}
