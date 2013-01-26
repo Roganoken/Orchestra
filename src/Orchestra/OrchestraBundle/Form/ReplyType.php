@@ -6,14 +6,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class MessageType extends AbstractType
+class ReplyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('titre')
             ->add('contenu')
-            ->add('toPersonneId')
         ;
     }
 
@@ -26,6 +25,6 @@ class MessageType extends AbstractType
 
     public function getName()
     {
-        return 'orchestra_orchestrabundle_messagetype';
+        return 'orchestra_orchestrabundle_replytype';
     }
 }

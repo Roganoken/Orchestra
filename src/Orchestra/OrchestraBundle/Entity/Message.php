@@ -22,6 +22,13 @@ class Message
     private $id;
 
     /**
+     * @var string $titre
+     *
+     * @ORM\Column(name="titre", type="string", length=255, nullable=false)
+     */
+    private $titre;
+
+    /**
      * @var text
      *
      * @ORM\Column(name="contenu", type="text", nullable=false)
@@ -187,5 +194,28 @@ class Message
     public function getIsRead()
     {
         return $this->isRead;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Message
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
     }
 }
