@@ -17,7 +17,7 @@
 
         
         {% if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() %}
-           <div class="picto_modif_tuto"><a href="{{ path('news_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
+           <div class="picto_modif_actus"><a href="{{ path('news_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif_c.png') }}" alt="" /></a></div>
         {% endif %}
 
         
