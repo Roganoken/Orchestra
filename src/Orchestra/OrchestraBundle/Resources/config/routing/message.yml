@@ -15,13 +15,13 @@ message_create:
     defaults: { _controller: "OrchestraOrchestraBundle:Message:create" }
     requirements: { _method: post }
 
-message_edit:
-    pattern:  /{id}/edit
-    defaults: { _controller: "OrchestraOrchestraBundle:Message:edit" }
+message_new_repondre:
+    pattern:  /{id}/new
+    defaults: { _controller: "OrchestraOrchestraBundle:Message:newReply" }
 
-message_update:
-    pattern:  /{id}/update
-    defaults: { _controller: "OrchestraOrchestraBundle:Message:update" }
+message_repondre:
+    pattern:  /{id}/repondre
+    defaults: { _controller: "OrchestraOrchestraBundle:Message:createReply" }
     requirements: { _method: post }
 
 message_delete:
