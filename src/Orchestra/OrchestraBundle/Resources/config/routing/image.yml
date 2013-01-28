@@ -3,8 +3,8 @@ image:
     defaults: { _controller: "OrchestraOrchestraBundle:Image:index" }
 
 image_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "OrchestraOrchestraBundle:Image:show" }
+    pattern:  /{id}/{user}/show
+    defaults: { _controller: "OrchestraOrchestraBundle:Image:myShow" }
 
 image_new:
     pattern:  /new

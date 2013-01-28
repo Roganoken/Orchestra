@@ -14,12 +14,12 @@
         <tr>
             <td>{{ entity.titre }}</td>
             <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.user.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a></td>
-            <td><a href="{{ path('image_show', { 'id': entity.id }) }}"><img width="71" height="71" src="{{ ('image/' ~ entity.url) | apply_filter('image_small') }}" /></a></td>
+            <td><a href="{{ path('galerie_show', { 'id': entity.id }) }}"><img width="71" height="71" src="{{ ('image/' ~ entity.url) | apply_filter('image_small') }}" /></a></td>
             <td>{{ time_diff(entity.created) }}</td>
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('image_show', { 'id': entity.id }) }}">Voir</a>
+                        <a href="{{ path('galerie_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
                     {% if entity.user == app.security.getToken().getUser() or is_granted("ROLE_ADMIN") %}
                     <li>

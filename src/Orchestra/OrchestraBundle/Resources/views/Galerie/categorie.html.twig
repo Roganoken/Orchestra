@@ -43,7 +43,7 @@
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('image_show', { 'id': entity.id }) }}">Voir</a>
+                        <a href="{{ path('galerie_image', { 'categorie': entity.media.id, 'id':entity.id }) }}">Voir</a>
                     </li>
                      {% if entity.user == app.security.getToken().getUser() or is_granted("ROLE_ADMIN") %}
                     <li>

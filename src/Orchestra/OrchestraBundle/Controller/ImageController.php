@@ -43,7 +43,7 @@ class ImageController extends Controller
             throw $this->createNotFoundException('Unable to find Image entity.');
         }
         
-        if ($categorie){
+        if ($categorie != null){
             
         /* image suivante */
         $qb = $em->createQueryBuilder();
@@ -109,6 +109,71 @@ class ImageController extends Controller
             'previous'    => $previous,
             'categorie'   => $categorie,
             'delete_form' => $deleteForm->createView(),        ));
+    }
+
+    /**
+     * Finds and displays a Image entity.
+     *
+     */
+    public function myShowAction($id, $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('OrchestraOrchestraBundle:Image')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Image entity.');
+        }
+
+        $user = $em->getRepository('OrchestraOrchestraBundle:User')->find($user);
+
+        if (!$user) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
+        # RECUPERE LE USERNAME DE SESSION
+        $user_id = $user->getId();
+        
+        /* image suivante */
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->where('a.id > :id and a.user = :user_id')
+          ->orderBy('a.id', 'ASC')
+          ->setParameters(array(
+              'id' => $id,
+              'user_id' => $user_id,
+              ))
+          ->setMaxResults(1);
+        
+        $query = $qb->getQuery();
+        $next = $query->getOneOrNullResult();
+
+        /* image précédente */
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Image', 'a')
+          ->where('a.id < :id and a.user = :user_id')
+          ->orderBy('a.id', 'DESC')
+          ->setParameters(array(
+              'id' => $id,
+              'user_id' => $user_id,
+              ))
+          ->setMaxResults(1);
+
+        $query = $qb->getQuery();
+        $previous = $query->getOneOrNullResult();
+        
+        
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('OrchestraOrchestraBundle:Image:show.html.twig', array(
+            'entity'      => $entity,
+            'next'        => $next,
+            'previous'    => $previous,
+            'user_id'     => $user_id,
+            'delete_form' => $deleteForm->createView(),        
+            ));
     }
 
     /**
