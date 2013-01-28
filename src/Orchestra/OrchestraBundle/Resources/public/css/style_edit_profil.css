@@ -10,6 +10,7 @@
 
 #content_form_edit{
     float:left;
+    width:700px;
     margin-left:35px;
     margin-top:55px;
     margin-bottom:50px;
@@ -19,24 +20,27 @@
 
 #form_edit{
     float:left;
-    width:350px;  
-    /*background-color:lightblue;*/  
+    width:400px;  
+    /*background-color:lightblue; */
+}
+
+.bloc_contenu_tuto{
+    float:left;
+    /*background-color:lightgrey;*/
+    width:96%;
+    margin-top:-5px;
+    margin-left: 3px;
+    padding-top:15px;
+    padding-left:10px;
+    padding-bottom:10px;
+    border: 1px solid #b8b9ba;
+    background-color:#ffffff;
 }
 
 .form_row{
     float:left;
     width:350px;
     margin-top:10px;
-}
-
-
-h1{
-    color:#2b3035;
-    font-size:20px;
-    font-family: "futura", Arial, sans-serif;
-    margin-left:10px;
-    margin-bottom:10px;
-    text-transform: uppercase;
 }
 
 
@@ -92,24 +96,63 @@ button:hover{
 
 
 #actions_droite{
-    float:left;
-    height:100px;
-    margin-top:40px;
-    margin-left:50px;
+    float:right;
+    width:250px;
+    margin-left:20px;
     /*background-color:lightgreen;*/
 }
 
 
-.record_actions a{
-    color:#2b3035;
-    font-size:14px;
-    font-family: "futura", Arial, sans-serif;
+.retour_tuto{
+    float:right;
+    width:240px;
+    margin-bottom: 10px;
+}
+
+.supp_compte{
+    margin-top:20px;
+}
+
+.picto_tutorat_titre{
+    float:left;
+    margin:10px 0px 0px 10px;
+    width:23px;
+    height:23px;  
+}
+
+.titre_bloc{
+    float: left;
+    position:relative;
+    z-index:1;
+    width:100%;
+    background-image:url("../img/fond_titre_bloc.jpg");
+    background-repeat:repeat-x;
+    height:38px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.txt_titre_bloc{
+    float:left;
+    color:#ffffff;
+    margin-left:5px;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top:13px;
+}
+
+.txt_titre_bloc a{
+    color:#ffffff;
     text-decoration: none;
 }
 
-.record_actions a:hover{
-    /*text-decoration: underline;*/
+.txt_titre_bloc a:hover{
     color:#e65011;
+    text-decoration: none;
 }
 
 

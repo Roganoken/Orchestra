@@ -44,9 +44,23 @@ li{
     opacity:1;
 }
 
+.div_picto_menu{
+    margin: 9px 0px 0 15px;
+    width:40px;
+    height:30px;
+    /*background-color: lightgreen;*/
+}
+
 .picto_menu{
     float:left;
-    margin: 9px 6px 0 25px;
+    margin:0px 0 0 5px;
+    /*background-color: lightblue;*/
+}
+
+.picto_menu_bis{
+    float:left;
+    margin:0px 0 0 8px;
+    /*background-color: lightblue;*/
 }
 
 
@@ -55,7 +69,8 @@ li{
     font-size:20px;
     font-family:"futura", Arial, sans-serif;
     color:#ffffff;
-    margin-top:8px;
-    margin-left:15px;
+    margin-top:-30px;
+    margin-left:70px;
+    /*background-color: lightblue;*/
 }
 

@@ -7,20 +7,7 @@
         <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style.css') }}" type="text/css" media="all" />
         <script type="text/javascript" type="text/javascript" src="{{ asset('bundles/orchestraorchestra/js/jquery-1.8.3.min.js') }}"></script>
         <script type="text/javascript">
-        <!--
-
-        $(document).ready(function() {
-
-         var docHeight = $(window).height();
-         var footerHeight = $('#footer').height();
-         var footerTop = $('#footer').position().top + footerHeight;
-
-         if (footerTop < docHeight) {
-          $('#footer').css('margin-top', 10 + (docHeight - footerTop) + 'px');
-         }
-        });
-
-        // -->
+        
        </script>
         </head> 
         {% block stylesheets %}       
@@ -29,6 +16,9 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <div id="wrap"> 
+         
+         
          <header id="header">
             {% block header %}{% endblock %}
          </header>
@@ -41,6 +31,6 @@
              <p id="copyright">Copyright 2012 - Tous droits réservés - by <a href=""><span class="orange">  O</span>rchestra</a></p>
          </footer>
          
-        
+        </div>
     </body>
 </html>

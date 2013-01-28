@@ -38,7 +38,6 @@
                 <div class="titre_bloc_3">
                     <div class="picto_evt"><img  height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_evt.png') }}" alt="" /></div>
                     <div class="txt_titre_bloc"><p>évènements à venir</p></div>
-                    <div class="picto_modif"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
                 </div>
                         {% render 'OrchestraOrchestraBundle:Evenement:miniListe' %}
         </div>
@@ -47,7 +46,6 @@
             <div class="titre_bloc_1">
                 <div class="picto_portfolio"><img  height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_galerie.png') }}" alt="" /></div>
                 <div class="txt_titre_bloc"><p>Dernières images</p></div>
-                    <div class="picto_modif"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
             </div>
             <div id="portfolio">
                         {% render 'OrchestraOrchestraBundle:Galerie:accueilListe' %}
@@ -57,7 +55,7 @@
         <div id="bloc_inscrits">
             <div class="titre_bloc_1">
                 <div class="picto_profil"><img  height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" /></div>
-                <div class="txt_titre_bloc"><p>Dernièrs inscrits</p></div>
+                <div class="txt_titre_bloc"><p>Derniers inscrits</p></div>
             </div>
             <div id="inscrits">
                         {% render 'OrchestraOrchestraBundle:User:dernierInscrit' %}

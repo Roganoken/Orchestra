@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+@charset "utf-8";
 
 @font-face{
     font-family:futura;
@@ -41,7 +41,7 @@
     height:160px;
     margin-top:-5px;
     margin-left: 3px;
-    padding:10px 0px 10px 10px;
+    padding:10px 0px 20px 10px;
     border: 1px solid #b8b9ba;
     background-color:#ffffff;
 }
@@ -123,15 +123,16 @@
     opacity:1;
 }
 
-.intitule, .contenu_actu, .date, .ajout_par{
+.intitule, .date, .ajout_par{
     float:left;
-    width:90%;
     height:20px;
     margin-bottom:3px;
     font-family:Arial, sans-serif;
+    /*background-color: lightblue;*/
 }
 
 .intitule{
+    width:84%;
     color:#e65011;
     text-transform: uppercase;
     font-weight: bold;
@@ -139,32 +140,37 @@
 }
 
 .contenu_actu{
+    float:left;
+    width:90%;
+    margin-bottom:10px;
+    font-family:Arial, sans-serif;
+    color:#2b3035;
     font-size:12px;
-    
+    /*background-color: lightblue;*/
 }
 
 .date{
+    width:90%;
     color:#a8a9ab;
-    font-size:12px;
+    font-size:14px;
     width:200px;
 }
 
 .new{
     float:left;
     color:#e65011;
-    font-size:12px;
+    font-size:14px;
     font-weight:bold;
-    width:168px;
-    margin-top: -45px;
-    margin-left:365px;
-    text-align:center;
+    width:60px;
+    margin-left:12px;
+    text-align:right;
+    /*background-color: lightpink;*/
 }
 
 .ajout_par{
-   color:#a8a9ab;
+
+    color:#a8a9ab;
    font-size:11px;
-   margin-top:2px;
-   margin-bottom:-3px;
 }
 
 .ajout_par a{
@@ -180,7 +186,7 @@
     float:right;
     width:24px;
     height:14px;
-    margin-top:25px;
+    /*margin-top:4px;*/
     background-image:url("../img/picto_voir_profil.png");
     background-position: 0px 0px;
 }
@@ -201,20 +207,30 @@
     opacity:1
 }
 
-.picto_modif_actus{
+.picto_modif_tuto{
     float:right;
     width:20px;
     height:20px;
-    opacity:0.5;
 }
 
-.picto_modif_actus:hover{
-    opacity:1;
-}
 
-.picto_evt, .picto_portfolio, .picto_profil{
+.picto_evt{
     float:left;
-    margin:10px 10px 0px 12px;   
+    margin:10px 0px 0px 12px;   
+    width:20px;
+    height:20px;
+}
+
+.picto_portfolio{
+    float:left;
+    margin:10px 8px 0px 12px;   
+    width:20px;
+    height:20px;
+}
+
+.picto_profil{
+    float:left;
+    margin:10px 5px 0px 12px;   
     width:20px;
     height:20px;
 }
