@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_tutorat_new.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_news_new.css') }}" type="text/css" media="all" />
 {% endblock %}
 
 
@@ -46,7 +46,7 @@
                 <div class="titre_bloc retour_tuto">
                     <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
                     <div class="txt_titre_bloc">
-                        <a href="{{ path('news', { 'id': entity.id }) }}">Revenir à l'actualité</a>
+                        <a href="{{ path('news', { 'id': entity.id }) }}">Revenir aux actualités</a>
                     </div>
                 </div>
 

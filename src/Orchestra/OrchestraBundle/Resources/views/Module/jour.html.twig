@@ -13,7 +13,7 @@
             <div class="ajout_par">Ajouté par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': tutorat_jour.moduleUser.id }) }}">{{ tutorat_jour.moduleUser.firstname }} {{ tutorat_jour.moduleUser.lastname }}</a></div>
     
             {% if is_granted("ROLE_ADMIN") or tutorat_jour.moduleUser.id == app.security.getToken().getUser().getId() %}
-               <div class="picto_modif_tuto"><a href="{{ path('module_edit', { 'id': tutorat_jour.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
+               <div class="picto_modif_tuto"><a href="{{ path('module_edit', { 'id': tutorat_jour.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif_c.png') }}" alt="" /></a></div>
             {% endif %}
     
     

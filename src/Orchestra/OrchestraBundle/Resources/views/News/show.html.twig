@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_tutorat_show.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_news_show.css') }}" type="text/css" media="all" />
     
 {% endblock %}
 
@@ -74,7 +74,7 @@
                                 <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': commentaire.User.id }) }}">{{ commentaire.User.firstname }} {{ commentaire.User.lastname }}</a> 
                                 <span class="txt_commentaire">dit : </span>{{ commentaire.contenu }} <span class="txt_commentaire">[{{ time_diff(commentaire.created) }}]</span>
                                 {% if app.security.getToken().getUser() == commentaire.User %}
-                                    <a href="{{ path('news_commentaire_delete', { 'actualite': entity.id, 'id': commentaire.id }) }}">X</a>
+                                    <a href="{{ path('news_commentaire_delete', { 'actualite': entity.id, 'id': commentaire.id }) }}"><span class="croix_supp">X</span></a>
                                 {% endif %}
                             </li>
                         {% endfor %}
@@ -129,8 +129,7 @@
 
     
     </div>
-
- {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': entity.id} %}   
+ 
  </div>
  
  </div>  

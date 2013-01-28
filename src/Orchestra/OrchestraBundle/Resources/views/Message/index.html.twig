@@ -16,7 +16,7 @@
 <div id="contenu">
 
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
-        
+     
     <div class="content_form_edit">  
   
       <div id="actions_gauche">   
@@ -30,7 +30,7 @@
                     <div class="bloc_contenu_tuto">   
                        {% for entity in entities %}
                             <div class="records_list">
-                                <div class="emetteur">De {{ entity.fromPersonneId.firstname }} {{ entity.fromPersonneId.lastname }} :</div>
+                                <div class="emetteur">De <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.fromPersonneId.id }) }}">{{ entity.fromPersonneId.firstname }} {{ entity.fromPersonneId.lastname }}</a> :</div>
                                 <div class="date">{{ entity.created|format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
       
                                 <div class="contenu_msg">{{ entity.titre }}</div>
@@ -54,6 +54,7 @@
 
 
    </div> 
+
 </div>
 
 {% endblock %} 

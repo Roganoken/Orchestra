@@ -23,7 +23,7 @@
       
               <div class="bloc_tuto">
                     <div class="titre_bloc">
-                        <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
+                        <div class="picto_evt_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_evt.png') }}" alt="" /></div>
                         <div class="txt_titre_bloc"><p>Historique des évènements</p></div>
                     </div>
                     
@@ -31,40 +31,47 @@
                         {% if historiques|length != 0 %}
                             {% for entity in historiques %}
                                   <div class="records_list">
-                                        <div class="intitule">{{ entity.title }} // le {{ entity.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
+                                        <div class="intitule">{{ entity.title }}</div>
+                                        <div class="date">le {{ entity.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
 
                                        <div id="contenu_evenement">
                                             <div class="img_evenement"><img src="{{ ('evenement/' ~ entity.image) | apply_filter('evenement_small') }}" /></div>
                                        
                                             <div class="txt_evenement">{{ entity.contenu }}</div>
-                                            par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.user.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a> 
+                                            
                                        </div>
                                     
+                                        <div class="ajout_par">par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.user.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a></div>
                                         
-                                        {# if is_granted("ROLE_ADMIN") or entity.User == app.security.getToken().getUser() #}
+                                        {% if is_granted("ROLE_ADMIN") or entity.User == app.security.getToken().getUser() %}
                                            <div class="picto_modif_tuto"><a href="{{ path('evenement_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
-                                        {# endif #}
-                                
-                                          <a href="{{ path('evenement_show', { 'id': entity.id }) }}">Voir</a> 
-                                        
+                                        {% endif %}
+
                                     </div>
 
                                 {% endfor %}
                         {% else %}
                         Pas encore d'évènement
                         {% endif %}
-                    </div>
                         
-                        <a href={{path ('evenement')}}>Revenir aux évènements</a>
+                        
                         
                         <div class="navigation">
                             {{ knp_pagination_render(historiques) }}
-                        </div>  
+                        </div> 
+                    </div>
+
+ 
                 </div>   
        </div>
        
        <div class="titre_bloc_ajout">
-            <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
+            <div class="picto_evt_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_evt.png') }}" alt="" /></div>
+            <div class="txt_titre_bloc"><a href="{{ path('evenement') }}"><p>Revenir aux évènements</p></a></div>
+        </div>
+       
+       <div class="titre_bloc_ajout">
+            <div class="picto_evt_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_evt.png') }}" alt="" /></div>
             <div class="txt_titre_bloc"><a href="{{ path('evenement_new') }}"><p>Ajouter un évènement</p></a></div>
         </div>
        

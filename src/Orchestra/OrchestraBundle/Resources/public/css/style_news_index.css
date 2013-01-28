@@ -1,16 +1,277 @@
 @CHARSET "UTF-8";
 
+@font-face{
+    font-family:futura;
+    src:url("../fonts/futura_book.ttf");
+    font-weight: 200;
+}
+
+
+.content_form_edit{
+    float:left;
+    width:700px;
+    margin-left:35px;
+    margin-top:55px;
+    margin-bottom:50px;
+    /*background-color:lightpink;*/
+}
+
+#actions_gauche{
+    float:left;
+    /*height:100px;*/
+    width:450px;
+
+    /*background-color:lightgreen;*/
+}
+
+.bloc_tuto{
+    float:left;
+    width:450px;
+    margin-bottom:50px;
+    /*background-color:lightyellow;*/
+}
+
+
+.titre_bloc{
+    float: left;
+    position:relative;
+    z-index:1;
+    background-image:url("../img/fond_titre_bloc.jpg");
+    background-repeat:repeat-x;
+    width:100%;
+    height:38px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.picto_tutorat_titre{
+    float:left;
+    margin:7px 5px 0px 7px;
+    width:23px;
+    height:23px;  
+}
+
+
+.picto_voir_plus{
+    float:right;
+    margin:12px 21px 0px 0px;   
+    width:24px;
+    height:14px;
+    background-image:url("../img/picto_oeil_blanc.png");
+    background-position: 0px 0px;
+}
+
+.picto_voir_plus:hover{
+    background-position: 0px 14px;
+}
+
+.txt_titre_bloc{
+    float:left;
+    color:#ffffff;
+    margin-left:5px;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top:13px;
+}
+
+.txt_titre_bloc a{
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.txt_titre_bloc a:hover{
+    color:#e65011;
+    text-decoration: none;
+}
+
+
+.bloc_contenu_tuto{
+    float:left;
+    width:96%;
+    /*background-color:lightgrey;*/
+    margin-top:-5px;
+    margin-left: 3px;
+    padding:10px 0px 10px 10px;
+    border: 1px solid #b8b9ba;
+    background-color:#ffffff;
+}
+
+
+.titre_bloc_ajout{
+    float: right;
+    background-image:url("../img/fond_titre_bloc.jpg");
+    background-repeat:repeat-x;
+    width:225px;
+    height:38px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin-bottom:20px;
+}
+
+
+.records_list{
+    float:left;  
+    width:96%;  
+    margin-top:10px;
+    padding-bottom:5px;
+    /*background-color:lightpink;*/
+    border-bottom: 1px dashed #b8b9ba;
+}
+
+
+
+.intitule, .date, .ajout_par{
+    float:left;
+    height:20px;
+    margin-bottom:3px;
+    font-family:Arial, sans-serif;
+    /*background-color: lightblue;*/
+}
+
+.intitule{
+    width:84%;
+    color:#e65011;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size:14px;
+}
 
 .contenu_actu{
     float:left;
     width:90%;
     margin-bottom:10px;
     font-family:Arial, sans-serif;
+    color:#2b3035;
+    font-size:12px;
     /*background-color: lightblue;*/
 }
 
-.contenu_actu{
-    /*background-color:lightpink;*/
+.date{
+    width:90%;
     color:#a8a9ab;
     font-size:14px;
+    width:200px;
 }
+
+.new{
+    float:left;
+    color:#e65011;
+    font-size:14px;
+    font-weight:bold;
+    width:60px;
+    margin-left:6px;
+    text-align:right;
+    /*background-color: lightpink;*/
+}
+
+.ajout_par{
+
+    color:#a8a9ab;
+   font-size:11px;
+}
+
+.ajout_par a{
+    color:#a8a9ab;
+    text-decoration: none;
+}
+
+.ajout_par a:hover{
+    color:#2b3035;
+}
+
+.picto_detail{
+    float:right;
+    width:24px;
+    height:14px;
+    /*margin-top:4px;*/
+    background-image:url("../img/picto_voir_profil.png");
+    background-position: 0px 0px;
+}
+
+.picto_detail:hover{
+    background-position: 0px 14px;
+}
+
+.picto_modif{
+    float:left;
+    margin:10px 0px 0px 12px;
+    width:20px;
+    height:20px;
+}
+
+.picto_modif_tuto{
+    /*background-color: lightblue;*/
+    float:right;
+    width:20px;
+    height:20px;
+}
+
+.liste_complete{
+    float:left;  
+    width:96%;  
+    margin-top:10px;
+    padding-bottom:5px;
+    padding-top:5px;
+    font-size:12px;
+    text-align: center;
+    /*background-color:lightpink;*/
+}
+
+.liste_complete a{
+    text-decoration: none;
+    color:#2b3035;
+}
+
+.liste_complete a:hover{
+    text-decoration: none;
+    color:#e65011;
+}
+
+
+/* PAGINATION */
+
+
+.navigation{
+    float:left;
+    width:96%;
+    margin-top:10px;
+    /*margin-bottom:20px;*/
+    text-align: center;
+}
+
+.navigation a{
+    color:#a8a9ab;
+    text-decoration: none;
+}
+
+.navigation a:visited{
+    color:#a8a9ab;
+    text-decoration: none;
+}
+
+.navigation a:hover{
+    color:#e65011;
+    text-decoration: none;
+}
+
+.navigation a:active{
+    color:#2b3035;
+    text-decoration: none;
+}
+
+
+/* STYLE EVENEMENTS */
+
+.img_evenement{
+    float:left;
+    background-color: lightgreen;
+    width:70px;
+    height:100px;
+}
+

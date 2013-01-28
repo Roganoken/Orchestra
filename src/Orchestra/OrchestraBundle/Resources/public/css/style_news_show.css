@@ -107,7 +107,7 @@ td{
     padding-top:10px;
     color:#a8a9ab;
     font-family:Arial, sans-serif;
-    font-size:14px;
+    font-size:11px;
 
 }
 
@@ -116,7 +116,7 @@ td{
     color:#2b3035;
 }
 
-.description{
+.intitule, .description{
     padding-top:5px;
     font-size:14px;
     color:#2b3035;
@@ -175,16 +175,61 @@ td{
 }
 
 .width_contenu_part{
-    color:#a8a9ab;
     width:210px;
+    
+}
+
+.width_contenu_part a{
     font-size: 13px;
     margin-left:5px;
 }
 
-.width_contenu_part a{
-    color:#2b3035;
+
+/* STYLE ACTUS */
+
+
+/* Bouton ajouter commentaire */
+
+.btn_modif, .btn_ajout{
+    float:left;
+    height:30px;
+    margin-left:170px;
+    margin-top:20px;
+    background-image:url("../img/bg_btn_form.png");
+    background-repeat: repeat-x;
+    background-position: 0px 0px;
+    border:0;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding-left:5px;
+    padding-right:5px;
+    color:#ffffff;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+    box-shadow: 0px;
 }
 
-.width_contenu_part a:hover{
-    color:#e65011;
+.btn_modif:hover, .btn_ajout:hover{
+    background-position: 0px -33px;
 }
+
+
+textarea {
+    margin-left:20px;
+    width:300px;
+    height:100px;
+}
+
+.contenu_commentaire{
+    width:410px;
+    overflow: auto;
+}
+
+.li_commentaire{
+    font-family: Arial, sans-serif;
+    font-size:12px;
+    margin-bottom:10px;
+}
+

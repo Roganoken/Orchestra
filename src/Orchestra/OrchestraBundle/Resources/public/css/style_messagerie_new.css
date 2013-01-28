@@ -1,6 +1,5 @@
 @CHARSET "UTF-8";
 
-
 @font-face{
     font-family:futura;
     src:url("../fonts/futura_book.ttf");
@@ -54,20 +53,6 @@
     height:23px;  
 }
 
-
-.picto_voir_plus{
-    float:right;
-    margin:12px 21px 0px 0px;   
-    width:24px;
-    height:14px;
-    background-image:url("../img/picto_oeil_blanc.png");
-    background-position: 0px 0px;
-}
-
-.picto_voir_plus:hover{
-    background-position: 0px 14px;
-}
-
 .txt_titre_bloc{
     float:left;
     color:#ffffff;
@@ -116,69 +101,59 @@
 }
 
 
-.records_list{
-    float:left;  
-    width:96%;  
-    margin-top:10px;
-    padding-bottom:5px;
-    /*background-color:lightpink;*/
-    border-bottom: 1px dashed #b8b9ba;
+
+
+#orchestra_orchestrabundle_messagetype_titre{
+   margin-left:40px;
+   width:310px;
+    /*margin-bottom:20px; */
 }
 
-
-
-.date{
-    float:right;
-    width:180px;
-    height:20px;
-    margin-top:-20px;
-    margin-bottom:3px;
-    font-family:Arial, sans-serif;
+input{
+    margin-left:10px;
+    margin-top:10px;
+    margin-bottom:20px;
     color:#2b3035;
     font-size:14px;
-    text-align: right;
-    /*background-color: lightblue;*/
+    font-family: "futura", Arial, sans-serif;
+}
+
+#orchestra_orchestrabundle_messagetype_contenu{
+    margin-left:20px;
+    width:300px;
+    height:150px;
 }
 
 
-.emetteur{
-   color:#2b3035;
-   font-size:14px;
-   width:230px;
-   height:20px;
-   /*background-color: lightblue;*/
-}
-
-.emetteur a{
-    color:#2b3035;
-    text-decoration: none;
-}
-
-.emetteur a:hover{
-    color:#e65011;
-}
-
-.picto_detail{
-    float:right;
-    width:24px;
-    height:14px;
-    margin-top:10px;
-    background-image:url("../img/picto_voir_profil.png");
-    background-position: 0px 0px;
-}
-
-.picto_detail:hover{
-    background-position: 0px 14px;
+#orchestra_orchestrabundle_messagetype_toPersonneId{
+    margin-left:10px;
+    margin-top:20px;
 }
 
 
-.contenu_msg{
+.btn_envoyer{
     float:left;
-    width:90%;
-    margin-top:10px;
-    margin-bottom:10px;
-    font-family:Arial, sans-serif;
-    color:#a8a9ab;
+    height:30px;
+    margin-left:170px;
+    margin-top:20px;
+    background-image:url("../img/bg_btn_form.png");
+    background-repeat: repeat-x;
+    background-position: 0px 0px;
+    border:0;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding-left:5px;
+    padding-right:5px;
+    color:#ffffff;
     font-size:14px;
-    /*background-color: lightblue;*/
+    font-family: "futura", Arial, sans-serif;
+    box-shadow: 0px;
 }
+
+.btn_envoyer:hover{
+    background-position: 0px -33px;
+}
+
+
