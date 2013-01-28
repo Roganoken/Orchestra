@@ -70,12 +70,16 @@
         </tr>
     </tbody>
     </table>
-{% if previous is not null and categorie is null %}     
+{% if previous is not null and categorie is not defined %}     
+      <a href="{{ path('image_show', {'id': previous.id, 'user': user_id}) }}">Précédente</a>
+{% elseif previous is not null and categorie is null %}     
       <a href="{{ path('galerie_show', {'id': previous.id}) }}">Précédente</a>
 {% elseif previous is not null and categorie is defined %}
       <a href="{{ path('galerie_image', {'categorie': categorie, 'id': previous.id}) }}">Précédente</a>
 {% endif %}
-{% if next is not null and categorie is null %}     
+{% if next is not null and categorie is not defined %}     
+      <a href="{{ path('image_show', {'id': next.id, 'user': user_id}) }}">Suivante</a>
+{% elseif next is not null and categorie is null %}     
       <a href="{{ path('galerie_show', {'id': next.id}) }}">Suivante</a>
 {% elseif next is not null and categorie is defined %}
       <a href="{{ path('galerie_image', {'categorie': categorie, 'id': next.id}) }}">Suivante</a>

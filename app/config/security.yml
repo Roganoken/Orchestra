@@ -67,11 +67,25 @@ security:
         # This config requires being logged for the whole site and having the admin role for the admin part.
         # Change these rules to adapt them to your needs
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/access, role: ROLE_ADMIN }
+        - { path: ^/city, role: ROLE_ADMIN }
+        - { path: ^/company, role: ROLE_ADMIN }
+        - { path: ^/contract, role: ROLE_ADMIN }
+        - { path: ^/country, role: ROLE_ADMIN }
+        - { path: ^/course, role: ROLE_ADMIN }
+        - { path: ^/commentaire, role: ROLE_ADMIN }
         - { path: ^/user/new, role: ROLE_ADMIN }
         - { path: ^/user/create, role: ROLE_ADMIN }
         - { path: ^/user/, role: ROLE_USER }
         - { path: ^/profil/, role: ROLE_USER }
         - { path: ^/tutorat/, role: ROLE_USER }
+        - { path: ^/image/, role: ROLE_USER }
+        - { path: ^/galerie/, role: ROLE_USER }
+        - { path: ^/message/, role: ROLE_USER }
+        - { path: ^/accueil/, role: ROLE_USER }
+        - { path: ^/evenement/, role: ROLE_USER }
+        - { path: ^/news/, role: ROLE_USER }
+        - { path: ^/annuaire/, role: ROLE_USER }
         - { path: ^/, role: ROLE_USER }
 
 

@@ -136,9 +136,8 @@ class RegistrationController extends ContainerAware
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(
-            'user' => $user,
-        ));
+        $url = $this->container->get('router')->generate('OrchestraOrchestraBundle_accueil');
+                return new RedirectResponse($url);
     }
 
     protected function getEngine()
