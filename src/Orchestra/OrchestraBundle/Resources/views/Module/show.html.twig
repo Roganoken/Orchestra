@@ -30,34 +30,18 @@
                 <div class="bloc_contenu_tuto width_contenu_tuto">   
                    <table class="record_properties">
                         <tbody>
-                            <!--  <tr>
-                                 <th>Intitule</th> 
-                                <td class="intitule">{{ entity.intitule }}</td>
-                            </tr> -->
                             <tr>
-                                <!--  <th>Description</th> -->
                                 <td class="description">{{ entity.description }}</td>
                             </tr>
                             <tr>
-                               <!--   <th>Date</th> -->
                                 <td>{{ entity.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
                             </tr>
                             <tr>
-                                <!--  <th>Salle</th>  -->
                                 <td>Salle {{ entity.salle.numero }} - {{ entity.salle.nom }} [{{entity.salle.capacite }} places]</td>
                             </tr>
-                            <!--  <tr>
-                                <th>Ajouté le</th>
-                                <td>{{ entity.created| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</td>
-                            </tr> -->
                             <tr>
-                               <!--   <th>Ajouté par </th> -->
                                 <td class="ajout_par">Ajouté par <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.moduleUser.id }) }}">{{ entity.moduleUser.firstname }} {{ entity.moduleUser.lastname }}</a></td>
                             </tr>
-                           <!--   <tr>
-                                <th>Dernière modification</th>
-                                <td>{{ time_diff(entity.updated) }}</td>
-                            </tr> -->
                         </tbody>
                     </table>
 
@@ -109,7 +93,7 @@
                 
                                 <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': participant.id }) }}">{{ participant.firstname }} {{ participant.lastname }}</a> 
                           
-                                {% if participant.classe %}<span> - {{ participant.classe }}</span>{% endif %}<br />
+                                {% if participant.classe %} - {{ participant.classe }}{% endif %}<br />
                              
                           {% endfor %}
                        {% else %}

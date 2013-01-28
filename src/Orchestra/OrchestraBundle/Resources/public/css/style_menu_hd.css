@@ -93,3 +93,29 @@
     background-image:url("../img/picto_deconnexion.png");
     background-position: 0px -40px;
 }
+
+
+.notif{
+    float:left;
+    width:10px;
+    height:13px;
+    background-color:#e65011;
+    border:2px solid #2b3035;
+    color:#ffffff;
+    font-weight:bold;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    padding-left:3px;
+    margin-left:18px;
+    margin-top:-34px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.notif:hover{
+    
+}
+
+

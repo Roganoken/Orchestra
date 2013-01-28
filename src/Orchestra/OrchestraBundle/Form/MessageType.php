@@ -13,7 +13,11 @@ class MessageType extends AbstractType
         $builder
             ->add('titre')
             ->add('contenu')
-            ->add('toPersonneId')
+            ->add('toPersonneId', 'entity', array(
+                     'class' => 'OrchestraOrchestraBundle:User',
+                     'property' => 'label',
+                     'label' => 'Destinataire'
+                    ))
         ;
     }
 

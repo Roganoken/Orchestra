@@ -39,7 +39,7 @@ class MessageController extends Controller
         $historiques = $paginator->paginate(
             $query,
             $this->get('request')->query->get('page', 1)/*page number*/,
-            1/*limit per page*/
+            10/*limit per page*/
                 );
 
         return $this->render('OrchestraOrchestraBundle:Message:index.html.twig', array(
@@ -159,12 +159,21 @@ class MessageController extends Controller
      */
     public function newReplyAction($id)
     {
+        
+        $em = $this->getDoctrine()->getManager();
+        
         $entity = new Message();
         $form   = $this->createForm(new ReplyType(), $entity);
 
+        $dest = $em->getRepository('OrchestraOrchestraBundle:User')->find($id);
+
+        if (!$dest) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+
         return $this->render('OrchestraOrchestraBundle:Message:newReply.html.twig', array(
             'entity' => $entity,
-            'id'     => $id,
+            'dest'     => $dest,
             'form'   => $form->createView(),
         ));
     }

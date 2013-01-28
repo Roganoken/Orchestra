@@ -47,9 +47,9 @@
     border-radius: 10px;
 }
 
-.picto_tutorat_titre{
+.picto_evt_titre{
     float:left;
-    margin:7px 5px 0px 7px;
+    margin:7px 5px 0px 10px;
     width:23px;
     height:23px;  
 }
@@ -129,18 +129,33 @@
 
 .intitule{
     float:left;
-    width:415px;
+    width:245px;
     height:20px;
+    margin-bottom:3px;
+    font-family:Arial, sans-serif;
+    color:#e65011;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size:14px;
+    /*background-color: lightblue;*/
+}
+
+.date{
+    float:left;
+    width:160px;
+    height:20px;
+    margin-left:5px;
     margin-bottom:3px;
     font-family:Arial, sans-serif;
     color:#2b3035;
     font-size:14px;
+    text-align:right;
     /*background-color: lightblue;*/
 }
 
 #contenu_evenement{
     float:left;
-    width:380px;
+    width:410px;
     /*background-color: lightgreen;*/
     margin-top:10px;
 }
@@ -149,22 +164,37 @@
 .img_evenement{
     /*background-color: lightpink;*/
     float:left;
-    width:148px;
-    height:198px;
-    border:1px solid #2b3035;
+    width:140px;
+    height:140px;
+    /*border:1px solid #2b3035;*/
     margin-right:10px;
 }
 
 
 .txt_evenement{
-
-    /*width:220px;*/
-    margin-right:10px;
     font-family:Arial, sans-serif;
-    color:#a8a9ab;
-    font-size:14px;
+    color:#2b3035;
+    font-size:12px;
     text-align: justify;
     /*background-color: lightblue;*/
+}
+
+.ajout_par{
+    float:left;
+    margin-top:10px;
+    font-family:Arial, sans-serif;
+    color:#a8a9ab;
+    font-size:11px;
+    text-align: justify;
+}
+
+.ajout_par a{
+    color:#a8a9ab;
+    text-decoration: none;
+}
+
+.ajout_par a:hover{
+    color:#2b3035;
 }
 
 
@@ -187,5 +217,37 @@
     width:20px;
     height:20px;
     margin-top:10px;
-    background-color: lightblue;
+    /*background-color: lightblue;*/
+}
+
+
+/* PAGINATION */
+
+
+.navigation{
+    float:left;
+    width:96%;
+    margin-top:10px;
+    /*margin-bottom:20px;*/
+    text-align: center;
+}
+
+.navigation a{
+    color:#a8a9ab;
+    text-decoration: none;
+}
+
+.navigation a:visited{
+    color:#a8a9ab;
+    text-decoration: none;
+}
+
+.navigation a:hover{
+    color:#e65011;
+    text-decoration: none;
+}
+
+.navigation a:active{
+    color:#2b3035;
+    text-decoration: none;
 }

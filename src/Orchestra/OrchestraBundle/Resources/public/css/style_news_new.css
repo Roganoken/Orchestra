@@ -38,57 +38,45 @@
 
 
 label{
-    /*background-color: yellow;*/
+    /*background-color: lightyellow;*/
     margin-bottom:20px;
-    margin-right:30px;
+    /*margin-right:30px;*/
 }
 
-#orchestra_orchestrabundle_evenementtype_title{
-   margin-left:22px;
-}
-
-#orchestra_orchestrabundle_evenementtype_contenu{
-    width:250px;
-    height:70px;
-}
-
-#orchestra_orchestrabundle_evenementtype_file{
-    margin-bottom:20px;
-}
-
-#orchestra_orchestrabundle_evenementtype_date{
-     float:left;
-     width:332px;
-     margin-left:40px;
-     margin-top:-25px;
-     margin-bottom:20px;
-     /*background-color: lightgreen;*/
-}
-
-#orchestra_orchestrabundle_evenementtype_date_date{
-    /*float:left;*/
-    width:186px;
-     /*background-color: lightpink;*/
-}
-
-#orchestra_orchestrabundle_evenementtype_date_time{
-    /*float:left;*/
-    width:145px;
-    margin-left:187px;
-    margin-top:-25px;
-    /*background-color: lightgrey;*/
-}
 
 input{
     margin-left:10px;
-    margin-bottom:10px;
     margin-top:10px;
+    margin-bottom:20px;
     color:#2b3035;
     font-size:14px;
     font-family: "futura", Arial, sans-serif;
 }
 
-.btn_modif, .btn_ajout, .btn_creer{
+#orchestra_orchestrabundle_newstype_title{
+    width:270px;
+    margin-left:30px;
+}
+
+
+#orchestra_orchestrabundle_newstype_active{
+    margin-top:20px;
+    margin-left:40px;
+}
+
+
+#orchestra_orchestrabundle_newstype_content{
+    width:250px;
+    height:80px;
+    margin-left:30px;
+}
+
+#orchestra_orchestrabundle_newstype_section{
+    margin-left:30px;
+}
+
+
+.btn_modif, .btn_creer{
     float:left;
     height:30px;
     margin-left:150px;
@@ -109,7 +97,7 @@ input{
     box-shadow: 0px;
 }
 
-.btn_modif:hover, .btn_ajout:hover, .btn_creer:hover{
+.btn_modif:hover, .btn_creer:hover{
     background-position: 0px -33px;
 }
 
@@ -132,7 +120,7 @@ input{
 
 .picto_tutorat_titre{
     float:left;
-    margin:7px 5px 0px 10px;
+    margin:7px 5px 0px 7px;
     width:23px;
     height:23px;  
 }
@@ -173,13 +161,12 @@ input{
 }
 
 
-/* style tutorat edit */
-
 .btn_supp{
     float:left;
     color:#ffffff;
     background-color: #2b3035;
     border:1px solid #2b3035;
+    text-transform:uppercase;
     margin-top:-3px;
     margin-left:-5px;
 }
@@ -187,4 +174,3 @@ input{
 .btn_supp:hover{
     color:#e65011;
 }
-

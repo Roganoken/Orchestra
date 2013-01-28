@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {% include "OrchestraOrchestraBundle:Default:stylesheet.html.twig" %}
-    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_messagerie_index.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/orchestraorchestra/css/style_messagerie_new.css') }}" type="text/css" media="all" />
 {% endblock %}
 
 
@@ -16,7 +16,7 @@
 <div id="contenu">
 
     {% include "OrchestraOrchestraBundle:Default:menu_gauche.html.twig" %}
-        
+       
     <div class="content_form_edit">  
   
       <div id="actions_gauche">   
@@ -29,32 +29,26 @@
                     
                     <div class="bloc_contenu_tuto">  
 
-<form action="{{ path('message_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Envoyer</button>
-    </p>
-</form>
+                        <form action="{{ path('message_create') }}" method="post" {{ form_enctype(form) }}>
+                            {{ form_widget(form) }}
+                            <p>
+                                <button class="btn_envoyer" type="submit">Envoyer</button>
+                            </p>
+                        </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('message') }}">
-            Revenir à ses messages
-        </a>
-    </li>
-</ul>
 
                     </div>
-                </div>   
+              </div>   
        </div>
        
-       <div class="titre_bloc_ajout">
+        <div class="titre_bloc_ajout">
             <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
-            <div class="txt_titre_bloc"><a href="{{ path('message_new') }}"><p>Envoyer un message</p></a></div>
+            <div class="txt_titre_bloc"><a href="{{ path('message') }}"><p>Revenir aux messages</p></a></div>
         </div>
 
 
    </div>
+
 </div>
 
 {% endblock %} 

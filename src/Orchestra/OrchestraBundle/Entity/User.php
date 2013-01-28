@@ -942,5 +942,10 @@ class User extends BaseUser
         $this->file = null;
     }
     
+    public function getLabel()
+    {
+        return $this->firstname.' '.$this->lastname;
+    }
+    
     
 }
