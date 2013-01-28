@@ -21,52 +21,72 @@
     
         <div id="form_edit">
        
-            <h1>Modifier mon profil</h1>
-            
-            <form action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>  
-            
-                {{ form_errors(edit_form) }}
-            
-                <div class="form_row">{{ form_row(edit_form.firstname, {'label': 'Prénom' }) }}</div>
-                <div class="form_row">{{ form_row(edit_form.lastname, {'label': 'Nom' }) }}</div>
-                <div class="form_row">{{ form_row(edit_form.username, {'label': 'Identifiant'}) }}</div>
-                <div class="form_row">{{ form_row(edit_form.classe, {'label': 'Classe', 'attr': { 'readonly': 'true' } }) }}</div>
-                <div class="form_row">{{ form_row(edit_form.birthdate, {'label': 'Date de naissance'}) }}</div>
-                <div class="form_row">{{ form_row(edit_form.email, {'label': 'Email'}) }}</div>
-                <div class="form_row">{{ form_row(edit_form.phone, {'label': 'Téléphone'}) }}</div>
-                <div class="form_row">{{ form_row(edit_form.mobilePhone, {'label': 'Mobile'}) }}</div>
+           <div class="bloc_tuto width_tuto">
+
+                    <div class="titre_bloc">
+                        <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_perso.png') }}" alt="" /></div>
+                        <div class="txt_titre_bloc"><p>Modifier mon profil</p></div>
+                    </div>
                     
-            {% if is_granted("ROLE_ADMIN") %}
-                
-                <div class="form_row">{{ form_row(edit_form.isProfesseur, {'label': 'Professeur'}) }}</div>
-                <div class="form_row">{{ form_row(edit_form.isEleve, {'label': 'Eleve'}) }}</div>
-                <div class="form_row">{{ form_row(edit_form.isContact, {'label': 'Contact'}) }}</div>
-                
-            {% endif %}  
-                
-                {{ form_widget(edit_form._token) }}
-                
-                    <button type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Enregistrer</button>
-            </form>
+                    <div class="bloc_contenu_tuto width_contenu_tuto">  
+                        <form action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>  
+            
+                            {{ form_errors(edit_form) }}
+                        
+                            <div class="form_row">{{ form_row(edit_form.firstname, {'label': 'Prénom' }) }}</div>
+                            <div class="form_row">{{ form_row(edit_form.lastname, {'label': 'Nom' }) }}</div>
+                            <div class="form_row">{{ form_row(edit_form.username, {'label': 'Identifiant'}) }}</div>
+                            <div class="form_row">{{ form_row(edit_form.classe, {'label': 'Classe', 'attr': { 'readonly': 'true' } }) }}</div>
+                            <div class="form_row">{{ form_row(edit_form.birthdate, {'label': 'Date de naissance'}) }}</div>
+                            <div class="form_row">{{ form_row(edit_form.email, {'label': 'Email'}) }}</div>
+                            <div class="form_row">{{ form_row(edit_form.phone, {'label': 'Téléphone'}) }}</div>
+                            <div class="form_row">{{ form_row(edit_form.mobilePhone, {'label': 'Mobile'}) }}</div>
+                                
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <div class="form_row">{{ form_row(edit_form.isProfesseur, {'label': 'Professeur'}) }}</div>
+                                <div class="form_row">{{ form_row(edit_form.isEleve, {'label': 'Eleve'}) }}</div>
+                                <div class="form_row">{{ form_row(edit_form.isContact, {'label': 'Contact'}) }}</div>
+                            {% endif %}  
+                            
+                            {{ form_widget(edit_form._token) }}
+                    
+                            <button type="submit" onclick="return confirm('Etes-vous sûr de vouloir modifier ?')">Enregistrer</button>
+                        </form>
+
+                    </div>
+                </div> 
+ 
           </div>  
                   
         <div id="actions_droite">
-            <ul class="record_actions">
-                <li>
-                    <a href="{{ path('user_avatar',{ 'id': entity.id }) }}">
-                        Modifier mon avatar
-                    </a>
-                </li>
-                <li>
+            <div class="titre_bloc retour_tuto">
+                <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_perso.png') }}" alt="" /></div>
+                <div class="txt_titre_bloc">
+                    <a href="{{ path('user_avatar',{ 'id': entity.id }) }}"> Modifier mon avatar</a>
+                </div>
+            </div>
+            
+            <div class="titre_bloc retour_tuto">
+                <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_perso.png') }}" alt="" /></div>
+                <div class="txt_titre_bloc">
                     <a href="{{ path('fos_user_change_password') }}">Modifier mon mot de passe</a>
-                </li>
-                <li>
-                    <br /><a href="{{ path('annuaire') }}">Carnet d'adresses</a>
-                </li>
-                <li>
-                   <br /><a href="{{ path('user_delete', { 'id': entity.id }) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer ?')">Supprimer mon compte</a>
-                </li>
-            </ul>
+                </div>
+            </div>
+            
+            <div class="titre_bloc retour_tuto supp_compte">
+                <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_perso.png') }}" alt="" /></div>
+                <div class="txt_titre_bloc">
+                    <a href="{{ path('annuaire') }}">Carnet d'adresses</a>
+                </div>
+            </div>
+            
+            <div class="titre_bloc retour_tuto supp_compte">
+                <div class="picto_tutorat_titre"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_perso.png') }}" alt="" /></div>
+                <div class="txt_titre_bloc">
+                    <a href="{{ path('user_delete', { 'id': entity.id }) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer ?')">Supprimer mon compte</a>
+                </div>
+            </div>
+
         </div>
     </div>
    </div> 

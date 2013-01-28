@@ -35,7 +35,7 @@
                                         <div class="date">le {{ entity.date| format_datetime(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }}</div>
                                         
                                        <div id="contenu_evenement">
-                                            <div class="img_evenement"><img src="{{ ('evenement/' ~ entity.image) | apply_filter('evenement_small') }}" /></div>
+                                            <div class="img_evenement"><img src="{{ ('evenement/' ~ entity.image) | apply_filter('evenement_small') }}" height="140px;" width="140px;" /></div>
                                        
                                             <div class="txt_evenement">{{ entity.contenu }}</div>
                                             

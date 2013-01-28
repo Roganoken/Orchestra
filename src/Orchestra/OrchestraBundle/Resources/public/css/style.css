@@ -18,6 +18,18 @@ body{
     font-family:futura,Arial, sans-serif;
 }
 
+html, body {
+    height: 100%;
+}
+
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -30px;
+}
+
 #header{
     background-color:#2b3035;
     height:62px;
