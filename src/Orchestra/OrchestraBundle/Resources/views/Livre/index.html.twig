@@ -18,76 +18,7 @@
       <div id="actions_gauche"> 
     </div>
 
-<h1>Livre list</h1>
-
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Isbn</th>
-            <th>Titre</th>
-            <th>Resume</th>
-            <th>Annee</th>
-            <th>Illustration</th>
-            <th>Datereservation</th>
-            <th>Dateemprunt</th>
-            <th>Dateretour</th>
-            <th>Codebarre</th>
-            <th>Active</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Actions</th>           
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('livre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.isbn }}</td>
-            <td>{{ entity.titre }}</td>
-            <td>{{ entity.resume }}</td>
-            <td>{% if entity.annee %}{{ entity.annee|date('Y-m-d ') }}{% endif %}</td>
-            <td>{{ entity.illustration }}</td>
-            <td>{% if entity.dateReservation %}{{ entity.annee|date('Y-m-d ') }}{% endif %}</td>
-            <td>{% if entity.dateEmprunt %}{{ entity.annee|date('Y-m-d ') }}{% endif %}</td>
-            <td>{% if entity.dateRetour %}{{ entity.annee|date('Y-m-d ') }}{% endif %}</td>           
-            <td>{{ entity.codeBarre }}</td>
-            <td>{{ entity.active }}</td>
-            <td>{% if entity.created %}{{ entity.created|date('Y-m-d ') }}{% endif %}</td>
-            <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d ') }}{% endif %}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('livre_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('livre_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-<ul>
-    <li>
-        <a href="{{ path('livre_new') }}">
-            Create a new livre
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('auteur') }}">
-            Create a new auteur
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('genre') }}">
-            Create a new genre
-        </a>
-    </li>
-    
-</ul>
+     {% render 'OrchestraOrchestraBundle:Livre:liste' %}
 
 </div>
 </div>

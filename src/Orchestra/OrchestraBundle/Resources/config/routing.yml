@@ -112,7 +112,7 @@ OrchestraOrchestraBundle_legal:
 
 OrchestraOrchestraBundle_livre:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/livre.yml
-    prefix:   bibliotheque/livre
+    prefix:   bibliotheque
 
 OrchestraOrchestraBundle_media:
     resource: @OrchestraOrchestraBundle/Resources/config/routing/media.yml
