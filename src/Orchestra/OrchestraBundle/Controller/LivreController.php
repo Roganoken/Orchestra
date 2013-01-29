@@ -14,14 +14,16 @@ use Orchestra\OrchestraBundle\Form\LivreType;
  */
 class LivreController extends Controller
 {
-    /**
-     * Lists all Livre entities.
-     *
-     */
     public function indexAction()
     {
         return $this->render('OrchestraOrchestraBundle:Livre:index.html.twig');
     }
+    
+    
+    /**
+     * Lists all Livre entities.
+     *
+     */
     
     public function listeAction()
     {
@@ -30,6 +32,100 @@ class LivreController extends Controller
         $entities = $em->getRepository('OrchestraOrchestraBundle:Livre')->findAll();
 
         return $this->render('OrchestraOrchestraBundle:Livre:liste.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    
+    /**
+     * Liste les menus à partir des genres.
+     *
+     */
+    public function menuAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $menus = $em->getRepository('OrchestraOrchestraBundle:Genre')->findAll();
+        
+        return $this->render('OrchestraOrchestraBundle:Galerie:menu.html.twig', array(
+            'menus' => $menus,
+        ));
+    }
+
+    /**
+     * LISTE TOUS LES LIVRES PAR CATEGORIE.
+     *
+     */
+    
+    public function categorieAction($id)
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+
+        $entity = $em->getRepository('OrchestraOrchestraBundle:Genre')->find($id);
+        
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Livre', 'a')
+          ->where('a.genre = :genre')
+          ->setParameter('genre', $id)
+          ->orderBy('a.created', 'DESC');
+
+        $query = $qb->getQuery();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+                );
+
+        return $this->render('OrchestraOrchestraBundle:Galerie:categorie.html.twig', array(
+            'livres' => $pagination,
+            'entity' => $entity,
+        ));
+    }
+    
+    /**
+     * dernier livre ajouté.
+     *
+     */
+    
+    public function lastEntryAction($max = 1) 
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Livre', 'a')
+          ->orderBy('a.created', 'DESC')
+          ->setMaxResults($max);
+
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:Livre:lastEntry.html.twig', array(
+            'entity' => $entity,
+        ));
+    }
+    
+    /**
+     * 4 derniers livres ajoutés.
+     *
+     */
+    
+    public function lastEntriesAction($max = 4) 
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+          ->from('OrchestraOrchestraBundle:Livre', 'a')
+          ->orderBy('a.created', 'DESC')
+          ->setMaxResults($max);
+
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
+
+        return $this->render('OrchestraOrchestraBundle:Livre:lastEntries.html.twig', array(
             'entities' => $entities,
         ));
     }

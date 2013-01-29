@@ -83,7 +83,6 @@ class GalerieController extends Controller
             'entities' => $entities,
         ));
     }
-    
 
     /**
      * LISTE TOUTES LES IMAGES PAR CATEGORIE.

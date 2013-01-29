@@ -4,43 +4,36 @@ namespace Orchestra\OrchestraBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
-{
-    public function indexAction()
-    {
+class DefaultController extends Controller {
+
+    public function indexAction() {
         return $this->render('OrchestraOrchestraBundle:Default:index.html.twig');
     }
-    
-    public function accueilAction()
-    {
+
+    public function accueilAction() {
         return $this->render('OrchestraOrchestraBundle:Default:accueil.html.twig');
     }
-    
-    public function notificationAction()
-    {
+
+    public function notificationAction() {
         return $this->render('OrchestraOrchestraBundle:Default:accueil.html.twig');
     }
-    
-    
-    
-    public function profilAction($id)
-    {
-        
+
+    public function profilAction($id) {
+
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('OrchestraOrchestraBundle:User')->find($id);
-        
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
-        
+
         return $this->render('OrchestraOrchestraBundle:Default:profil.html.twig', array(
-            'entity'      => $entity));
+                    'entity' => $entity));
     }
-    
-    public function signupAction()
-    {
+
+    public function signupAction() {
         return $this->render('OrchestraOrchestraBundle:Default:signup.html.twig');
-    
-    
     }
-}    
+
+}
+
