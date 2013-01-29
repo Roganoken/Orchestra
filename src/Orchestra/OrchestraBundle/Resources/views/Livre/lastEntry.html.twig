@@ -1,0 +1,33 @@
+
+      
+          <div id="bloc_last_livre">
+              {% if entity is defined %}
+            <div id="bloc_carre_last_livre">
+                <a href="{{ path('livre_show', { 'id': entity.id }) }}">
+                     {% if entity.illustration %}
+                        <img src="{{ ('bibliotheque/' ~ entity.illustration) | apply_filter('illustration_last') }}" alt="avatar" />
+                    {% else %}
+                        <img src="{{ ('bibliotheque/default.jpg') | apply_filter('illustration_last') }}" alt="avatar" />
+                    {% endif %}
+                    </a>
+            </div>
+            <div id="txt_bloc_last_livre">
+                <nav>
+                    <ul>
+                        <li class="bloc_li bloc_li_last_livre_width"><a href="{{ path('livre_show', { 'id': entity.id }) }}">{{ entity.titre}}</a></li>
+                        <li class="bloc_li_desc bloc_li_last_livre_width">
+                            <span> 
+                                   {% if entity.resume|length>130 %} 
+                                        {{ entity.resume|slice(0,130)}}[...]
+                                   {% else %}
+                                        {{ entity.resume }}
+                                   {% endif %}
+                            </span>
+                        </li>
+                    </ul>
+                </nav>
+             </div>
+                  {% else %}
+                  Pas encore de livres
+                  {% endif %}
+        </div>
