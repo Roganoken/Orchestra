@@ -8,95 +8,6 @@
 }
 
 
-#bloc_last_livre{
-    float: left;
-    width:415px;
-    margin-left:35px;
-    margin-top:55px;
-}
-
-#bloc_carre_last_livre{
-    float: left;
-    position:relative;
-    z-index:2;
-    width:122px;
-    height:160px;
-    background-image:url("../img/bg_last_livre_bloc.png");
-    background-repeat: no-repeat;
-}
-
-#bloc_carre_last_livre img{
-    margin:7px;
-}
-
-#txt_bloc_last_livre{
-    float:left;
-    width:235px;
-    margin-top:17px;
-    margin-left:-1px;
-}
-
-
-#bloc_emprunts{
-    float: left;
-    width:273px;
-    margin-left:50px;
-    margin-top:55px;
-    margin-bottom:50px;
-}
-
-.bloc_tab{
-    float:left;
-    width:265px;
-    margin-top:-3px;
-    margin-left:5px;
-}
-
-.bloc_li{
-    float:left;
-    height:27px;
-    background-color: #ffffff;
-    border: 1px solid #b8b9ba;
-    margin-top:-1px;
-
-    padding:8px 0 0 5px;
-}
-
-.bloc_li a{
-    color:#2b3035;
-    font-size:14px;
-    font-family:"futura", Arial, sans-serif;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-.bloc_li_donnees_width{
-    width:255px;
-}
-
-.bloc_li_last_livre_width{
-    width:230px;
-}
-
-.bloc_li_desc{
-    float:left;
-    height:85px;
-    background-color: #ffffff;
-    border: 1px solid #b8b9ba;
-    margin-top:-1px;
-    color:#2b3035;
-    font-size:14px;
-    font-family:"futura", Arial, sans-serif;
-    padding:8px 0 5px 5px;
-}
-
-
-.bloc_li span, .bloc_li_desc span{
-    color:#a8a9ab;
-    font-size:14px;
-    font-family:"futura", Arial, sans-serif;
-}
-
 .titre_bloc{
     float: left;
     position:relative;
@@ -109,6 +20,14 @@
     -khtml-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
+}
+
+.retour_bibli{
+    float:left;
+    width:238px;
+    margin-top:55px;
+    margin-left:35px;
+    margin-bottom: 10px;
 }
 
 .picto_bibli_titre{
@@ -140,26 +59,11 @@
     text-decoration: none;
 }
 
-.lien_ajout a{
-    float:right;
-    font-size:12px;
-    font-family:"futura", Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-top:13px;
-    margin-right:20px;
-    color:#ffffff;
-    text-decoration: none;
-}
-
-.lien_ajout a:hover{
-    color:#e65011;
-}
-
 
 .bloc_biblio{
     float:left;
     width:745px;
+    margin-top:20px;
     margin-left:35px;
     margin-bottom:50px;
     /*background-color:lightyellow;*/
@@ -188,11 +92,6 @@
 .derniers_livres a{
     text-decoration: none;
 }
-
-
-
-/* DERNIERS AJOUT + BIBLIO */ 
-
 
 
 #biblio{
@@ -244,8 +143,6 @@
     text-align:center;
 
 }
-
-
 
 /* MENU DEROULANT */
 
@@ -305,10 +202,6 @@ li:hover ul.niveau2 {
     text-align:center;
     text-decoration: none;
 }
-
-
-
-
 
 
 /* PAGINATION */
