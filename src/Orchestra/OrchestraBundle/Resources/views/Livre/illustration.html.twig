@@ -27,13 +27,18 @@
                         <div class="txt_titre_bloc"><p>Charger l'illustration</p></div>
                     </div>
                     
-                    <div class="bloc_contenu_tuto width_contenu_tuto">  
+                    <div class="bloc_contenu_tuto width_contenu_tuto">
                         
+                        {% if entity.illustration %}
+                            <img src="{{ ('bibliotheque/' ~ entity.illustration) | apply_filter('illustration_list') }}" />
+                        {% else %}
+                            <img src="{{ ('bibliotheque/default.jpg') | apply_filter('illustration_list') }}" />
+                        {% endif %}
                         
-                        <!--  <form action="#" method="post" {# form_enctype(form) #}>
-                            {# form_widget(form) #}
-                            <button type="submit">Uploader</button>
-                        </form> -->
+                            <form action="#" method="post" {{ form_enctype(form) }}>
+                                {{ form_widget(form) }}
+                                <button type="submit">Uploader</button>
+                            </form>
 
                     </div>
                 </div> 

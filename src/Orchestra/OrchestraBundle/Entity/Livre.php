@@ -1,6 +1,8 @@
 <?php
 
 namespace Orchestra\OrchestraBundle\Entity;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -146,6 +148,17 @@ class Livre
      * })
      */
     private $genre;
+    
+    
+    /**
+     * @Assert\File(
+     *     maxSize="2M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
+     *
+     * @var File $file
+     */
+    public $file;
 
     /**
      * Constructor
@@ -557,6 +570,52 @@ class Livre
     public function getGenre()
     {
         return $this->genre;
+    }
+    
+    
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->photo ? null : $this->getUploadRootDir().'/'.$this->photo;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->photo ? null : $this->getUploadDir().'/'.$this->photo;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'bibliotheque';
+    }
+    
+    
+    public function uploadPicture()
+    {
+
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->file) {
+            return;
+        }
+        
+        $photoname = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        
+        // move copie le fichier présent chez le client dans le répertoire indiqué.
+        $this->file->move($this->getUploadRootDir(), $photoname);
+
+        // On sauvegarde le nom de fichier
+        $this->illustration = $photoname;
+        
+        // La propriété file ne servira plus
+        $this->file = null;
     }
     
     
