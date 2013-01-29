@@ -18,6 +18,10 @@ livre_create:
     pattern:  /create
     defaults: { _controller: "OrchestraOrchestraBundle:Livre:create" }
     requirements: { _method: post }
+    
+livre_genre:
+    pattern:  /{id}/genre
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:genre" }  
 
 livre_edit:
     pattern:  /{id}/edit

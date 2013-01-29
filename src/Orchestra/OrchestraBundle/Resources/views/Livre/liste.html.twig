@@ -1,61 +1,28 @@
 
-<div id="nav_theme">web    2d    3d</div>
+<div id="nav_theme">
+    
+   {% render 'OrchestraOrchestraBundle:Livre:menu' %}
+    
+</div>
 
 <div id="biblio">
+    {% if entities|length != 0 %}
     {% for entity in entities %}
         <div class="livre">
             <a href="{{ path('livre_show', { 'id': entity.id }) }}">
-                <div class="img_biblio">{{ entity.illustration }}</div>
+                <div class="img_biblio">
+                    {% if entity.illustration %}
+                        <img src="{{ ('bibliotheque/' ~ entity.illustration) | apply_filter('illustration_list') }}" alt="avatar" />
+                    {% else %}
+                        <img src="{{ ('bibliotheque/default.jpg') | apply_filter('illustration_list') }}" alt="avatar" />
+                    {% endif %}
+                </div>
                 <div class="titre_livre">{{ entity.titre  }}</div>
                 <div class="dispo_livre">disponible</div>
             </a>
         </div>
     {% endfor %}
-        <div class="livre">
-        <div class="img_biblio"></div>
-        <div class="titre_livre">test fdghdf hd[...] </div>
-        <div class="dispo_livre">disponible</div>
-    </div>
-    
-        <div class="livre">
-        <div class="img_biblio"></div>
-        <div class="titre_livre">test</div>
-        <div class="dispo_livre">Indisponible</div>
-    </div>
-    
-        <div class="livre">
-        <div class="img_biblio"></div>
-        <div class="titre_livre">test</div>
-        <div class="dispo_livre">disponible</div>
-    </div>
-    
-        <div class="livre">
-        <div class="img_biblio"></div>
-        <div class="titre_livre">test</div>
-        <div class="dispo_livre">disponible</div>
-    </div>
-    
-        <div class="livre">
-        <div class="img_biblio"></div>
-        <div class="titre_livre">test</div>
-        <div class="dispo_livre">Indisponible</div>
-    </div>
-    
-        <div class="livre">
-        <div class="img_biblio"></div>
-        <div class="titre_livre">test</div>
-        <div class="dispo_livre">disponible</div>
-    </div>
-    
-        <div class="livre">
-        <div class="img_biblio"></div>
-        <div class="titre_livre">test</div>
-        <div class="dispo_livre">disponible</div>
-    </div>
-
-    <div class="navigation">
-       1 2 3 {# knp_pagination_render(historiques) #}
-    </div> 
-    
-    
+                  {% else %}
+                  Pas encore de livres
+                  {% endif %}
  </div>

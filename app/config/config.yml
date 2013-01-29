@@ -255,6 +255,12 @@ avalanche_imagine:
         my_thumb:
             type:    thumbnail
             options: { size: [161, 161], mode: outbound, cache_type: public} 
+        illustration_last:
+            type:    thumbnail
+            options: { size: [110, 144], mode: outbound, cache_type: public} 
+        illustration_list:
+            type:    thumbnail
+            options: { size: [100, 130], mode: outbound, cache_type: public} 
         evenement_small:
             type:    thumbnail
             options: { size: [140, 140], mode: outbound, cache_type: public} 
