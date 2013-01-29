@@ -17,7 +17,7 @@
     
     <div id="content">
         <div id="breadcrumb">
-            <a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/home_breadcrumb.png') }}" alt="Accueil" /></a>> <a href="">Profil</a>
+            <a href="{{ path ('OrchestraOrchestraBundle_accueil') }}"><img src="{{ asset ('bundles/orchestraorchestra/img/home_breadcrumb.png') }}" alt="Accueil" /></a>> Profil
         </div>
         <div id="bloc_avatar">
             <div id="bloc_carre_avatar">
@@ -65,9 +65,6 @@
             <div class="titre_bloc_3">
                 <div class="picto_profil"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_perso.png') }}" alt="" /></div>
                 <div class="txt_titre_bloc"><p>Mes dernières notes</p></div>
-                {% if entity.id == app.security.getToken().getUser().getId() or is_granted("ROLE_ADMIN") %}
-                    <div class="picto_modif"><a href="{{ path ('user_edit', { 'id': entity.id })}}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
-                {% endif %}
             </div>
             
             <nav class="bloc_tab_3">
@@ -84,9 +81,6 @@
             <div class="titre_bloc_3">
                 <div class="picto_profil"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_perso.png') }}" alt="" /></div>
                 <div class="txt_titre_bloc"><p>Mes absences</p></div>
-                {% if entity.id == app.security.getToken().getUser().getId() or is_granted("ROLE_ADMIN") %}
-                    <div class="picto_modif"><a href="{{ path ('user_edit', { 'id': entity.id })}}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
-                {% endif %}
             </div>
             
             <nav class="bloc_tab_3">
@@ -103,9 +97,6 @@
             <div class="titre_bloc_3">
                 <div class="picto_evt"><img  height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_evt.png') }}" alt="" /></div>
                 <div class="txt_titre_bloc"><p>évènements à venir</p></div>
-                {% if entity.id == app.security.getToken().getUser().getId() or is_granted("ROLE_ADMIN") %}
-                    <div class="picto_modif"><a href="{{ path ('user_edit', { 'id': entity.id })}}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
-                {% endif %}
             </div>
                 
                     {% render 'OrchestraOrchestraBundle:Evenement:miniListe' %}
@@ -119,11 +110,8 @@
                     <div class="picto_modif"><a href="{{ path ('user_edit', { 'id': entity.id })}}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
                 {% endif %}
             </div>
-            <div id="portfolio">
-                
-                
-       {% render 'OrchestraOrchestraBundle:Galerie:magalerie' with {id: entity.id} %}
-               
+            <div id="portfolio"> 
+               {% render 'OrchestraOrchestraBundle:Galerie:magalerie' with {id: entity.id} %}
             </div>
     </div>
 
