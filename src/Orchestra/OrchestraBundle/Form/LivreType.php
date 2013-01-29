@@ -13,10 +13,11 @@ class LivreType extends AbstractType
         $builder
             ->add('isbn')
             ->add('titre') 
+            ->add('annee', 'date', array('label' => 'Date', 'widget' => 'choice',
+                    'years' => range(date('Y'), date('Y')-50),
+            ))
             ->add('resume')
-            ->add('annee', 'date', array('widget' => 'choice', 
-                'years' => range(date('Y'), date('Y')-50), 
-                ))
+            
             //->add('illustration')
             //->add('dateReservation','date')  
             //->add('dateEmprunt','date')

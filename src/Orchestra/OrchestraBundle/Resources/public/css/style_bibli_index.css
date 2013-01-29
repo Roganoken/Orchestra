@@ -1,0 +1,281 @@
+@CHARSET "UTF-8";
+
+
+@font-face{
+    font-family:futura;
+    src:url("../fonts/futura_book.ttf");
+    font-weight: 200;
+}
+
+
+#bloc_last_livre{
+    float: left;
+    width:415px;
+    margin-left:35px;
+    margin-top:55px;
+}
+
+#bloc_carre_last_livre{
+    float: left;
+    position:relative;
+    z-index:2;
+    width:122px;
+    height:160px;
+    background-image:url("../img/bg_last_livre_bloc.png");
+    background-repeat: no-repeat;
+}
+
+#bloc_carre_last_livre img{
+    margin:7px;
+}
+
+#txt_bloc_last_livre{
+    float:left;
+    width:235px;
+    margin-top:17px;
+    margin-left:-1px;
+}
+
+
+#bloc_emprunts{
+    float: left;
+    width:273px;
+    margin-left:50px;
+    margin-top:55px;
+    margin-bottom:50px;
+}
+
+.bloc_tab{
+    float:left;
+    width:265px;
+    margin-top:-3px;
+    margin-left:5px;
+}
+
+.bloc_li{
+    float:left;
+    height:27px;
+    background-color: #ffffff;
+    border: 1px solid #b8b9ba;
+    margin-top:-1px;
+    color:#2b3035;
+    font-size:14px;
+    font-family:"futura", Arial, sans-serif;
+    padding:8px 0 0 5px;
+}
+
+.bloc_li_donnees_width{
+    width:255px;
+}
+
+.bloc_li_last_livre_width{
+    width:230px;
+}
+
+.bloc_li_desc{
+    float:left;
+    height:85px;
+    background-color: #ffffff;
+    border: 1px solid #b8b9ba;
+    margin-top:-1px;
+    color:#2b3035;
+    font-size:14px;
+    font-family:"futura", Arial, sans-serif;
+    padding:8px 0 5px 5px;
+}
+
+
+.bloc_li span, .bloc_li_desc span{
+    color:#a8a9ab;
+    font-size:14px;
+    font-family:"futura", Arial, sans-serif;
+}
+
+.titre_bloc{
+    float: left;
+    position:relative;
+    z-index:1;
+    background-image:url("../img/fond_titre_bloc.jpg");
+    background-repeat:repeat-x;
+    width:100%;
+    height:38px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.picto_bibli_titre{
+    float:left;
+    margin:10px 7px 0px 10px;
+    width:20px;
+    height:20px;  
+}
+
+
+.txt_titre_bloc{
+    float:left;
+    color:#ffffff;
+    margin-left:5px;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top:13px;
+}
+
+.txt_titre_bloc a{
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.txt_titre_bloc a:hover{
+    color:#e65011;
+    text-decoration: none;
+}
+
+.lien_ajout a{
+    float:right;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top:13px;
+    margin-right:20px;
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.lien_ajout a:hover{
+    color:#e65011;
+}
+
+
+.bloc_biblio{
+    float:left;
+    width:745px;
+    margin-left:35px;
+    margin-bottom:50px;
+    /*background-color:lightyellow;*/
+}
+
+.bloc_contenu_tuto{
+    float:left;
+    width:725px;
+    /*background-color:lightgrey;*/
+    margin-top:-5px;
+    margin-left: 3px;
+    padding:10px 0px 10px 10px;
+    border: 1px solid #b8b9ba;
+    background-color:#ffffff;
+}
+
+.derniers_livres{
+    float:left;
+    width:140px;
+    /*background-color: lightgreen;*/
+    margin-left:8px;
+    margin-right:8px;
+    margin-top:15px;
+}
+
+.derniers_livres a{
+    text-decoration: none;
+}
+
+
+#nav_theme{
+    width:650px;
+    height:25px;
+    margin-left:30px;
+    margin-top:10px;
+    margin-bottom:20px;
+    background-color: lightgrey;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#biblio{
+    width:630px;
+    margin-left:40px;
+    /*background-color: lightpink;*/
+}
+
+.livre{
+    float:left;
+    width:140px;
+    /*background-color: lightgreen;*/
+    margin-left:8px;
+    margin-right:8px;
+    margin-bottom:30px;
+}
+
+.livre a{
+    text-decoration: none;
+}
+
+
+.img_biblio{
+    float:left;
+    width:100px;
+    height:130px;
+    background-color: #b8b9ba;
+    border:3px solid #2b3035;
+    margin-left:20px;
+    margin-bottom:10px;
+}
+
+.img_biblio:hover{
+    border:3px solid #e65011;
+}
+
+.titre_livre{
+    font-size:14px;
+    font-family:"futura", Arial, sans-serif;
+    color:#2b3035;
+    text-align:center;
+    text-transform: uppercase;
+}
+
+.dispo_livre{
+    font-size:14px;
+    font-family:"futura", Arial, sans-serif;
+    color:#a8a9ab;
+    text-align:center;
+
+}
+
+
+/* PAGINATION */
+
+
+.navigation{
+    float:left;
+    width:96%;
+    margin-top:10px;
+    /*margin-bottom:20px;*/
+    text-align: center;
+}
+
+.navigation a{
+    color:#a8a9ab;
+    text-decoration: none;
+}
+
+.navigation a:visited{
+    color:#a8a9ab;
+    text-decoration: none;
+}
+
+.navigation a:hover{
+    color:#e65011;
+    text-decoration: none;
+}
+
+.navigation a:active{
+    color:#2b3035;
+    text-decoration: none;
+}
+
+
+
