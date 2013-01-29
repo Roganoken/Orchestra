@@ -9,6 +9,10 @@ livre_show:
 livre_new:
     pattern:  /new
     defaults: { _controller: "OrchestraOrchestraBundle:Livre:new" }
+    
+livre_illustration:
+    pattern:  /{id}/illustration
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:illustration" }
 
 livre_create:
     pattern:  /create
