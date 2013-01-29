@@ -44,11 +44,25 @@
                     
                     <div class="contenu">{{ entity.resume }}</div>
 
-                    <div class="date">Date de réservation : {{ entity.dateReservation|date('d-m-Y') }}</div>
+                    <div class="date">
+                         Dernier emprunt : 
+                        {% if entity.dateEmprunt is not null %} 
+                        {{ entity.dateEmprunt| format_date(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))  }}
+                        {% else %}
+                        Jamais
+                        {% endif%}
+                    </div>
 
-                    <div class="date">Date d'emprunt : {{ entity.dateEmprunt|date('d-m-Y') }}</div>
-
-                    <div class="date">Date de retour : {{ entity.dateRetour|date('d-m-Y') }}</div>
+                    <div class="date">STATUT :
+                        {% if entity.dateRetour|date('d/m/Y') == "now"|date('d/m/Y') %}
+                            disponible !
+                        {% elseif entity.dateRetour is not null %}
+                             disponible {{ time_diff(entity.dateRetour) }}
+                        {% else %}
+                             disponible !
+                        {% endif%}
+                        
+                    </div>
 
                 </div>
                 
@@ -64,18 +78,29 @@
                     <div class="titre_bloc retour_tuto">
                         <div class="picto_bibli_titre"><img height="18px;" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
                         <div class="txt_titre_bloc">
-                            <a href="javascript:history.back()">Revenir à la bibliothèque</a>
+                            <a href="{{ path('livre') }}">Revenir à la bibliothèque</a>
                         </div>
                     </div>
                     
+                            
+                        {% if entity.dateRetour|date('d/m/Y') == "now"|date('d/m/Y') %}
                     <div class="titre_bloc retour_tuto reserver">
                         <div class="picto_bibli_titre"><img height="18px;" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
                         <div class="txt_titre_bloc">
-                            <a href="">Réserver</a>
+                            <a href="{{ path('livre_reservation', { 'id': entity.id }) }}">Réserver</a>
                         </div>
                     </div>
+                    {% endif %}
+                    {% if app.security.getToken().getUser() in entity.User %}
+                    <div class="titre_bloc retour_tuto reserver">
+                        <div class="picto_bibli_titre"><img height="18px;" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
+                        <div class="txt_titre_bloc">
+                            <a href="{{ path('livre_rendre', { 'id': entity.id }) }}">Rendre</a>
+                        </div>
+                    </div>
+                     {% endif%}
 
-                    {# if is_granted("ROLE_ADMIN") or entity.User.id == app.security.getToken().getUser().getId() #}
+                    {% if is_granted("ROLE_ADMIN") %}
 
                         <div class="titre_bloc retour_tuto">
                             <div class="picto_bibli_titre"><img height="18px;" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
@@ -92,7 +117,7 @@
                             </div>
                         </div>
 
-                    {# endif #}
+                    {% endif %}
                 </ul>
                 
                 

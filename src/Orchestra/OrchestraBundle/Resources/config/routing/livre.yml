@@ -13,6 +13,14 @@ livre_new:
 livre_illustration:
     pattern:  /{id}/illustration
     defaults: { _controller: "OrchestraOrchestraBundle:Livre:illustration" }
+    
+livre_reservation:
+    pattern:  /{id}/reservation
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:reserve" }
+
+livre_rendre:
+    pattern:  /{id}/rendre
+    defaults: { _controller: "OrchestraOrchestraBundle:Livre:rendre" }
 
 livre_create:
     pattern:  /create
