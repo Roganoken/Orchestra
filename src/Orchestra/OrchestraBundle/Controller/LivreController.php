@@ -15,6 +15,7 @@ use Orchestra\OrchestraBundle\Form\IllustrationType;
 class LivreController extends Controller {
 
     public function indexAction() {
+        
         return $this->render('OrchestraOrchestraBundle:Livre:index.html.twig');
     }
 
@@ -28,14 +29,13 @@ class LivreController extends Controller {
             throw $this->createNotFoundException('Unable to find Livre entity.');
         }
 
-        /*
         # RECUPERE LE ROLE DE L'ENTITE
         $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
         if ($role_session == false) {
             # ON REDIRIGE VERS LA PAGE "USER"
             return $this->redirect($this->generateUrl('livre'), 301);
         }
-*/
+        
         $form = $this->createForm(new IllustrationType(), $entity);
 
         if ($this->getRequest()->getMethod() === 'POST') {
@@ -167,6 +167,23 @@ class LivreController extends Controller {
     }
 
     /**
+     * 4 derniers livres ajoutés.
+     *
+     */
+    public function mesEmpruntsAction(){
+        
+        $em = $this->getDoctrine()->getManager();
+                
+        $id = $this->get('security.context')->getToken()->getUser()->getId();
+        
+        $entity = $em->getRepository('OrchestraOrchestraBundle:User')->find($id);
+
+        return $this->render('OrchestraOrchestraBundle:Livre:mesEmprunts.html.twig', array(
+                    'entity' => $entity,
+                ));
+    }
+
+    /**
      * Finds and displays a Livre entity.
      *
      */
@@ -191,6 +208,15 @@ class LivreController extends Controller {
      *
      */
     public function newAction() {
+
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        if ($role_session == false) {
+            # ON REDIRIGE VERS LA PAGE "USER"
+            return $this->redirect($this->generateUrl('livre'), 301);
+        }
+        
         $entity = new Livre();
         $form = $this->createForm(new LivreType(), $entity);
 
@@ -231,6 +257,15 @@ class LivreController extends Controller {
      *
      */
     public function editAction($id) {
+
+        # RECUPERE LE ROLE DE L'ENTITE
+        $role_session = $this->get('security.context')->isGranted('ROLE_ADMIN');
+        
+        if ($role_session == false) {
+            # ON REDIRIGE VERS LA PAGE "USER"
+            return $this->redirect($this->generateUrl('livre'), 301);
+        }
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('OrchestraOrchestraBundle:Livre')->find($id);
@@ -247,6 +282,74 @@ class LivreController extends Controller {
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
                 ));
+    }
+
+    /**
+     * Réserver un livre.
+     *
+     */
+    public function reserveAction(Request $request, $id)
+    {
+            $em = $this->getDoctrine()->getManager();
+
+            $livre = $em->getRepository('OrchestraOrchestraBundle:Livre')->find($id);
+                
+            $user = $this->get('security.context')->getToken()->getUser();
+
+            if (!$livre) {
+                throw $this->createNotFoundException('Unable to find Livre entity.');
+            }
+                
+                $livre->setDateEmprunt(new \Datetime());
+                
+                $t=time(); 
+                $nbr_jour = 14; 
+                $offSet = 86400 * $nbr_jour; 
+                $t += $offSet; 
+                $date=date("Y-m-d",$t); 
+                
+                $livre->setDateRetour(new \Datetime($date));
+                
+                $livre->addUser($user);
+                $em->flush();
+                
+                $user->addLivre($livre);
+                $em->flush();
+                
+                return $this->redirect($this->generateUrl('livre_show', array('id' => $id)));
+                
+    }
+
+    /**
+     * rendre un livre.
+     *
+     */
+    public function rendreAction($id)
+    {
+            $em = $this->getDoctrine()->getManager();
+
+            $livre = $em->getRepository('OrchestraOrchestraBundle:Livre')->find($id);
+                
+            $user = $this->get('security.context')->getToken()->getUser();
+
+            if (!$livre) {
+                throw $this->createNotFoundException('Unable to find Livre entity.');
+            }
+            
+            if ($livre->getUser($user) == true){
+                
+                $livre->removeUser($user);
+                $livre->setDateRetour(null);
+                $em->persist($livre);
+                $em->flush();
+                
+                $user->removeLivre($livre);
+                $em->persist($user);
+                $em->flush();
+               
+            }
+                return $this->redirect($this->generateUrl('livre_show', array('id' => $id)));
+                
     }
 
     /**

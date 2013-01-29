@@ -18,7 +18,17 @@
                     {% endif %}
                 </div>
                 <div class="titre_livre">{{ entity.titre  }}</div>
-                <div class="dispo_livre">disponible</div>
+                <div class="dispo_livre">
+                
+                    {% if entity.dateRetour|date('d/m/Y') == "now"|date('d/m/Y') %}
+                        disponible !
+                    {% elseif entity.dateRetour is not null %}
+                         dispo. {{ time_diff(entity.dateRetour) }}
+                    {% else %}
+                         disponible !
+                    {% endif%}
+                         
+                </div>
             </a>
         </div>
     {% endfor %}

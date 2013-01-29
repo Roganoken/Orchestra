@@ -19,23 +19,8 @@
         {% render 'OrchestraOrchestraBundle:Livre:lastEntry' %}
         
     
-        <div id="bloc_emprunts">
-            <div class="titre_bloc">
-                <div class="picto_bibli_titre"><img height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
-                <div class="txt_titre_bloc"><p>Mes emprunts</p></div>
-               
-            </div>
-            
-            <nav class="bloc_tab">
-                <ul>
-                    <li class="bloc_li bloc_li_donnees_width">Titre 1 : <span>{# entity.firstname #}</span></li>
-                    <li class="bloc_li bloc_li_donnees_width">Titre 1 : <span>{# entity.firstname #}</span></li>
-                    <li class="bloc_li bloc_li_donnees_width">Titre 1 : <span>rendu{# entity.firstname #}</span></li>
-                    <li class="bloc_li bloc_li_donnees_width">Titre 1 : <span>consulté{# entity.firstname #}</span></li>
-                </ul>
-            </nav>
-        </div>
-              
+        
+              {% render 'OrchestraOrchestraBundle:Livre:mesEmprunts' %}
               
               
               <div class="bloc_biblio">

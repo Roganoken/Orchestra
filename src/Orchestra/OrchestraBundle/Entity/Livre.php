@@ -460,71 +460,71 @@ class Livre
         return $this->updated;
     }
 
-//     /**
-//      * Add commentaire
-//      *
-//      * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
-//      * @return Livre
-//      */
-//     public function addCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
-//     {
-//         $this->commentaire[] = $commentaire;
+     /**
+      * Add commentaire
+      *
+      * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
+      * @return Livre
+      */
+     public function addCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
+     {
+         $this->commentaire[] = $commentaire;
     
-//         return $this;
-//     }
+         return $this;
+     }
 
-//     /**
-//      * Remove commentaire
-//      *
-//      * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
-//      */
-//     public function removeCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
-//     {
-//         $this->commentaire->removeElement($commentaire);
-//     }
+     /**
+      * Remove commentaire
+      *
+      * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
+      */
+     public function removeCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
+     {
+         $this->commentaire->removeElement($commentaire);
+     }
 
-//     /**
-//      * Get commentaire
-//      *
-//      * @return Doctrine\Common\Collections\Collection 
-//      */
-//     public function getCommentaire()
-//     {
-//         return $this->commentaire;
-//     }
+     /**
+      * Get commentaire
+      *
+      * @return Doctrine\Common\Collections\Collection 
+      */
+     public function getCommentaire()
+     {
+         return $this->commentaire;
+     }
 
-//     /**
-//      * Add user
-//      *
-//      * @param Orchestra\OrchestraBundle\Entity\User $user
-//      * @return Livre
-//      */
-//     public function addUser(\Orchestra\OrchestraBundle\Entity\User $user)
-//     {
-//         $this->user[] = $user;
+     /**
+      * Add user
+      *
+      * @param Orchestra\OrchestraBundle\Entity\User $user
+      * @return Livre
+      */
+     public function addUser(\Orchestra\OrchestraBundle\Entity\User $user)
+     {
+         $this->user[] = $user;
     
-//         return $this;
-//     }
+         return $this;
+     }
 
-//     /**
-//      * Remove user
-//      *
-//      * @param Orchestra\OrchestraBundle\Entity\User $user
-//      */
-//     public function removeUser(\Orchestra\OrchestraBundle\Entity\User $user)
-//     {
-//         $this->user->removeElement($user);
-//     }
+     /**
+      * Remove user
+      *
+      * @param Orchestra\OrchestraBundle\Entity\User $user
+      */
+     public function removeUser(\Orchestra\OrchestraBundle\Entity\User $user)
+     {
+         $this->user->removeElement($user);
+     }
 
-//     /**
-//      * Get user
-//      *
-//      * @return Doctrine\Common\Collections\Collection 
-//      */
-//     public function getUser()
-//     {
-//         return $this->user;
-//     }
+     /**
+      * Get user
+      *
+      * @return Doctrine\Common\Collections\Collection 
+      */
+     public function getUser()
+     {
+        return $this->user;
+     }
 
     /**
      * Set auteur
