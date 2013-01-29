@@ -1,37 +1,40 @@
 {% if entities|length != 0 %}
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Auteur</th>
-            <th>Url</th>
-            <th>Created</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
+
     {% for entity in entities %}
-        <tr>
-            <td>{{ entity.titre }}</td>
-            <td><a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.user.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a></td>
-            <td><a href="{{ path('galerie_show', { 'id': entity.id }) }}"><img width="71" height="71" src="{{ ('image/' ~ entity.url) | apply_filter('image_small') }}" /></a></td>
-            <td>{{ time_diff(entity.created) }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('galerie_show', { 'id': entity.id }) }}">Voir</a>
-                    </li>
-                    {% if entity.user == app.security.getToken().getUser() or is_granted("ROLE_ADMIN") %}
-                    <li>
-                        <a href="{{ path('image_edit', { 'id': entity.id }) }}">Modifier</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </td>
-        </tr>
+            <div id="global">
+                <div id="image">
+                    <a href="{{ path('galerie_show', { 'id': entity.id }) }}"><img width="71" height="71" src="{{ ('image/' ~ entity.url) | apply_filter('image_small') }}" /></a>
+                </div>   
+                    <div id="infos">
+                        <div id="title">
+                            {{ entity.titre }}
+                        </div>
+                        
+                        <div id="auteur">
+                            by <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.user.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a>
+                        </div>
+                        
+                        <div id="time">
+                            {{ time_diff(entity.created) }}
+                        </div>
+                    </div>
+                    
+                    <div id="modifs">
+                        <ul>
+                            <li>
+                                <div class="picto_detail"><a href="{{ path('galerie_show', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="Voir" /></a></div>
+                            </li>
+                            {% if entity.user == app.security.getToken().getUser() or is_granted("ROLE_ADMIN") %}
+                            <li>
+                                <div class="picto_modif2"><a href="{{ path('image_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif_c.png') }}" alt="Modifier" /></a></div>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+            </div>
+            
     {% endfor %}
-    </tbody>
-</table>
+
 {% else %}
 Pas encore d'images
 {% endif %}

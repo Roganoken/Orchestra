@@ -24,13 +24,10 @@
             <div class="titre_bloc_1">
                 <div class="picto_portfolio"><img  height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_galerie.png') }}" alt="" /></div>
                 <div class="txt_titre_bloc"><p>Les 10 dernières images</p></div>
-                    <div class="picto_modif"><a href=""><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif.png') }}" alt="" /></a></div>
             </div>
             <div id="portfolio">
-               {% render 'OrchestraOrchestraBundle:Galerie:liste' %}
-        
-               {% render 'OrchestraOrchestraBundle:Galerie:menuGalerie' %}
-               
+               <div id="nav">{% render 'OrchestraOrchestraBundle:Galerie:menuGalerie' %}</div>
+               {% render 'OrchestraOrchestraBundle:Galerie:liste' with {'max' : '10'}%}               
             </div>
     </div>
     <div id="bloc_ajout">

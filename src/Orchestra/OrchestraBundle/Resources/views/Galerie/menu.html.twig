@@ -1,5 +1,4 @@
-<h1>Menu</h1>
-    <ul>
+    <ul id="nav_galerie">
 {% for menu in menus %}
 
             <li><a href="{{ path('galerie_categorie', {'id': menu.id}) }}">{{ menu.intitule }}</a></li>
