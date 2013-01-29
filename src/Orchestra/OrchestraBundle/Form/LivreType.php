@@ -14,15 +14,17 @@ class LivreType extends AbstractType
             ->add('isbn')
             ->add('titre') 
             ->add('resume')
-            ->add('annee','date')
-            ->add('illustration')
-            ->add('dateReservation','date')  
-            ->add('dateEmprunt','date')
-            ->add('dateRetour','date')
-            ->add('codeBarre')
-            ->add('active')
+            ->add('annee', 'date', array('widget' => 'choice', 
+                'years' => range(date('Y'), date('Y')-50), 
+                ))
+            //->add('illustration')
+            //->add('dateReservation','date')  
+            //->add('dateEmprunt','date')
+            //->add('dateRetour','date')
+            //->add('codeBarre')
+            //->add('active')
             
-            ->add('created','date')
+            //->add('created','date')
             
 //        		->add('created', 'date', array('widget' => 'choice',
 //         		'input' => 'timestamp',
@@ -35,8 +37,14 @@ class LivreType extends AbstractType
             //->add('updated','date')         
             //->add('commentaire')      
             //->add('user')
-            ->add('auteur')
-            ->add('genre')
+            ->add('auteur', 'entity', array(
+                     'class' => 'OrchestraOrchestraBundle:Auteur',
+                     'empty_value' => 'Sélectionnez',
+                    ))
+            ->add('genre', 'entity', array(
+                     'class' => 'OrchestraOrchestraBundle:Genre',
+                     'empty_value' => 'Sélectionnez',
+                    ))
         ;
     }
 

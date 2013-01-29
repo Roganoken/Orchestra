@@ -1,0 +1,30 @@
+
+<h1>Livre list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Illustration</th>
+            <th>Actions</th>           
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('livre_show', { 'id': entity.id }) }}">{{ entity.titre  }}</a></td>
+            <td>{{ entity.illustration }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('livre_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('livre_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
