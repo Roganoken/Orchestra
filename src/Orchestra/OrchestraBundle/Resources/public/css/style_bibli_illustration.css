@@ -1,0 +1,139 @@
+@CHARSET "UTF-8";
+
+
+@font-face{
+    font-family:futura;
+    src:url("../fonts/futura_book.ttf");
+    font-weight: 200;
+}
+
+
+#content_form_edit{
+    float:left;
+    margin-left:35px;
+    margin-top:55px;
+    margin-bottom:50px;
+    /*background-color:lightpink;*/
+}
+
+
+#form_edit{
+    float:left;
+    width:400px; 
+    /*background-color:lightblue; */
+}
+
+
+.bloc_contenu_tuto{
+    float:left;
+    /*background-color:lightgrey;*/
+    width:96%;
+    margin-top:-5px;
+    margin-left: 3px;
+    padding-top:15px;
+    padding-left:10px;
+    padding-bottom:10px;
+    border: 1px solid #b8b9ba;
+    background-color:#ffffff;
+}
+
+.bloc_contenu_tuto img{
+    margin-left:100px;
+}
+
+form{
+    float:left;
+    margin-top:30px;
+    margin-left:15px;
+}
+
+label{
+    color:#2b3035;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+}
+
+
+button{
+    float:left;
+    height:30px;
+    margin-left:130px;
+    margin-top:20px;
+    background-image:url("../img/bg_btn_form.png");
+    background-repeat: repeat-x;
+    background-position: 0px 0px;
+    border:0;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding-left:5px;
+    padding-right:5px;
+    color:#ffffff;
+    font-size:14px;
+    font-family: "futura", Arial, sans-serif;
+    box-shadow: 0px;
+}
+
+button:hover{
+    background-position: 0px -33px;
+}
+
+
+
+#actions_droite{
+    float:right;
+    width:250px;
+    margin-left:20px;
+    /*background-color:lightgreen;*/
+}
+
+.retour_tuto{
+    float:right;
+    width:240px;
+    margin-bottom: 10px;
+}
+
+
+.picto_biblio_titre{
+    float:left;
+    margin:10px 0px 0px 10px;
+    width:23px;
+    height:23px;  
+}
+
+.titre_bloc{
+    float: left;
+    position:relative;
+    z-index:1;
+    width:100%;
+    background-image:url("../img/fond_titre_bloc.jpg");
+    background-repeat:repeat-x;
+    height:38px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.txt_titre_bloc{
+    float:left;
+    color:#ffffff;
+    margin-left:5px;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top:13px;
+}
+
+.txt_titre_bloc a{
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.txt_titre_bloc a:hover{
+    color:#e65011;
+    text-decoration: none;
+}
+

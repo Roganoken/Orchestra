@@ -19,6 +19,11 @@ class LivreController extends Controller
         return $this->render('OrchestraOrchestraBundle:Livre:index.html.twig');
     }
     
+    public function illustrationAction()
+    {
+        return $this->render('OrchestraOrchestraBundle:Livre:illustration.html.twig');
+    }
+    
     
     /**
      * Lists all Livre entities.
