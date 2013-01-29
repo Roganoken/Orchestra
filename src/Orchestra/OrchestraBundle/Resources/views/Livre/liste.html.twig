@@ -1,30 +1,61 @@
 
-<h1>Livre list</h1>
+<div id="nav_theme">web    2d    3d</div>
 
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Illustration</th>
-            <th>Actions</th>           
-        </tr>
-    </thead>
-    <tbody>
+<div id="biblio">
     {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('livre_show', { 'id': entity.id }) }}">{{ entity.titre  }}</a></td>
-            <td>{{ entity.illustration }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('livre_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('livre_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
+        <div class="livre">
+            <a href="{{ path('livre_show', { 'id': entity.id }) }}">
+                <div class="img_biblio">{{ entity.illustration }}</div>
+                <div class="titre_livre">{{ entity.titre  }}</div>
+                <div class="dispo_livre">disponible</div>
+            </a>
+        </div>
     {% endfor %}
-    </tbody>
-</table>
+        <div class="livre">
+        <div class="img_biblio"></div>
+        <div class="titre_livre">test fdghdf hd[...] </div>
+        <div class="dispo_livre">disponible</div>
+    </div>
+    
+        <div class="livre">
+        <div class="img_biblio"></div>
+        <div class="titre_livre">test</div>
+        <div class="dispo_livre">Indisponible</div>
+    </div>
+    
+        <div class="livre">
+        <div class="img_biblio"></div>
+        <div class="titre_livre">test</div>
+        <div class="dispo_livre">disponible</div>
+    </div>
+    
+        <div class="livre">
+        <div class="img_biblio"></div>
+        <div class="titre_livre">test</div>
+        <div class="dispo_livre">disponible</div>
+    </div>
+    
+        <div class="livre">
+        <div class="img_biblio"></div>
+        <div class="titre_livre">test</div>
+        <div class="dispo_livre">Indisponible</div>
+    </div>
+    
+        <div class="livre">
+        <div class="img_biblio"></div>
+        <div class="titre_livre">test</div>
+        <div class="dispo_livre">disponible</div>
+    </div>
+    
+        <div class="livre">
+        <div class="img_biblio"></div>
+        <div class="titre_livre">test</div>
+        <div class="dispo_livre">disponible</div>
+    </div>
+
+    <div class="navigation">
+       1 2 3 {# knp_pagination_render(historiques) #}
+    </div> 
+    
+    
+ </div>
