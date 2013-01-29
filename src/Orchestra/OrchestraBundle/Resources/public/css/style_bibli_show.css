@@ -92,15 +92,6 @@
     text-decoration: none;
 }
 
-.txt_commentaire{
-    color:#b8b9ba;
-    font-size: 12px;
-}
-
-.croix_supp{
-    color:#e65011;
-    margin-left:5px;
-}
 
 .date{
     float:left;
@@ -117,25 +108,22 @@
     float:left;
     font-size:14px;
     color:#2b3035;
-    width:250px;
+    width:280px;
     margin-left:20px;
     margin-top:10px;
     margin-bottom:20px;
-    background-color: lightpink;
+    /*background-color: lightpink;*/
 }
 
 .illustration{
     float:left;
-    width:122px;
-    height:160px;
+    width:100px;
+    height:130px;
     margin-top:10px;
     margin-bottom:10px;
     background-color: lightpink;
 }
 
-.ajout_par{
-   font-size:12px;
-}
 
 #actions_droite{
     float:left;
@@ -154,6 +142,11 @@
     float:right;
     width:238px;
     margin-bottom: 10px;
+}
+
+.reserver{
+    margin-top:20px;
+    margin-bottom:30px;
 }
 
 .btn_supp{
@@ -177,70 +170,5 @@
 .txt_titre_bloc a:hover{
     color:#e65011;
     text-decoration: none;
-}
-
-.width_participants{
-    float:right;
-    margin-top:15px;
-    width:238px;
-}
-
-.width_contenu_part{
-    width:210px;
-    
-}
-
-.width_contenu_part a{
-    font-size: 13px;
-    margin-left:5px;
-}
-
-
-/* STYLE ACTUS */
-
-
-/* Bouton ajouter commentaire */
-
-.btn_modif, .btn_ajout{
-    float:left;
-    height:30px;
-    margin-left:170px;
-    margin-top:20px;
-    background-image:url("../img/bg_btn_form.png");
-    background-repeat: repeat-x;
-    background-position: 0px 0px;
-    border:0;
-    -moz-border-radius: 10px;
-    -khtml-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    padding-left:5px;
-    padding-right:5px;
-    color:#ffffff;
-    font-size:14px;
-    font-family: "futura", Arial, sans-serif;
-    box-shadow: 0px;
-}
-
-.btn_modif:hover, .btn_ajout:hover{
-    background-position: 0px -33px;
-}
-
-
-textarea {
-    margin-left:20px;
-    width:300px;
-    height:100px;
-}
-
-.contenu_commentaire{
-    width:410px;
-    overflow: auto;
-}
-
-.li_commentaire{
-    font-family: Arial, sans-serif;
-    font-size:12px;
-    margin-bottom:10px;
 }
 

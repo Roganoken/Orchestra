@@ -1,9 +1,14 @@
-{% if menus|length != 0 %}
-<ul>
-    {% for menu in menus %}
-    <li>
-        <a href="{{ path('livre_genre', { 'id': menu.id }) }}">{{ menu.libelle }}</a>
-    </li>
-   {% endfor %} 
+<ul class="niveau1">
+  <li class="titre_theme">
+    Choisir un thème + 
+    {% if menus|length != 0 %}
+        <ul class="niveau2">
+            {% for menu in menus %}
+            <li>
+                <a href="{{ path('livre_genre', { 'id': menu.id }) }}">{{ menu.libelle }}</a>
+            </li>
+           {% endfor %} 
+        </ul>
+        {% endif %}
+  </li>
 </ul>
-{% endif %}

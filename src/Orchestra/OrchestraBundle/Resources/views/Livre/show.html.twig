@@ -32,7 +32,16 @@
             <div class="bloc_contenu_tuto width_contenu_tuto">  
                 
                 <div class="record_properties">
-                    <div class="illustration">{{ entity.illustration }}</div>
+                    
+                    <div class="illustration">
+                        {% if entity.illustration %}
+                            <img src="{{ ('bibliotheque/' ~ entity.illustration) | apply_filter('illustration_last') }}" alt="avatar" />
+                        {% else %}
+                            <img src="{{ ('bibliotheque/default.jpg') | apply_filter('illustration_last') }}" alt="avatar" />
+                        {% endif %}
+
+                    </div>
+                    
                     <div class="contenu">{{ entity.resume }}</div>
 
                     <div class="date">Date de réservation : {{ entity.dateReservation|date('d-m-Y') }}</div>
@@ -56,6 +65,13 @@
                         <div class="picto_bibli_titre"><img height="18px;" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
                         <div class="txt_titre_bloc">
                             <a href="javascript:history.back()">Revenir à la bibliothèque</a>
+                        </div>
+                    </div>
+                    
+                    <div class="titre_bloc retour_tuto reserver">
+                        <div class="picto_bibli_titre"><img height="18px;" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
+                        <div class="txt_titre_bloc">
+                            <a href="">Réserver</a>
                         </div>
                     </div>
 
