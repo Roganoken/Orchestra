@@ -97,11 +97,11 @@ input{
     margin-bottom: 10px;
 }
 
-.picto_tutorat_titre{
+.picto_portfolio{
     float:left;
-    margin:7px 5px 0px 7px;
-    width:23px;
-    height:23px;  
+    margin:10px 10px 0px 12px;   
+    width:20px;
+    height:20px;
 }
 
 .titre_bloc{

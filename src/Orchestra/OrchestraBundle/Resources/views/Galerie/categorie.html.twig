@@ -27,56 +27,61 @@
             </div>
             <div id="portfolio">
                {% if images|length != 0 %}
-
-    {% for entity in images %}
-        <div id="global">
-                <div id="image">
-                    <a href="{{ path('galerie_image', { 'categorie': entity.media.id, 'id':entity.id }) }}"><img width="71" height="71" src="{{ ('image/' ~ entity.url) | apply_filter('image_small') }}" /></a>
-                </div>   
-                    <div id="infos">
-                        <div id="title">
-                            {{ entity.titre }}
-                        </div>
-                        
-                        <div id="auteur">
-                            by <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.user.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a>
-                        </div>
-                        
-                        <div id="time">
-                            {{ time_diff(entity.created) }}
-                        </div>
+                    <div id="global_global">
+                    {% for entity in images %}
+                        <div id="global">
+                                <div id="image">
+                                    <a href="{{ path('galerie_image', { 'categorie': entity.media.id, 'id':entity.id }) }}"><img width="71" height="71" src="{{ ('image/' ~ entity.url) | apply_filter('image_small') }}" /></a>
+                                </div>   
+                                    <div id="infos">
+                                        <div id="title">
+                                            {{ entity.titre }}
+                                        </div>
+                                        
+                                        <div id="auteur">
+                                            by <a href="{{ path('OrchestraOrchestraBundle_profil', { 'id': entity.user.id }) }}">{{ entity.user.firstname }} {{ entity.user.lastname }}</a>
+                                        </div>
+                                        
+                                        <div id="time">
+                                            {{ time_diff(entity.created) }}
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="modifs">
+                                        <ul>
+                                            <li>
+                                                <div class="picto_detail"><a href="{{ path('galerie_image', { 'categorie': entity.media.id, 'id':entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="Voir" /></a></div>
+                                            </li>
+                                            {% if entity.user == app.security.getToken().getUser() or is_granted("ROLE_ADMIN") %}
+                                            <li>
+                                                <div class="picto_modif2"><a href="{{ path('image_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif_c.png') }}" alt="Modifier" /></a></div>
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                            </div>
+                            
+                    {% endfor %}   
                     </div>
-                    
-                    <div id="modifs">
-                        <ul>
-                            <li>
-                                <div class="picto_detail"><a href="{{ path('galerie_image', { 'categorie': entity.media.id, 'id':entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="Voir" /></a></div>
-                            </li>
-                            {% if entity.user == app.security.getToken().getUser() or is_granted("ROLE_ADMIN") %}
-                            <li>
-                                <div class="picto_modif2"><a href="{{ path('image_edit', { 'id': entity.id }) }}"><img src="{{ asset ('bundles/orchestraorchestra/img/picto_modif_c.png') }}" alt="Modifier" /></a></div>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-            </div>
-            
-    {% endfor %}           
-                        <div class="navigation">
-                            {{ knp_pagination_render(images) }}
-                        </div>  
-                        
-{% else %}
-Pas encore d'images
-{% endif %}
+           
+            {% else %}
+            Pas encore d'images
+            {% endif %}
                               
             </div>
-    </div>
+            
+            <div class="navigation">
+                {{ knp_pagination_render(images) }}
+            </div> 
+            
+        </div>
+        
     <div id="bloc_ajout">
             <div class="picto_portfolio"><img height="18px" src="{{ asset ('bundles/orchestraorchestra/img/picto_galerie.png') }}" alt="" /></div>
             <div class="txt_titre_bloc"><a href="{{ path('galerie') }}"><p>Retour</p></a></div>
     </div>        
 
+    
 </div>
 </div>
 

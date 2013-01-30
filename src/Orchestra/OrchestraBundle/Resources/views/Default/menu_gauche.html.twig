@@ -46,7 +46,7 @@
                 </a>
             </li>
             
-            {%  if "galerie" in app.request.attributes.get('_route') %}
+            {%  if "galerie" in app.request.attributes.get('_route') or "image" in app.request.attributes.get('_route') %}
             <li class="titre_menu active">
             {%  else %}
             <li class="titre_menu">
