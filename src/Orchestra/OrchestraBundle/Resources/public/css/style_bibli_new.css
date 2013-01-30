@@ -176,3 +176,16 @@ input{
 .btn_supp:hover{
     color:#e65011;
 }
+
+
+/* DIV VIDE POUR LE PROLONGEMENT DU MENU */
+
+
+#vide{
+    float:left;
+    /*background-color:lightpink;*/
+    width:700px;
+    margin-left:35px;
+    margin-bottom:0px;
+    height:300px;
+}

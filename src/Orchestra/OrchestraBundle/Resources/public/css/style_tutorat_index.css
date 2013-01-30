@@ -130,7 +130,6 @@
 .intitule, .date, .ajout_par{
     float:left;
     height:20px;
-    width:370px;
     margin-bottom:3px;
     font-family:Arial, sans-serif;
     /*background-color: lightblue;*/
@@ -141,10 +140,12 @@
     text-transform: uppercase;
     font-weight: bold;
     font-size:14px;
+    width:84%;
 }
 
 .contenu_actu{
     float:left;
+    width:90%;
     margin-bottom:10px;
     font-family:Arial, sans-serif;
     color:#2b3035;
@@ -153,6 +154,7 @@
 }
 
 .date{
+    width:90%;
     color:#a8a9ab;
     font-size:14px;
 }
@@ -270,5 +272,18 @@
     background-color: lightgreen;
     width:70px;
     height:100px;
+}
+
+
+/* DIV VIDE POUR LE PROLONGEMENT DU MENU */
+
+
+#vide{
+    float:left;
+    /*background-color:lightpink;*/
+    width:700px;
+    margin-left:35px;
+    margin-bottom:0px;
+    height:350px;
 }
 

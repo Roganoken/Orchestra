@@ -218,10 +218,23 @@ input{
 }
 
 
+
 /* style edit une image */
 
 .form_row{
     height:100%;
     width:100%;
     margin-bottom:20px;
+}
+
+/* DIV VIDE POUR LE PROLONGEMENT DU MENU */
+
+
+#vide{
+    float:left;
+    /*background-color:lightpink;*/
+    width:700px;
+    margin-left:35px;
+    margin-bottom:0px;
+    height:440px;
 }

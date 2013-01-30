@@ -231,3 +231,15 @@ h1 a{
     text-decoration: none;
 }
 
+/* DIV VIDE POUR LE PROLONGEMENT DU MENU */
+
+
+#vide{
+    float:left;
+    /*background-color:lightpink;*/
+    width:700px;
+    margin-left:35px;
+    margin-bottom:0px;
+    height:570px;
+}
+

@@ -26,7 +26,8 @@
 }
 
 #bloc_carre_last_livre img{
-    margin:7px;
+    margin-left:6px;
+    margin-top:7px;
 }
 
 #txt_bloc_last_livre{
@@ -40,9 +41,9 @@
 #bloc_emprunts{
     float: left;
     width:273px;
-    margin-left:50px;
+    /*margin-left:50px;*/
     margin-top:55px;
-    margin-bottom:50px;
+    /*margin-bottom:50px;*/
 }
 
 .bloc_tab{
@@ -58,13 +59,12 @@
     background-color: #ffffff;
     border: 1px solid #b8b9ba;
     margin-top:-1px;
-
     padding:8px 0 0 5px;
 }
 
 .bloc_li a{
     color:#2b3035;
-    font-size:14px;
+    font-size:13px;
     font-family:"futura", Arial, sans-serif;
     text-decoration: none;
     text-transform: uppercase;
@@ -157,14 +157,6 @@
 }
 
 
-.bloc_biblio{
-    float:left;
-    width:745px;
-    margin-left:35px;
-    margin-bottom:50px;
-    /*background-color:lightyellow;*/
-}
-
 .bloc_contenu_tuto{
     float:left;
     width:725px;
@@ -193,6 +185,14 @@
 
 /* DERNIERS AJOUT + BIBLIO */ 
 
+.bloc_biblio{
+    float:left;
+    width:745px;
+    margin-left:35px;
+    /*margin-bottom:50px;*/
+    margin-top:50px;
+    /*background-color:lightyellow;*/
+}
 
 
 #biblio{
@@ -249,6 +249,13 @@
 
 /* MENU DEROULANT */
 
+#div_nav_theme{
+    float:right;
+    width:735px;
+    height:35px;
+    margin-bottom:20px;
+}
+
 #nav_theme{
     float:right;
     width:200px;
@@ -258,6 +265,8 @@
 
 ul ul {
     display: none;
+        position: relative;
+    z-index:1;
 }
 
 li:hover ul.niveau2 {

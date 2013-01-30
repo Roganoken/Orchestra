@@ -5,7 +5,7 @@
             <div id="bloc_carre_last_livre">
                 <a href="{{ path('livre_show', { 'id': entity.id }) }}">
                      {% if entity.illustration %}
-                        <img src="{{ ('bibliotheque/' ~ entity.illustration) | apply_filter('illustration_last') }}" alt="avatar" />
+                        <img width="111px" height="146px" src="{{ ('bibliotheque/' ~ entity.illustration) | apply_filter('illustration_last') }}" alt="avatar" />
                     {% else %}
                         <img src="{{ ('bibliotheque/default.jpg') | apply_filter('illustration_last') }}" alt="avatar" />
                     {% endif %}

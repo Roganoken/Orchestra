@@ -59,6 +59,22 @@
     text-decoration: none;
 }
 
+.lien_ajout a{
+    float:right;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top:13px;
+    margin-right:20px;
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.lien_ajout a:hover{
+    color:#e65011;
+}
+
 
 .bloc_biblio{
     float:left;
@@ -97,6 +113,7 @@
 #biblio{
     width:630px;
     margin-left:40px;
+    padding-top:10px;
     /*background-color: lightpink;*/
 }
 
@@ -146,11 +163,17 @@
 
 /* MENU DEROULANT */
 
+#div_nav_theme{
+    float:right;
+    width:735px;
+    height:35px;
+    margin-bottom:20px;
+}
+
 #nav_theme{
     float:right;
     width:200px;
     height:35px;
-    margin-left:400px;
     margin-bottom:20px;
     /*background-color: lightgrey;*/
 }
@@ -236,4 +259,15 @@ li:hover ul.niveau2 {
 }
 
 
+/* DIV VIDE POUR LE PROLONGEMENT DU MENU */
+
+
+#vide{
+    float:left;
+    /*background-color:lightpink;*/
+    width:700px;
+    margin-left:35px;
+    margin-bottom:0px;
+    height:380px;
+}
 
