@@ -6,9 +6,9 @@
             </div>
             
             <nav class="bloc_tab">
-               {% if entity.Livre|length > 0 %}
                 <ul>
-                    {% for livre in entity.Livre[:4] %}
+               {% if entities|length > 0 %}
+                    {% for livre in entities[:4] %}
                     <li class="bloc_li bloc_li_donnees_width">
                                         {% if livre.titre|length>13 %} 
                                             <a href="{{path('livre_show', { 'id': livre.id})}}">{{ livre.titre|slice(0,13)}}[...]</a>
@@ -26,10 +26,10 @@
                         </span>
                     </li>
                     {% endfor %}
-                </ul>
                 {% else %}
-                Pas encore d'emprunts
+                <li class="bloc_li bloc_li_donnees_width">Pas d'emprunts</li>
                 {% endif %}
+                </ul>
             </nav>
         </div>
                           

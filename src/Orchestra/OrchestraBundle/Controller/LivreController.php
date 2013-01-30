@@ -174,12 +174,21 @@ class LivreController extends Controller {
         
         $em = $this->getDoctrine()->getManager();
                 
-        $id = $this->get('security.context')->getToken()->getUser()->getId();
-        
-        $entity = $em->getRepository('OrchestraOrchestraBundle:User')->find($id);
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+                ->from('OrchestraOrchestraBundle:Livre', 'a')
+                ->where('a.user = :user')
+                ->setParameter('user', $user)
+                ->orderBy('a.dateEmprunt', 'DESC')
+                ->setMaxResults(4);
+
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
 
         return $this->render('OrchestraOrchestraBundle:Livre:mesEmprunts.html.twig', array(
-                    'entity' => $entity,
+                    'entities' => $entities,
                 ));
     }
 
@@ -300,8 +309,7 @@ class LivreController extends Controller {
                 throw $this->createNotFoundException('Unable to find Livre entity.');
             }
                 
-                $livre->setDateEmprunt(new \Datetime());
-                
+                /* Calculer date dans 2 semaines */
                 $t=time(); 
                 $nbr_jour = 14; 
                 $offSet = 86400 * $nbr_jour; 
@@ -309,11 +317,9 @@ class LivreController extends Controller {
                 $date=date("Y-m-d",$t); 
                 
                 $livre->setDateRetour(new \Datetime($date));
+                $livre->setDateEmprunt(new \Datetime());
                 
-                $livre->addUser($user);
-                $em->flush();
-                
-                $user->addLivre($livre);
+                $livre->setUser($user);
                 $em->flush();
                 
                 return $this->redirect($this->generateUrl('livre_show', array('id' => $id)));
@@ -338,13 +344,9 @@ class LivreController extends Controller {
             
             if ($livre->getUser($user) == true){
                 
-                $livre->removeUser($user);
+                $livre->setUser(null);
                 $livre->setDateRetour(null);
-                $em->persist($livre);
-                $em->flush();
-                
-                $user->removeLivre($livre);
-                $em->persist($user);
+                $livre->setDateEmprunt(null);
                 $em->flush();
                
             }

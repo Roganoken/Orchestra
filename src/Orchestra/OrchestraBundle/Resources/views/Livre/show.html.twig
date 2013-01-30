@@ -44,14 +44,13 @@
                     
                     <div class="contenu">{{ entity.resume }}</div>
 
+                   {% if entity.dateEmprunt is not null %} 
                     <div class="date">
                          Dernier emprunt : 
-                        {% if entity.dateEmprunt is not null %} 
-                        {{ entity.dateEmprunt| format_date(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))  }}
-                        {% else %}
-                        Jamais
-                        {% endif%}
+                        {{ entity.dateEmprunt| format_date(null, 'fr', 'Europe/Paris', constant('IntlDateFormatter::LONG'))  }} 
+                         par {{ entity.user.firstname }} {{ entity.user.lastname }} 
                     </div>
+                   {% endif%}
 
                     <div class="date">STATUT :
                         {% if entity.dateRetour|date('d/m/Y') == "now"|date('d/m/Y') %}
@@ -91,7 +90,7 @@
                         </div>
                     </div>
                     {% endif %}
-                    {% if app.security.getToken().getUser() in entity.User %}
+                    {% if app.security.getToken().getUser() == entity.User and entity.dateRetour|date('d/m/Y') < "now"|date('d/m/Y') %}
                     <div class="titre_bloc retour_tuto reserver">
                         <div class="picto_bibli_titre"><img height="18px;" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
                         <div class="txt_titre_bloc">
