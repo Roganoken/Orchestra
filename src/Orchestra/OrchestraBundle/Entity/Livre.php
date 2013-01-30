@@ -123,9 +123,12 @@ class Livre
     private $commentaire;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var User
      *
-     * @ORM\ManyToMany(targetEntity="Orchestra\OrchestraBundle\Entity\User", mappedBy="livre")
+     * @ORM\ManyToOne(targetEntity="Orchestra\OrchestraBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
      */
     private $user;
 
@@ -166,7 +169,6 @@ class Livre
     public function __construct()
     {
         $this->commentaire = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
 
@@ -493,39 +495,6 @@ class Livre
          return $this->commentaire;
      }
 
-     /**
-      * Add user
-      *
-      * @param Orchestra\OrchestraBundle\Entity\User $user
-      * @return Livre
-      */
-     public function addUser(\Orchestra\OrchestraBundle\Entity\User $user)
-     {
-         $this->user[] = $user;
-    
-         return $this;
-     }
-
-     /**
-      * Remove user
-      *
-      * @param Orchestra\OrchestraBundle\Entity\User $user
-      */
-     public function removeUser(\Orchestra\OrchestraBundle\Entity\User $user)
-     {
-         $this->user->removeElement($user);
-     }
-
-     /**
-      * Get user
-      *
-      * @return Doctrine\Common\Collections\Collection 
-      */
-     public function getUser()
-     {
-        return $this->user;
-     }
-
     /**
      * Set auteur
      *
@@ -620,4 +589,27 @@ class Livre
     
     
     
+
+    /**
+     * Set user
+     *
+     * @param \Orchestra\OrchestraBundle\Entity\User $user
+     * @return Livre
+     */
+    public function setUser(\Orchestra\OrchestraBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Orchestra\OrchestraBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

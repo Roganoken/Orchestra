@@ -159,21 +159,6 @@ class User extends BaseUser
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Orchestra\OrchestraBundle\Entity\Livre", inversedBy="user")
-     * @ORM\JoinTable(name="user_livre",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="livre_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $livre;
-
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     *
      * @ORM\ManyToMany(targetEntity="Orchestra\OrchestraBundle\Entity\Module", inversedBy="user")
      * @ORM\JoinTable(name="user_module",
      *   joinColumns={
@@ -229,7 +214,6 @@ class User extends BaseUser
         $this->company = new \Doctrine\Common\Collections\ArrayCollection();
         $this->course = new \Doctrine\Common\Collections\ArrayCollection();
         $this->position = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->livre = new \Doctrine\Common\Collections\ArrayCollection();
         $this->module = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -782,39 +766,6 @@ class User extends BaseUser
     public function getPosition()
     {
         return $this->position;
-    }
-
-    /**
-     * Add livre
-     *
-     * @param Orchestra\OrchestraBundle\Entity\Livre $livre
-     * @return User
-     */
-    public function addLivre(\Orchestra\OrchestraBundle\Entity\Livre $livre)
-    {
-        $this->livre[] = $livre;
-    
-        return $this;
-    }
-
-    /**
-     * Remove livre
-     *
-     * @param Orchestra\OrchestraBundle\Entity\Livre $livre
-     */
-    public function removeLivre(\Orchestra\OrchestraBundle\Entity\Livre $livre)
-    {
-        $this->livre->removeElement($livre);
-    }
-
-    /**
-     * Get livre
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getLivre()
-    {
-        return $this->livre;
     }
 
     /**
