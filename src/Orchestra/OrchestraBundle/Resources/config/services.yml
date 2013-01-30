@@ -91,8 +91,12 @@ services:
        tags:
            - { name: twig.extension }
            
+    request:
+        class: Symfony\Component\HttpFoundation\Request
+        
     twig.extension.mytwigextension:  
-        class: Orchestra\OrchestraBundle\Extension\MyTwigExtension  
+        class: Orchestra\OrchestraBundle\Extension\MyTwigExtension
+        arguments:  [@request]
         tags:  
             -  { name: twig.extension } 
  

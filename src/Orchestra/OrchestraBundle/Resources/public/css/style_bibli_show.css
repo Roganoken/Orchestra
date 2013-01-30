@@ -120,8 +120,7 @@
     width:100px;
     height:130px;
     margin-top:10px;
-    margin-bottom:10px;
-    background-color: lightpink;
+    margin-bottom:20px;
 }
 
 
@@ -172,3 +171,14 @@
     text-decoration: none;
 }
 
+/* DIV VIDE POUR LE PROLONGEMENT DU MENU */
+
+
+#vide{
+    float:left;
+    /*background-color:lightpink;*/
+    width:700px;
+    margin-left:35px;
+    margin-bottom:0px;
+    height:440px;
+}

@@ -2,49 +2,88 @@
 
     <nav id="nav_menu">
         <ul>
+            {%  if app.request.attributes.get('_route') == 'OrchestraOrchestraBundle_accueil' %}
             <li class="titre_menu active">
+            {%  else %}
+            <li class="titre_menu">
+            {% endif %}
                 <a href="{{ path ('OrchestraOrchestraBundle_accueil') }}" alt="">
                 <div class="div_picto_menu"><img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_accueil_gauche.png') }}" alt="Accueil" /></div>
                 <div class="txt_picto_menu">Accueil</div>
                 </a>
             </li>
+            
+            {%  if "OrchestraOrchestraBundle_profil" in app.request.attributes.get('_route') %}
+            <li class="titre_menu active">
+            {%  else %}
             <li class="titre_menu">
+            {% endif %}
                 <a href="{{ path ('OrchestraOrchestraBundle_profil', { 'id': app.security.getToken().getUser().getId()}) }}" alt="">
                 <div class="div_picto_menu"><img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" /></div>
                 <div class="txt_picto_menu">Profil</div>
                 </a>
             </li>
+            
+           {%  if "evenement" in app.request.attributes.get('_route') %}
+            <li class="titre_menu active">
+            {%  else %}
             <li class="titre_menu">
+            {% endif %}
                 <a href="{{ path ('evenement') }}" alt="">
                 <div class="div_picto_menu"><img class="picto_menu_bis" src="{{ asset ('bundles/orchestraorchestra/img/picto_evt.png') }}" alt="" /></div>
                 <div class="txt_picto_menu">Evènements</div>
                 </a>
             </li>
+            
+            {%  if "news" in app.request.attributes.get('_route') %}
+            <li class="titre_menu active">
+            {%  else %}
             <li class="titre_menu">
+            {% endif %}
                 <a href="{{ path('news') }}" alt="">
                 <div class="div_picto_menu"><img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_profil.png') }}" alt="" /></div>
                 <div class="txt_picto_menu">Actualités</div>
                 </a>
             </li>
+            
+            {%  if "galerie" in app.request.attributes.get('_route') %}
+            <li class="titre_menu active">
+            {%  else %}
             <li class="titre_menu">
+            {% endif %}
                 <a href="{{ path('galerie') }}" alt="">
                 <div class="div_picto_menu"><img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_galerie.png') }}" alt="" /></div>
                 <div class="txt_picto_menu">Galeries</div>
                 </a>
             </li>
+            
+            {%  if "module" in app.request.attributes.get('_route') %}
+            <li class="titre_menu active">
+            {%  else %}
             <li class="titre_menu">
+            {% endif %}
                 <a href="{{ path('module') }}" alt="">
                 <div class="div_picto_menu"><img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_tutorat.png') }}" alt="" /></div>
                 <div class="txt_picto_menu">Tutorats</div>
                 </a>
             </li>
-            <li class="titre_menu">            
+            
+            {%  if "livre" in app.request.attributes.get('_route') %}
+            <li class="titre_menu active">
+            {%  else %}
+            <li class="titre_menu">
+            {% endif %}           
                 <a href="{{ path('livre') }}" alt="">
                 <div class="div_picto_menu"><img class="picto_menu" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
                 <div class="txt_picto_menu">Bibliothèque</div>
                 </a>
             </li>
+            
+            {%  if "annuaire" in app.request.attributes.get('_route') %}
+            <li class="titre_menu active">
+            {%  else %}
             <li class="titre_menu">
+            {% endif %}
                 <a href="{{ path('annuaire') }}" alt="Consulter la liste des inscrits">
                 <div class="div_picto_menu"><img class="picto_menu_bis" src="{{ asset ('bundles/orchestraorchestra/img/picto_adresse.png') }}" alt="" /></div>
                 <div class="txt_picto_menu">Carnet d'adresses</div>
