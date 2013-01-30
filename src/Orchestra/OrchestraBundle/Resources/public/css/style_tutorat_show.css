@@ -137,6 +137,7 @@ td{
     float:right;
     width:238px;
     margin-top:20px;
+    margin-bottom: 10px;
 }
 
 .retour_tuto{
@@ -170,7 +171,8 @@ td{
 
 .width_participants{
     float:right;
-    margin-top:15px;
+    margin-top:20px;
+    margin-bottom: 10px;
     width:238px;
 }
 

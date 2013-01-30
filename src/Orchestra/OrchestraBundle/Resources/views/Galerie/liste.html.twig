@@ -22,7 +22,7 @@
                     <div id="modifs">
                         <ul>
                             <li>
-                                <div class="picto_detail"><a href="{{ path('galerie_show', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="Voir" /></a></div>
+                                <div class="picto_detail"><a class="lightbox" href="{{ path('galerie_show', { 'id': entity.id }) }}"><img  src="{{ asset ('bundles/orchestraorchestra/img/picto_voir_profil_vide.png') }}" alt="Voir" /></a></div>
                             </li>
                             {% if entity.user == app.security.getToken().getUser() or is_granted("ROLE_ADMIN") %}
                             <li>
@@ -38,3 +38,4 @@
 {% else %}
 Pas encore d'images
 {% endif %}
+

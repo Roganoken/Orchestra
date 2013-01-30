@@ -213,7 +213,7 @@ class ImageController extends Controller
             $em->persist($image);
             $em->flush();  
 
-            return $this->redirect($this->generateUrl('image_show', array('id' => $image->getId())));
+            return $this->redirect($this->generateUrl('image_show', array('id' => $image->getId(),'user' => $user->getId())));
         }
 
         return $this->render('OrchestraOrchestraBundle:Image:new.html.twig', array(

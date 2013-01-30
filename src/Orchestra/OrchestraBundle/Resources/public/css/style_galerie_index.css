@@ -71,11 +71,12 @@
     position:relative;
     background-color:#ffffff;
     border: 1px solid #b8b9ba;
-    width:404px;
+    width:484px;
     height: 100%;
     margin-top:-3px;
     margin-left:2px;
-    padding:25px 40px;
+    padding-top:10px;
+    padding-bottom:25px;
     margin-bottom: 50px;
 }
 
@@ -187,10 +188,21 @@
     margin-bottom:5px;
 }
 
+#image img{
+    border: 3px solid #2b3035;
+    opacity:0.9;
+}
+
+#image img:hover{
+    border: 3px solid #e65011;
+    opacity:1;
+}
+
 #infos{
     float:left;
-    width:290px;
+    width:280px;
     height:80px;
+    padding-left:10px;
 }
 
 #title{
@@ -224,43 +236,6 @@
     width:25px;
     height:80px;
     text-align:center;
-}
-
-
-#nav_galerie{
-    float:left;
-    width:404px;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-#nav_galerie li{
-    display: inline;
-    margin-left:6px;
-    margin-right:6px;
-}
-
-#nav_galerie li a{
-    color:#a8a9ab;
-    text-decoration: none;
-}
-
-#nav_galerie li a:visited{
-    color:#a8a9ab;
-    text-decoration: none;
-}
-
-#nav_galerie li a:hover{
-    color:#e65011;
-    text-decoration: none;
-}
-
-#nav_galerie li a:active{
-    color:#2b3035;
-    text-decoration: none;
 }
 
 .picto_detail{
@@ -297,4 +272,78 @@
 
 .picto_modif2 a:hover{
     opacity:1;
+}
+
+/* MENU DEROULANT */
+
+#global_global{
+    float:left;
+    position:relative;
+    width:404px;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+#div_nav_theme{
+    float:right;
+    position:relative;
+    z-index:3;
+    width:404px;
+    height:35px;
+    margin-bottom:20px;
+}
+
+#nav_theme{
+    float:right;
+    width:200px;
+    height:35px;
+    margin-bottom:20px;
+}
+
+ul ul {
+    display: none;
+}
+
+li:hover ul.niveau2 {
+    display:block;
+}
+
+.titre_theme{
+    width:200px;
+    height:20px;
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    color:#b8b9ba;
+    text-align:center;
+   
+    padding-top:10px;
+    padding-bottom:5px;
+}
+
+.titre_theme:hover{
+    height:35px;
+    background-color: #2b3035;
+}
+
+.niveau2{
+   margin-top:10px;
+}
+
+.niveau2 li{
+    height:25px;
+    background-color: #2b3035;
+    border-top:1px dashed #a8a9ab;
+    padding-top:10px;
+}
+
+.niveau2 li:hover{
+    background-color: #e65011;
+}
+
+.niveau2 li a{
+    font-size:12px;
+    font-family:"futura", Arial, sans-serif;
+    color:#b8b9ba;
+    text-align:center;
+    text-decoration: none;
 }

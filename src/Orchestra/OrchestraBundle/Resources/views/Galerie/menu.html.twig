@@ -1,7 +1,14 @@
-    <ul id="nav_galerie">
-{% for menu in menus %}
-
-            <li><a href="{{ path('galerie_categorie', {'id': menu.id}) }}">{{ menu.intitule }}</a></li>
-
-{% endfor %}
-    </ul>
+<ul class="niveau1">
+  <li class="titre_theme">
+    Choisir un thème + 
+    {% if menus|length != 0 %}
+        <ul class="niveau2">
+            {% for menu in menus %}
+            <li>
+                <a href="{{ path('galerie_categorie', {'id': menu.id}) }}">{{ menu.intitule }}</a>
+            </li>
+           {% endfor %} 
+        </ul>
+        {% endif %}
+  </li>
+</ul>

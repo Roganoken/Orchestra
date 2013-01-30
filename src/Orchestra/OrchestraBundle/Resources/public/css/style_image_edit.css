@@ -19,8 +19,9 @@
 
 #form_edit{
     float:left;
-    width:400px; 
-    /*background-color:lightblue;*/
+    width:450px; 
+    margin-top:30px;
+    margin-left:35px;
 }
 
 .bloc_contenu_tuto{
@@ -43,10 +44,6 @@ label{
     margin-right:30px;
 }
 
-#orchestra_orchestrabundle_moduletype_description{
-   margin-left:-15px;
-    /*margin-bottom:20px; */
-}
 
 input{
     margin-left:10px;
@@ -57,42 +54,10 @@ input{
     font-family: "futura", Arial, sans-serif;
 }
 
-
-#orchestra_orchestrabundle_moduletype_salle{
-    margin-left:25px;
-    margin-top:20px;
-}
-
-#orchestra_orchestrabundle_moduletype_date{
-     float:left;
-     width:332px;
-     margin-left:40px;
-     margin-top:-25px;
-     margin-bottom:20px;
-     /*background-color: lightgreen;*/
-}
-
-#orchestra_orchestrabundle_moduletype_date_date{
-    /*float:left;*/
-    width:186px;
-     /*background-color: lightpink;*/
-}
-
-#orchestra_orchestrabundle_moduletype_date_time{
-    /*float:left;*/
-    width:145px;
-    margin-left:187px;
-    margin-top:-25px;
-    /*background-color: lightgrey;*/
-}
-
-
-
-
 .btn_modif, .btn_ajout, .btn_creer{
     float:left;
     height:30px;
-    margin-left:150px;
+    margin-left:180px;
     margin-top:15px;
     margin-bottom:10px;
     background-image:url("../img/bg_btn_form.png");
@@ -120,8 +85,8 @@ input{
 #actions_droite{
     float:right;
     width:250px;
-    margin-left:20px;
-    /*background-color:lightgreen;*/
+    margin-left:30px;
+    margin-top:30px;
 }
 
 
@@ -192,33 +157,27 @@ input{
 
 
 
-/* style créer une actualité */
-
-#orchestra_orchestrabundle_newstype_active{
-    margin-top:20px;
-}
-
-
 /* style importer une image */
-#orchestra_orchestrabundle_imagetype div{
-    margin-bottom:10px;
-    text-align:left;
-}
-
-#orchestra_orchestrabundle_imagetype_descriptif{
-    margin-bottom:10px;
-}
 
 #orchestra_orchestrabundle_imagetype_dateCreation, #orchestra_orchestrabundle_imagetype_logiciel{
     float:right;
     text-align:left;
-    margin-right:90px;
+    margin-right:100px;
     margin-top:-5px;
     margin-bottom:5px;
 }
 
 
 /* style edit une image */
+
+#orchestra_orchestrabundle_imagetype_titre{
+    width:260px;
+}
+
+#orchestra_orchestrabundle_imagetype_descriptif{
+    width:250px;
+    margin-left:-10px;
+}
 
 .form_row{
     height:100%;
