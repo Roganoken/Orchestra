@@ -82,7 +82,7 @@
                     </div>
                     
                             
-                        {% if entity.dateRetour|date('d/m/Y') == "now"|date('d/m/Y') %}
+                        {% if entity.dateRetour is null %}
                     <div class="titre_bloc retour_tuto reserver">
                         <div class="picto_bibli_titre"><img height="18px;" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
                         <div class="txt_titre_bloc">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     {% endif %}
-                    {% if app.security.getToken().getUser() == entity.User and entity.dateRetour|date('d/m/Y') < "now"|date('d/m/Y') %}
+                    {% if app.security.getToken().getUser() == entity.User and entity.dateRetour|date('d/m/Y') >= "now"|date('d/m/Y') %}
                     <div class="titre_bloc retour_tuto reserver">
                         <div class="picto_bibli_titre"><img height="18px;" src="{{ asset ('bundles/orchestraorchestra/img/picto_biblio.png') }}" alt="" /></div>
                         <div class="txt_titre_bloc">
