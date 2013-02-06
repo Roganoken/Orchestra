@@ -137,15 +137,77 @@ class Image
     private $media;
     
     /**
-     * @Assert\File(
-     *     maxSize="3M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
-     * )
      *
      * @var File $file
      */
     public $file;
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        
+        if (null !== $this->file) {
+            // faites ce que vous voulez pour générer un nom unique
+            $imagename = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+           // On sauvegarde le nom de fichier
+            $this->url = $imagename;
+        }
+    }
 
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        // s'il y a une erreur lors du déplacement du fichier, une exception
+        // va automatiquement être lancée par la méthode move(). Cela va empêcher
+        // proprement l'entité d'être persistée dans la base de données si
+        // erreur il y a
+        $this->file->move($this->getUploadRootDir(), $this->url);
+
+        unset($this->file);
+    }
+    
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->url ? null : $this->getUploadRootDir().'/'.$this->url;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->url ? null : $this->getUploadDir().'/'.$this->url;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'image';
+    }
     /**
      * Constructor
      */
@@ -154,7 +216,6 @@ class Image
         $this->commentaire = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-
     /**
      * Get id
      *
@@ -352,7 +413,7 @@ class Image
     /**
      * Set created
      *
-     * @param string $created
+     * @param \DateTime $created
      * @return Image
      */
     public function setCreated($created)
@@ -365,7 +426,7 @@ class Image
     /**
      * Get created
      *
-     * @return string 
+     * @return \DateTime 
      */
     public function getCreated()
     {
@@ -375,7 +436,7 @@ class Image
     /**
      * Set updated
      *
-     * @param string $updated
+     * @param \DateTime $updated
      * @return Image
      */
     public function setUpdated($updated)
@@ -388,7 +449,7 @@ class Image
     /**
      * Get updated
      *
-     * @return string 
+     * @return \DateTime 
      */
     public function getUpdated()
     {
@@ -421,7 +482,7 @@ class Image
     /**
      * Add commentaire
      *
-     * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
+     * @param \Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
      * @return Image
      */
     public function addCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
@@ -434,7 +495,7 @@ class Image
     /**
      * Remove commentaire
      *
-     * @param Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
+     * @param \Orchestra\OrchestraBundle\Entity\Commentaire $commentaire
      */
     public function removeCommentaire(\Orchestra\OrchestraBundle\Entity\Commentaire $commentaire)
     {
@@ -444,155 +505,11 @@ class Image
     /**
      * Get commentaire
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getCommentaire()
     {
         return $this->commentaire;
-    }
-
-    /**
-     * Add user
-     *
-     * @param Orchestra\OrchestraBundle\Entity\User $user
-     * @return Image
-     */
-    public function addUser(\Orchestra\OrchestraBundle\Entity\User $user)
-    {
-        $this->user[] = $user;
-    
-        return $this;
-    }
-
-    /**
-     * Remove user
-     *
-     * @param Orchestra\OrchestraBundle\Entity\User $user
-     */
-    public function removeUser(\Orchestra\OrchestraBundle\Entity\User $user)
-    {
-        $this->user->removeElement($user);
-    }
-
-    /**
-     * Get user
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set media
-     *
-     * @param Orchestra\OrchestraBundle\Entity\Media $media
-     * @return Image
-     */
-    public function setMedia(\Orchestra\OrchestraBundle\Entity\Media $media = null)
-    {
-        $this->media = $media;
-    
-        return $this;
-    }
-
-    /**
-     * Get media
-     *
-     * @return Orchestra\OrchestraBundle\Entity\Media 
-     */
-    public function getMedia()
-    {
-        return $this->media;
-    }
-    
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function preUpload()
-    {
-        
-        if (null !== $this->file) {
-            // faites ce que vous voulez pour générer un nom unique
-            $imagename = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
-           // On sauvegarde le nom de fichier
-            $this->url = $imagename;
-        }
-    }
-
-    /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function upload()
-    {
-        if (null === $this->file) {
-            return;
-        }
-
-        // s'il y a une erreur lors du déplacement du fichier, une exception
-        // va automatiquement être lancée par la méthode move(). Cela va empêcher
-        // proprement l'entité d'être persistée dans la base de données si
-        // erreur il y a
-        $this->file->move($this->getUploadRootDir(), $this->url);
-
-        unset($this->file);
-    }
-    
-    /**
-     * @ORM\PostRemove()
-     */
-    public function removeUpload()
-    {
-        if ($file = $this->getAbsolutePath()) {
-            unlink($file);
-        }
-    }
-    
-    
-    public function getAbsolutePath()
-    {
-        return null === $this->url ? null : $this->getUploadRootDir().'/'.$this->url;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->url ? null : $this->getUploadDir().'/'.$this->url;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
-        // le document/image dans la vue.
-        return 'image';
-    }
-    
-    public function uploadProfilePicture($user)
-    {
-
-        // la propriété « file » peut être vide si le champ n'est pas requis
-        if (null === $this->file) {
-            return;
-        }
-        
-        $imagename = $user.sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
-        
-        // move copie le fichier présent chez le client dans le répertoire indiqué.
-        $this->file->move($this->getUploadRootDir(), $imagename);
-
-        // On sauvegarde le nom de fichier
-        $this->url = $imagename;
-        
-        // La propriété file ne servira plus
-        $this->file = null;
     }
 
     /**
@@ -606,5 +523,38 @@ class Image
         $this->user = $user;
     
         return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Orchestra\OrchestraBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set media
+     *
+     * @param \Orchestra\OrchestraBundle\Entity\Media $media
+     * @return Image
+     */
+    public function setMedia(\Orchestra\OrchestraBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+    
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Orchestra\OrchestraBundle\Entity\Media 
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

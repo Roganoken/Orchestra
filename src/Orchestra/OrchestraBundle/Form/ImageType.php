@@ -26,17 +26,6 @@ class ImageType extends AbstractType
                  'label' => 'Média',
                 ))
             ->add('file', 'file', array('label' => 'Image'))
-           /* 
-            ->add('user')
-            ->add('url')
-            ->add('motCle')
-            ->add('created')
-            ->add('updated')
-            ->add('isPortfolio')
-            ->add('commentaire')
-            ->add('taille')
-            ->add('poids')
-            */
         ;
     }
 
